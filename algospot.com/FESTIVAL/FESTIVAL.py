@@ -2,6 +2,7 @@ from __future__ import division
 import sys
 
 n_case_cnt = int(raw_input().strip())
+l_r = []
 
 for n_case in range(n_case_cnt):
 
@@ -13,10 +14,11 @@ for n_case in range(n_case_cnt):
     str_data_2          = raw_input().strip()
     l_costs             = map((lambda x: int(x)), str_data_2.split(' '))
     
-    l_r = []
+    l_rr = []
     for n_idx in range( len(l_costs) - n_team_cnt + 1):
         l = l_costs[n_idx : n_idx + n_team_cnt]
         f = sum(l) / float(len(l))
-        l_r.append(f)
+        l_rr.append(f)
+    l_r.append(min(l_rr))
 
-    print("{0:0.11f}".format(min(l_r)))
+for n_r in l_r: print("{0:0.11f}".format(n_r))
