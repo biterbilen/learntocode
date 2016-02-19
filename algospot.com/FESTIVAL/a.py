@@ -1,10 +1,13 @@
 import sys
+import gc
 
 C = int(raw_input().strip())
 
 l_r = []
 
 for n_case in range(C):
+    gc.collect()
+
     l       = map((lambda x: int(x)), raw_input().strip().split(' '))
     N       = l[0] # 6
     L       = l[1] # 3
