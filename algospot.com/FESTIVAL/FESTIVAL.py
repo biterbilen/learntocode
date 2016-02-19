@@ -14,14 +14,9 @@ for n_case in range(n_case_cnt):
     l_costs             = map((lambda x: int(x)), str_data_2.split(' '))
     
     l_r = []
-    n_sum = 0
-    n_combination_cnt = len(l_costs) - n_team_cnt + 1
-    for n_idx in range(n_combination_cnt):
-        l = l_costs[n_idx:n_idx+n_team_cnt]
+    for n_idx in range( len(l_costs) - n_team_cnt + 1):
+        l = l_costs[n_idx : n_idx + n_team_cnt]
         f = sum(l) / float(len(l))
         l_r.append(f)
-        #print(l, f)
 
-    #print(l_r)
-    print(min(l_r))
-    #print("%.11f"%min(l_r))
+    print("{0:0.11f}".format(min(l_r)))
