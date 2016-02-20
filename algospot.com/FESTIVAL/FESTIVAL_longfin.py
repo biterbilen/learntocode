@@ -17,8 +17,12 @@ def analyze(days, teams, costs):
 if __name__ == '__main__':
     count = int(raw_input())
 
+    l = []
+
     for _ in range(count):
 	days, teams = map(int, raw_input().split())
 	costs = list(map(int, raw_input().split()))
 
-	print(analyze(days, teams, costs))
+	l.append(analyze(days, teams, costs))
+
+    for f in l: print("{0:0.11f}".format(f))
