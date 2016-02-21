@@ -16,7 +16,7 @@ using namespace std;
 
 int main(){
     
-    float ar_min_avg_costs[1000] = {0,};
+    double ar_min_avg_costs[1000] = {0,};
     int ar_costs[1000] = {0,};
     //int ar_days[1000] = {0,};
 
@@ -34,12 +34,12 @@ int main(){
              scanf("%d", &ar_costs[y]); 
 
          //
-        float f_min_avg = numeric_limits<float>::max();
+        double f_min_avg = numeric_limits<double>::max();
 
         for (int i=0; i<N-L+1; ++i)
         {
             //
-            float f_sum = 0;
+            double f_sum = 0;
             int j       = 0;
 
             // sum costs with team members - 1 
@@ -49,13 +49,14 @@ int main(){
             // sum costs with extended team members
             for (int k=i+L-1; k<N; ++k)
             {
-                //cout << i << ' ' << j << endl;
-                //cout << i << ' ' << j << ' ' << k << endl;
 
                 f_sum += ar_costs[k];
 
                 int n_len   = k-i+1;
-                float f_avg = f_sum / n_len;
+                double f_avg = f_sum / n_len;
+                
+                //cout << i << ' ' << j << endl;
+                //cout << i << ' ' << j << ' ' << k << ' ' << n_len << endl;
 
                 if (f_avg < f_min_avg)
                     f_min_avg = f_avg;
