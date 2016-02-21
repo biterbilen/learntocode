@@ -14,17 +14,6 @@
 
 using namespace std;
 
-float get_avg_cost(int v[], int idx_first, int idx_last)
-{
-    float f_sum = 0;
-    for (int n=idx_first; n<idx_last; ++n)
-    {
-        f_sum += v[n];
-    }
-    return f_sum / (idx_last - idx_first);
-}
-
-
 int main(){
     
     float ar_min_avg_costs[1000] = {0,};
@@ -49,13 +38,27 @@ int main(){
 
         for (int i=0; i<N-L+1; ++i)
         {
-            for (int j=i+L; j<N+1; ++j)
+            //
+            float f_sum = 0;
+            int j       = 0;
+
+            // sum costs with team members - 1 
+            for (j=i; j<i+L-1; ++j)
+                f_sum += ar_costs[j];
+
+            // sum costs with extended team members
+            for (int k=i+L-1; k<N; ++k)
             {
                 //cout << i << ' ' << j << endl;
-                float f = get_avg_cost(ar_costs, i, j);
-                //cout << i << ' ' << j << ' ' << f << endl;
-                if (f < f_min_avg)
-                    f_min_avg = f;
+                //cout << i << ' ' << j << ' ' << k << endl;
+
+                f_sum += ar_costs[k];
+
+                int n_len   = k-i+1;
+                float f_avg = f_sum / n_len;
+
+                if (f_avg < f_min_avg)
+                    f_min_avg = f_avg;
             }
         }
 
@@ -66,6 +69,7 @@ int main(){
     {
         cout << fixed << setprecision( 11 ) << ar_min_avg_costs[n] << endl;
     }
+
   
     return 0;
 }
