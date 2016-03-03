@@ -14,47 +14,57 @@
 
 using namespace std;
 
-void dump_board(char board[][6])
-{
-    for(int i=0; i<5; ++i)
-        cout << board[i] << endl;
-}
+// // dump functions
+// void dump_board(char board[][6])
+// {
+//     for(int i=0; i<5; ++i)
+//         cout << board[i] << endl;
+// }
 
-void dump_words(int C, int N[], char words[][10][10])
-{
-    for(int i=0; i<C; ++i)
-    {
-        for(int j=0; j<N[i]; ++j)
-        {
-            cout << words[i][j] << endl;
-        }
-    }
-}
+// void dump_words(int C, int N[], char words[][10][10])
+// {
+//     for(int i=0; i<C; ++i)
+//     {
+//         for(int j=0; j<N[i]; ++j)
+//         {
+//             cout << words[i][j] << endl;
+//         }
+//     }
+// }
 
-void dump_result(int C, int N[], char words[][10][11], bool result[])
+// void dump_result(int C, int N[], char words[][10][11], bool result[][10])
+// {
+//     for(int i=0; i<C; ++i)
+//     {
+//         for(int j=0; j<N[i]; ++j)
+//         {
+//             cout << words[i][j]
+//                  << " "
+//                  << (result[i][j] ? "YES" : "NO")  
+//                  << endl;
+//         }
+//     }
+// }
+
+bool is_found(char board[][6], char word[])
 {
-    for(int i=0; i<C; ++i)
+    for (char * p = word; p != '\0'; ++p)
     {
-        for(int j=0; j<N[i]; ++j)
-        {
-            cout << words[i][j]
-                 << " "
-                 << (result[i] ? "YES" : "NO")  
-                 << endl;
-        }
+        
     }
+
+    return true;
 }
 
 int main() {
     const int CASE_MAX = 50;
     
     char ar_board[5][6]             = {0,}; //
-    int ar_N[CASE_MAX]              = {0,};
-    char ar_words[CASE_MAX][10][11] = {0,}; // case, row, colum
-    bool ar_found[CASE_MAX]         = {0,};
-
+    char ar_board_cache[5][5][6]    = {0,};
+    
     int C;
     cin >> C;
+    int N;
 
     for(int c=0; c<C; ++c)
     {
@@ -62,19 +72,24 @@ int main() {
             scanf("%s", ar_board[i]);
 
         // dump_board(ar_board);
-
-        scanf("%d", &ar_N[c]);
+        scanf("%d", &N);
         
-        for (int i=0; i<ar_N[c]; ++i)
+        for (int n=0; n<N; ++n)
         {
-            scanf("%s", ar_words[c][i]);
+            char ar_words[10][11] = {0,}; // row, colum
+            bool b_found = false;
 
+            scanf("%s", ar_words[n]);
+            b_found = is_found(ar_board, ar_words[n]);
             
-        }
-        
+            cout << ar_words[n]
+                 << " "
+                 << (b_found ? "YES" : "NO")  
+                 << endl;
+        }       
     }
 
-    dump_result(C, ar_N, ar_words, ar_found);
+    // dump_result(C, ar_N, ar_words, ar_found);
   
     return 0;
 }
