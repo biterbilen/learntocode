@@ -7,10 +7,14 @@ bool is_found_syllable(char board[][6], char word[], int r, int c, int idx)
 {
     if (r < 0 || r >= 5) return false;
     if (c < 0 || c >= 5) return false;
-    if (word[idx] == 0) return true;
+    
+    if (word[idx] == 0)
+        return true;
 
-    if (board[r][c] == word[idx])
-        return
+    if (board[r][c] != word[idx])
+        return false;
+    
+    return
             is_found_syllable(board, word, r  , c-1, idx+1) ||
             is_found_syllable(board, word, r+1, c-1, idx+1) ||
             is_found_syllable(board, word, r+1, c  , idx+1) ||
@@ -19,8 +23,6 @@ bool is_found_syllable(char board[][6], char word[], int r, int c, int idx)
             is_found_syllable(board, word, r-1, c+1, idx+1) ||
             is_found_syllable(board, word, r-1, c  , idx+1) ||
             is_found_syllable(board, word, r-1, c-1, idx+1);
-                              
-    return false;
 }
 
 bool is_found_word(char board[][6], char word[])
@@ -28,23 +30,19 @@ bool is_found_word(char board[][6], char word[])
     int r = 2;
     int c = 2;
     int idx = -1;
-    
-    return
-        is_found_syllable(board, word, r  , c-1, idx+1) ||
-        is_found_syllable(board, word, r+1, c-1, idx+1) ||
-        is_found_syllable(board, word, r+1, c  , idx+1) ||
-        is_found_syllable(board, word, r+1, c+1, idx+1) ||
-        is_found_syllable(board, word, r  , c+1, idx+1) ||
-        is_found_syllable(board, word, r-1, c+1, idx+1) ||
-        is_found_syllable(board, word, r-1, c  , idx+1) ||
-        is_found_syllable(board, word, r-1, c-1, idx+1);
+
+    for (int r=0; r<5; ++r)
+        for (int c=0; c<5; ++c)
+        {
+            if (is_found_syllable(board, word, r, c, 0))
+                return true;
+        }
+    return false;
 }
 
 int main() {
-    const int CASE_MAX = 50;
     
-    char ar_board[5][6]             = {0,}; //
-    char ar_board_cache[5][5][6]    = {0,};
+    char ar_board[5][6] = {0,}; //
     
     int C;
     cin >> C;
