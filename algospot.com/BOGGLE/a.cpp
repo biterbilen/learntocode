@@ -10,22 +10,19 @@ bool is_found_syllable(char cache[][5][5], char board[][6], char word[], int r, 
     if (c < 0 || c >= 5) return false;
 
     char& elem = cache[idx][r][c];
-
+    
     if (elem != -1) return elem;
-
-    elem = false;
-
-    if (board[r][c] == word[idx])
-        elem =
-            is_found_syllable(cache, board, word, r  , c-1, idx+1) ||
-            is_found_syllable(cache, board, word, r+1, c-1, idx+1) ||
-            is_found_syllable(cache, board, word, r+1, c  , idx+1) ||
-            is_found_syllable(cache, board, word, r+1, c+1, idx+1) ||
-            is_found_syllable(cache, board, word, r  , c+1, idx+1) ||
-            is_found_syllable(cache, board, word, r-1, c+1, idx+1) ||
-            is_found_syllable(cache, board, word, r-1, c  , idx+1) ||
-            is_found_syllable(cache, board, word, r-1, c-1, idx+1);
-    return elem;
+    if (board[r][c] != word[idx]) return elem = false;
+    
+    return elem =
+        is_found_syllable(cache, board, word, r  , c-1, idx+1) ||
+        is_found_syllable(cache, board, word, r+1, c-1, idx+1) ||
+        is_found_syllable(cache, board, word, r+1, c  , idx+1) ||
+        is_found_syllable(cache, board, word, r+1, c+1, idx+1) ||
+        is_found_syllable(cache, board, word, r  , c+1, idx+1) ||
+        is_found_syllable(cache, board, word, r-1, c+1, idx+1) ||
+        is_found_syllable(cache, board, word, r-1, c  , idx+1) ||
+        is_found_syllable(cache, board, word, r-1, c-1, idx+1);
 }
 
 bool is_found_word(char cache[][5][5], char board[][6], char word[])
@@ -60,18 +57,15 @@ int main() {
         
         for (int n=0; n<N; ++n)
         {
-            char ar_words[10][11] = {0,}; // row, colum
+            char ar_words[10][11]   = {0,}; // row, colum
             char ar_cache[11][5][5] = {0,};
-            bool b_found = false;
             memset(ar_cache, -1, sizeof(ar_cache));
             
             scanf("%s", ar_words[n]);
             
-            b_found = is_found_word(ar_cache, ar_board, ar_words[n]);
-            
             cout << ar_words[n]
                  << " "
-                 << (b_found ? "YES" : "NO")  
+                 << (is_found_word(ar_cache, ar_board, ar_words[n]) ? "YES" : "NO")  
                  << endl;
         }       
     }
