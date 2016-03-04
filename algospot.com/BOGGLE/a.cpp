@@ -1,35 +1,31 @@
 #include <iostream>
 #include <cstring>
 
-char g_board[5][6]     = {0,};  //
-char g_cache[11][5][5] = {0,};
-char g_word[11]        = {0,}; // row, colum
-
 using namespace std;
 
-bool is_found_syllable(int r, int c, int idx)
+bool is_found_syllable(char cache[][5][5], char board[][6], char word[], int r, int c, int idx)
 {
-    if (g_word[idx] == 0) return true;
+    if (word[idx] == 0) return true;
     if (r < 0 || r >= 5) return false;
     if (c < 0 || c >= 5) return false;
 
-    char& elem = g_cache[idx][r][c];
+    char& elem = cache[idx][r][c];
     
     if (elem != -1) return elem;
-    if (g_board[r][c] != g_word[idx]) return elem = false;
+    if (board[r][c] != word[idx]) return elem = false;
     
     return elem =
-        is_found_syllable(  r, c-1, idx+1) ||
-        is_found_syllable(r+1, c-1, idx+1) ||
-        is_found_syllable(r+1, c  , idx+1) ||
-        is_found_syllable(r+1, c+1, idx+1) ||
-        is_found_syllable(r  , c+1, idx+1) ||
-        is_found_syllable(r-1, c+1, idx+1) ||
-        is_found_syllable(r-1, c  , idx+1) ||
-        is_found_syllable(r-1, c-1, idx+1);
+        is_found_syllable(cache, board, word, r  , c-1, idx+1) ||
+        is_found_syllable(cache, board, word, r+1, c-1, idx+1) ||
+        is_found_syllable(cache, board, word, r+1, c  , idx+1) ||
+        is_found_syllable(cache, board, word, r+1, c+1, idx+1) ||
+        is_found_syllable(cache, board, word, r  , c+1, idx+1) ||
+        is_found_syllable(cache, board, word, r-1, c+1, idx+1) ||
+        is_found_syllable(cache, board, word, r-1, c  , idx+1) ||
+        is_found_syllable(cache, board, word, r-1, c-1, idx+1);
 }
 
-bool is_found_word()
+bool is_found_word(char cache[][5][5], char board[][6], char word[])
 {
     int r = 2;
     int c = 2;
@@ -38,7 +34,7 @@ bool is_found_word()
     for (int r=0; r<5; ++r)
         for (int c=0; c<5; ++c)
         {
-            if (is_found_syllable(r, c, 0))
+            if (is_found_syllable(cache, board, word, r, c, 0))
                 return true;
         }
     return false;
@@ -52,23 +48,24 @@ int main() {
 
     for(int c=0; c<C; ++c)
     {
-        memset(g_board, 0, sizeof(g_board));
-           
+        char ar_board[5][6] = {0,}; //
+
         for (int i=0; i<5; ++i)
-            scanf("%s", g_board[i]);
+            scanf("%s", ar_board[i]);
 
         scanf("%d", &N);
         
         for (int n=0; n<N; ++n)
         {
-            memset(g_word, 0, sizeof(g_word));
-            memset(g_cache, -1, sizeof(g_cache));
+            char ar_words[11] = {0,}; // row, colum
+            char ar_cache[11][5][5];
+            memset(ar_cache, -1, sizeof(ar_cache));
             
-            scanf("%s", g_word);
+            scanf("%s", ar_words);
             
-            cout << g_word
+            cout << ar_words
                  << " "
-                 << (is_found_word() ? "YES" : "NO")  
+                 << (is_found_word(ar_cache, ar_board, ar_words) ? "YES" : "NO")  
                  << endl;
         }       
     }
