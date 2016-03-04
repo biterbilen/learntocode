@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cstring>
 
+char ar_words[10][11]   = {0,}; // row, colum
+char ar_cache[11][5][5] = {0,};
+
 using namespace std;
 
 bool is_found_syllable(char cache[][5][5], char board[][6], char word[], int r, int c, int idx)
@@ -57,8 +60,7 @@ int main() {
         
         for (int n=0; n<N; ++n)
         {
-            char ar_words[10][11]   = {0,}; // row, colum
-            char ar_cache[11][5][5] = {0,};
+            memset(ar_words, 0, sizeof(ar_words));
             memset(ar_cache, -1, sizeof(ar_cache));
             
             scanf("%s", ar_words[n]);
