@@ -2,46 +2,72 @@
 #include <string.h>
 #include <stdbool.h>
 
-void dump(int a[][2])
+void dump(bool a[][10])
 {
-    for (int i=0; i<46; ++i)
+    printf("-----\n");
+    for (int i=0; i<10; ++i)
     {
-        if (a[i][0] == -1 && a[i][1] == -1)
-            break;
-        printf("%d %d\n", a[i][0], a[i][1]);
+        for (int j=0; j<10; ++j)
+        {
+            if (a[i][j])
+                printf("[%d][%d]\n", i, j);
+        }
     }
-    printf("\n");
+    printf("-----\n");
         
 }
 
-// already exist in history ? 
-bool touched_already(int a[][2], int p[2])
-{
-    for (int i=0; i<46; ++i)
-    {
-        if (a[i][0] == p[0] ||
-            a[i][1] == p[0] ||
-            a[i][0] == p[1] ||
-            a[i][1] == p[1])
-            return true;
-    }
-    return false;
-}
+/* // already exist in history ?  */
+/* bool touched_already(int a[][2], int p[2]) */
+/* { */
+/*     for (int i=0; i<46; ++i) */
+/*     { */
+/*         if (a[i][0] == -1 && a[i][1] == -1) */
+/*             break; */
 
-int result(int a[][2], int idx, int N, int M)
+/*         if (a[i][0] == p[0] || */
+/*             a[i][1] == p[0] || */
+/*             a[i][0] == p[1] || */
+/*             a[i][1] == p[1]) */
+/*         { */
+/*             /\* printf("-----> [%d] | %d %d | %d %d\n", *\/ */
+/*             /\*        i, a[i][0], a[i][1], p[0], p[1]); *\/ */
+/*             return true; */
+/*         } */
+/*     } */
+    
+/*     return false; */
+/* } */
+
+int result(bool ar_pairs[][10], bool ar_taken[], int N)
 {
     // base condition
-    if (idx >= N/2) return 1;
-    if (idx > 0 && touched_already(a, a[idx])) return 0;
-
-    int r = 0;
-    // sum
-    for (int i=0; i<M; ++i)
+    int j_a = -1;
+    for (int i=0; i<N; ++i)
     {
-        r += result(a, idx+1, N, M);
+        if (!ar_taken[i])
+        {
+            j_a = i;
+            break;
+        }
+    }
+    if (j_a == -1) return 1;
+
+    // recursion
+    int r = 0;
+
+    for(int j_b = j_a+1; j_b < N; ++j_b)
+    {
+        if ( !ar_taken[j_b] && ar_pairs[j_a][j_b])
+        {
+            ar_taken[j_a] = ar_taken[j_b] = true;
+            r += result(ar_pairs, ar_taken, N);
+            ar_taken[j_a] = ar_taken[j_b] = false;
+        }
     }
 
     return r;
+    
 }
 
 int main() {
@@ -49,30 +75,32 @@ int main() {
     int C; // number of cases
     int N; // number of students
     int M; // number of pairs
-    // order of pairs, first student number, second student number
-    int ar_pairs[46][2];
+    bool ar_pairs[10][10];
+    bool ar_taken[10];
 
     scanf("%d", &C);
     
     for(int c=0; c<C; ++c)
     {
-        memset(ar_pairs, -1, sizeof(ar_pairs));
+        memset(ar_pairs, false, sizeof(ar_pairs));
+        memset(ar_taken, false, sizeof(ar_taken));
 
         scanf("%d", &N);
         scanf("%d", &M);
 
         for (int i=0; i<M; ++i)
         {
-            scanf("%d", &ar_pairs[i][0]);
-            scanf("%d", &ar_pairs[i][1]);
+            int x, y;
+            scanf("%d", &x);
+            scanf("%d", &y);
+            ar_pairs[x][y] = true;
         }
 
-        printf("%d\n", result(ar_pairs, 0, N, M));
+        /* // dump */
+        /* dump(ar_pairs); */
 
-        // dump
-        /* dump(ar_pairs); */        
+        printf("%d\n", result(ar_pairs, ar_taken, N));
     }
-
   
     return 0;
 }
