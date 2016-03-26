@@ -61,7 +61,6 @@ int result(bool ar_pairs[][10], bool ar_taken[], int N)
         if ( !ar_taken[j_b] && ar_pairs[j_a][j_b])
         {
             ar_taken[j_a] = ar_taken[j_b] = true;
-            /* printf("-->%d %d\n", j_a, j_b); */
             r += result(ar_pairs, ar_taken, N);
             ar_taken[j_a] = ar_taken[j_b] = false;
         }
@@ -95,7 +94,6 @@ int main() {
             scanf("%d", &x);
             scanf("%d", &y);
             ar_pairs[x][y] = true;
-            ar_pairs[y][x] = true;
         }
 
         /* // dump */
