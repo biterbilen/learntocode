@@ -3,6 +3,9 @@
 #include <stdbool.h>
 #include <limits.h>
 
+#define max(a,b) (a>b?a:b) 
+#define min(a,b) (a>b?b:a) 
+
 void dump(char boards[][20], int H, int W)
 {
     printf("=====\n");
@@ -37,23 +40,33 @@ void dump(char boards[][20], int H, int W)
 /* return ret; */
 
 int shortest_path(int costs[][25], int N,
-                  int visits[][25], int path[], int cur_idx,
+                  bool visits[][25], int path[], int cur_idx,
                   int cur_cost, int todo)
 {
-    int prv_idx = path[cur_idx-1];
+    
+    int prev = path[max(0, cur_idx-1)];
 
     // base condition
     if (todo >= N)
-        return cur_cost + costs[0][
-    for (int next=0; next<N, ++next)
-    {
-        if (visits[prev][next]) continue;
-        int here = prev;
-        
-    }
+        return cur_cost + costs[0][prev];
 
     // recursion
     int r = INT_MAX;
+    
+    for (int next=0; next<N; ++next)
+    {
+        if (visits[prev][next] || prev==next) continue;
+
+        int here = prev;
+        visits[prev][next] = true;
+        path[cur_idx] = next;
+        
+        int cost = shortest_path(costs, N, visits, path, cur_idx+1, cur_cost, todo-1);
+
+        r = min(cost, r);
+        visits[prev][next] = false;
+        path[cur_idx] = -1;
+    }
     
     return r; 
 }                 
@@ -86,7 +99,7 @@ int main() {
         /* dump(boards, H, W); */
 
         printf("%d\n",
-               shortest_path(costs, N, visits, path, 0, N*N));
+               shortest_path(costs, N, visits, path, 0, 0, N));
     }
   
     return 0;
