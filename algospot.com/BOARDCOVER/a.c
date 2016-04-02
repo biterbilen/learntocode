@@ -32,12 +32,13 @@ int get_white_cnt(char boards[][20], int H, int W)
     return r;
 }
 
-bool set_block(char boards[][20], int H, int W, int h, int w, int n_pattern)
+void set_coords(int n_pattern, int w, int h,
+                int * idx_0_x, int * idx_0_y,
+                int * idx_1_x, int * idx_1_y,
+                int * idx_2_x, int * idx_2_y)
 {
-    int idx_0_x, idx_0_y, idx_1_x, idx_1_y, idx_2_x, idx_2_y; // block dimensions, 3 coordinates
-
-    idx_0_x = w;
-    idx_0_y = h;
+    *idx_0_x = w;
+    *idx_0_y = h;
     
     switch (n_pattern)
     {
@@ -45,39 +46,47 @@ bool set_block(char boards[][20], int H, int W, int h, int w, int n_pattern)
         //..
         // next : w+1, h
     case 0:
-        idx_1_x = w;
-        idx_1_y = h-1;
-        idx_2_x = w-1;
-        idx_2_y = h-1;
+        *idx_1_x = w;
+        *idx_1_y = h-1;
+        *idx_2_x = w-1;
+        *idx_2_y = h-1;
         break;
         // ..
         // .
         // next : w+2, h
     case 1:
-        idx_1_x = w+1;
-        idx_1_y = h;
-        idx_2_x = w;
-        idx_2_y = h-1;
+        *idx_1_x = w+1;
+        *idx_1_y = h;
+        *idx_2_x = w;
+        *idx_2_y = h-1;
         break;
         // .
         // ..
         // next : w+1, h
     case 2:
-        idx_1_x = w;
-        idx_1_y = h-1;
-        idx_2_x = w+1;
-        idx_2_y = h-1;
+        *idx_1_x = w;
+        *idx_1_y = h-1;
+        *idx_2_x = w+1;
+        *idx_2_y = h-1;
         break;
         // ..
         //  .
         // next : w+2, h
     case 3:
-        idx_1_x = w+1;
-        idx_1_y = h;
-        idx_2_x = w+1;
-        idx_2_y = h-1;
+        *idx_1_x = w+1;
+        *idx_1_y = h;
+        *idx_2_x = w+1;
+        *idx_2_y = h-1;
         break;
     }
+
+}
+
+bool set_block(char boards[][20], int H, int W, int h, int w, int n_pattern)
+{
+    int idx_0_x, idx_0_y, idx_1_x, idx_1_y, idx_2_x, idx_2_y; // block dimensions, 3 coordinates
+
+    set_coords(n_pattern, w, h, &idx_0_x, &idx_0_y, &idx_1_x, &idx_1_y, &idx_2_x, &idx_2_y);
     
     if (idx_0_x < 0 || idx_0_x >= W ||
         idx_0_y < 0 || idx_0_y >= H ||
@@ -86,20 +95,20 @@ bool set_block(char boards[][20], int H, int W, int h, int w, int n_pattern)
         idx_2_x < 0 || idx_2_x >= W ||
         idx_2_y < 0 || idx_2_y >= H)
         return false;
-    if (boards[idx_0_x][idx_0_y] != '.' ||
-        boards[idx_1_x][idx_1_y] != '.' ||
-        boards[idx_2_x][idx_2_y] != '.')
+    if (boards[idx_0_y][idx_0_x] != '.' ||
+        boards[idx_1_y][idx_1_x] != '.' ||
+        boards[idx_2_y][idx_2_x] != '.')
         return false;
 
     // set block '+'
-    boards[idx_0_x][idx_0_y] = '+';
-    boards[idx_1_x][idx_1_y] = '+';
-    boards[idx_2_x][idx_2_y] = '+';
+    boards[idx_0_y][idx_0_x] = '+';
+    boards[idx_1_y][idx_1_x] = '+';
+    boards[idx_2_y][idx_2_x] = '+';
 
-    printf("%2d,%2d %2d,%2d %2d,%2d\n",
-           idx_0_x, idx_0_y,
-           idx_1_x, idx_1_y,
-           idx_2_x, idx_2_y);     
+    /* printf("%2d,%2d %2d,%2d %2d,%2d\n", */
+    /*        idx_0_x, idx_0_y, */
+    /*        idx_1_x, idx_1_y, */
+    /*        idx_2_x, idx_2_y);      */
     
     return true;
 }
@@ -108,53 +117,12 @@ void unset_block(char boards[][20], int h, int w, int n_pattern)
 {
     int idx_0_x, idx_0_y, idx_1_x, idx_1_y, idx_2_x, idx_2_y; // block dimensions, 3 coordinates
 
-    idx_0_x = w;
-    idx_0_y = h;
-    
-    switch (n_pattern)
-    {
-        // .
-        //..
-        // next : w+1, h
-    case 0:
-        idx_1_x = w;
-        idx_1_y = h-1;
-        idx_2_x = w-1;
-        idx_2_y = h-1;
-        break;
-        // ..
-        // .
-        // next : w+2, h
-    case 1:
-        idx_1_x = w+1;
-        idx_1_y = h;
-        idx_2_x = w;
-        idx_2_y = h-1;
-        break;
-        // .
-        // ..
-        // next : w+1, h
-    case 2:
-        idx_1_x = w;
-        idx_1_y = h-1;
-        idx_2_x = w+1;
-        idx_2_y = h-1;
-        break;
-        // ..
-        //  .
-        // next : w+2, h
-    case 3:
-        idx_1_x = w+1;
-        idx_1_y = h;
-        idx_2_x = w+1;
-        idx_2_y = h-1;
-        break;
-    }
+    set_coords(n_pattern, w, h, &idx_0_x, &idx_0_y, &idx_1_x, &idx_1_y, &idx_2_x, &idx_2_y);
 
     // set block '+'
-    boards[idx_0_x][idx_0_y] = '.';
-    boards[idx_1_x][idx_1_y] = '.';
-    boards[idx_2_x][idx_2_y] = '.';
+    boards[idx_0_y][idx_0_x] = '.';
+    boards[idx_1_y][idx_1_x] = '.';
+    boards[idx_2_y][idx_2_x] = '.';
 }
 
 int result(char boards[][20], int H, int W, int prev_h, int prev_w, int n_white)
@@ -216,7 +184,7 @@ int main() {
     int C; // number of cases
     int H; // height
     int W; // width
-    char boards[25][20]; // boards consists of # .
+    char boards[20][20]; // boards consists of # .
 
     scanf("%d", &C);
     
