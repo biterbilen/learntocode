@@ -25,27 +25,26 @@ bool is_finished(int c[])
     return true;
 }
 
-void push(int switches[][5], int clocks[], int idx)
+void push(int switches[][5], int clocks[], int s_idx)
 {
-    for (int s=0; s<10; ++s)
+    for (int j=0; j<5; ++j)
     {
-        for (int c=0; c<5; ++c)
+        int c_idx = switches[s_idx][j];
+        if (c_idx >= 0)
         {
-            if (switches[s][c] >= 0)
-            {
-                clocks[c] += 3;
-                if (clocks[c] == 15)
-                    clocks[c] = 3;
-            }
+            clocks[c_idx] += 3;
+            if (clocks[c_idx] == 15)
+                clocks[c_idx] = 3;
         }
     }
 }
 
 int get_min_cnt(int switches[][5], int clocks[], int idx)
 {
-
+    /* printf("%d\n", idx); */
+    
     // base condition
-    if (idx >= 16) return is_finished(clocks) ? 0 : INF;
+    if (idx >= 10) return is_finished(clocks) ? 0 : INF;
     
     int r = INF;
 
