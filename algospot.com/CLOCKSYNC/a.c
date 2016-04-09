@@ -86,7 +86,8 @@ int main() {
 
         /* dump(clocks); */
 
-        printf("%d\n", get_min_cnt(switches, clocks, 0));        
+        int r = get_min_cnt(switches, clocks, 0);
+        printf("%d\n",r >= INF ? -1 : r );        
 
         /* printf("--------------------\n"); */
     }
