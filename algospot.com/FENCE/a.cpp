@@ -6,7 +6,25 @@ using namespace std;
 
 int get_max_square_size(vector<int> & H, int l, int r)
 {
-    return 0;
+    int max_size = 0; // return value
+    // base condition
+    if (l >= r) return H[l];
+
+    // recursion
+    int idx_mid = r/2;
+    // get left, right size
+    max_size = get_max_square_size(H, l, idx_mid);
+    max_size = max(max_size, get_max_square_size(H, idx_mid+1, r));
+ 
+    // get middle size
+    int l_inner = idx_mid;
+    int r_inner = idx_mid;
+    while ( l_inner >= l && r_inner <= r )
+    {
+        
+    }
+    
+    return max_size;
 }
 
 int main() {
@@ -27,7 +45,7 @@ int main() {
             H.push_back(h);
         }
 
-        printf("%d\n", get_max_square_size(H, 0, H.size()));
+        printf("%d\n", get_max_square_size(H, 0, H.size()-1));
     }
   
     return 0;
