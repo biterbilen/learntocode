@@ -21,15 +21,14 @@ void dump(int B[][100], int N)
 
 bool is_path(int N, int C[][100], int B[][100], int x, int y)
 {
-    // printf("%d, %d\n", y, x);
+    // printf("[%d] %d, %d\n", N, y, x);
     
     // base condition
-    if (x == N-1 || y == N-1) return true;
+    if (x == N-1 && y == N-1) return true;
+    if (x >= N || y >= N) return false;
 
     int & r = C[y][x];
     if (r >= 0) return r;
-    if (x >= N || y= > N)
-        return r = false;
 
     // recursion
     return r = is_path(N, C, B, x + B[y][x], y) ||
@@ -58,7 +57,7 @@ int main() {
             }
         }
 
-        //dump(B, N);
+        // dump(B, N);
         
         printf("%s\n", is_path(N, C, B, 0, 0) == true ? "YES" : "NO");
     }
