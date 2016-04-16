@@ -6,7 +6,6 @@ using namespace std;
 
 int get_max_square_size(vector<int> & H, int l, int r)
 {
-    printf("[%d, %d]\n", l, r);
 
     // base condition
     if (l >= r) return H[l];
@@ -24,9 +23,11 @@ int get_max_square_size(vector<int> & H, int l, int r)
     int h_min = min(H[l_inner], H[r_inner]);;
     int max_size_inner = 2 * h_min;
 
+    // printf("[%d, %d] [%d, %d]\n", l, r, l_inner, r_inner);
+    
     while ( l_inner > l || r_inner < r )
     {
-        if (r_inner < r && (l_inner == l || H[l_inner-1] < H[r_inner-1] ))
+        if (r_inner < r && (l_inner == l || H[l_inner-1] < H[r_inner+1] ))
         {
             r_inner++;
             h_min = min(h_min, H[r_inner]);
@@ -37,7 +38,7 @@ int get_max_square_size(vector<int> & H, int l, int r)
             h_min = min(h_min, H[l_inner]);            
         }
         max_size_inner = max(max_size_inner, (r_inner - l_inner + 1) * h_min);
-        printf("=>[%d, %d] %d * %d\n", l_inner, r_inner, r_inner - l_inner + 1, h_min);
+        //printf("=>[%d, %d] %d * %d\n", l_inner, r_inner, r_inner - l_inner + 1, h_min);
     }
     
     return max(max_size, max_size_inner);

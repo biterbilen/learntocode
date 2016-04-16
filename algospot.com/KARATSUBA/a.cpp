@@ -46,6 +46,15 @@ void subFrom(vector<int>& a, const vector<int>& b) {
     normalize(a);
 }
 
+void dump(vector<int> & k)
+{
+    for(int i=0; i<k.size(); ++i)
+    {
+        printf("%d, ", k[i]);
+    }
+    printf("\n");
+}
+
 // 두 긴 정수의 곱을 반환한다. 
 vector<int> karatsuba(const vector<int>& a, const vector<int>& b) {
     int an = a.size(), bn = b.size();
@@ -54,7 +63,7 @@ vector<int> karatsuba(const vector<int>& a, const vector<int>& b) {
     // 기저 사례: a 나 b 가 비어 있는 경우
     if(an == 0 || bn == 0) return vector<int>();
     // 기저 사례: a 가 비교적 짧은 경우 O(n^2) 곱셈으로 변경한다.
-    if(an <= 50) return multiply(a, b);
+    if(an <= 2) return multiply(a, b);
 
     int half = an / 2;
     // a 와 b 를 밑에서 half 자리와 나머지로 분리한다
@@ -62,6 +71,13 @@ vector<int> karatsuba(const vector<int>& a, const vector<int>& b) {
     vector<int> a1(a.begin() + half, a.end());
     vector<int> b0(b.begin(), b.begin() + min<int>(b.size(), half));
     vector<int> b1(b.begin() + min<int>(b.size(), half), b.end());
+    
+    dump(a0);
+    dump(a1);
+    dump(b0);
+    dump(b1);
+    printf("--------\n");
+    
     // z2 = a1 * b1
     vector<int> z2 = karatsuba(a1, b1);
     // z0 = a0 * b0

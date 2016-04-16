@@ -30,7 +30,7 @@ vector<int> multiply(const vector<int>& a, const vector<int>& b) {
     for(int i = 0; i < a.size(); i++)
         for(int j = 0; j < b.size(); j++)
             c[i+j] += a[i] * b[j];
-    normalize(c);
+    //normalize(c);
     return c;
 }
 
@@ -38,14 +38,14 @@ vector<int> multiply(const vector<int>& a, const vector<int>& b) {
 void addTo(vector<int>& a, const vector<int>& b, int k) {
     a.resize(max(a.size(), b.size() + k));
     for(int i = 0; i < b.size(); i++) a[i+k] += b[i];
-    normalize(a);
+    //normalize(a);
 }
 
 // a -= b; 를 구현한다. a >= b 를 가정한다.
 void subFrom(vector<int>& a, const vector<int>& b) {
     a.resize(max(a.size(), b.size()) + 1);
     for(int i = 0; i < b.size(); i++) a[i] -= b[i];
-    normalize(a);
+    //normalize(a);
 }
 
 // 두 긴 정수의 곱을 반환한다. 
@@ -56,7 +56,7 @@ vector<int> karatsuba(const vector<int>& a, const vector<int>& b) {
     // 기저 사례: a 나 b 가 비어 있는 경우
     if(an == 0 || bn == 0) return vector<int>();
     // 기저 사례: a 가 비교적 짧은 경우 O(n^2) 곱셈으로 변경한다.
-    if(an <= 50) return multiply(a, b);
+    if(an <= 2) return multiply(a, b);
 
     int half = an / 2;
     // a 와 b 를 밑에서 half 자리와 나머지로 분리한다
