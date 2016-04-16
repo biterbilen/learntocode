@@ -5,8 +5,20 @@
 
 using namespace std;
 
-bool is_match(char W[], char F[])
+bool is_match(string & W, string & F, int w, int f)
 {
+    printf("W:%s F:%s w:%d f:%d\n", W.c_str(), F.c_str(), w, f);
+    
+    // base condition
+    // if (w >= W.size() && f >= F.size()) return true;
+    if (f >= F.size()) return true;
+    // recursion
+    if (W[w] == '*')
+        return is_match(W, F, w, f+1) ||
+            is_match(W, F, w+1, f+1);
+    else if (W[w] == '?' || W[w] == F[f])
+        return is_match(W, F, w+1, f+1);
+    
     return false;
 }
 
@@ -18,17 +30,16 @@ int main() {
     
     for(int c=0; c<C; ++c)
     {
-        int N;
+        string W; int N;
+        cin >> W;
         scanf("%d", &N);
-        char W[100];
-        scanf("%s", W);
 
         for (int n=0; n<N; ++n)
         {
-            char F[100];
-            scanf("%s", F);
-            if (is_match(W, F))
-                printf("%s\n", F);
+            string F;
+            cin >> F;
+            if (is_match(W, F, 0, 0))
+                printf("%s\n", F.c_str());
         }
 
     }
