@@ -105,7 +105,7 @@ int get_hug_cnt_karatsuba(string & M, string & F)
     int n_F = F.size();
     vector<int> A(n_M), B(n_F);
     for (int i=0; i< n_M; ++i)
-        A[i] = (M[i] == 'M');
+        A[n_M-i-1] = (M[i] == 'M');
     for (int i=0; i< n_F; ++i)
         B[i] = (F[i] == 'M');
     vector<int> C = karatsuba(A, B);
@@ -114,9 +114,9 @@ int get_hug_cnt_karatsuba(string & M, string & F)
         if (C[i] == 0)
             ++r;
 
-    for(int i=0; i<C.size(); ++i)
-        printf("%d,",C[i]);
-    printf("\n");
+    // for(int i=0; i<C.size(); ++i)
+    //     printf("%d,",C[i]);
+    // printf("\n");
     
     return r;
 }
