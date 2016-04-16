@@ -82,21 +82,21 @@ vector<int> karatsuba(const vector<int>& a, const vector<int>& b) {
     return ret;
 }
 
-string toString(vector<int> a) {
-    string ret;
-    while(a.size() > 1 && a.back() == 0) a.pop_back();
-    for(int i = 0; i < a.size(); i++) 
-        ret += char('0' + a[a.size() - 1 - i]);
-    return ret;
-}
+// string toString(vector<int> a) {
+//     string ret;
+//     while(a.size() > 1 && a.back() == 0) a.pop_back();
+//     for(int i = 0; i < a.size(); i++) 
+//         ret += char('0' + a[a.size() - 1 - i]);
+//     return ret;
+// }
 
-vector<int> fromString(const string& s) {
-    vector<int> ret;
-    for(int i = 0; i < s.size(); i++)
-        ret.push_back(s[i] - '0');
-    reverse(ret.begin(), ret.end());
-    return ret;
-}
+// vector<int> fromString(const string& s) {
+//     vector<int> ret;
+//     for(int i = 0; i < s.size(); i++)
+//         ret.push_back(s[i] - '0');
+//     reverse(ret.begin(), ret.end());
+//     return ret;
+// }
 
 // get hug cnt with using karatsuba
 int get_hug_cnt_karatsuba(string & M, string & F)
