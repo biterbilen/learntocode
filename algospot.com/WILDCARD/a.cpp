@@ -3,12 +3,13 @@
 #include <vector>
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 
 using namespace std;
 
 bool is_match(int C[][101], string & W, string & F, int w, int f)
 {
-    printf("W:%s F:%s w:%d f:%d\n", W.c_str(), F.c_str(), w, f);
+    // printf("W:%s F:%s w:%d f:%d\n", W.c_str(), F.c_str(), w, f);
 
     // retrieve cache
     int & r = C[w][f];
@@ -16,19 +17,24 @@ bool is_match(int C[][101], string & W, string & F, int w, int f)
 
     // recursion
     // case of '?', character not '*'
-    if (w < W.size() && f < F.size() &&
+    if (w == W.size() && f == F.size())
+    {
+        return r = true;
+    }
+    else if (w < W.size() && f < F.size() &&
            (W[w] == '?' || W[w] == F[f] ))
     {
         return r = is_match(C, W, F, w+1, f+1);
-    } else if (W[w] == '*')
+    }
+    else if (W[w] == '*')
     {
-        if ( (f < F.size() && is_match(C, W, F, w, f+1)) ||
-             is_match(C, W, F, w+1, f+1))
+        if (is_match(C, W, F, w+1, f) ||
+            (f < F.size() && is_match(C, W, F, w, f+1)))
             return r = true;
     }
 
     // base condition
-    return false;
+    return r = false;
 }
 
 int main() {
@@ -42,6 +48,7 @@ int main() {
         string W; int N;
         cin >> W;
         scanf("%d", &N);
+        vector<string> V;
 
         for (int n=0; n<N; ++n)
         {
@@ -50,7 +57,13 @@ int main() {
             int C[101][101];
             memset(C, -1, sizeof(C));
             if (is_match(C, W, F, 0, 0))
-                printf("%s\n", F.c_str());
+                V.push_back(F);
+        }
+        
+        sort(V.begin(), V.end());
+        for (int v=0; v<V.size(); ++v)
+        {
+            printf("%s\n", V[v].c_str());
         }
     }
   
