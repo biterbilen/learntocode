@@ -7,65 +7,35 @@
 
 using namespace std;
 
-bool is_match(int C[][101], string & W, string & F, int w, int f)
+int get_max_path_cnt(int B[][100], int C[][100], int N)
 {
-    // printf("W:%s F:%s w:%d f:%d\n", W.c_str(), F.c_str(), w, f);
-
-    // retrieve cache
-    int & r = C[w][f];
-    if (r >= 0) return r;
-
-    // recursion
-    // case of '?', character not '*'
-    if (w == W.size() && f == F.size())
-    {
-        return r = true;
-    }
-    else if (w < W.size() && f < F.size() &&
-           (W[w] == '?' || W[w] == F[f] ))
-    {
-        return r = is_match(C, W, F, w+1, f+1);
-    }
-    else if (W[w] == '*')
-    {
-        if (is_match(C, W, F, w+1, f) ||
-            (f < F.size() && is_match(C, W, F, w, f+1)))
-            return r = true;
-    }
-
-    // base condition
-    return r = false;
+   return 0;
 }
 
 int main() {
     
     int C; // number of cases
-    
     scanf("%d", &C);
+
     
     for(int c=0; c<C; ++c)
     {
-        string W; int N;
-        cin >> W;
+        int N;
+        int B[100][100];
+        int C[100][100];
+        memset(C, -1, sizeof(C));
         scanf("%d", &N);
-        vector<string> V;
 
         for (int n=0; n<N; ++n)
         {
-            string F;
-            cin >> F; 
-            int C[101][101];
-            memset(C, -1, sizeof(C));
-            if (is_match(C, W, F, 0, 0))
-                V.push_back(F);
+           for (int i=0; i<n; ++i)
+           {
+              scanf("%d", &B[n][i]);
+           }
         }
-        
-        sort(V.begin(), V.end());
-        for (int v=0; v<V.size(); ++v)
-        {
-            printf("%s\n", V[v].c_str());
-        }
-    }
+
+        printf("%d\n", get_max_path_cnt(B, C, N));
+   }
   
     return 0;
 }
