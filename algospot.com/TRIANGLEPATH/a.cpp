@@ -20,16 +20,16 @@ void dump(int B[][100], int N)
     printf("----------------\n");
 }
 
-int get_max_path_cnt(int B[][100], int C[][100], int N, int y, int x)
+int get_max_path_cnt(int B[][100], int C[][101], int N, int y, int x)
 {
-    // printf("[%d][%d] %d\n", y, x, B[y][x]);
+    //printf("[%d][%d] %d\n", y, x, B[y][x]);
     
     // check cache
     int & r = C[y][x];
     if (r >= 0) return r;
     
     // base condition
-    if (y >= N) return r = B[y][x]; 
+    if (y == N-1) return r = B[y][x]; 
 
     // recursion
     return r = B[y][x] + max(get_max_path_cnt(B, C, N, y+1, x),
@@ -44,8 +44,9 @@ int main() {
     for(int c=0; c<C; ++c)
     {
         int N;
-        int B[100][100];
-        int CACHE[100][100];
+        int B[100][100] = {0,};
+        int CACHE[101][101] = {0,};
+        memset(B, 0, sizeof(B));
         memset(CACHE, -1, sizeof(CACHE));
         scanf("%d", &N);
 
