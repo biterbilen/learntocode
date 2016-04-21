@@ -7,6 +7,15 @@
 
 using namespace std;
 
+int get_result(int I[500], int C[500], int N, int idx)
+{
+    // base condition
+
+    // recursion
+    
+    return 0;
+}
+
 int main() {
     
     int C; // number of cases
@@ -15,20 +24,20 @@ int main() {
     for(int c=0; c<C; ++c)
     {
         int N;
-        int I[500] = {0,};
-        int CACHE[101][101] = {0,};
-        memset(SEQ, 0, sizeof(SEQ));
+        int INPUT[500] = {0,};
+        int CACHE[500] = {0,};
+        memset(INPUT, 0, sizeof(INPUT));
         memset(CACHE, -1, sizeof(CACHE));
         scanf("%d", &N);
 
         for (int n=0; n<N; ++n)
         {
-            scanf("%d", &I[n]);
+            scanf("%d", &INPUT[n]);
         }
 
         //dump(B, N);
         
-        printf("%d\n", get_result(I, CACHE, N, 0));
+        printf("%d\n", get_result(INPUT, CACHE, N, 0));
    }
   
     return 0;
