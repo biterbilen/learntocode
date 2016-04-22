@@ -7,13 +7,20 @@
 
 using namespace std;
 
-int get_result(int I[500], int C[500], int N, int idx)
+int get_result(int I[], int C[], int N, int idx)
 {
     // base condition
+    int & r = C[idx];
+    if (r >= 0) return r;
+    if (idx >= N) return 1;
 
     // recursion
+    for (int n=idx; n<N; ++n)
+    {
+        
+    }
     
-    return 0;
+    return r;
 }
 
 int main() {
