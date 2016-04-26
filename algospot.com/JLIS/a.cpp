@@ -53,21 +53,24 @@ int main() {
     
     for(int c=0; c<C; ++c)
     {
-        int N;
-        int INPUT[500] = {0,};
-        int CACHE[500] = {0,};
-        memset(INPUT, 0, sizeof(INPUT));
+        int N_1, N_2;
+        int INPUT_1[100] = {0,};
+        int INPUT_2[100] = {0,};
+        int CACHE[100] = {0,};
         memset(CACHE, -1, sizeof(CACHE));
-        scanf("%d", &N);
+        scanf("%d", &N_1);
+        scanf("%d", &N_2);
 
-        for (int n=0; n<N; ++n)
-        {
-            scanf("%d", &INPUT[n]);
-        }
+        for (int n=0; n<N_1; ++n)
+            scanf("%d", &INPUT_1[n]);
+        for (int n=0; n<N_2; ++n)
+            scanf("%d", &INPUT_2[n]);
 
-        // dump(INPUT, N);
+        // dump(INPUT_1, N_1);
+        // dump(INPUT_2, N_2);
+        // printf("----------\n");
         
-        printf("%d\n", get_result(INPUT, CACHE, N));
+        // printf("%d\n", get_result(INPUT, CACHE, N));
    }
   
     return 0;
