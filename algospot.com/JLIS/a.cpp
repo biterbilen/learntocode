@@ -4,8 +4,12 @@
 #include <iostream>
 #include <cstring>
 #include <algorithm>
-
+#include <limits>
+#include <cstddef>
+        
 using namespace std;
+
+const long long LLMIN = numeric_limits<long long>::min();
 
 void dump(int I[], int N)
 {
@@ -14,35 +18,30 @@ void dump(int I[], int N)
     printf("\n");
 }
 
-int LIS(int I[], int C[], int N, int idx)
+int get_result(int C[][101],
+               long long I_1[], int N_1,
+               long long I_2[], int N_2,
+               int idx_1, int idx_2)
 {
-    // printf("[%d] %d\n", idx, I[idx]);
-    
-    // base condition
-    int & r = C[idx];
+
+    // memoization
+    int & r = C[idx_1+1][idx_2+1];
     if (r >= 0) return r;
 
-    r = 1;
+    // base condition
     // recursion
-    for (int n=idx+1; n<N; ++n)
-    {
-        if (I[idx] < I[n])
-        {
-            r = max(r, LIS(I, C, N, n) + 1);
-        }
-    }
+    r = 2;
+    long long idx_1_val = idx_1 < 0 ? LLMIN : I_1[idx_1];
+    long long idx_2_val = idx_2 < 0 ? LLMIN : I_2[idx_2];
+    long long max_val = max(idx_1_val, idx_2_val);
 
-    // printf("[%d] %d, %d\n", idx, I[idx], r);
-
-    return r;
-}
-
-
-int get_result(int I[], int C[], int N)
-{
-    int r = 0;
-    for(int i=0; i<N; ++i)
-        r = max(r, LIS(I, C, N, i));
+    for (int next_idx_1=idx_1+1; next_idx_1<N_1; ++next_idx_1)
+        if (max_val < I_1[next_idx_1])
+            r = max(r, get_result(C, I_1, N_1, I_2, N_2, next_idx_1, idx_2)+1);
+    for (int next_idx_2=idx_2+1; next_idx_2<N_2; ++next_idx_2)
+        if (max_val < I_2[next_idx_2])
+            r = max(r, get_result(C, I_1, N_1, I_2, N_2, idx_1, next_idx_2)+1);
+    
     return r;   
 }
 
@@ -54,23 +53,23 @@ int main() {
     for(int c=0; c<C; ++c)
     {
         int N_1, N_2;
-        int INPUT_1[100] = {0,};
-        int INPUT_2[100] = {0,};
-        int CACHE[100] = {0,};
+        long long INPUT_1[100] = {0,};
+        long long INPUT_2[100] = {0,};
+        int CACHE[101][101] = {0,};
         memset(CACHE, -1, sizeof(CACHE));
         scanf("%d", &N_1);
         scanf("%d", &N_2);
 
         for (int n=0; n<N_1; ++n)
-            scanf("%d", &INPUT_1[n]);
+            scanf("%lld", &INPUT_1[n]);
         for (int n=0; n<N_2; ++n)
-            scanf("%d", &INPUT_2[n]);
+            scanf("%lld", &INPUT_2[n]);
 
         // dump(INPUT_1, N_1);
         // dump(INPUT_2, N_2);
         // printf("----------\n");
         
-        // printf("%d\n", get_result(INPUT, CACHE, N));
+        printf("%d\n", get_result(CACHE, INPUT_1, N_1, INPUT_2, N_2, -1, -1));
    }
   
     return 0;
