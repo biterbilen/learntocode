@@ -35,12 +35,17 @@ int get_result(int C[][101],
     long long idx_2_val = idx_2 < 0 ? LLMIN : I_2[idx_2];
     long long max_val = max(idx_1_val, idx_2_val);
 
-    for (int next_idx_1=idx_1+1; next_idx_1<N_1; ++next_idx_1)
+    for (int next_idx_1 = idx_1+1; next_idx_1 < N_1; ++next_idx_1)
         if (max_val < I_1[next_idx_1])
             r = max(r, get_result(C, I_1, N_1, I_2, N_2, next_idx_1, idx_2)+1);
-    for (int next_idx_2=idx_2+1; next_idx_2<N_2; ++next_idx_2)
+
+    for (int next_idx_2 = idx_2+1; next_idx_2 < N_2; ++next_idx_2)
         if (max_val < I_2[next_idx_2])
             r = max(r, get_result(C, I_1, N_1, I_2, N_2, idx_1, next_idx_2)+1);
+
+    // printf("[%d] %lld [%d] %lld {%d}\n",
+    //        idx_1, I_1[idx_1], idx_2, I_2[idx_2],
+    //        r);
     
     return r;   
 }
@@ -69,7 +74,7 @@ int main() {
         // dump(INPUT_2, N_2);
         // printf("----------\n");
         
-        printf("%d\n", get_result(CACHE, INPUT_1, N_1, INPUT_2, N_2, -1, -1));
+        printf("%d\n", get_result(CACHE, INPUT_1, N_1, INPUT_2, N_2, -1, -1)-2);
    }
   
     return 0;
