@@ -9,20 +9,32 @@
         
 using namespace std;
 
-const long long LLMIN = numeric_limits<long long>::min();
+const int INF = numeric_limits<int>::max();
+
+int get_lv(int beg, int end)
+{
+    return 0;    
+}
 
 int get_result(int C[10000],
                char N[10000],
                int n,
                int idx)
 {
-
+    // base condition
+    if (idx == n) return 0;
+ 
     // memoization
     int & r = C[idx];
     if (r >= 0) return r;
 
-    // base condition
     // recursion
+    r = INF;
+    for(int i=3; i<6; ++i)
+    {
+        if (idx + i <= n)
+            r = min(r, get_result(C, N, n, idx + i) + get_lv(idx, idx + i - 1));
+    }
     
     return r;   
 }
