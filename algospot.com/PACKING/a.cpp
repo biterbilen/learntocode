@@ -61,16 +61,23 @@ int main() {
     
     for(int c=0; c<C; ++c)
     {
+        memset(I_NAME, 0, sizeof(I_NAME));
+        memset(I_WEIGHT, -1, sizeof(I_WEIGHT));
+        memset(I_NEED, -1, sizeof(I_NEED));
         memset(CACHE, -1, sizeof(CACHE));
 
         scanf("%d", &N);
         scanf("%d", &W);
 
         for(int i=0; i<N; ++i)
-            scanf("%s %d %d", I_NAME[N], &I_WEIGHT[N], &I_NEED[N]);
-
-        // dump(I_WEIGHT, N);
+        {
+            scanf("%s", &I_NAME[N][0]);
+            scanf("%d", &I_WEIGHT[N]);
+            scanf("%d", &I_NEED[N]);
+        }
         // dump(I_NAME, N);
+        // dump(I_WEIGHT, N);
+        // dump(I_NEED, N);
         
         // printf("%d\n", get_result(W, 0));
     }
