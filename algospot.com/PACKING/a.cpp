@@ -61,9 +61,26 @@ int get_result(int capacity, int idx)
     return r;
 }
 
-void make_items_packed(vecot<string> & items, int max_need)
+void make_items_packed(vector<string> & items, int capacity, int idx)
 {
+
+    // printf("-> %d %d\n", capacity, idx);
     
+    // base condition
+    if (idx == N) return;
+
+    // recursion
+    // idx아이템을 삽입힐 때와 삽입하지 않을때에 최대 절박도가 같다면 idx아이템은
+    // 포함되지 않는다.
+    if (get_result(capacity, idx) == get_result(capacity, idx+1))
+    {
+        make_items_packed(items, capacity, idx+1);
+    }
+    else
+    {
+        items.push_back(I_NAME[idx]);
+        make_items_packed(items, capacity-I_WEIGHT[idx], idx+1);
+    }
 }
 
 int main() {
@@ -92,7 +109,7 @@ int main() {
         // dump(I_NEED, N);
         int max_need = get_result(W, 0);
         vector<string> items;
-        make_items_packed(items);
+        make_items_packed(items, W, 0);
         
         printf("%d %lu\n", max_need, items.size());
         for(int i=0; i<items.size(); ++i)
