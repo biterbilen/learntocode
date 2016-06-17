@@ -50,17 +50,14 @@ void dump_BC(int N, int M)
 // n을 기준으로 경우의수를 따지기
 string get_result(int n, int m, int k)
 {
-    if (BC[n+m][n] < k) return "NONE";
-    
+    if (n == 0) return string(m, 'o');
+
     // printf("%d %d %d\n", n, m, k);
     // printf(" %d\n", BC[n+m-1][n-1]);
 
-    // base condition
-    if (n == 0) return string(m, 'b');
-    // recursion
     if (k <= BC[n+m-1][n-1])
-        return "a" + get_result(n-1, m, k);
-    return "b" + get_result(n, m-1, k-BC[n+m-1][n-1]); 
+        return "-" + get_result(n-1, m, k);
+    return "o" + get_result(n, m-1, k-BC[n+m-1][n-1]); 
 }
 
 int main() {
