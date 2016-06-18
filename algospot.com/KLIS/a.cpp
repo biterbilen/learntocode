@@ -23,7 +23,15 @@ void dump(int I[], int N)
     printf("\n----------\n");
 }
 
-int lis(int start)
+void dump_followers(vector<pair<int, int> > & f)
+{
+    for (int i=0; i<f.size(); ++i)
+    {
+        printf("[%d] %d %d\n", i, f[i].first, f[i].second);
+    }
+}
+
+int lis3(int start)
 {
     // printf("{%d}\n", start); 
     
@@ -38,7 +46,7 @@ int lis(int start)
     {
         if (start == -1 || INPUT[start] < INPUT[next])
         {
-            r = max(r, lis(next) + 1);
+            r = max(r, lis3(next) + 1);
             // printf("[%d] %d\n", start, r);
         }
     }
@@ -51,7 +59,7 @@ int lis(int start)
 int count(int start)
 {
     // base condition
-    if (lis(start) == 1) return 1;
+    if (lis3(start) == 1) return 1;
     
     // memoization
     int & r = CACHE_CNT[start + 1];
@@ -62,7 +70,7 @@ int count(int start)
     for (int next = start + 1; next < N; ++next)
     {
         if ( (start == -1 || INPUT[start] < INPUT[next]) &&
-             lis(start) == lis(next) + 1)
+             lis3(start) == lis3(next) + 1)
         {
             r = min<long long>(MAX, (long long)r + count(next));
         }
@@ -74,13 +82,43 @@ int count(int start)
 
 void reconstruct(int start, int skip, vector<int>& lis)
 {
-    lis.push_back(0);
+    // 
+    if (start != -1) lis.push_back(INPUT[start]);
+
+    // number, idx of INPUT
+    vector<pair<int, int> > followers;
+    for (int next = start+1; next < N; ++next)
+    {
+        if ( (start == -1 || INPUT[start] < INPUT[next]) &&
+             lis3(start) == lis3(next) + 1)
+        {
+            followers.push_back(make_pair(INPUT[next], next));
+        }
+    }
+
+    //dump_followers(followers);
+    sort(followers.begin(), followers.end());
+
+    //
+    for (int i = 0; i< followers.size(); ++i)
+    {
+        int idx = followers[i].second;
+        int cnt = count(idx);
+
+        if (cnt <= skip)
+            skip -= cnt;
+        else
+        {
+            reconstruct(idx, skip, lis);
+            break;
+        }
+    }
 }
 
 void print_result()
 {
     vector<int> L;
-    reconstruct(-1, 0, L);
+    reconstruct(-1, K-1, L);
     printf("%lu\n", L.size());
     for (int i=0; i<L.size(); ++i)
     {
