@@ -27,7 +27,7 @@ const string EXPAND_Y = "FX-Y";
 
 char expand(const string & dragon_curve, int generations, int skip)
 {
-
+    //printf("%s %d %d\n", dragon_curve.c_str(), generations, skip);
     // base condition
     if (generations == 0)
     {
@@ -60,6 +60,8 @@ int main() {
     
     int C; // number of cases
     scanf("%d", &C);
+
+    precalc();
     
     for(int c=0; c<C; ++c)
     {
@@ -67,10 +69,10 @@ int main() {
         scanf("%d", &P);
         scanf("%d", &L);
 
-        string a = "FX";
-        expand(a, N, P);
-        printf("%s\n", a.substr(P, L).c_str());
-   }
+        for (int i=0; i<L; ++i)
+            printf("%c", expand("FX", N, P+i-1));
+        printf("\n");
+    }
   
     return 0;
 }
