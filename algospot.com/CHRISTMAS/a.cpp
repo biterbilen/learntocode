@@ -47,6 +47,34 @@ int ways_to_buy(const std::vector<int>& psum, int k) {
   return r;
 }
 
+// D[]의 부분합 배열 psump[]과 k가 주어졌을 때, 겹치지 않게 몇번이나
+// 살 수 있는지 반환한다.
+// psum[]의 첫번째 원서 전에 0을 삽입했다고 가정한다.
+int max_buys(const std::vector<int>& psum, int k) {
+  // r[i] = 첫번째 상자부터 i번째 상자까지 고려했을 때
+  // 겹치지 않게 살 수 있는 최대 수
+  std::vector<int> r(psum.size(), 0);
+  // prev[s] = psum[]이 s였던 마지막 위치
+  std::vector<int> prev(k, -1);
+  for (int i = 0; i < psum.size(); ++i) {
+    // i번째 상자를 아예 고려하지 않는 경우
+    if (i > 0)
+      r[i] = r[i - 1];
+    else
+      r[i] = 0;
+    // psum[i]를 전에도 본적이 있으면, prev[psum[i]]+1 부터 여기까지
+    // 쭉 사본다.
+    int loc = prev[psum[i]];
+    if (loc != -1) {
+      r[i] = fmax(r[i], r[loc] + 1);
+    }
+    // prev[]에 현재 위치를 기록한다.
+    prev[psum[i]] = i;
+  }
+
+  return r.back();
+}
+
 int main() {
   int T;  // number of T
   scanf("%d", &T);
@@ -59,16 +87,12 @@ int main() {
     for (int i=0; i < N; ++i) {
       int doll_cnt;
       scanf("%d", &doll_cnt);
-      if (i > 0) {
-        psum[i] += psum[i-1] + doll_cnt;
-      } else {
-        psum[i] = doll_cnt;
-      }
-      psum[i] = psum[i] % K;
+      int prev_psum = i > 0 ? psum[i-1] : doll_cnt;
+      psum[i] = (prev_psum + doll_cnt) % K;
     }
 
-    // print_psum(psum);
-    printf("%d\n", ways_to_buy(psum, K));
+    // print_vector(psum);
+    printf("%d %d\n", ways_to_buy(psum, K), max_buys(psum, K));
   }
   return 0;
 }
