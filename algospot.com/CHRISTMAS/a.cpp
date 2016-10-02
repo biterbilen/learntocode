@@ -49,7 +49,7 @@ int ways_to_buy(const std::vector<int>& psum, int k) {
 
 // D[]의 부분합 배열 psump[]과 k가 주어졌을 때, 겹치지 않게 몇번이나
 // 살 수 있는지 반환한다.
-// psum[]의 첫번째 원서 전에 0을 삽입했다고 가정한다.
+// psum[]의 첫번째 원소 전에 0을 삽입했다고 가정한다.
 int max_buys(const std::vector<int>& psum, int k) {
   // r[i] = 첫번째 상자부터 i번째 상자까지 고려했을 때
   // 겹치지 않게 살 수 있는 최대 수
