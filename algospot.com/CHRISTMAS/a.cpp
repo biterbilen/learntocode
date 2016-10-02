@@ -83,12 +83,11 @@ int main() {
     scanf("%d", &N);
     scanf("%d", &K);
 
-    std::vector<int> psum(N, 0);
-    for (int i=0; i < N; ++i) {
+    std::vector<int> psum(N+1, 0);
+    for (int i=1; i <= N; ++i) {
       int doll_cnt;
       scanf("%d", &doll_cnt);
-      int prev_psum = i > 0 ? psum[i-1] : doll_cnt;
-      psum[i] = (prev_psum + doll_cnt) % K;
+      psum[i] = (psum[i-1] + doll_cnt) % K;
     }
 
     // print_vector(psum);

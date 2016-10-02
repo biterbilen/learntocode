@@ -55,6 +55,7 @@ int graduate(int semester, int taken) {
         (taken & prerequisite[i]) != prerequisite[i])
       can_take &= ~(1 << i);
   }
+  // can_take 0111
   // 이 집합의 모든 부분집합을 순회한다.
   for (int take = can_take; take > 0;
        take = ((take - 1) & can_take)) {
@@ -79,6 +80,9 @@ int main() {
         CACHE[i][j] = -1;
       }
     }
+    // init prerequisite, classes
+    memset(prerequisite, 0, sizeof(prerequisite));
+    memset(classes, 0, sizeof(classes));
     //
     scanf("%d", &N);
     scanf("%d", &K);
