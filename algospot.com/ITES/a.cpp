@@ -15,6 +15,7 @@
 #include <stack>
 
 int N, K;
+const int64_t MOD = 1 << 32;
 
 void print_vector(const std::vector<int>& v) {
   printf("<-- ");
@@ -24,7 +25,22 @@ void print_vector(const std::vector<int>& v) {
   printf("-->\n");
 }
 
-int get_input_signal(int i) {
+int64_t get_A(int i) {
+  int64_t r   = 1983;
+
+  if (i > 0)
+  {
+    r = (get_A(i-1) * 214013 + 2531011) % MOD;
+  }
+  
+  return r;
+}
+
+int64_t get_input_signal(int i) {
+  return get_A(i-1) % 10000 + 1;
+}
+
+int solve() {
   return 0;
 }
 
@@ -37,13 +53,7 @@ int main() {
     scanf("%d", &K);
     scanf("%d", &N);
     //
-    std::string brackets = buf;
-    //
-    if (is_closed(brackets))
-      printf("YES");
-    else
-      printf("NO");
-    printf("\n");
+    printf("%d\n", solve());
   }
   return 0;
 }

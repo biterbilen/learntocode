@@ -1,9 +1,12 @@
 # 
 CC  = c99
 CXX = g++
+CXXFLAGS = -std=c++11
 
 all: TAGS a.out
 
+a.exe: a.o
+	$(CXX) $^ $(LDFLAGS) -o $@
 a.out: a.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
