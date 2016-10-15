@@ -1,7 +1,6 @@
 // Copyright (C) 2016 by iamslash
 // https://algospot.com/judge/problem/read/CHRISTMAS
 
-#include <cstdio>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -18,7 +17,12 @@ int N, K;
 const int64_t MOD = 4294967296;//1 << 32;x
 int CUR_A_IDX = 0;
 int64_t CUR_A_VAL = 1983;
- 
+
+void init_A() {
+  CUR_A_IDX = 0;
+  CUR_A_VAL = 1983;
+}
+
 int64_t get_next_signal() {
   ++CUR_A_IDX;
 
@@ -56,6 +60,8 @@ int main() {
     scanf("%d", &K);
     scanf("%d", &N);
     //
+    init_A();
+    
     printf("%d\n", solve());
   }
   return 0;
