@@ -5,15 +5,15 @@
 #include <vector>
 #include <algorithm>
 
+int K;
+
 // 각 접미사들의 첫 t글자를 기준으로 한 그룹번호가 주어질 때,
 // 주어진 두접미사를 첫 2 * t글자를 기준으로 비교한다.
 // group[]은 길이가 0인 접미사도 포함한다.
-struct Comparator
-{
+struct Comparator {
   const std::vector<int>& group;
   int t;
-  Comparator(const std::vector<int>& _group, int _t) {
-    group = _group;
+  Comparator(const std::vector<int>& _group, int _t) : group(_group) {
     t = _t;
   }
   bool operator() (int a, int b) {
@@ -38,7 +38,6 @@ std::vector<int> get_suffix_array(const std::string& s) {
     group[i] = s[i];
   }
   group[n] = -1;
-  
   // 결과적으로 접미사 배열이 될 반환 값, 이 배열을 lg(n)번 정렬한다.
   std::vector<int> perm(n);
   for (int i = 0; i < n; ++i)
@@ -72,21 +71,40 @@ std::vector<int> get_suffix_array(const std::string& s) {
   return perm;
 }
 
-int solve() {
-  return 0;
+// S[i..]와 S[j..]의 공통 접두사의 최대 길이를 계산한다.
+int common_prefix(const std::string& s, int i, int j) {
+  int r = 0;
+  while (i < s.size() && j < s.size() && s[i] == s[j]) {
+    ++i;
+    ++j;
+    ++r;
+  }
+  return r;
+}
+
+// k번 이상 출현하는 s의 부분 문자열 중 최대 길이를 찾는다.
+int longest_frequent(int k, const std::string& s) {
+  std::vector<int> a = get_suffix_array(s);
+  int r = 0;
+  for (int i = 0; i + k < s.size(); ++i) {
+    r = std::max(r, common_prefix(s, a[i], a[i + k - 1]));
+  }
+  return r;
 }
 
 int main() {
-  char sz_father[400000];
-  char sz_mother[400000];
+  int T;
+  scanf("%d", &T);
 
-  scanf("%s", sz_father);
-  scanf("%s", sz_mother);
-  //
-  std::string newname = sz_father;
-  newname += sz_mother;
-  //
-  printf("%d\n", solve());
+  for (int t = 0; t < T; ++t) {
+    scanf("%d", &K);
+    char buf[4000];
+    scanf("%s", buf);
+    std::string s = buf;
+
+    //
+    printf("%d\n", longest_frequent(K, s));
+  }
   //
   return 0;
 }
