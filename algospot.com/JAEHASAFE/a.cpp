@@ -7,6 +7,10 @@
 
 int N;
 
+// 1st, H : a b b a b a b b a b
+// 2nd, N :     b a b a b
+//    2
+
 void print_v(const std::vector<int> v) {
   for (auto it = v.begin(); it != v.end(); ++it) {
     printf("%d ", *it);
@@ -79,8 +83,8 @@ int shifts(const std::string& o, const std::string& t) {
 
 int solve(const std::vector<std::string> v) {
   int r = 0;
-  for (auto i = 1; i < v.size(); ++i) {
-    r = i % 2 == 1 ? shifts(v[i-1], v[i]) : shifts(v[i], v[i-1]);
+  for (auto i = 0; i < v.size() - 1; ++i) {
+    r += i % 2 == 0 ? shifts(v[i+1], v[i]) : shifts(v[i], v[i+1]);
   }
   // print_v_string(v);
   return r;

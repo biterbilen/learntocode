@@ -74,7 +74,7 @@ int main() {
     reverse(r.begin(), r.end());
     // printf("%s\n", s.c_str());
     // printf("%s\n", r.c_str());
-    printf("%d\n", max_overlap(s, r));
+    printf("%lu\n", s.size() + r.size() - max_overlap(s, r));
   }
   //
   return 0;
