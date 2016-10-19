@@ -1,5 +1,5 @@
 # 
-CC  = c99
+CC  = gcc #c99
 CXX = g++
 # CXXFLAGS = -std=c++11 -fpermissive
 
