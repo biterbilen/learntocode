@@ -28,14 +28,16 @@ int cycle_len(int n) {
 
 int main() {
   int I, J;
-  while (std::cin.good()) {
-    std::cin >> I >> J;
+  // while (std::cin.good()) {
+  //   std::cin >> I >> J;
+  while(std::cin >> I >> J) {
     memset(CACHE, -1, sizeof(CACHE));
     int m = 0;
     for (int i = I; i <= J; ++i) {
       m = std::max(m, cycle_len(i));
     }
-    printf("%d %d %d\n", I, J, m);
+    // printf("%d %d %d\n", I, J, m);
+    std::cout << I << " " << J << " " << m << "\n";//std::endl;
   }
 
   // std::cout << sizeof(CACHE);

@@ -4,18 +4,30 @@
 
 import sys
 
-CACHE = []
-I = 0
-J = 0
+def cycle_len(CACHE, n):
+    # base condition
+    if n == 1:
+        return 1
 
-def cycle_len(n):
+    # memoization
+    if CACHE[n] > 0:
+        return CACHE[n]
     
-    
-    return 0
+    # recursion
+    r = 0
+    if n % 2 == 0:
+        r = 1 + cycle_len(CACHE, int(n/2))
+    else:
+        r = 1 + cycle_len(CACHE, n*3 + 1)
+    CACHE[n] = int(r)
+
+    return CACHE[n]
 
 if __name__ == "__main__":
+
     for line in sys.stdin:
-        CACHE = [-1] * 1000000
+        CACHE = [-1] * 10000000
+        # print(len(CACHE))
         
         line = line.strip()
         l = line.split(' ')
@@ -24,6 +36,6 @@ if __name__ == "__main__":
 
         r = 0
         for n in range(I, J+1):
-            r = max(r, cycle_len(n))
+            r = max(r, cycle_len(CACHE, n))
             
         print('{} {} {}'.format(I, J, r))
