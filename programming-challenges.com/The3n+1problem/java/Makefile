@@ -6,7 +6,6 @@ JC = javac
 
 CLASSES = \
 	MainApp.java \
-	LoadBalancer.java \
 
 default: classes
 
