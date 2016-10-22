@@ -7,6 +7,16 @@
 
 int K;
 
+void print_v_int(const std::vector<int>& g,
+                 const std::vector<int>& a,
+                 const std::string& s) {
+  printf("<----\n");
+  for (int i=0; i < a.size(); ++i) {
+    printf("%8d %s\n", g[a[i]], s.substr(a[i]).c_str());
+  }
+  printf("---->\n");
+}
+
 // 각 접미사들의 첫 t글자를 기준으로 한 그룹번호가 주어질 때,
 // 주어진 두접미사를 첫 2 * t글자를 기준으로 비교한다.
 // group[]은 길이가 0인 접미사도 포함한다.
@@ -50,10 +60,14 @@ std::vector<int> get_suffix_array(const std::string& s) {
     Comparator compare_using_2T(group, t);
     sort(perm.begin(), perm.end(), compare_using_2T);
 
+    print_v_int(group, perm, s);
+
     // 2t글자가 n을 넘는다면 이제 접미사 배열 완성.
     t *= 2;
     if (t >= n)
       break;
+
+    // printf("t is %d\n", compare_using_2T.t);
 
     // 2t글자를 기준으로 한 그룹 정보를 만든다.
     std::vector<int> new_group(n + 1);
@@ -103,7 +117,8 @@ int main() {
     std::string s = buf;
 
     //
-    printf("%d\n", longest_frequent(K, s));
+    // printf("%d\n", longest_frequent(K, s));
+    std::vector<int> a = get_suffix_array(s);
   }
   //
   return 0;
