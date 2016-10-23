@@ -27,7 +27,7 @@ struct Comparator {
     t = _t;
   }
   bool operator() (int a, int b) {
-    printf("a:(%3d)%2d, (%3d)b:%2d\n", group[a], a, group[b], b);
+    // printf("a:(%3d)%2d, (%3d)b:%2d\n", group[a], a, group[b], b);
     // 첫 t글자가 다르면 이들을 이용해 비교한다.
     if (group[a] != group[b])
       return group[a] < group[b];
@@ -59,10 +59,10 @@ std::vector<int> get_suffix_array(const std::string& s) {
     // group[]은 첫 t글자를 기준으로 계산해 뒀다.
     // 첫 2t글자를 기준으로 perm을 다시 정렬한다.
     Comparator compare_using_2T(group, t);
-    printf("====1st:%2d\n", t);
+    // printf("====1st:%2d\n", t);
     sort(perm.begin(), perm.end(), compare_using_2T);
 
-    print_v_int(group, perm, s);
+    // print_v_int(group, perm, s);
 
     // 2t글자가 n을 넘는다면 이제 접미사 배열 완성.
     t *= 2;
@@ -70,7 +70,7 @@ std::vector<int> get_suffix_array(const std::string& s) {
       break;
 
     // printf("t is %d\n", compare_using_2T.t);
-    printf("----2nd\n");
+    // printf("----2nd\n");
 
     // 2t글자를 기준으로 한 그룹 정보를 만든다.
     std::vector<int> new_group(n + 1);
@@ -85,7 +85,7 @@ std::vector<int> get_suffix_array(const std::string& s) {
     }
     group = new_group;
 
-    print_v_int(group, perm, s);
+    // print_v_int(group, perm, s);
   }
   return perm;
 }
@@ -122,8 +122,8 @@ int main() {
     std::string s = buf;
 
     //
-    // printf("%d\n", longest_frequent(K, s));
-    std::vector<int> a = get_suffix_array(s);
+    printf("%d\n", longest_frequent(K, s));
+    // std::vector<int> a = get_suffix_array(s);
   }
   //
   return 0;
