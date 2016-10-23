@@ -10,11 +10,11 @@ int K;
 void print_v_int(const std::vector<int>& g,
                  const std::vector<int>& a,
                  const std::string& s) {
-  printf("<----\n");
+  // printf(" <----\n");
   for (int i=0; i < a.size(); ++i) {
-    printf("%8d %s\n", g[a[i]], s.substr(a[i]).c_str());
+    printf(" (%3d)%2d %-7s\n", g[a[i]], a[i], s.substr(a[i]).c_str());
   }
-  printf("---->\n");
+  // printf(" ---->\n");
 }
 
 // 각 접미사들의 첫 t글자를 기준으로 한 그룹번호가 주어질 때,
@@ -27,6 +27,7 @@ struct Comparator {
     t = _t;
   }
   bool operator() (int a, int b) {
+    printf("a:(%3d)%2d, (%3d)b:%2d\n", group[a], a, group[b], b);
     // 첫 t글자가 다르면 이들을 이용해 비교한다.
     if (group[a] != group[b])
       return group[a] < group[b];
@@ -58,6 +59,7 @@ std::vector<int> get_suffix_array(const std::string& s) {
     // group[]은 첫 t글자를 기준으로 계산해 뒀다.
     // 첫 2t글자를 기준으로 perm을 다시 정렬한다.
     Comparator compare_using_2T(group, t);
+    printf("====1st:%2d\n", t);
     sort(perm.begin(), perm.end(), compare_using_2T);
 
     print_v_int(group, perm, s);
@@ -68,6 +70,7 @@ std::vector<int> get_suffix_array(const std::string& s) {
       break;
 
     // printf("t is %d\n", compare_using_2T.t);
+    printf("----2nd\n");
 
     // 2t글자를 기준으로 한 그룹 정보를 만든다.
     std::vector<int> new_group(n + 1);
@@ -81,6 +84,8 @@ std::vector<int> get_suffix_array(const std::string& s) {
       }
     }
     group = new_group;
+
+    print_v_int(group, perm, s);
   }
   return perm;
 }
