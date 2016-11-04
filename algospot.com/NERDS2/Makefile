@@ -1,7 +1,7 @@
 # 
 CC  = c99
 CXX = g++
-# CXXFLAGS = -std=c++11 -fpermissive
+CXXFLAGS = -std=c++11 -fpermissive
 
 all: TAGS a.out
 
@@ -22,4 +22,4 @@ clean:
 	-rm -f core GPATH GRTAGS GSYMS GTAGS
 	-rm -f a.out
 
-# -include $(wildcard *.d)
+-include $(wildcard *.d)
