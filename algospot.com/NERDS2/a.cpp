@@ -16,11 +16,39 @@ void print_m_int_int(const std::map<int, int>& m) {
 }
 
 bool is_dominated(const std::map<int, int>& m, int x, int y) {
+  // 
+  if (m.empty())
+    return false;
+
+  // x보다 크면서 최소인 것을 찾아라. 
+  auto it = m.lower_bound(x);
+  it++;
+  if (it == m.end())
+    return false;
+  //
+  if (it->second > y)
+    return false;
   
   return true;
 }
 
-void del_dominated(const std::map<int, int>& m, int x, int y) {
+void del_dominated(std::map<int, int>& m, int x, int y) {
+  auto it = m.upper_bound(x);
+  if (it == m.end())  // 해당하는 녀석이 없다면 중지
+    return;
+  std::vector<int> v;
+  //
+  while (it != m.begin()) {
+    if (it->first < x && it->second < y)
+      v.push_back(it->first);      
+    it--;
+  }
+  // remove all
+  std::for_each(v.begin(), v.end(),
+                [&m](int a)
+                {
+                  m.erase(m.find(a));
+                });  
 }
 
 int reg_cand(std::map<int, int>& m, int x, int y) {

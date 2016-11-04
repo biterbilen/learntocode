@@ -1,7 +1,7 @@
 # 
 CC  = c99
 CXX = g++
-CXXFLAGS = -std=c++11 -fpermissive
+CXXFLAGS = -std=c++11 # -fpermissive
 
 all: TAGS a.out
 
