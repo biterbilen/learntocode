@@ -6,7 +6,8 @@
 #include <vector>
 #include <limits>
 
-#define MAXINT 2147483647
+const int MAXINT = 2147483648;
+const int MAXN = 100000;
 int N, Q;
 
 struct RMQT {
@@ -44,7 +45,47 @@ struct RMQT {
   }
 };
 
+
+void Traverse(int here, int d, std::vector<int>& trip,
+              int no2serial[], int serial2no[], int depth[],
+              int next_serial, int loc_in_trip[]) {
+  no2serial[here] = next_serial;
+  serial2no[next_serial] = here;
+  ++next_serial;
+  depth[here] = d;
+
+  loc_in_trip[here] = trip.size();
+  trip.push_bakck(no2serial[here]);
+
+  for (int i = 0; i < 
+  
+}
+
+RMQT* PrepareRMQ(int* next_serial) {
+  *next_serial = 0;
+  std::vector<int> trip;
+  Traverse(0, 0, trip, no2serial, serial2no, depth,
+           next_serial, loc_in_trip);
+  return new RMQT(trip);
+}
+
+int Distance(RMQT* rmqt, int u, int v, int loc_in_trip[],
+             int serial2no[], int depth[]) {
+  int lu = loc_in_trip[u];
+  int lv = loc_in_trip[v];
+  if (lu > lv)
+    std::swap(lu, lv);
+  int lca = serial2no[rmqt->query(lu, lv)];
+  return depth[u] + depth[v] - 2 * depth[lca];
+}
+
 void solve(std::vector<int> * h, int from, int to) {
+  int no2serial[MAXN];
+  int serial2no[MAXN];
+  int loc_in_trip[MAXN], depth[MAXN];
+  int next_serial;
+  RMQT * rmqt = PrepareRMQ(&next_serial);
+  printf("%d\n", Distance(rmqt, from, to, loc_in_trip, serial2no, depth));
 }
 
 int main() {
