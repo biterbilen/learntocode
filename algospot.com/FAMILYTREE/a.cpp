@@ -1,5 +1,5 @@
 // Copyright (C) 2016 by iamslash
-// https://algospot.com/judge/problem/read/MORDOR
+// https://algospot.com/judge/problem/read/FAMILYTREE
 
 #include <cstdio>
 #include <cstdlib>
@@ -45,12 +45,6 @@ struct RMQT {
 };
 
 void solve(std::vector<int> * h, int from, int to) {
-  RMQT rmqt0(*h);
-  for (auto it = h->begin(); it != h->end(); ++it)
-    *it = *it * -1;
-  RMQT rmqt1(*h);
-  int r = abs(-rmqt1.query(from, to) - rmqt0.query(from, to));
-  printf("%d\n", r);
 }
 
 int main() {
