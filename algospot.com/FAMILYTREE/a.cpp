@@ -80,12 +80,12 @@ int Distance(RMQT* rmqt, int u, int v) {
   int lv = loc_in_trip[v];
   if (lu > lv)
     std::swap(lu, lv);
+
   int lca = serial2no[rmqt->query(lu, lv)];
   return depth[u] + depth[v] - 2 * depth[lca];
 }
 
-void solve(std::vector<int> * h, int from, int to) {
-  RMQT * rmqt = PrepareRMQ(&next_serial);
+void solve(RMQT* rmqt, int from, int to) {
   printf("%d\n", Distance(rmqt, from, to));
 }
 
@@ -96,15 +96,19 @@ int main() {
   for (int t = 0; t < T; ++t) {
     scanf("%d", &N);
     scanf("%d", &Q);
-    std::vector<int> H(N, 0);
     for (int i = 0; i < N; ++i) {
-      scanf("%d", &H[i]);
+      child[i].clear();
     }
-    // printf("after rmqt.init\n");
+    for (int i = 1; i < N; ++i) {
+      int parent;
+      scanf("%d", &parent);
+      child[parent].push_back(i);
+    }
+    RMQT * rmqt = PrepareRMQ(&next_serial);
     for (int i = 0; i < Q; ++i) {
       int q0, q1;
       scanf("%d %d", &q0, &q1);
-      solve(&H, q0, q1);
+      solve(rmqt, q0, q1);
     }
   }
   //
