@@ -1,6 +1,6 @@
 # Books
 
-- [cracking the coding interview](https://www.amazon.com/gp/bestsellers/books/132570011/ref=sr_bs_1_132570011_1)
+- [cracking the coding interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=zg_bs_132570011_1?_encoding=UTF8&psc=1&refRID=3XW52MQJXCEJEWNTYJQ4)
 
 # Online Judges
 
