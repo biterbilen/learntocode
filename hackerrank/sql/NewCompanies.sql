@@ -2,12 +2,16 @@
 Enter your query here.
 */
 
-SELECT C.company_code, C.founder, COUNT(L.lead_manager_code), 
-COUNT(S.senior_manager_code), COUNT(M.manager_code), COUNT(E.employee_code)
-FROM Company C 
-INNER JOIN Lead_Manager L ON C.company_code = L.company_code
-INNER JOIN Senior_Manager S ON C.company_code = S.company_code
-INNER JOIN Manager M ON C.company_code = M.company_code
-INNER JOIN Employee E ON C.company_code = E.company_code
-GROUP BY L.lead_manager_code, S.senior_manager_code, M.manager_code, E.employee_code
-ORDER BY C.company_code ASC;
+SELECT c.company_code, c.founder, 
+    count(distinct l.lead_manager_code), count(distinct s.senior_manager_code), 
+    count(distinct m.manager_code),count(distinct e.employee_code) 
+FROM Company c
+INNER JOIN Lead_Manager l
+INNER JOIN Senior_Manager s
+INNER JOIN Manager m
+INNER JOIN Employee e 
+where c.company_code = l.company_code 
+    and l.lead_manager_code=s.lead_manager_code 
+    and s.senior_manager_code=m.senior_manager_code 
+    and m.manager_code=e.manager_code 
+group by c.company_code order by c.company_code;
