@@ -30,12 +30,15 @@
 
 
 void URLify(char str[], int n) {
-  //
+    //
   int space_cnt = 0;
-  for (int i = 0; i < n; ++i)
-    space_cnt++;
+  for (int i = 0; i < n; ++i) {
+    if (str[i] == ' ')
+      space_cnt++;
+  }
   //
   int j = n + space_cnt * 2;
+  // printf("j is %d\n", j);
   str[j--] = '\0';
   for (int i = n - 1; i >= 0; --i) {
     // printf(" %d\n", i);
@@ -44,12 +47,38 @@ void URLify(char str[], int n) {
       str[j--] = '0';
       str[j--] = '2';
       str[j--] = '%';
-      printf(" %4d %s\n", j, str+j);
+      // printf("!%c%c%c\n", str[j-1], str[j-2], str[j-3]);
     } else {
       str[j--] = str[i];
     }
   }
 }
+
+// void URLify(char (&str)[128], int n) {
+//   //
+//   int space_cnt = 0;
+//   for (int i = 0; i < n; ++i) {
+//     if (str[i] == ' ')
+//       space_cnt++;
+//   }
+//   //
+//   int j = n + space_cnt * 2;
+//   // printf("j is %d\n", j);
+//   str[j--] = '\0';
+//   for (int i = n - 1; i >= 0; --i) {
+//     // printf(" %d\n", i);
+//     if (str[i] == ' ') {
+//       // printf(" %d\n", i);
+//       str[j--] = '0';
+//       str[j--] = '2';
+//       str[j--] = '%';
+//       // printf("!%c%c%c\n", str[j-1], str[j-2], str[j-3]);
+//     } else {
+//       str[j--] = str[i];
+//     }
+//   }
+// }
+
 
 int main() {
     char s[128] = "Mr John Smith    ";
