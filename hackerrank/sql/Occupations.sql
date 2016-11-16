@@ -14,4 +14,4 @@ FROM(
   FROM OCCUPATIONS
   ORDER BY Name
 ) Temp
-GROUP BY RowNumber
+GROUP BY RowNumber;
