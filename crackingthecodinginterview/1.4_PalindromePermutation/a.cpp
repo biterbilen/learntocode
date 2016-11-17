@@ -16,31 +16,35 @@
 #include <string>
 #include <algorithm>
 
-bool IsPermutation(const std::string& _s0, const std::string& _s1) {
-
-  std::string s0(_s0);
-  std::string s1(_s1);
-  std::sort(s0.begin(), s0.end());
-  std::sort(s1.begin(), s1.end());
-
-  for (auto it = s1.begin(); it != s1.end(); ++it) {
-    if (s0.find(*it) == std::string::npos)
-      return false;
-  }
-  
-  return true;
+int GetCharIdx(char c) {
+  int r = c - 'a';
+  return r >= 0 ? r : r + 32;
 }
 
-std::vector<std::string> GetPalindromePermutation(const std::string& s) {
-  std::vector<std::string> r;
-  
-  return r;
+bool IsPalindromePermutation(const std::string& s) {
+  char alphabet_cnt[26] = {0, };
+  // set alphabet_cnt array
+  for (int i = 0; i < s.size(); ++i) {
+    alphabet_cnt[GetCharIdx(s[i])]++;
+  }
+
+  // check odd cnt more than 1
+  int odd_cnt = 0;
+  for (int i = 0; i < 26; ++i) {
+    if (alphabet_cnt[i] % 2 == 1)
+      odd_cnt++;
+    if (odd_cnt > 1)
+      return false;
+  }
+
+  return true;
 }
 
 int main() {
   std::string s = "Tact Coa";
-  std::vector<std::string> pp = GetPalindromePermutation(s);
-  printf("%s", pp.size() > 0 ? "True" : "False");
+  std::string s1 = "Tact Coak";
+  printf("%s\n", IsPalindromePermutation(s) > 0 ? "True" : "False");
+  printf("%s\n", IsPalindromePermutation(s1) > 0 ? "True" : "False");
 
   return 0;
 }
