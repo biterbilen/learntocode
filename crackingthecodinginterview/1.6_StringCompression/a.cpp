@@ -11,19 +11,18 @@
 // 0. max compressed cnt ?
 
 #include <string>
-#include <cstdlib>
+#include <cstdio>
 
+// what about last character ???
 std::string StringCompress(const std::string& s) {
   std::string r;
   int j = 0;
   char b = '\0';
   for (int i = 0; i < s.size(); ++i) {
-    printf("%d %d %c\n", i, j, b);
     if (b != s[i]) {
       if (j != 0) {
         char buf[256] = {0, };
-        itoa(j, buf, 10);
-        r += b;
+        snprintf(buf, sizeof(buf), "%c%d", b, j);
         r += buf;
       }
       j = 1;
@@ -31,8 +30,10 @@ std::string StringCompress(const std::string& s) {
     } else {
       ++j;
     }
+    printf("%d %d %c %s\n", i, j, b, r.c_str());
   }
 
+  
   return r;
 }
 
