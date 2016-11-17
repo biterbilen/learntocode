@@ -14,7 +14,8 @@
 #include <cstdio>
 
 // what about last character ???
-std::string StringCompress(const std::string& s) {
+std::string StringCompress(const std::string& a) {
+  std::string s = a + '|';
   std::string r;
   int j = 0;
   char b = '\0';
@@ -30,9 +31,10 @@ std::string StringCompress(const std::string& s) {
     } else {
       ++j;
     }
-    printf("%d %d %c %s\n", i, j, b, r.c_str());
+    // printf("%d %d %c %s\n", i, j, b, r.c_str());
+    if (r.size() >= a.size())
+      return a;
   }
-
   
   return r;
 }
