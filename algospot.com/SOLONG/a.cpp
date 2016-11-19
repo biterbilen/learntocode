@@ -1,8 +1,8 @@
 // Copyright (C) 2016 by iamslash
 // https://algospot.com/judge/problem/read/SOLONG
 
-#include <cstdio>
-#include <cstdlib>
+#include <string>
+#include <map>
 #include <vector>
 #include <limits>
 #include <cstring>
@@ -18,8 +18,8 @@ struct TrieNode {
   TrieNode * children[ALPHABETS];
   int terminal;
   int first;
-  TrieNode();
-  ~TrieNode();
+  // TrieNode();
+  // ~TrieNode();
 
   void insert(const char * key, int id) {
     if (first == -1)
@@ -87,8 +87,18 @@ int main() {
   for (int t = 0; t < T; ++t) {
     scanf("%d", &N);
     scanf("%d", &M);
-
-    readInput(M);
+    TrieNode* p_tn = readInput(N);
+    std::vector<std::string> v;
+    for (int i = 0; i < M; ++i) {
+      char buf[16];
+      scanf("%s", buf);
+      v.push_back(buf);
+    }
+    int r = 0;
+    for (auto it = v.begin(); it != v.end(); ++it) {
+      r += CountKeys(p_tn, (*it).c_str());
+    }
+    printf("%d\n", r);
   }
   //
   return 0;
