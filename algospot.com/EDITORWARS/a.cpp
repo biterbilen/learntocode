@@ -79,6 +79,7 @@ int MaxParty(const BipartiteUnionFind& uf) {
       int ally_size = uf.size[node];
       int enemy_size = (enemy == -1 ? 0 : uf.size[enemy]);
       r += std::max(ally_size, enemy_size);
+      // printf(" %d %d %d %d\n", node, enemy, ally_size, enemy_size);
     }
   }
   return r;

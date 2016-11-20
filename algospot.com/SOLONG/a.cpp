@@ -6,6 +6,7 @@
 #include <vector>
 #include <limits>
 #include <cstring>
+#include <algorithm>
 
 const int ALPHABETS = 26;
 int ToNumber(char ch) {
@@ -13,20 +14,20 @@ int ToNumber(char ch) {
 }
 
 int N, M;
-
+// abc'\0'
 struct TrieNode {
   TrieNode * children[ALPHABETS];
   int terminal;
   int first;
-  // TrieNode();
+  TrieNode() : first(-1), terminal(-1) {}
   // ~TrieNode();
 
   void insert(const char * key, int id) {
     if (first == -1)
       first = id;
-    if (*key == 0) {
+    if (*key == 0) {  // base condition
       terminal = id;
-    } else {
+    } else {  // recursion
       int next = ToNumber(*key);
       if (children[next] == NULL)
         children[next] = new TrieNode();
@@ -34,6 +35,7 @@ struct TrieNode {
     }
   }
 
+  // a, a'\0'
   TrieNode* find(const char* key) {
     if (*key == 0)
       return this;
@@ -96,9 +98,11 @@ int main() {
     }
     int r = 0;
     for (auto it = v.begin(); it != v.end(); ++it) {
-      r += CountKeys(p_tn, (*it).c_str());
+      int j = CountKeys(p_tn, (*it).c_str());
+      r += j;
+      // printf("%d %ld %s\n", j, it - v.begin(), (*it).c_str());
     }
-    printf("%d\n", r);
+    printf("%d\n", r + M - 1);
   }
   //
   return 0;
