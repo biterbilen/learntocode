@@ -19,9 +19,15 @@ struct TrieNode {
   TrieNode * children[ALPHABETS];
   int terminal;
   int first;
-  TrieNode() : first(-1), terminal(-1) {}
-  // ~TrieNode();
-
+  TrieNode() : first(-1), terminal(-1) {
+    memset(children, 0, sizeof(children));
+  }
+  ~TrieNode() {
+    for (int i = 0; i < ALPHABETS; ++i) {
+      if (children[i] != NULL)
+        delete children[i];
+    }
+  }
   void insert(const char * key, int id) {
     if (first == -1)
       first = id;
@@ -103,6 +109,7 @@ int main() {
       // printf("%d %ld %s\n", j, it - v.begin(), (*it).c_str());
     }
     printf("%d\n", r + M - 1);
+    delete p_tn;
   }
   //
   return 0;
