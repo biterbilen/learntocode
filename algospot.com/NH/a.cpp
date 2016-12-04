@@ -10,7 +10,7 @@
 int N, M;
 
 const int MOD = 10007;
-int CACHE[101][1001];
+int CACHE[101][1001];  // CACHE[i][j] i=len, j=
 
 const int ALPHABETS = 26;
 int ToNumber(char ch) {
@@ -30,9 +30,10 @@ struct TrieNode {
   // 번호
   std::vector<int> output;
 
+  //
   int no;
   TrieNode* next[ALPHABETS];
-  
+
   TrieNode() : terminal(-1), fail(NULL) {
     memset(children, 0, sizeof(children));
     memset(next, 0, sizeof(next));
@@ -41,10 +42,11 @@ struct TrieNode {
     for (int i = 0; i < ALPHABETS; ++i) {
       if (children[i])
         delete children[i];
-      if (next[i])
-        delete next[i];
+      // if (next[i])
+      //   delete next[i];
     }
   }
+
   // 이 노드를 루트로 하는 트라이에 문자열 key를 추가한다.
   void Insert(const char* key, int order) {    
     if (*key == 0) {  // base condition
@@ -56,7 +58,6 @@ struct TrieNode {
       children[next]->Insert(key + 1, order);
     }
   }
-
 };
 
 
@@ -120,16 +121,15 @@ int Count(int length, TrieNode* state) {
   // recursion
   for (int letter = 0; letter < ALPHABETS; ++letter) {
     r += Count(length - 1, state->next[letter]);
-    r != MOD;
+    r %= MOD;
   }
-  
+
   return r;
 }
 
 // 상태 간의 전이 테이블을 next[]에 채운다. coputFailFunc()를 통해
 // 이미 실패 함수가 계산되어 있다고 가정한다.
 void ComputeTransition(TrieNode* here, int& node_counter) {
-
   // 0에서 시작하는 번호를 매긴다. CACHE[]의 인덱스
   here->no = node_counter++;
 
@@ -154,15 +154,15 @@ int main() {
   scanf("%d", &T);
 
   for (int t = 0; t < T; ++t) {
-    printf("[%d] before init CACHE\n", t);
-    
+    // printf("[%d] before init CACHE\n", t);
+
     // init variables;
     for (int i = 0; i < 101; ++i)
       for (int j = 0; j < 1001; ++j)
         CACHE[i][j] = -1;
     // memset(CACHE, -1, sizeof(int) * sizeof (CACHE));
     // printf(" %d\n", sizeof(CACHE));
-    printf("[%d] after init CACHE\n", t);
+    // printf("[%d] after init CACHE\n", t);
 
     scanf("%d", &N);
     scanf("%d", &M);
@@ -175,7 +175,7 @@ int main() {
       scanf("%s", buf);
       ptn->Insert(buf, i);
     }
-  
+
     ComputeFailFunc(ptn);
     int nc = 0;
     ComputeTransition(ptn, nc);

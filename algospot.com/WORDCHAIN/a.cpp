@@ -6,6 +6,7 @@
 #include <vector>
 #include <limits>
 #include <string>
+#include <algorithm>
 
 
 const int ALPHABETS = 26;
@@ -75,8 +76,10 @@ std::vector<int> GetEulerTrailOrCircuit() {
   }
   // 아니면 서킷이니, 간선에 인접한 아무 정점에서나 시작한다.
   for (int i = 0; i < ALPHABETS; ++i) {
-    GetEulerCircuit(i, circuit);
-    return circuit;
+    if (outdegree[i]) {
+      GetEulerCircuit(i, circuit);
+      return circuit;
+    }
   }
   // 모두 실패한 경우
   return circuit;
@@ -84,6 +87,7 @@ std::vector<int> GetEulerTrailOrCircuit() {
 
 std::string solve(const std::vector<std::string>& words) {
   MakeGraph(words);
+
   // 오일러 서킷이나 트레일을 찾아낸다.
   std::vector<int> circuit = GetEulerTrailOrCircuit();
 
@@ -113,7 +117,7 @@ int main() {
 
   for (int t = 0; t < T; ++t) {
     std::vector<std::string> words;
-    
+
     scanf("%d", &N);
 
     for (int i = 0; i < N; ++i) {
