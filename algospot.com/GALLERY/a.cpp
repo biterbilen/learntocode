@@ -11,10 +11,9 @@
 const int MAX_V = 1000;
 
 int G, H;
-int V;
 std::vector<int> adj[MAX_V];
 std::vector<bool> visited;
-const int UNWATED = 0;
+const int UNWATCHED = 0;
 const int WATCHED = 1;
 const int INSTALLED = 2;
 // 지금 까지 설치한 카메라의 총수
@@ -26,15 +25,13 @@ int Dfs(int here) {
   int children[3] = {0, 0, 0};
 
   for (int i = 0; i < adj[here].size(); ++i) {
-    int there = i;
-    if (adj[here][there] == 0 )
-      continue;
+    int there = adj[here][i];
     if (!visited[there])
       ++children[Dfs(there)];
   }
 
   // 자손 노드중 감시되지 않는 노드가 있을 경우 카메라를 설치한다.
-  if (children[UNWATED]) {
+  if (children[UNWATCHED]) {
     ++installed;
     return INSTALLED;
   }
@@ -44,7 +41,7 @@ int Dfs(int here) {
     return WATCHED;
   }
 
-  return UNWATED;
+  return UNWATCHED;
 }
 
 // 그래프를 감시하는데 필요한 카메라의 최소 수를 반환한다.
@@ -52,7 +49,7 @@ int InstallCamera() {
   installed = 0;
   visited = std::vector<bool>(G, false);
   for (int u = 0; u < G; ++u) {
-    if (!visited[u] && Dfs(u) == UNWATED) {
+    if (!visited[u] && Dfs(u) == UNWATCHED) {
       ++installed;
     }
   }
@@ -69,13 +66,13 @@ int main() {
     scanf("%d", &H);
 
     for (int i = 0; i < G; ++i) {
-      adj[i] = std::vector<int>(G, 0);
+      adj[i].clear();
     }
 
     for (int i = 0; i < H; ++i) {
       int x, y;
       scanf("%d %d", &x, &y);
-      adj[x][y] = 1;
+      adj[x].push_back(y);
     }
 
     printf("%d\n", InstallCamera());
