@@ -19,7 +19,7 @@ std::vector<std::vector<int> > adj;
 // 컴포넌트에 속한 정점들의 컴포넌트 번호가 같다.
 std::vector<int> scc_id;
 // 각 정점의 발견순서
-std::vector<int> discovered;
+std::vector<int> discovered, finished;
 // 정점의 번호를 담는 스택
 std::stack<int> st;
 //
@@ -29,6 +29,7 @@ void PrintVInt(const std::vector<int>& v) {
   for (int i = 0; i < v.size(); ++i) {
     printf("%d ", v[i]);
   }
+  printf("\n");
 }
 
 // here를 루트로 하는 서브 트리에서 역방향 간선이나 교차 간선을 통해
@@ -39,9 +40,7 @@ int Scc(int here) {
   // 들어간다.
   st.push(here);
   for (int i = 0; i < adj[here].size(); ++i) {
-    int there = i;
-    if (adj[here][there] == 0)
-      continue;
+    int there = adj[here][i];
     //
     if (discovered[there] == -1)
       r = std::min(r, Scc(there));
@@ -60,7 +59,9 @@ int Scc(int here) {
       if (t == here)
         break;
     }
+    scc_counter++;
   }
+  finished[here] = 1;
   return r;
 }
 
@@ -68,6 +69,7 @@ int Scc(int here) {
 std::vector<int> TarjanScc() {
   // 배열들을 전부 초기화
   scc_id = discovered = std::vector<int>(adj.size(), -1);
+  finished = std::vector<int>(adj.size(), 0);
   // 카운터 초기화
   scc_counter = vertex_counter = 0;
   // 모든 정점에 대해 Scc()호출
@@ -124,7 +126,7 @@ std::vector<int> Solve2sat() {
   // 이 SAT문제를 푸는 것이 불가능한지 확인한다. 한 변수를 나타내는 두 정점이
   // 같은 강결합 요소에 속해 있을 경우 답이 없다.
   for (int i = 0; i < 2 * n; i += 2) {
-    if (label[i] = label[i+1]) {
+    if (label[i] == label[i+1]) {
       return std::vector<int>();
     }
   }
@@ -169,9 +171,19 @@ int main() {
       meetings.push_back(std::make_pair(y, z));
     }
 
+    MakeGraph(meetings);
     std::vector<int> r = Solve2sat();
 
-    PrintVInt(r);    
+    if (r.size() == 0) {
+      printf("IMPOSSIBLE\n");
+    } else {
+      printf("POSSIBLE\n");
+      for (int i = 0; i < r.size(); ++i) {
+        if (r[i] == 1)
+          printf("%d %d", meetings[i].first, meetings[i].second);
+      }
+      printf("\n");
+    }
   }
   //
   return 0;
