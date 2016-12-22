@@ -30,6 +30,8 @@ int GetMinClass(int m, std::vector<int>& taken) {
   // base condition
   if (taken.size() >= K)
     return 0;
+  if (m >= M)
+    return MAXN;
   // printf(" %d %d\n", m, classes[m].size());
 
   // recursion
