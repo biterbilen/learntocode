@@ -4,6 +4,8 @@ CXX = g++
 
 all: TAGS a.out
 
+a.exe: a.o
+	$(CXX) $^ $(LDFLAGS) -o $@
 a.out: a.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
