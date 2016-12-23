@@ -1,3 +1,6 @@
+// Copyright (C) 2016 by iamslash
+// https://algospot.com/judge/problem/read/GRADUATION
+
 #include <cstdio>
 #include <vector>
 #include <algorithm>
@@ -8,6 +11,13 @@ int N, K, M, L;
 std::vector<int> prerequisites[12];
 std::vector<int> classes[10];
 
+void PrintSpace(int m) {
+  for (int i = 0; i < m; ++i) {
+    printf(" ");
+  }
+
+}
+
 void PrintVInt(const std::vector<int>& v) {
   for (int i = 0; i < v.size(); ++i) {
     printf("%d ", v[i]);
@@ -17,7 +27,12 @@ void PrintVInt(const std::vector<int>& v) {
 
 // prerequisites of sbj is done???
 bool CanLearn(int sbj, const std::vector<int>& taken) {
-  for (int i = 0; prerequisites[sbj].size(); ++i) {
+  // already learned ???
+  if (std::find(taken.begin(), taken.end(), sbj) != taken.end())
+    return false;  
+
+  // inspect prerequisites
+  for (int i = 0; i < prerequisites[sbj].size(); ++i) {
     int p = prerequisites[sbj][i];
     if (std::find(taken.begin(), taken.end(), p) == taken.end())
       return false;
@@ -32,7 +47,9 @@ int GetMinClass(int m, std::vector<int>& taken) {
     return 0;
   if (m >= M)
     return MAXN;
-  // printf(" %d %d\n", m, classes[m].size());
+  PrintSpace(m);
+  printf(" %d : ", m);
+  PrintVInt(taken);
 
   // recursion
   int r = MAXN;
@@ -100,7 +117,6 @@ int main() {
     else
       printf("IMPOSSIBLE\n");    
   }
-
   
   return 0;
 }
