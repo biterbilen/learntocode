@@ -40,7 +40,28 @@ bool CanLearn(int sbj, const std::vector<int>& taken) {
   return true;
 }
 
-//
+// return: learned count
+int LearnMost(int m, int sbj, std::vector<int>& taken) {
+  int r = 0;
+  for (int i = 0; i < classes[m].size(); ++i) {
+    if (i < sbj)
+      continue;
+    int cand = classes[m][i];
+    if (CanLearn(cand, taken) == true) {
+      taken.push_back(sbj);
+      r++;
+    }
+  }
+  return r;
+}
+
+void LearnCancel(int cnt, std::vector<int>& taken) {
+  for (int i = 0; i < cnt; ++i) {
+    taken.pop_back();
+  }
+}
+
+// can learn multiple subejcts at one semaster.
 int GetMinClass(int m, std::vector<int>& taken) {
   // base condition
   if (taken.size() >= K)
@@ -56,13 +77,9 @@ int GetMinClass(int m, std::vector<int>& taken) {
   for (int i = 0; i < classes[m].size(); ++i) {
     int sbj = classes[m][i];
     // printf("   %d %d\n", sbj, CanLearn(sbj, taken));
-    
-    if (CanLearn(sbj, taken) == false)
-      continue;
-    //
-    taken.push_back(sbj);
-    r = std::min(r, 1 + GetMinClass(m + 1, taken));
-    taken.pop_back();
+    int learned = LearnMost(m, sbj, taken);
+    r = std::min(r, (learned > 0 ? 1 : 0) + GetMinClass(m + 1, taken));
+    LearnCancel(learned, taken);
   }
 
   return r;
@@ -112,10 +129,10 @@ int main() {
 
     // solve it
     int r = solve();
-    if (r < MAXN)
-      printf("%d\n", r);
-    else
+    if (r >= MAXN)
       printf("IMPOSSIBLE\n");    
+    else
+      printf("%d\n", r);
   }
   
   return 0;

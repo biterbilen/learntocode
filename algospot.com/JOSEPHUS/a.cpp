@@ -1,61 +1,33 @@
 // Copyright (C) 2016 by iamslash
-// https://algospot.com/judge/problem/read/CHRISTMAS
+// https://algospot.com/judge/problem/read/JOSEPHUS
 
 #include <cstdio>
-#include <string>
-#include <vector>
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-// #include <set>
-#include <cmath>
-#include <queue>
-#include <cassert>
-#include <cstdint>
 
 int N, K;
 
-void print_vector(const std::vector<int>& v) {
-  printf("<-- ");
-  for (int i = 0; i < v.size(); ++i) {
-    printf("%d ", v[i]);
+std::vector<int> Solve() {
+  // init q
+  std::vector<int> q(N);
+  for (int i = 0; i < N; ++i)
+    q[i] = i;
+  //
+  while (q.size() > 2) {
+    
   }
-  printf("-->\n");
-}
-
-void suicide(std::vector<int> * soldiers, int k) {
-  int idx_to_kill = 0;  // 죽여야할 병사의 인덱스
-  soldiers->erase(soldiers->begin());
-  while (soldiers->size() > 2) {
-    // idx_to_kill은 인덱스니까 k에서 1빼자.
-    idx_to_kill += (k - 1);
-    //
-    if (idx_to_kill >= soldiers->size())
-      idx_to_kill = idx_to_kill % soldiers->size();
-    //
-    // print_vector(*soldiers);
-    // printf("%d\n", idx_to_kill);
-    soldiers->erase(soldiers->begin() + idx_to_kill);
-  }
-  // printf("%lu\n", soldiers->size());
 }
 
 int main() {
-  int T;  // number of T
+  int T;
   scanf("%d", &T);
-  //
+
   for (int t = 0; t < T; ++t) {
-    scanf("%d", &N);
-    scanf("%d", &K);
-
-    std::vector<int> soldiers(N);
-    for (int i=0; i < N; i++) {
-      soldiers[i] = i+1;
-    }
-
-    suicide(&soldiers, K);
-    // print_vector(psum);
-    printf("%d %d\n", soldiers[0], soldiers[1]);
+    scanf("%d %d", &N, &K);    
+    std::vector<int> r = Solve();
+    if (r[0] > r[1])
+      std::swap(r[0], r[1]);
+    printf("%d %d\n", r[0], r[1]);
   }
+  
   return 0;
 }
+
