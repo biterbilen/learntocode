@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <queue>
 
 int N, K;
 
@@ -17,30 +18,29 @@ std::vector<int> Solve() {
   std::vector<int> r;
 
   // init v
-  std::vector<int> v(N);
+  std::queue<int> q;
   for (int i = 0; i < N; ++i) {
-    v[i] = i;
+    q.push(i);
   }
+  q.pop();
 
-  v.erase(v.begin());
-  //
-  int idx = 0;
-  while (v.size() > 2) {
-    idx += K - 1;
-    if (idx >= v.size()) {
-      idx = idx % v.size();
+  while (q.size() > 2) {
+    for (int i = 0; i < K - 1; ++i) {
+      q.push(q.front());
+      q.pop();
     }
-
-    v.erase(v.begin() + idx);
-    // PrintVInt(v);
+    q.pop();
   }
 
-  if (v[0] > v[1]) {
-    r.push_back(v[1]);
-    r.push_back(v[0]);
+  int q0 = q.back();
+  int q1 = q.front();
+  
+  if (q0 > q1) {
+    r.push_back(q1);
+    r.push_back(q0);
   } else {
-    r.push_back(v[0]);
-    r.push_back(v[1]);
+    r.push_back(q0);
+    r.push_back(q1);
   }
   
   return r;  
