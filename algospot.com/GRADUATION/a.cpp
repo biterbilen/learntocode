@@ -1,3 +1,6 @@
+// Copyright (C) 2016 by iamslash
+// https://algospot.com/judge/problem/read/GRADUATION
+
 #include <cstdio>
 #include <vector>
 #include <algorithm>
@@ -8,6 +11,13 @@ int N, K, M, L;
 std::vector<int> prerequisites[12];
 std::vector<int> classes[10];
 
+void PrintSpace(int m) {
+  for (int i = 0; i < m; ++i) {
+    printf(" ");
+  }
+
+}
+
 void PrintVInt(const std::vector<int>& v) {
   for (int i = 0; i < v.size(); ++i) {
     printf("%d ", v[i]);
@@ -17,7 +27,12 @@ void PrintVInt(const std::vector<int>& v) {
 
 // prerequisites of sbj is done???
 bool CanLearn(int sbj, const std::vector<int>& taken) {
-  for (int i = 0; prerequisites[sbj].size(); ++i) {
+  // already learned ???
+  if (std::find(taken.begin(), taken.end(), sbj) != taken.end())
+    return false;  
+
+  // inspect prerequisites
+  for (int i = 0; i < prerequisites[sbj].size(); ++i) {
     int p = prerequisites[sbj][i];
     if (std::find(taken.begin(), taken.end(), p) == taken.end())
       return false;
@@ -25,27 +40,46 @@ bool CanLearn(int sbj, const std::vector<int>& taken) {
   return true;
 }
 
-//
+// return: learned count
+int LearnMost(int m, int sbj, std::vector<int>& taken) {
+  int r = 0;
+  for (int i = 0; i < classes[m].size(); ++i) {
+    if (i < sbj)
+      continue;
+    int cand = classes[m][i];
+    if (CanLearn(cand, taken) == true) {
+      taken.push_back(sbj);
+      r++;
+    }
+  }
+  return r;
+}
+
+void LearnCancel(int cnt, std::vector<int>& taken) {
+  for (int i = 0; i < cnt; ++i) {
+    taken.pop_back();
+  }
+}
+
+// can learn multiple subejcts at one semaster.
 int GetMinClass(int m, std::vector<int>& taken) {
   // base condition
   if (taken.size() >= K)
     return 0;
   if (m >= M)
     return MAXN;
-  // printf(" %d %d\n", m, classes[m].size());
+  PrintSpace(m);
+  printf(" %d : ", m);
+  PrintVInt(taken);
 
   // recursion
   int r = MAXN;
   for (int i = 0; i < classes[m].size(); ++i) {
     int sbj = classes[m][i];
     // printf("   %d %d\n", sbj, CanLearn(sbj, taken));
-    
-    if (CanLearn(sbj, taken) == false)
-      continue;
-    //
-    taken.push_back(sbj);
-    r = std::min(r, 1 + GetMinClass(m + 1, taken));
-    taken.pop_back();
+    int learned = LearnMost(m, sbj, taken);
+    r = std::min(r, (learned > 0 ? 1 : 0) + GetMinClass(m + 1, taken));
+    LearnCancel(learned, taken);
   }
 
   return r;
@@ -95,12 +129,11 @@ int main() {
 
     // solve it
     int r = solve();
-    if (r < MAXN)
-      printf("%d\n", r);
-    else
+    if (r >= MAXN)
       printf("IMPOSSIBLE\n");    
+    else
+      printf("%d\n", r);
   }
-
   
   return 0;
 }

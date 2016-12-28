@@ -1,61 +1,62 @@
 // Copyright (C) 2016 by iamslash
-// https://algospot.com/judge/problem/read/CHRISTMAS
+// https://algospot.com/judge/problem/read/JOSEPHUS
 
 #include <cstdio>
-#include <string>
 #include <vector>
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-// #include <set>
-#include <cmath>
 #include <queue>
-#include <cassert>
-#include <cstdint>
 
 int N, K;
 
-void print_vector(const std::vector<int>& v) {
-  printf("<-- ");
+void PrintVInt(const std::vector<int>& v) {
   for (int i = 0; i < v.size(); ++i) {
     printf("%d ", v[i]);
   }
-  printf("-->\n");
+  printf("\n");
 }
 
-void suicide(std::vector<int> * soldiers, int k) {
-  int idx_to_kill = 0;  // 죽여야할 병사의 인덱스
-  soldiers->erase(soldiers->begin());
-  while (soldiers->size() > 2) {
-    // idx_to_kill은 인덱스니까 k에서 1빼자.
-    idx_to_kill += (k - 1);
-    //
-    if (idx_to_kill >= soldiers->size())
-      idx_to_kill = idx_to_kill % soldiers->size();
-    //
-    // print_vector(*soldiers);
-    // printf("%d\n", idx_to_kill);
-    soldiers->erase(soldiers->begin() + idx_to_kill);
+std::vector<int> Solve() {
+  std::vector<int> r;
+
+  // init v
+  std::queue<int> q;
+  for (int i = 0; i < N; ++i) {
+    q.push(i);
   }
-  // printf("%lu\n", soldiers->size());
+  q.pop();
+
+  while (q.size() > 2) {
+    for (int i = 0; i < K - 1; ++i) {
+      q.push(q.front());
+      q.pop();
+    }
+    q.pop();
+  }
+
+  int q0 = q.back();
+  int q1 = q.front();
+  
+  if (q0 > q1) {
+    r.push_back(q1);
+    r.push_back(q0);
+  } else {
+    r.push_back(q0);
+    r.push_back(q1);
+  }
+  
+  return r;  
 }
 
 int main() {
-  int T;  // number of T
+  int T;
   scanf("%d", &T);
-  //
+
   for (int t = 0; t < T; ++t) {
-    scanf("%d", &N);
-    scanf("%d", &K);
-
-    std::vector<int> soldiers(N);
-    for (int i=0; i < N; i++) {
-      soldiers[i] = i+1;
-    }
-
-    suicide(&soldiers, K);
-    // print_vector(psum);
-    printf("%d %d\n", soldiers[0], soldiers[1]);
+    scanf("%d %d", &N, &K);    
+    std::vector<int> r = Solve();
+    printf("%d %d\n", r[0]+1, r[1]+1);
+    // printf("%d %d\n", r[0], r[1]);
   }
+  
   return 0;
 }
+
