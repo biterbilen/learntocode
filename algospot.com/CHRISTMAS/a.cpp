@@ -7,8 +7,18 @@
 int N, K;
 
 // max counts of one order way
-int Solve1(const std::vector<int>& psum) {
-  return 0;
+// use the form nC2
+int Solve1(const std::vector<int>& remsofpsum) {
+  int r;
+  int n = 0; // max rem
+
+  std::vector<int> rems(K, 0);
+
+  for (int i = 0; i < N; ++i) {
+    n = rems[remsofpsum[i]];
+  }
+
+  return r;
 }
 
 // max counts of several order ways
@@ -28,11 +38,11 @@ int main() {
         scanf("%d", &v[i]);
       }
       // build psum
-      psum[0] = v[0];
+      psum[0] = v[0] % K;
       for (int i = 1; i < N; ++i) {
-        psum[i] = psum[i-1] + v[i];
+        psum[i] = (psum[i-1] + v[i]) % K;
       }
-      psum.insert(psum.begin(), 0);
+      // psum.insert(psum.begin(), 0);
       printf("%d %d\n", Solve1(psum), Solve2(psum));
     }
 
