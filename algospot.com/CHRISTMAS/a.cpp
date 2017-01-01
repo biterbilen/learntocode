@@ -6,17 +6,27 @@
 
 int N, K;
 
+void PrintVInt(const std::vector<int>& v) {
+  for (const int& i : v) {
+    printf("%d ", i);
+  }
+  printf("\n");
+}
+
 // max counts of one order way
 // use the form nC2
 int Solve1(const std::vector<int>& remsofpsum) {
-  int r;
-  int n = 0; // max rem
+  int r = 0;
 
   std::vector<int> rems(K, 0);
 
-  for (int i = 0; i < N; ++i) {
-    n = rems[remsofpsum[i]];
+  for (int i = 0; i <= N; ++i) {
+    ++rems[remsofpsum[i]];
   }
+  for (int i = 0; i < K; ++i) {
+    r += (rems[i] * (rems[i] - 1) / 2) % 20091101;
+  }
+  // PrintVInt(rems);
 
   return r;
 }
@@ -24,25 +34,22 @@ int Solve1(const std::vector<int>& remsofpsum) {
 // max counts of several order ways
 // should give away all dolls per one order
 int Solve2(const std::vector<int>& psum) {
-  return 0;
+  int r = 0;
+  return r;
 }
 
 int main() {
     int T;
     scanf("%d", &T);
     for (int t = 0; t < T; ++t) {
-      scanf("%d %d", &K, &N);
-      std::vector<int> v(N, 0);
+      scanf("%d %d", &N, &K);
       std::vector<int> psum(N+1, 0);
+      psum[0] = 0;
       for (int i = 0; i < N; ++i) {
-        scanf("%d", &v[i]);
+        int n;
+        scanf("%d", &n);
+        psum[i+1] = (psum[i] + n) % K;
       }
-      // build psum
-      psum[0] = v[0] % K;
-      for (int i = 1; i < N; ++i) {
-        psum[i] = (psum[i-1] + v[i]) % K;
-      }
-      // psum.insert(psum.begin(), 0);
       printf("%d %d\n", Solve1(psum), Solve2(psum));
     }
 
