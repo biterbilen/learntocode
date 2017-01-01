@@ -28,13 +28,15 @@ bool IsPrerequisited(int idx, int taken) {
     // i should be not lecture
     if (i == idx)
       continue;
+    int bm = (req[idx] & (1 << i));
+    if (bm == 0)
+      continue;
     // printf("-----%d\n", lecture);
     // PrintCourse(req[lecture]);
     // PrintCourse(taken);
     // if i is not taken return false;
-    if ((taken & (req[idx] & (1 << i))) == 0) {
+    if ((taken & bm) == 0)
       return false;
-    }
   }
   return true;
 }
@@ -51,17 +53,20 @@ int GetLecCnt(int taken) {
 // order = this semester order
 // taken = taken courses bitmask
 int Solve(int order, int taken) {
-  // base condition
-  if (GetLecCnt(taken) >= K && order < L)
-    return 0;
-  else if (order >= L || sem[order] == 0)
-    return MAXINT;
+  // printf("  %d | ", order);
+  // PrintCourse(taken);
 
   // memoization
   int& r = CACHE[order][taken];
   if (r > -1)
     return r;
   r = 0;
+
+  // base condition
+  if (GetLecCnt(taken) >= K && order <= L)
+    return r = 0;
+  else if (order > L || sem[order] == 0)
+    return MAXINT;
 
   int willbetaken = 0;
   // recursion
@@ -76,13 +81,13 @@ int Solve(int order, int taken) {
       willbetaken |= (1 << i);
   }
 
-  printf("  %d, %d | ", order, GetLecCnt(taken));
-  PrintCourse(taken);
-  printf("         ");
-  PrintCourse(willbetaken);
+  // printf("  %d | ", order);
+  // PrintCourse(taken);
+  // printf("      ");
+  // PrintCourse(willbetaken);
 
-  if (willbetaken > 0)
-    r = Solve(order + 1, taken | willbetaken) + 1;
+  int delta = willbetaken > 0 ? 1 : 0;
+  r = Solve(order + 1, taken | willbetaken) + delta;
 
   return r;
 }
