@@ -31,11 +31,22 @@ int Solve1(const std::vector<int>& remsofpsum) {
   return r;
 }
 
-// max counts of several order ways
+// it's very difficult to understand the problem.
+// several order counts
 // should give away all dolls per one order
-int Solve2(const std::vector<int>& psum) {
-  int r = 0;
-  return r;
+int Solve2(const std::vector<int>& rpsum) {
+  // r[i] : max order counts at i
+  std::vector<int> r(rpsum.size(), 0);
+  std::vector<int> prev(rpsum.size(), -1);
+  //
+  for (int i = 0; i < rpsum.size(); ++i) {
+    //
+    int loc = prev[rpsum[i]];
+    if (loc >= 0)
+      r[i] = std::max(r[i-1], r[loc] + 1);
+    prev[rpsum[i]] = i;
+  }
+  return r.back();
 }
 
 int main() {
