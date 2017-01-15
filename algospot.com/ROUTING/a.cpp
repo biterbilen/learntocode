@@ -15,15 +15,16 @@ int N, M;
 std::vector<std::pair<int, double> > adj[10000];
 
 double Dijkstra(int srcnode) {
-  double r = MAX_INT;
+  double r = std::numeric_limits<double>::max();
   std::vector<double> dist(N, std::numeric_limits<double>::max());
   double srccost = 1.0;
   dist[srcnode] = srccost;
   // -cost, vertex
-  std::priority_queue<std::pair<int, double> > pq;
+  std::priority_queue<std::pair<double, int> > pq;
   pq.push(std::make_pair(-srccost, srcnode));
+
   while (!pq.empty()) {
-    int herecost = -pq.top().first;
+    double herecost = -pq.top().first;
     int herenode = pq.top().second;
     pq.pop();
 
@@ -33,16 +34,16 @@ double Dijkstra(int srcnode) {
     for (int i = 0; i < adj[herenode].size(); ++i) {
       int therenode = adj[herenode][i].first;
       double therecost = herecost * adj[herenode][i].second;
+      // printf("%d %lf = %lf * %lf\n", therenode, therecost, herecost, adj[herenode][i].second);
+
       if (dist[therenode] > therecost) {
         dist[therenode] = therecost;
         pq.push(std::make_pair(-therecost, therenode));
-        r = std::min(r, therecost);
-        printf("%d %lf %lf\n", therenode, therecost, r);
       }
     }
   }
 
-  return r;
+  return dist[N-1];
 }
 
 int main() {

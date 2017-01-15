@@ -10,13 +10,16 @@ int N, M, D;
 
 int append(int here, int edge, int mod) {
   int there = here * 10 + edge;
-  if (there >= mod)
+  if (there >= mod) {
+    // ???
     return mod + there % mod;
+  }
   return there % mod;
 }
 
 std::string Solve(std::string digits) {
   std::sort(digits.begin(), digits.end());
+  // ???
   std::vector<int> parent(2 * N, -1);
   std::vector<int> choice(2 * N, -1);
   std::queue<int> q;
@@ -36,7 +39,7 @@ std::string Solve(std::string digits) {
       }
     }
   }
-  //
+  // ???
   if (parent[N + M] == -1)
     return "IMPOSSIBLE";
   //

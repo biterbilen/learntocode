@@ -55,10 +55,12 @@ int Solve(const std::vector<int>& a,
     int delta = a[i] - b[i];
     adj[START].push_back(std::make_pair(vertex(delta), a[i]));
   }
-  for (int delta = -200; delta <= 200; ++delta) {
+  for (int delta = -199; delta <= 199; ++delta) {
+  // for (int delta = -200; delta <= 200; ++delta) {
     for (int i = 0; i < a.size(); ++i) {
       int next = delta + a[i] - b[i];
-      if (std::abs(next) > 200)
+      // why 200 ???
+      if (std::abs(next) >= 200)
         continue;
       adj[vertex(delta)].push_back(
           std::make_pair(vertex(next), a[i]));
