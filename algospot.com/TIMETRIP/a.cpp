@@ -88,7 +88,7 @@ int main() {
       scanf("%d %d %d", &a, &b, &d);
       adj[a].push_back(std::make_pair(b, d));
       reachable[a][b] = true;
-      reachable[b][a] = true;
+      // reachable[b][a] = true;
     }
     // set reachable
     for (int k = 0; k < MAX_V; ++k) {

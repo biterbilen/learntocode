@@ -4,8 +4,11 @@
 class Solution {
 public:
     string reverseString(string s) {
-        string r(s);
-        reverse(r.begin(), r.end());
-        return r;
+        int i = 0;
+        int j = s.size() - 1;
+        while (i < j) {
+            swap(s[i], s[j]);
+        }
+        return s;
     }
 };
