@@ -36,20 +36,20 @@ int FordFulkerson(int source, int sink) {
           parent[there] = here;
         }
       }
-      // terminate if there is no augmenting path
-      if (parent[sink] == -1)
-        break;
-
-      int amount = MAX_I;
-      for (int p = sink; p != source; p = parent[p]) {
-        amount = std::min(capacity[parent[p]][p] - flow[parent[p]][p], amount);
-      }
-      for (int p = sink; p != source; p = parent[p]) {
-        flow[parent[p]][p] += amount;
-        flow[p][parent[p]] -= amount;
-      }
-      r += amount;
     }
+    // terminate if there is no augmenting path
+    if (parent[sink] == -1)
+      break;
+
+    int amount = MAX_I;
+    for (int p = sink; p != source; p = parent[p]) {
+      amount = std::min(capacity[parent[p]][p] - flow[parent[p]][p], amount);
+    }
+    for (int p = sink; p != source; p = parent[p]) {
+      flow[parent[p]][p] += amount;
+      flow[p][parent[p]] -= amount;
+    }
+    r += amount;
   }
 
   return r;
@@ -60,10 +60,13 @@ bool CanWinWith(int total_win) {
   if (*std::max_element(wins+1, wins+N) >= total_win)
     return false;
   for (int i = 0; i < M; ++i) {
+    // from source to match
     capacity[0][2 + i] = 1;
+    // from match to person
     for (int j = 0; j < 2; ++j) {
       capacity[2 + i][2 + M + match[i][j]] = 1;
     }
+    // from person to sink
     for (int i = 0; i < N; ++i) {
       int maxwin = (i == 0 ? total_win : total_win - 1);
       capacity[2 + M + i][1] = maxwin - wins[i];

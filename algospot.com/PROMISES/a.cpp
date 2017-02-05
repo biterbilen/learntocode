@@ -38,22 +38,21 @@ int FordFulkerson(int source, int sink) {
           parent[there] = here;
         }
       }
-      // terminate if there is no augmenting path
-      if (parent[sink] == -1)
-        break;
-
-      int amount = MAX_I;
-      for (int p = sink; p != source; p = parent[p]) {
-        amount = std::min(capacity[parent[p]][p] - flow[parent[p]][p], amount);
-      }
-      for (int p = sink; p != source; p = parent[p]) {
-        flow[parent[p]][p] += amount;
-        flow[p][parent[p]] -= amount;
-      }
-      r += amount;
     }
+    // terminate if there is no augmenting path
+    if (parent[sink] == -1)
+      break;
+    int amount = MAX_I;
+    for (int p = sink; p != source; p = parent[p]) {
+      amount = std::min(amount,
+                        capacity[parent[p]][p] - flow[parent[p]][p]);
+    }
+    for (int p = sink; p != source; p = parent[p]) {
+      flow[parent[p]][p] += amount;
+      flow[p][parent[p]] -= amount;
+    }
+    r += amount;
   }
-
   return r;
 }
 
