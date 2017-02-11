@@ -6,6 +6,8 @@ all: TAGS a.out
 
 a.out: a.o
 	$(CXX) $^ $(LDFLAGS) -o $@
+a.exe: a.o
+	$(CXX) $^ $(LDFLAGS) -o $@
 
 %.o: %.cpp
 	$(CXX)  -c $(CXXFLAGS) -o $@ $< -MMD

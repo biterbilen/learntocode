@@ -1,74 +1,79 @@
-#include <iostream>
-#include <cstring>
+// Copyright (C) 2017 by iamslash
+// https://algospot.com/judge/problem/read/BOGGLE
 
-using namespace std;
+#include <cstdio>
+#include <vector>
+#include <string>
 
-bool is_found_syllable(char cache[][5][5], char board[][6], char word[], int r, int c, int idx)
-{
-    if (word[idx] == 0) return true;
-    if (r < 0 || r >= 5) return false;
-    if (c < 0 || c >= 5) return false;
+int N;
+//char BOARD[5][5];
+std::vector<std::string> BOARD;
+const int y[8] = {1, 1, 1, 0, -1, -1, -1, 0};
+const int x[8] = {-1, 0, 1, 1, 1, 0, -1, -1};
 
-    char& elem = cache[idx][r][c];
-    
-    if (elem != -1) return elem;
-    if (board[r][c] != word[idx]) return elem = false;
-    
-    return elem =
-        is_found_syllable(cache, board, word, r  , c-1, idx+1) ||
-        is_found_syllable(cache, board, word, r+1, c-1, idx+1) ||
-        is_found_syllable(cache, board, word, r+1, c  , idx+1) ||
-        is_found_syllable(cache, board, word, r+1, c+1, idx+1) ||
-        is_found_syllable(cache, board, word, r  , c+1, idx+1) ||
-        is_found_syllable(cache, board, word, r-1, c+1, idx+1) ||
-        is_found_syllable(cache, board, word, r-1, c  , idx+1) ||
-        is_found_syllable(cache, board, word, r-1, c-1, idx+1);
+bool IsValid(int y, int x) {
+  if (y < 0 || y >= 5 || x < 0 || x >= 5)
+    return false;
+  return true;
 }
 
-bool is_found_word(char cache[][5][5], char board[][6], char word[])
-{
-    int r = 2;
-    int c = 2;
-    int idx = -1;
 
-    for (int r=0; r<5; ++r)
-        for (int c=0; c<5; ++c)
-        {
-            if (is_found_syllable(cache, board, word, r, c, 0))
-                return true;
-        }
+bool Solve(int y, int x, const std::string& src, int found) {
+
+  // base condition, invalid range
+  if (!IsValid(y, x))
     return false;
+  // base condition, found all
+  else if (found >= src.size())
+    return true;
+  // base condition, wrong character
+  else if (src[found] != BOARD[y][x])
+    return false;
+
+  // recursion
+  for (int i = 0; i < 8; ++i) {
+    
+  }
+  
+  return true;
 }
 
 int main() {
-    
-    int C;
-    cin >> C;
-    int N;
 
-    for(int c=0; c<C; ++c)
-    {
-        char ar_board[5][6] = {0,}; //
+  int T;
+  scanf("%d", &T);
 
-        for (int i=0; i<5; ++i)
-            scanf("%s", ar_board[i]);
-
-        scanf("%d", &N);
-        
-        for (int n=0; n<N; ++n)
-        {
-            char ar_words[11] = {0,}; // row, colum
-            char ar_cache[11][5][5];
-            memset(ar_cache, -1, sizeof(ar_cache));
-            
-            scanf("%s", ar_words);
-            
-            cout << ar_words
-                 << " "
-                 << (is_found_word(ar_cache, ar_board, ar_words) ? "YES" : "NO")  
-                 << endl;
-        }       
+  for (int t = 0; t < T; ++t) {
+    BOARD.clear();
+    for (int i = 0; i < 5; ++i) {
+      char buf[12];
+      scanf("%s", buf);
+      BOARD.push_back(buf);
     }
-  
-    return 0;
+
+    scanf("%d", &N);
+
+    printf("%d...\n", N);
+
+    for (int i = 0; i < N; ++i) {
+      
+      char buf[12] = {0, };
+      scanf("%s", buf);
+      bool r = Solve(2, 2, buf, 0);
+      printf("%s %s\n", buf, r ? "YES" : "NO");
+    }       
+  }
 }
+
+
+// int main() {
+
+//   std::string v;
+//   for (int i = 0; i < 5; ++i) {
+//     char buf;
+//     scanf("%c", buf);
+//     v.push_back(buf);
+//   }
+//   printf("%s\n", v.c_str());  
+//   return 0;
+// }
