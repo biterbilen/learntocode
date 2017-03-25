@@ -1,113 +1,93 @@
 // Copyright (C) 2016 by iamslash
 // https://algospot.com/judge/problem/read/FORTRESS
 
-#include <string>
+#include <cstdio>
+#include <cmath>
 #include <vector>
-#include <algorithm>
-#include <iostream>
 
 int N;
-std::vector<int> v_x;
-std::vector<int> v_y;
-std::vector<int> v_r;
+std::vector<int> vx;
+std::vector<int> vy;
+std::vector<int> vr;
 
-// 지금까지 찾은 가장 긴 잎-잎 경로의 길이를 저장한다.
-int longest;
-
-struct TreeNode {
+class TreeNode {
+ public:
+  int idx;
+  int height;
   std::vector<TreeNode*> children;
+  explicit TreeNode(int _idx, int _height) : idx(_idx), height(_height) {}
 };
 
-void print_v_int(const std::vector<int>& g) {
-  // printf(" <----\n");
-  for (int i=0; i < g.size(); ++i) {
-    printf("%4d ", g[i]);
-  }
-  printf("\n");
+// is idx_dst is included in idx_src???
+bool IsIn(int idx_src, int idx_dst) {
+  int src_x = vx[idx_src];
+  int src_y = vy[idx_src];
+  int src_r = vr[idx_src];
+  int dst_x = vx[idx_dst];
+  int dst_y = vy[idx_dst];
+  int dst_r = vr[idx_dst];
+
+  int diff_x = src_x - dst_x;
+  int diff_y = src_y - dst_y;
+  int dist = sqrt(diff_x * diff_x + diff_y * diff_y);
+
+  if (dist + dst_r <= src_r)
+    return true;
+  return false;
 }
 
-int sqr(int x) {
-  return x * x;
-}
-
-int sqrdist(int a, int b) {
-  return sqr(v_x[a] - v_x[b]) + sqr(v_y[a] - v_y[b]);
-}
-
-bool enclose(int a, int b) {
-  return v_r[a] > v_r[b] &&
-      sqrdist(a, b) < sqr(v_r[a] - v_r[b]);
-}
-
-bool is_child(int parent, int child) {
-  if (!enclose(parent, child))
-    return false;
-  // 간접적으로 포함하는 것인지 조사해 본다.
-  for (int i = 0; i < N; ++i) {
-    if (i != parent && i != child &&
-        enclose(parent, i) && enclose(i, child))
-      return false;
-  }
-  return true;
-}
-
-TreeNode* get_tree(int root) {
-  TreeNode* r = new TreeNode();
-  for (int ch = 0; ch < N; ++ch) {
-    if (is_child(root, ch))
-      r->children.push_back(get_tree(ch));
-  }
-  return r;
-}
-
-// root틀 루트로 하는 서브트리의 높이를 계산한다.
-int height(TreeNode* root) {
-  std::vector<int> heights;
-
-  // recursion
-  for (int i = 0; i < root->children.size(); ++i)
-    heights.push_back(height(root->children[i]));
-
+int BuildTree(TreeNode* p, int idx) {
   // base condition
-  if (heights.empty())
-    return 0;
-  std::sort(heights.begin(), heights.end());
-
-  if (heights.size() >= 2)
-    longest = std::max(longest, 2 + heights[heights.size() - 2] +
-                       heights[heights.size() - 1]);
-  return heights.back() + 1;
+  if (p->children.size() == 0) {
+    TreeNode* pnew = new TreeNode(idx, p->height+1);
+    p->children.push_back(pnew);
+    return pnew->height;
+  } else {
+    // recursion
+    for (int i = 0; i < p->children.size(); ++i) {
+      TreeNode* pchild = p->children[i];
+      if (IsIn(pchild->idx, idx)) {
+        return BuildTree(pchild, idx);
+      }
+    }
+    TreeNode* pnew = new TreeNode(idx, p->height+1);
+    p->children.push_back(pnew);
+    return pnew->height;
+  }
 }
 
-// 두 노드 사이의 가장 긴 경로의 길이를 계산한다.
-int solve(TreeNode* root) {
-  longest = 0;
-  int h = height(root);
-  return std::max(longest, h);
+int Solve() {
+  int maxh0 = 0, maxh1 = 0;
+
+  TreeNode* p = new TreeNode(0, 0);
+  for (int i = 1; i < N; ++i) {
+    int h = BuildTree(p, i);
+    if (maxh1 < h) {
+      maxh0 = maxh1;
+      maxh1 = h;
+    } else if (maxh0 < h && maxh1 > h) {
+      maxh0 = h;
+    }
+  }
+
+  return 0;
 }
 
 int main() {
   int T;
-  std::cin >> T;
-
+  scanf("%d", &T);
   for (int t = 0; t < T; ++t) {
-    std::cin >> N;
-    v_x.resize(N);
-    v_y.resize(N);
-    v_r.resize(N);
-
+    scanf("%d", &N);
+    vx.clear(); vx.resize(N);
+    vy.clear(); vy.resize(N);
+    vr.clear(); vr.resize(N);
     for (int i = 0; i < N; ++i) {
-      scanf("%d %d %d", &v_x[i], &v_y[i], &v_r[i]);
+      int x, y, r;
+      scanf("%d %d %d", &vx[i], &vy[i], &vr[i]);
     }
-
-    // print_v_int(v_x);
-    // print_v_int(v_y);
-    // print_v_int(v_r);
-
-    TreeNode* root = get_tree(0);
-
-    printf("%d\n", solve(root));
+    printf("%d\n", Solve());
   }
-  //
+
   return 0;
 }
+
