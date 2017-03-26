@@ -1,10 +1,11 @@
 // Copyright (C) 2016 by iamslash
-// https://algospot.com/judge/problem/read/NERDS2
+// https://algospot.com/judge/problem/read/NERD2
 
 #include <string>
 #include <algorithm>
 #include <iostream>
 #include <map>
+#include <vector>
 
 int N;
 
@@ -77,6 +78,11 @@ int main() {
     }
     printf("%d\n", r);
   }
-  //
+  
+
+  // std::vector<int> v = {0, 1, 2, 3, 4, 5};
+  // printf("%d\n", *std::lower_bound(v.begin(), v.end(), 3));
+  // printf("%d\n", *std::upper_bound(v.begin(), v.end(), 3));
+
   return 0;
 }
