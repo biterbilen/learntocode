@@ -31,13 +31,12 @@ struct FenwickTree {
 
 
 int64_t solve(const std::vector<int>& v) {
-  FenwickTree ft(1000000);
+  FenwickTree ft(N+1);
   int64_t r = 0;
-  for (int i = 0; i <v.size(); ++i) {
-    r += ft.sum(999999) - ft.sum(v[i]);
+  for (int i = 0; i < v.size(); ++i) {
+    r += ft.sum(N) - ft.sum(v[i]);
     ft.add(v[i], 1);
   }
-
   return r;
 }
   
