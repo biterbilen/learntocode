@@ -18,19 +18,15 @@ int get_num(const std::string& s) {
   return r;
 }
 
-char get_cap_chr(int n) {
-  return 'A' + n - 1;
-}
-
 std::string get_str(int n) {
   std::string r = "";
   int div = n;
   int mod;
   while (true) {
-    n = div;
-    div = n / 26; // 2
-    mod = n % 26; // 3
-    r.insert(0, 1, get_cap_chr(mod));
+    n = div - 1;
+    div = n / 26;  // 2
+    mod = n % 26;  // 3
+    r.insert(0, 1, 'A' + mod);
     // printf("%s\n", r);
     if (div == 0)
       break;
@@ -59,7 +55,8 @@ std::string get_numeration_2(const std::string row,
 }
 
 int main() {
-  std::regex re0("[A-Z]+[0-9]+");
+  std::regex re0("[A-Z][0-9]+");
+  std::regex re1("R[0-9]+C[0-9]+");
   std::regex renum("[0-9]+");
   std::regex restr("[A-Z]+");
   int N;
@@ -74,13 +71,7 @@ int main() {
     std::string col;
 
     std::string r;
-    if (std::regex_match(msg, re0)) {
-      std::regex_search(msg, mresult, restr);
-      col = mresult[0];
-      std::regex_search(msg, mresult, renum);
-      row = mresult[0];
-      r = get_numeration_1(row, col);
-    } else {
+    if (std::regex_match(msg, re1)) {
       while (std::regex_search(msg, mresult, renum)) {
         if (row.size() == 0)
           row = mresult[0];
@@ -90,11 +81,20 @@ int main() {
       }
       // printf("  %s %s\n", row.c_str(), col.c_str());
       r = get_numeration_2(row, col);
+
+    } else {
+      std::regex_search(msg, mresult, restr);
+      col = mresult[0];
+      std::regex_search(msg, mresult, renum);
+      row = mresult[0];
+      r = get_numeration_1(row, col);
     }
     printf("%s\n", r.c_str());
   }
-
-  // printf("%s\n", get_str(55).c_str());
+  // R228C494
+  // printf("%s\n", get_str(494).c_str());
+  // printf("%s\n", get_str(26).c_str());
+  // printf("%s\n", get_str(27).c_str());
   // printf("%d\n", get_num("BC"));
 
   return 0;
