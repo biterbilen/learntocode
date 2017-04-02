@@ -5,6 +5,9 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <algorithm>
+
+const int ALPHABETS = 26;
 
 int N, M;
 std::vector<std::pair<int, int>> DICT;
@@ -18,13 +21,78 @@ void print_v_string(const std::vector<std::string>& v) {
   printf("\n");
 }
 
-class TrieNode {
+struct TrieNode {
+  TrieNode* children[ALPHABETS];
+  int terminal;  // dictword index for terminal node
+  int first;  // first recommendation
+  TrieNode() : terminal(-1), first(-1) {}
+  ~TrieNode() {
+    for (int i = 0; i < ALPHABETS; ++i) {
+      if (children[i] != NULL)
+        delete children[i];
+    }
+  }
+  int to_num(char c) {
+    return c - 'A';
+  }
+  void insert(const char * key, int idx) {
+    // base condition
+    if (first == -1)
+      first = idx;
+    if (*key == 0) {
+      terminal = idx;
+      return;
+    }
+    // recursion
+    int next = *key;
+    if (children[next] == NULL)
+      children[next] = new TrieNode();
+    children[next]->insert(key + 1, idx);
+  }
+  TrieNode* find(const char * key) {
+    // base condition
+    if (*key == 0)
+      return this;
+    // recursion
+    int next = *key;
+    if (children[next] == NULL)
+      return this;
+    return children[next]->find(key + 1);
+  }
+  int type(const char * key, int idx) {
+    // base condition
+    if (*key == 0)
+      return 0;
+    if (first == idx)
+      return 1;
+    // recursion
+    return 1 + type(key + 1, idx);
+  }
 };
 
+TrieNode* build_trie() {
+  TrieNode* proot = new TrieNode();
+  std::sort(DICTWORDS.begin(), DICTWORDS.end());
+  for (int i = 0; i < DICTWORDS.size(); ++i) {
+    proot->insert(DICTWORDS[i].c_str(), i);
+  }
+  return proot;
+}
+
+int count_keys(TrieNode* proot, const std::string& w, int idx) {
+  TrieNode* pnode = proot->find(w.c_str());
+  if (pnode == NULL || pnode->terminal == -1)
+    return w.size();
+  return pnode->type(w.c_str(), idx);
+}
+
 int solve() {
-  
-  
-  return 0;
+  int r = 0;
+  TrieNode * proot = build_trie();
+  for (int i = 0; i < WORDS.size(); ++i) {
+    r += count_keys(proot, WORDS[i], i);
+  }
+  return r + WORDS.size() - 1;
 }
 
 int main() {
@@ -42,15 +110,15 @@ int main() {
       scanf("%s %d", buf, &priority);
       DICTWORDS[i] = buf;
       PRIORITIES[i] = priority;
-      DICT[i] = std::make_pair(i, priority);
+      DICT[i] = std::make_pair(priority, i);
     }
     for (int i = 0; i < M; ++i) {
       char buf[16];
       scanf("%s", buf);
       WORDS[i] = buf;
     }
-    print_v_string(WORDS);
-    // printf("%d\n", solve());
+    // print_v_string(WORDS);
+    printf("%d\n", solve());
   }
   return 0;
 }
