@@ -44,7 +44,7 @@ struct TrieNode {
       return;
     }
     // recursion
-    int next = *key;
+    int next = to_num(*key);
     if (children[next] == NULL)
       children[next] = new TrieNode();
     children[next]->insert(key + 1, idx);
@@ -54,7 +54,7 @@ struct TrieNode {
     if (*key == 0)
       return this;
     // recursion
-    int next = *key;
+    int next = to_num(*key);
     if (children[next] == NULL)
       return this;
     return children[next]->find(key + 1);
@@ -92,6 +92,7 @@ int solve() {
   for (int i = 0; i < WORDS.size(); ++i) {
     r += count_keys(proot, WORDS[i], i);
   }
+  delete proot;
   return r + WORDS.size() - 1;
 }
 
