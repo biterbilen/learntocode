@@ -12,7 +12,6 @@ const int ALPHABETS = 26;
 int N, M;
 std::vector<std::pair<int, int>> DICT;
 std::vector<std::string> DICTWORDS;
-std::vector<int> PRIORITIES;
 std::vector<std::string> WORDS;
 
 void print_v_string(const std::vector<std::string>& v) {
@@ -37,12 +36,12 @@ struct TrieNode {
   }
   void insert(const char * key, int idx) {
     // base condition
-    if (first == -1)
-      first = idx;
     if (*key == 0) {
       terminal = idx;
       return;
     }
+    if (first == -1)
+      first = idx;
     // recursion
     int next = to_num(*key);
     if (children[next] == NULL)
@@ -72,9 +71,9 @@ struct TrieNode {
 
 TrieNode* build_trie() {
   TrieNode* proot = new TrieNode();
-  std::sort(DICTWORDS.begin(), DICTWORDS.end());
-  for (int i = 0; i < DICTWORDS.size(); ++i) {
-    proot->insert(DICTWORDS[i].c_str(), i);
+  std::sort(DICT.begin(), DICT.end());
+  for (int i = 0; i < DICT.size(); ++i) {
+    proot->insert(DICTWORDS[DICT[i].second].c_str(), DICT[i].second);
   }
   return proot;
 }
@@ -90,7 +89,9 @@ int solve() {
   int r = 0;
   TrieNode * proot = build_trie();
   for (int i = 0; i < WORDS.size(); ++i) {
-    r += count_keys(proot, WORDS[i], i);
+    int cnt = count_keys(proot, WORDS[i], i);
+    printf("  %s %d\n", WORDS[i].c_str(), cnt);
+    r += cnt;
   }
   delete proot;
   return r + WORDS.size() - 1;
@@ -103,15 +104,13 @@ int main() {
     scanf("%d %d", &N, &M);
     DICT.clear(); DICT.resize(N);
     DICTWORDS.clear(); DICTWORDS.resize(N);
-    PRIORITIES.clear(); PRIORITIES.resize(N);
     WORDS.clear(); WORDS.resize(M);
     for (int i = 0; i < N; ++i) {
       char buf[16];
       int priority;
       scanf("%s %d", buf, &priority);
       DICTWORDS[i] = buf;
-      PRIORITIES[i] = priority;
-      DICT[i] = std::make_pair(priority, i);
+      DICT[i] = std::make_pair(-priority, i);
     }
     for (int i = 0; i < M; ++i) {
       char buf[16];
