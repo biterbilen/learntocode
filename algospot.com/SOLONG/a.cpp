@@ -44,10 +44,12 @@ struct TrieNode {
       first = idx;
     if (*key == 0) {
       terminal = idx;
-      // printf("  insert: first: %2d terminal: %2d\n", first, terminal);
+      printf("  insert:   idx: %2d first: %2d terminal: %2d\n",
+             idx, first, terminal);
       return;
     }
-    // printf("  insert: %2c first: %2d terminal: %2d\n", *key, first, terminal);
+    printf("  insert: %c idx: %2d first: %2d terminal: %2d\n",
+           *key, idx, first, terminal);
 
     // recursion
     int next = to_num(*key);
@@ -66,6 +68,7 @@ struct TrieNode {
     return children[next]->find(key + 1);
   }
   int type(const char * key, int idx) {
+    printf("    %c idx: %d first: %d\n", *key, idx, first);
     // base condition
     if (*key == 0)
       return 0;
@@ -73,7 +76,6 @@ struct TrieNode {
       return 1;
     // recursion
     int next = to_num(*key);
-    printf("    %d %c\n", next, *key);
     return 1 + children[next]->type(key + 1, idx);
   }
 };
@@ -88,15 +90,14 @@ TrieNode* build_trie() {
   return proot;
 }
 
-int count_keys(TrieNode* proot, const std::string& w, int idx) {
+int count_keys(TrieNode* proot, const std::string& w) {
   TrieNode* pnode = proot->find(w.c_str());
   if (pnode == NULL || pnode->terminal == -1) {
     // printf("  %s\n", w.c_str());
     return w.size();
   }
-  // printf("  %d %s %d\n", idx, w.c_str(), pnode->terminal);
+  // printf("  %s %d\n", w.c_str(), pnode->terminal);
   int r = pnode->type(w.c_str(), pnode->terminal);
-  // printf("  %d %s %d\n", idx, w.c_str(), r);
   return r;
 }
 
@@ -104,7 +105,7 @@ int solve() {
   int r = 0;
   TrieNode * proot = build_trie();
   for (int i = 0; i < WORDS.size(); ++i) {
-    int cnt = count_keys(proot, WORDS[i], i);
+    int cnt = count_keys(proot, WORDS[i]);
     printf("  %s %d\n", WORDS[i].c_str(), cnt);
     r += cnt;
   }
@@ -126,7 +127,7 @@ int main() {
       scanf("%s %d", buf, &priority);
       DICTWORDS[i] = buf;
       DICT[i] = std::make_pair(-priority, i);
-      // printf("%d %s\n", i, DICTWORDS[i].c_str());
+      printf("%d %s\n", i, DICTWORDS[i].c_str());
     }
     for (int i = 0; i < M; ++i) {
       char buf[16];
