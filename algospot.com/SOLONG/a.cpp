@@ -24,7 +24,11 @@ struct TrieNode {
   TrieNode* children[ALPHABETS];
   int terminal;  // dictword index for terminal node
   int first;  // first recommendation
-  TrieNode() : terminal(-1), first(-1) {}
+  TrieNode() : terminal(-1), first(-1) {
+    for (int i = 0; i < ALPHABETS; ++i) {
+      children[i] = NULL;
+    }
+  }
   ~TrieNode() {
     for (int i = 0; i < ALPHABETS; ++i) {
       if (children[i] != NULL)
@@ -36,12 +40,15 @@ struct TrieNode {
   }
   void insert(const char * key, int idx) {
     // base condition
-    if (*key == 0) {
-      terminal = idx;
-      return;
-    }
     if (first == -1)
       first = idx;
+    if (*key == 0) {
+      terminal = idx;
+      // printf("  insert: first: %2d terminal: %2d\n", first, terminal);
+      return;
+    }
+    // printf("  insert: %2c first: %2d terminal: %2d\n", *key, first, terminal);
+
     // recursion
     int next = to_num(*key);
     if (children[next] == NULL)
@@ -55,7 +62,7 @@ struct TrieNode {
     // recursion
     int next = to_num(*key);
     if (children[next] == NULL)
-      return this;
+      return NULL;
     return children[next]->find(key + 1);
   }
   int type(const char * key, int idx) {
@@ -65,7 +72,9 @@ struct TrieNode {
     if (first == idx)
       return 1;
     // recursion
-    return 1 + type(key + 1, idx);
+    int next = to_num(*key);
+    printf("    %d %c\n", next, *key);
+    return 1 + children[next]->type(key + 1, idx);
   }
 };
 
@@ -75,14 +84,20 @@ TrieNode* build_trie() {
   for (int i = 0; i < DICT.size(); ++i) {
     proot->insert(DICTWORDS[DICT[i].second].c_str(), DICT[i].second);
   }
+  proot->first = -1;
   return proot;
 }
 
 int count_keys(TrieNode* proot, const std::string& w, int idx) {
   TrieNode* pnode = proot->find(w.c_str());
-  if (pnode == NULL || pnode->terminal == -1)
+  if (pnode == NULL || pnode->terminal == -1) {
+    // printf("  %s\n", w.c_str());
     return w.size();
-  return pnode->type(w.c_str(), idx);
+  }
+  // printf("  %d %s %d\n", idx, w.c_str(), pnode->terminal);
+  int r = pnode->type(w.c_str(), pnode->terminal);
+  // printf("  %d %s %d\n", idx, w.c_str(), r);
+  return r;
 }
 
 int solve() {
@@ -111,13 +126,14 @@ int main() {
       scanf("%s %d", buf, &priority);
       DICTWORDS[i] = buf;
       DICT[i] = std::make_pair(-priority, i);
+      // printf("%d %s\n", i, DICTWORDS[i].c_str());
     }
     for (int i = 0; i < M; ++i) {
       char buf[16];
       scanf("%s", buf);
       WORDS[i] = buf;
     }
-    // print_v_string(WORDS);
+    // print_v_string(DICTWORDS);
     printf("%d\n", solve());
   }
   return 0;
