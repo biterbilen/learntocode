@@ -8,16 +8,56 @@
 #include <queue>
 
 #define MAX_V 100
-#define MAX_I 987654321
+#define MAX_INT 987654321
 
 int V, W;
 std::vector<std::pair<int, int> > adj[MAX_V];
 bool reachable[MAX_V][MAX_V];
 
 int bellmanfordmin(int src, int dst) {
+  std::vector<int> upper(V, MAX_INT);
+  upper[src] = 0;
+  bool updated = false;
+  for (int i = 0; i < V; ++i) {
+    updated = false;
+    for (int herenode = 0; herenode < V; ++herenode) {
+      int herecost  = upper[herenode];
+      int therenode = adj[herenode][i].first;
+      int therecost = herecost + adj[herenode][i].second;
+      if (upper[therenode] > therecost) {
+        upper[therenode] = therecost;
+        updated = true;
+      }
+    }
+    if (!updated)
+      break;
+  }
+  if (updated)
+    upper.clear();
+  return upper[dst];
 }
 
 int bellmanfordmax(int src, int dst) {
+  std::vector<int> upper(V, MAX_INT);
+  upper[src] = 0;
+  bool updated = false;
+  for (int i = 0; i < V; ++i) {
+    updated = false;
+    for (int herenode = 0; herenode < V; ++herenode) {
+      int herecost  = upper[herenode];
+      int therenode = adj[herenode][i].first;
+      int therecost = herecost + adj[herenode][i].second;
+      if (upper[therenode] < therecost) {
+        upper[therenode] = therecost;
+        updated = true;
+      }
+    }
+    if (!updated)
+      break;
+  }
+  if (updated)
+    upper.clear();
+  return upper[dst];
 }
 
 int main() {
@@ -51,14 +91,14 @@ int main() {
     if (reachable[0][1] == false) {
       printf("UNREACHABLE");
     } else {
-      int nmin = BellmanFordMin(0, 1);
-      int nmax = BellmanFordMax(0, 1);
-      if (nmin <= -MAX_I) {
+      int nmin = bellmanfordmin(0, 1);
+      int nmax = bellmanfordmax(0, 1);
+      if (nmin <= -MAX_INT) {
         printf("INFINITY ");
       } else {
         printf("%d ", nmin);
       }
-      if (nmax >= MAX_I) {
+      if (nmax >= MAX_INT) {
         printf("INFINITY");
       } else {
         printf("%d", nmax);

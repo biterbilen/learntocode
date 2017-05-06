@@ -1,5 +1,6 @@
 // Copyright (C) 2017 by iamslash
-// https://algospot.com/judge/problem/read/CHILDRENDAY
+
+
 #include <cstdio>
 #include <string>
 #include <algorithm>
@@ -11,15 +12,13 @@ int N, M, D;
 int append(int here, int edge, int mod) {
   int there = here * 10 + edge;
   if (there >= mod) {
-    // ???
     return mod + there % mod;
   }
   return there % mod;
 }
 
-std::string Solve(std::string digits) {
+std::string solve(std::string digits) {
   std::sort(digits.begin(), digits.end());
-  // ???
   std::vector<int> parent(2 * N, -1);
   std::vector<int> choice(2 * N, -1);
   std::queue<int> q;
@@ -39,10 +38,9 @@ std::string Solve(std::string digits) {
       }
     }
   }
-  // ???
   if (parent[N + M] == -1)
     return "IMPOSSIBLE";
-  //
+
   std::string r;
   int here = N + M;
   while (parent[here] != here) {
@@ -57,16 +55,11 @@ std::string Solve(std::string digits) {
 int main() {
   int T;
   scanf("%d", &T);
-
   for (int t = 0; t < T; ++t) {
     scanf("%d %d %d", &D, &N, &M);
     char buf[16] = {0, };
     snprintf(buf, sizeof(buf), "%d", D);
-
-    //
-    std::string r = Solve(buf);
+    std::string r = solve(buf);
     printf("%s\n", r.c_str());
   }
-
-  return 0;
 }

@@ -1,5 +1,5 @@
 // Copyright (C) 2017 by iamslash
-// https://algospot.com/judge/problem/read/DRUNKEN
+// https://algospot.com/judge/problem/read/TIMETRIP
 
 #include <cstdio>
 #include <string>
@@ -15,18 +15,19 @@ int adj[MAX_V][MAX_V];
 int delay[MAX_V];
 int W[MAX_V][MAX_V];
 
-void floyd() {
-  st::vector<std::pair<int, int> > order;
-  for (int i = 0; i < V; ++i)
+void Floyd() {
+  std::vector<std::pair<int, int> > order;
+  for (int i = 0; i < V; ++i) {
     order.push_back(std::make_pair(delay[i], i));
+  }
   std::sort(order.begin(), order.end());
+
   for (int i = 0; i < V; ++i) {
     for (int j = 0; j < V; ++j) {
-      if (i == j)
-        W[i][j] = 0;
-      else
-        W[i][j] = adj[i][j];
+      W[i][j] = i == j ? 0 : adj[i][j];
+      // printf("%d ", W[i][j]);
     }
+    // printf("\n");
   }
   int r = MAX_I;
   for (int k = 0; k < V; ++k) {
@@ -34,9 +35,7 @@ void floyd() {
     for (int i = 0; i < V; ++i) {
       for (int j = 0; j < V; ++j) {
         adj[i][j] = std::min(adj[i][j], adj[i][w] + adj[w][j]);
-        W[i][j] = std::min(W[i][j],
-                           adj[i][w] + delay[w] +
-                           adj[w][j]);
+        W[i][j] = std::min(W[i][j], adj[i][w] + delay[w] + adj[w][j]);
       }
     }
   }
@@ -57,7 +56,7 @@ int main() {
     adj[b][a] = c;
   }
 
-  floyd();
+  Floyd();
 
   int T;
   scanf("%d", &T);
