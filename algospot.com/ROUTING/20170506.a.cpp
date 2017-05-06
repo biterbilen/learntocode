@@ -14,28 +14,36 @@ int N, M;
 
 std::vector<std::pair<int, double> > adj[10000];
 
-double dijkstra(int src) {
-  double r;
+double Dijkstra(int srcnode) {
+  double r = std::numeric_limits<double>::max();
   std::vector<double> dist(N, std::numeric_limits<double>::max());
-  dist[src] = 0;
+  double srccost = 1.0;
+  dist[srcnode] = srccost;
+  // -cost, vertex
   std::priority_queue<std::pair<double, int> > pq;
-  pq.push(std::make_pair(0, src));
+  pq.push(std::make_pair(-srccost, srcnode));
+
   while (!pq.empty()) {
-    int herecost = -pq.top().first;
+    double herecost = -pq.top().first;
     int herenode = pq.top().second;
     pq.pop();
+
     if (dist[herenode] < herecost)
       continue;
+    // visit neighbors
     for (int i = 0; i < adj[herenode].size(); ++i) {
       int therenode = adj[herenode][i].first;
-      int therecost = herecost * adj[herenode][i].second;
-      if (therecost < dist[therenode]) {
+      double therecost = herecost * adj[herenode][i].second;
+      // printf("%d %lf = %lf * %lf\n", therenode, therecost, herecost, adj[herenode][i].second);
+
+      if (dist[therenode] > therecost) {
         dist[therenode] = therecost;
         pq.push(std::make_pair(-therecost, therenode));
       }
     }
   }
-  return r;
+
+  return dist[N-1];
 }
 
 int main() {
@@ -54,7 +62,12 @@ int main() {
       adj[src].push_back(std::make_pair(dst, sig));
       adj[dst].push_back(std::make_pair(src, sig));
     }
-    printf("%f\n", dijkstra(0));
+    printf("%f\n", Dijkstra(0));
+    // printf("%lf\n", std::numeric_limits<double>::max());
+    // printf("%f\n", std::numeric_limits<float>::max());
+    // printf("%d\n", std::numeric_limits<int>::max());
+    // printf("%d\n", std::numeric_limits<short>::max());
+    // printf("%d\n", std::numeric_limits<char>::max());
   }
 
   return 0;
