@@ -14,62 +14,10 @@ int V, W;
 std::vector<std::pair<int, int> > adj[MAX_V];
 bool reachable[MAX_V][MAX_V];
 
-int BellmanFordMin(int src, int dst) {
-  std::vector<int> upper(V, MAX_I);
-  upper[src] = 0;
-
-  for (int j = 0; j < V - 1; ++j) {
-    for (int herev = 0; herev < V; ++herev) {
-      for (int i = 0; i < adj[herev].size(); ++i) {
-        int therev = adj[herev][i].first;
-        int therec = adj[herev][i].second;
-        upper[therev] = std::min(upper[therev],
-                                    upper[herev] + therec);
-      }
-    }
-  }
-  for (int herev = 0; herev < V; ++herev) {
-    for (int i = 0; i < adj[herev].size(); ++i) {
-      int therev = adj[herev][i].first;
-      int therec = adj[herev][i].second;
-      // there is a negative edge
-      if (upper[herev] + therec < upper[therev]) {
-        if (reachable[src][herev] && reachable[herev][dst]) {
-          return -MAX_I;
-        }
-      }
-    }
-  }
-  return upper[dst];
+int bellmanfordmin(int src, int dst) {
 }
 
-int BellmanFordMax(int src, int dst) {
-  std::vector<int> upper(V, -MAX_I);
-  upper[src] = 0;
-
-  for (int j = 0; j < V - 1; ++j) {
-    for (int herev = 0; herev < V; ++herev) {
-      for (int i = 0; i < adj[herev].size(); ++i) {
-        int therev = adj[herev][i].first;
-        int therec = adj[herev][i].second;
-        upper[therev] = std::max(upper[therev],
-                                    upper[herev] + therec);
-      }
-    }
-  }
-  for (int herev = 0; herev < V; ++herev) {
-    for (int i = 0; i < adj[herev].size(); ++i) {
-      int therev = adj[herev][i].first;
-      int therec = adj[herev][i].second;
-      // there is a positive edge
-      if (upper[herev] + therec > upper[therev]) {
-        if (reachable[src][herev] && reachable[herev][dst]) {
-          return MAX_I;
-        }
-      }
-    }
-  }
-  return upper[dst];
+int bellmanfordmax(int src, int dst) {
 }
 
 int main() {
