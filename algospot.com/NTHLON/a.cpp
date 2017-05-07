@@ -6,23 +6,23 @@
 #include <queue>
 #include <algorithm>
 #include <cmath>
-#include <limits>
 #include <cstdlib>
 
-#define MAX_INT 987654321;
+#define MAX_INT 987654321
 int M;
 #define VMAX 410
 const int START = 401;
 
 std::vector<std::pair<int, int> > adj[VMAX];
 
+// node number should be greater than zero
 int vertex(int delta) {
   return delta + 200;
 }
 
 std::vector<int> dijkstra(int src) {
-  std::vector<int> dist(M, MAX_INT);
-  std::priority_queue pq;
+  std::vector<int> dist(VMAX, MAX_INT);
+  std::priority_queue<std::pair<int, int> > pq;
   dist[src] = 0;
   pq.push(std::make_pair(0, src));
   while (!pq.empty()) {
@@ -45,7 +45,22 @@ std::vector<int> dijkstra(int src) {
 
 int solve(const std::vector<int>& a,
           const std::vector<int>& b) {
-  int r = -1;
+  for (int i = 0; i < a.size(); ++i) {
+    int delta = a[i] - b[i];
+    adj[START].push_back(std::make_pair(vertex(delta), a[i]));
+  }
+  for (int delta = -199; delta <= 199; ++delta) {
+    for (int i = 0; i < a.size(); ++i) {
+      int next = delta + a[i] - b[i];
+      if (abs(next) > 200)
+        continue;
+      adj[vertex(delta)].push_back(std::make_pair(vertex(next), a[i]));
+    }
+  }
+  std::vector<int> shortest = dijkstra(START);
+  int r = shortest[vertex(0)];
+  if (r == MAX_INT)
+    return -1;
   return r;
 }
 
