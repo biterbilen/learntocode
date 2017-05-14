@@ -6,13 +6,15 @@
 #include <algorithm>
 #include <vector>
 #include <queue>
+#include <numeric>
 
 #define MAX_V 200
 #define MAX_I 987654321
 
 int N, M;
-int wins[20];
-int match[200][2];
+std::vector<int> profit;
+std::vector<int> cost;
+int requires[MAX_V][MAX_V];
 
 int V;
 int capacity[MAX_V][MAX_V];
@@ -57,7 +59,26 @@ int ford_fulkerson(int source, int sink) {
 }
 
 
-int solve(int from_win) {
+int solve() {
+  const int src = 0;
+  const int snk = 1;
+  V = 2 + N + M;
+  for (int i = 0; i < N; ++i) {
+    capacity[src][2 + i] = profit[i];
+  }
+  for (int i = 0; i < M; ++i) {
+    capacity[2 + N + i][snk] = cost[i];
+  }
+  for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < M; ++j) {
+      if (requires[i][j] == 1) {
+        capacity[2 + i][2 + N + j] = MAX_I;
+      }
+    }
+  }
+  int P = std::accumulate(profit.begin(), profit.end(), 0);
+  int C = ford_fulkerson(src, snk);
+  return P - C;
 }
 
 int main() {
@@ -65,22 +86,25 @@ int main() {
   scanf("%d", &T);
   for (int t = 0; t < T; ++t) {
     scanf("%d %d", &N, &M);
+    profit.resize(N);
+    cost.resize(M);
     for (int i = 0; i < N; ++i) {
-      scanf("%d", &wins[i]);
+      scanf("%d", &profit[i]);
     }
     for (int i = 0; i < M; ++i) {
-      scanf("%d %d", &match[i][0], &match[i][1]);
+      scanf("%d", &cost[i]);
     }
-
     // init variables
-    for (int i = 0; i < MAX_V; ++i) {
-      for (int j = 0; j < MAX_V; ++j) {
-        capacity[i][j] = 0;
+    for (int i = 0; i < N; ++i) {
+      for (int j = 0; j < M; ++j) {
         flow[i][j] = 0;
+        capacity[i][j] = 0;
+        int a;
+        scanf("%d", &a);
+        requires[i][j] = a;
       }
     }
-    V = 2 + M + N;
-    printf("%d\n", solve(wins[0]));
+    printf("%d\n", solve());
   }
 
   return 0;
