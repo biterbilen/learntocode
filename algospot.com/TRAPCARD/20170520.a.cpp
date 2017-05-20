@@ -1,5 +1,5 @@
 // Copyright (C) 2017 by iamslash
-// https://algospot.com/judge/problem/read/TRAPCARD
+// https://algospot.com/judge/problem/read/BISHOPS
 
 #include <cstdio>
 #include <vector>
@@ -22,13 +22,13 @@ std::vector<int> b_match;
 std::vector<bool> visited;
 int adj[400][400];
 
-bool in_range(int y, int x) {
+bool InRange(int y, int x) {
   if ( y < 0 || y >= H || x < 0 || x >= W)
     return false;
   return true;
 }
 
-void build() {
+void Build() {
   id.clear();
   id.resize(H, std::vector<int>(W, -1));
   L = 0;
@@ -52,7 +52,7 @@ void build() {
         for (int k = 0; k < 4; ++k) {
           int y2 = y1 + dy[k];
           int x2 = x1 + dx[k];
-          if (in_range(y2, x2) && BOARD[y2][x2] != '#') {
+          if (InRange(y2, x2) && BOARD[y2][x2] != '#') {
             adj[id[y1][x1]][id[y2][x2]] = 1;
           }
         }
@@ -61,7 +61,7 @@ void build() {
   }
 }
 
-bool dfs(int a) {
+bool Dfs(int a) {
   if (visited[a])
     return false;
   visited[a] = true;
@@ -77,19 +77,19 @@ bool dfs(int a) {
   return false;
 }
 
-int bipartite_match() {
+int BipartiteMatch() {
   a_match = std::vector<int>(L, -1);
   b_match = std::vector<int>(R, -1);
   int r = 0;
   for (int start = 0; start < L; ++start) {
     visited = std::vector<bool>(L, false);
-    if (dfs(start))
+    if (Dfs(start))
       ++r;
   }
   return r;
 }
 
-void calc_max_independent_sets() {
+void CalcMaxIndependentSet() {
   int C = BipartiteMatch();
 
   a_chosen = std::vector<bool>(L, true);
@@ -115,7 +115,7 @@ void calc_max_independent_sets() {
   }
 }
 
-void print_result() {
+void PrintResult() {
   int r = 0;
   for (int i = 0; i < a_chosen.size(); ++i) {
     if (a_chosen[i])
@@ -154,8 +154,8 @@ int main() {
       scanf("%s", buf);
       BOARD.push_back(buf);
     }
-    build();
-    calc_max_independent_sets();
-    print_result();
+    Build();
+    CalcMaxIndependentSet();
+    PrintResult();
   }
 }

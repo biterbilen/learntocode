@@ -12,26 +12,24 @@ std::vector<std::string> BOARD;
 // variables for PlaceBishops
 const int dx[2] = {-1, 1};
 const int dy[2] = {1, 1};
-// id[dir][y][x] = dir방향 대각선을 따라 인접한 빈 칸 묶음들 중 (y,
-// x)가 속한 묶음의 번호
 int id[2][8][8];
 int adj[64][64];
 
 // variables for BipartiteMatch
 int L, R;
-std::vector<int> amatch;
-std::vector<int> bmatch;
+std::vector<int> a_match;
+std::vector<int> b_match;
 std::vector<bool> visited;
 
-bool dfs(int a) {
+bool Dfs(int a) {
   if (visited[a])
     return false;
   visited[a] = true;
   for (int b = 0; b < R; ++b) {
     if (adj[a][b]) {
-      if (bmatch[b] == -1 || dfs(bmatch[b])) {
-        amatch[a] = b;
-        bmatch[b] = a;
+      if (b_match[b] == -1 || Dfs(b_match[b])) {
+        a_match[a] = b;
+        b_match[b] = a;
         return true;
       }
     }
@@ -39,19 +37,19 @@ bool dfs(int a) {
   return false;
 }
 
-int bipartite_match() {
-  amatch = std::vector<int>(L, -1);
-  bmatch = std::vector<int>(R, -1);
+int BipartiteMatch() {
+  a_match = std::vector<int>(L, -1);
+  b_match = std::vector<int>(R, -1);
   int r = 0;
   for (int start = 0; start < L; ++start) {
     visited = std::vector<bool>(L, false);
-    if (dfs(start))
+    if (Dfs(start))
       ++r;
   }
   return r;
 }
 
-int place_bishops() {
+int PlaceBishops() {
   memset(id, -1, sizeof(id));
   int count[2] = {0, };
   for (int dir = 0; dir < 2; ++dir) {
@@ -84,7 +82,7 @@ int place_bishops() {
     }
   }
 
-  return bipartite_match();
+  return BipartiteMatch();
 }
 
 int main() {
@@ -98,6 +96,6 @@ int main() {
       scanf("%s", buf);
       BOARD.push_back(buf);
     }
-    printf("%d\n", place_bishops());
+    printf("%d\n", PlaceBishops());
   }
 }
