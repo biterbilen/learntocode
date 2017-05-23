@@ -20,6 +20,7 @@ int L, R;
 std::vector<int> a_match;
 std::vector<int> b_match;
 std::vector<bool> visited;
+// adj[i][j] = id가 i인 B그리드와 id가 j인 W그리드의 capacity
 int adj[400][400];
 
 bool in_range(int y, int x) {
@@ -28,11 +29,12 @@ bool in_range(int y, int x) {
   return true;
 }
 
-void build() {
+void build_adj() {
   id.clear();
   id.resize(H, std::vector<int>(W, -1));
   L = 0;
   R = 0;
+  // BOARD는 B, W그리드들이 서로 인접하여 구성되어 있다.
   for (int y = 0; y < H; ++y) {
     for (int x = 0; x < W; ++x) {
       if (BOARD[y][x] != '#') {
@@ -45,7 +47,7 @@ void build() {
     }
   }
   memset(adj, 0, sizeof(adj));
-
+  // (x1, y1)을 중심으로 사방을 (x2, y2)로 표현하자.
   for (int y1 = 0; y1 < H; ++y1) {
     for (int x1 = 0; x1 < W; ++x1) {
       if ((y1 + x1) % 2 == 0 && BOARD[y1][x1] != '#') {
@@ -67,7 +69,7 @@ bool dfs(int a) {
   visited[a] = true;
   for (int b = 0; b < R; ++b) {
     if (adj[a][b]) {
-      if (b_match[b] == -1 || Dfs(b_match[b])) {
+      if (b_match[b] == -1 || dfs(b_match[b])) {
         a_match[a] = b;
         b_match[b] = a;
         return true;
@@ -90,7 +92,7 @@ int bipartite_match() {
 }
 
 void calc_max_independent_sets() {
-  int C = BipartiteMatch();
+  int C = bipartite_match();
 
   a_chosen = std::vector<bool>(L, true);
   b_chosen = std::vector<bool>(R, false);
@@ -154,7 +156,7 @@ int main() {
       scanf("%s", buf);
       BOARD.push_back(buf);
     }
-    build();
+    build_adj();
     calc_max_independent_sets();
     print_result();
   }
