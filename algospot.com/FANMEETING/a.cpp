@@ -1,161 +1,146 @@
+// Copyright (C) 2017 by iamslash
+// https://algospot.com/judge/problem/read/FANMEETING
+
+// karatsuba
+// c = a * b
+// c = (a0 + a1 * 10^128) * (b0 + b1 * 10^128)
+// c = (a1 * b1)10^256 + (a1 * b0 + b1 * a0)10^128 + (a0 * b0)
+// c = z2 * 10^256       + z1 * 10^128             + z0        
+//
+// (a0 + a1)*(b0 + b1) = a0b0 + (a0b1 + a1b0) + a1b1 
+// x                     z0     z1              z2
+
 #include <cstdio>
-#include <string>
 #include <vector>
+#include <algorithm>
+#include <cstdlib>
 #include <iostream>
+#include <string>
 
-using namespace std;
-
-// num[] 의 자릿수 올림을 처리한다.
-void normalize(vector<int>& num) {
-    num.push_back(0);
-    // 자릿수 올림을 처리한다
-    for(int i = 0; i < num.size(); i++) {       
-        if(num[i] < 0) {
-            int borrow = (abs(num[i]) + 9) / 10;
-            num[i+1] -= borrow;
-            num[i] += borrow * 10;
-        }
-        else {
-            num[i+1] += num[i] / 10;
-            num[i] %= 10;
-        }
+void normalize(std::vector<int>& a) {
+  return;
+  a.push_back(0);
+  for (int i = 0; i < a.size(); ++i) {
+    if (a[i] < 0) {
+      int borrow = (std::abs(a[i]) + 9) / 10;
+      a[i + 1] -= borrow;
+      a[i] += borrow * 10;
+    } else {
+      a[i + 1] += a[i] / 10;
+      a[i] %= 10;
     }
-    if(num.back() == 0) num.pop_back();
+  }
+  while (a.size() > 1 && a.back() == 0)
+    a.pop_back();
 }
 
-// 두 긴 정수의 곱을 반환한다. 각 배열에는 각 수의 자리수가 1의 자리에서부터 시작해 저장되어 있다.
-// 예: multiply({3,2,1},{6,5,4}) = 123*456 = 56088 = {8,8,0,6,5}
-vector<int> multiply(const vector<int>& a, const vector<int>& b) {
-    vector<int> c(a.size() + b.size() + 1, 0);
-    for(int i = 0; i < a.size(); i++)
-        for(int j = 0; j < b.size(); j++)
-            c[i+j] += a[i] * b[j];
-    //normalize(c);
-    return c;
+// a = a + b * 10 ^ k
+void add_to(std::vector<int>& a, const std::vector<int>& b, int k) {
+  a.resize(std::max<int>(a.size(), b.size() + k));
+  for (int i = 0; i < b.size(); ++i) {
+    a[i + k] += b[i];
+  }
+  normalize(a);
 }
 
-// a += b * (10^k); 를 구현한다.
-void addTo(vector<int>& a, const vector<int>& b, int k) {
-    a.resize(max(a.size(), b.size() + k));
-    for(int i = 0; i < b.size(); i++) a[i+k] += b[i];
-    //normalize(a);
+// a = a - b
+// 111 22
+void sub_from(std::vector<int>& a, const std::vector<int>& b) {
+  a.resize(std::max<int>(a.size(), b.size()) + 1);
+  for (int i = 0; i < b.size(); i++) {
+    a[i] -= b[i];
+  }
+  normalize(a);
 }
 
-// a -= b; 를 구현한다. a >= b 를 가정한다.
-void subFrom(vector<int>& a, const vector<int>& b) {
-    a.resize(max(a.size(), b.size()) + 1);
-    for(int i = 0; i < b.size(); i++) a[i] -= b[i];
-    //normalize(a);
-}
-
-// 두 긴 정수의 곱을 반환한다. 
-vector<int> karatsuba(const vector<int>& a, const vector<int>& b) {
-    int an = a.size(), bn = b.size();
-    // a 가 b 보다 짧을 경우 둘을 바꾼다
-    if(an < bn) return karatsuba(b, a);
-    // 기저 사례: a 나 b 가 비어 있는 경우
-    if(an == 0 || bn == 0) return vector<int>();
-    // 기저 사례: a 가 비교적 짧은 경우 O(n^2) 곱셈으로 변경한다.
-    if(an <= 2) return multiply(a, b);
-
-    int half = an / 2;
-    // a 와 b 를 밑에서 half 자리와 나머지로 분리한다
-    vector<int> a0(a.begin(), a.begin() + half);
-    vector<int> a1(a.begin() + half, a.end());
-    vector<int> b0(b.begin(), b.begin() + min<int>(b.size(), half));
-    vector<int> b1(b.begin() + min<int>(b.size(), half), b.end());
-    // z2 = a1 * b1
-    vector<int> z2 = karatsuba(a1, b1);
-    // z0 = a0 * b0
-    vector<int> z0 = karatsuba(a0, b0);
-    // a0 = a0 + a1; b0 = b0 + b1
-    addTo(a0, a1, 0); addTo(b0, b1, 0);
-    // z1 = (a0 * b0) - z0 - z2;
-    vector<int> z1 = karatsuba(a0, b0);
-    subFrom(z1, z0);
-    subFrom(z1, z2);
-    // ret = z0 + z1 * 10^half + z2 * 10^(half*2)
-    vector<int> ret;
-    addTo(ret, z0, 0); 
-    addTo(ret, z1, half);
-    addTo(ret, z2, half + half);
-    return ret;
-}
-
-// string toString(vector<int> a) {
-//     string ret;
-//     while(a.size() > 1 && a.back() == 0) a.pop_back();
-//     for(int i = 0; i < a.size(); i++) 
-//         ret += char('0' + a[a.size() - 1 - i]);
-//     return ret;
-// }
-
-// vector<int> fromString(const string& s) {
-//     vector<int> ret;
-//     for(int i = 0; i < s.size(); i++)
-//         ret.push_back(s[i] - '0');
-//     reverse(ret.begin(), ret.end());
-//     return ret;
-// }
-
-// get hug cnt with using karatsuba
-int get_hug_cnt_karatsuba(string & M, string & F)
-{
-    int n_M = M.size();
-    int n_F = F.size();
-    vector<int> A(n_M), B(n_F);
-    for (int i=0; i< n_M; ++i)
-        A[n_M-i-1] = (M[i] == 'M');
-    for (int i=0; i< n_F; ++i)
-        B[i] = (F[i] == 'M');
-    vector<int> C = karatsuba(A, B);
-    int r = 0;
-    for(int i=n_M-1; i<n_F; ++i)
-        if (C[i] == 0)
-            ++r;
-
-    // for(int i=0; i<C.size(); ++i)
-    //     printf("%d,",C[i]);
-    // printf("\n");
-    
-    return r;
-}
-
-int get_hug_cnt(string & M, string & F)
-{
-    int r = 0;
-    
-    for(int i=0; i<=F.size()-M.size(); ++i)
-    {
-        for(int j=0; j<M.size(); ++j)
-        {
-            string s = F.substr(i, M.size());
-            if (M.at(j) == 'M' && s.at(j) == 'M')
-                break;
-            if (j == M.size()-1)
-                r++;
-        }
+std::vector<int> multiply(const std::vector<int>& a, const std::vector<int>& b) {
+  std::vector<int> r(a.size() + b.size() + 1, 0);
+  for (int i = 0; i < a.size(); ++i) {
+    for (int j = 0; j < b.size(); ++j) {
+      r[i + j] += a[i] * b[j];
     }
-    
-    return r;
+  }
+  normalize(r);
+  return r;
+}
+
+std::vector<int> karatsuba(const std::vector<int>& a,
+                           const std::vector<int>& b)
+{
+  int an = a.size();
+  int bn = b.size();
+  // base condition
+  if (an < bn)
+    return karatsuba(b, a);
+  // base condition
+  if (an == 0 || bn == 0)
+    return std::vector<int>();
+  // base condition
+  if (an <= 50)
+    return multiply(a, b);
+
+  int half = an / 2;
+  std::vector<int> a0(a.begin(), a.begin() + half);
+  std::vector<int> a1(a.begin() + half, a.end());
+  std::vector<int> b0(b.begin(), b.begin() +
+                      std::min<int>(b.size(), half));
+  std::vector<int> b1(b.begin() + std::min<int>(b.size(), half), b.end());
+  //
+  std::vector<int> z2 = karatsuba(a1, b1);
+  std::vector<int> z0 = karatsuba(a0, a0);
+  add_to(a0, a1, 0);
+  add_to(b0, b1, 0);
+  std::vector<int> z1 = karatsuba(a0, b0);
+  sub_from(z1, z0);
+  sub_from(z1, z2);
+  std::vector<int> r;
+  add_to(r, z0, 0);
+  add_to(r, z1, half);
+  add_to(r, z2, half + half);
+  return r;
+}
+
+int solve(const std::string& M, const std::string& F) {
+  int r = 0;
+  int mn = M.size();
+  int fn = F.size();
+  std::vector<int> a(mn, 0);
+  std::vector<int> b(fn, 0);
+  for (int i = 0; i < mn; ++i)
+    a[mn-i-1] = (M[i] == 'M');
+  for (int i = 0; i < fn; ++i)
+    b[i] = (F[i] == 'M');
+  std::vector<int> c = karatsuba(a, b);
+  for (int i = mn - 1; i < fn; ++i) {
+    if (c[i] == 0)
+      ++r;
+  }
+
+  return r;
 }
 
 int main() {
-    
-    int C; // number of cases
-    
-    scanf("%d", &C);
-    
-    for(int c=0; c<C; ++c)
-    {
-        int N;
-        string  M, F; // members, fans
-        scanf("%d", &N);
-        cin >> M;
-        cin >> F;
 
-        printf("%d\n", get_hug_cnt_karatsuba(M, F));
-    }
-  
-    return 0;
+  // M = 1, F = 0
+  //         m3 m2 m1 m0
+  // *       n3 n2 n1 n0
+
+  //                      n0m0 + n0m1 + n0m2 + n0m3
+  //               n1m0 + n1m1 + n1m2 + n1m3
+  //        n2m0 + n2m1 + n2m2 + n2m3
+  // n3m0 + n3m1 + n3m2 + n3m3
+
+  // C[i]
+  int N;
+  int T;
+  scanf("%d", &T);
+  for (int t = 0; t < T; ++t) {
+    int N;
+    std::string M, F;
+    std::cin >> M;
+    std::cin >> F;
+    printf("%d\n", solve(M, F));
+  }
+
+  return 0;
 }
