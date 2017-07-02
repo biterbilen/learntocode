@@ -1,92 +1,64 @@
 #include <cstdio>
-#include <string>
 #include <vector>
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-#include <limits>
-#include <cstddef>
-        
-using namespace std;
 
-int C;// case
-int N, D, P; // town count, days, start town
-int CON[50][50] = {0,};
-int T; // end town count
-int GOALTOWNS[50] = {0,}; 
-double CACHE[51][51] = {0,}; // probability of town, days
-int DEG[50] = {0.};
+int N, D, P;  // town count, days, start
+int adj[50][50];
+int end[50];
+int deg[50];
+double CACHE[51][101]; //
 
-void dump(int CON[][50], int N)
-{
-    for(int y=0; y<N; ++y)
-    {
-        for(int x=0; x<N; ++x)
-        {
-            printf("%d ", CON[y][x]);
-        }
-        printf("\n");
-    }
-}
-// days가 지나면 p에서 q까지 도착할 조건부 확률
-double get_result(int p, int q, int days )
-{
-    // base condition
-    if (days == N)
-        return (p == q) ? 1.0 : 0.0;
-    
-    // memoization
-    double & r = CACHE[p][days];
-    if (r >= -0.5) return r;
+// days이후에 star에서 시작해서 end에 있는지 여부 
+double solve(int start, int end, int days) {
+  printf("%d %d %d\n", start, end, days);
 
-    // recursion
-    r = 0.0;
-    for (int n=0; n<N; ++n)
-    {
-        if (CON[p][n] > 0)
-            r += get_result(n, q, days+1) / DEG[p];
-    }
-    
+  // base condition
+  if (days == D)
+    return (start == end) ? 1.0 : 0.0;
+
+  // memoization
+  double & r = CACHE[start][days];
+  if (r > -1.0)
     return r;
+
+  // recursion
+  r = 0.0;
+  for (int there = 0; there < N; ++there) {
+    if (adj[start][there] > 0) {
+      r += solve(there, end, days + 1) / deg[there];
+    }
+  }
+
+  return r;
 }
 
 int main() {
-    
-    scanf("%d", &C);
-    
-    for(int c=0; c<C; ++c)
-    {
-        memset(CON, 0, sizeof(CON));
-        memset(DEG, 0, sizeof(DEG));
-        memset(GOALTOWNS, 0, sizeof(GOALTOWNS));
-        memset(CACHE, -1, sizeof(CACHE));
+  int T;
+  scanf("%d", &T);
+  for (int t = 0; t < T; ++t) {
+    // init var
+    memset(adj, 0, sizeof(adj));
+    memset(deg, 0, sizeof(deg));
+    memset(end, 0, sizeof(end));
+    memset(CACHE, -1, sizeof(CACHE));
 
-        scanf("%d", &N);
-        scanf("%d", &D);
-        scanf("%d", &P);
-        
-        for(int y=0; y<N; ++y)
-        {
-            for(int x=0; x<N; ++x)
-            {
-                scanf("%d", &CON[y][x]);
-                if (CON[y][x] > 0)
-                    DEG[y]++;
-            }
+    //
+    scanf("%d %d %d", &N, &D, &P);
+    for (int i = 0; i < N; ++i) {
+      for (int j = 0; j < N; ++j) {
+        scanf("%d", &adj[i][j]);
+        if (adj[i][j] > 0) {
+          deg[i]++;
         }
-        scanf("%d", &T);
-        for(int x=0; x<T; ++x)
-            scanf("%d", &GOALTOWNS[x]);
-        
-        for(int t=0; t<T; ++t)
-        {
-            printf("%0.8f ", get_result(P, GOALTOWNS[t], 1));
-        }
-        // dump(CON, N);
-        // for(int y=0; y<N; ++y)
-        //     printf("%d ", DEG[y]);
-        printf("\n");
+      }
     }
-  
-    return 0;
+    int endcnt;
+    scanf("%d", &endcnt);
+    for (int i = 0; i < endcnt; ++i)
+      scanf("%d", &end[i]);
+    for (int i = 0; i < endcnt; ++i) {
+      printf("%0.8f ", solve(end[i], P, 0));
+    }
+    printf("\n");
+  }
 }
+
