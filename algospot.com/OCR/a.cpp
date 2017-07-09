@@ -1,125 +1,93 @@
-//https://algospot.com/judge/problem/read/DICT
-
 #include <cstdio>
-#include <string>
 #include <vector>
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-#include <limits>
-#include <cstddef>
+#include <string>
 #include <cmath>
+#include <cassert>
 
-const int INF = 987654321;
+int m, q, N;  // 원문에 출현할 수 있는 단어의 수, 처리해야할 문장의 수
+double B[501];  // 원문에 대하여 i가 문장의 처음에 출현할 확률
+double T[501][501];  // 원문에 대하여 i이후 j가 출현할 확률
+double M[501][501];  // i가 j로 인식될 확률
+std::string WORDS[501];  // 사전
+double CACHE[102][502];  // 인식된 문장의 단어 idx, prev 원문 단어 idx
+int CHOICE[102][502];  // best case
+int R[100];
 
-using namespace std;
-
-int m, q; // 원문에 출현할 수 있는 단어의수, 처리해야할 문장의 수
-double B[501]; // i단어가 첫번째로 출현할 확률 로그값
-double T[501][501]; // i단어 이후 j단어가 출현할 확률 로그값
-double M[501][501]; // i단어가 j단어로 분류될 활률의 로그값
-string WORDS[501]; // 원문에 출현할 수 있는 단어들 
-int R[100]; // 분류기가 반환한 문장 인덱스
-double CACHE[102][502]; // 용량, 서수 : 최대절박도
-int CHOICE[102][502];
-
-// Q[s]이루를 채워서 얻을 수 있는 최대 g()곱의 로그값
-// Q[s-1] == p라고 가정한다.
-double recognize(int s, int p)
-{
-    return 0.0;
+int word_to_idx(std::string s) {
+  for (int i = 0; i < m; ++i) {
+    if (s.compare(WORDS[i]) == 0)
+      return i;
+  }
+  assert(0);
 }
 
-int get_words_idx(string & a)
-{
-    for(int i=0; i<m; ++i)
-    {
-        if (a.compare(WORDS[i]) == 0)
-            return i;
-    }
-    return -1;
-}
-
-string reconstruct()
-{
-    return "";
-}
-
-void fill_choice()
-{
-}
-
-void dump(int R[], int n)
-{
-    for (int i=0; i<n; ++i)
-    {
-        printf("%d ", R[i]);
-    }
-    printf("\n");
-}
-int main() {
-    
-    memset(B, 0.0, sizeof(B));     
-    
-    scanf("%d", &m);
-    scanf("%d", &q);
-
-    // fill WORDS
-    for(int i=0; i<m; ++i)
-    {
-        char a[501]={0,};
-        scanf("%s", a);
-        WORDS[i] = a;
-    }
-    // fill B
-    for(int i=0; i<m; ++i)
-    {
-        double d;
-        scanf("%lf", &d);
-        B[i] = log(d);
-    }
-    // fill T
-    for(int i=0; i<m; ++i)
-    {
-        for(int j=0; j<m; ++j)
-        {
-            double d;
-            scanf("%lf", &d);
-            T[i][j] = log(d);
-        }
-    }
-    // fill M
-    for(int i=0; i<m; ++i)
-    {
-        for(int j=0; j<m; ++j)
-        {
-            double d;
-            scanf("%lf", &d);
-            M[i][j] = log(d);
-        }
-    }
-
-    for(int i=0; i<q; ++i)
-    {
-        memset(R, -1, sizeof(R));     
-        memset(CACHE, -1, sizeof(CACHE));     
-        memset(CHOICE, -1, sizeof(CHOICE));     
-
-        
-        int n;
-        scanf("%d", &n);
-        // fill R
-        for(int j=0; j<n; ++j)
-        {
-            char t[11]={0,};
-            scanf("%s", t);
-            string t_str = t;
-            R[j] = get_words_idx(t_str);
-        }
-        fill_choice();
-        printf("%s\n", reconstruct().c_str());
-        dump(R, n);
-    }
-
+int solve(int ridx, int prev_match_idx) {
+  prev_match_idx++;
+  // base condition
+  if (ridx == N)
     return 0;
+  double& r = CACHE[ridx][prev_match_idx];
+  if (r != 1.0)
+    return r;
+  r = -1e200;
+  int& choose = CHOICE[ridx][prev_match_idx];
+  // recursion
+  for (int cur_match_idx = 0; cur_match_idx < m; ++cur_match_idx) {
+    double cand = (prev_match_idx == 0 ?
+                   B[cur_match_idx] :
+                   T[prev_match_idx][cur_match_idx]) +
+        M[cur_match_idx][R[ridx]] + solve(ridx + 1, cur_match_idx);
+    if (r < cand) {
+      r = cand;
+      choose = cur_match_idx;
+    }
+  }
+  return r;
 }
+
+// TODO(iamslash): prev_match_idx can be negative
+std::string reconstruct(int ridx, int prev_match_idx) {
+  prev_match_idx++;
+  int choose = CHOICE[ridx][prev_match_idx];
+  std::string r = WORDS[choose];
+  if (ridx < N - 1)
+    r += " " + reconstruct(ridx + 1, choose);
+  return r;
+}
+
+int main() {
+  memset(CACHE, 1, sizeof(CACHE));
+  scanf("%d %d", &m, &q);
+  for (int i = 0; i < m; ++i) {
+    char buf[1024];
+    scanf("%s", buf);
+    WORDS[i] = buf;
+  }
+  for (int i = 0; i < m; ++i) {
+    scanf("%lf", &B[i]);
+    B[i] = log(B[i]);
+  }
+  for (int i = 0; i < m; ++i) {
+    for (int j = 0; j < m; ++j) {
+      scanf("%lf", &T[i][j]);
+      T[i][j] = log(T[i][j]);
+    }
+  }
+  for (int i = 0; i < m; ++i) {
+    for (int j = 0; j < m; ++j) {
+      scanf("%lf", &M[i][j]);
+      M[i][j] = log(M[i][j]);
+    }
+  }
+  for (int i = 0; i < q; ++i) {
+    scanf("%d", &N);
+    for (int j = 0; j < N; ++j) {
+      char buf[1024];
+      scanf("%s", buf);
+      R[j] = word_to_idx(buf);
+    }
+    solve(0, -1);
+    printf("%s\n", reconstruct(0, -1).c_str());
+  }
+}
+
