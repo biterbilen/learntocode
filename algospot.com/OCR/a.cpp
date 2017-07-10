@@ -22,14 +22,12 @@ int word_to_idx(std::string s) {
   assert(0);
 }
 
-int solve(int cur_recog_idx, int prev_match_idx) {
-  printf("  ");
-  for (int i = 0; i < cur_recog_idx; ++i)
-    printf(" ");
-  printf("%d %d\n", cur_recog_idx, prev_match_idx);
+double _solve(int cur_recog_idx, int prev_match_idx) {
+  // printf("  ");
+  // for (int i = 0; i < cur_recog_idx; ++i)
+  //   printf(" ");
+  // printf("%d %d\n", cur_recog_idx, prev_match_idx);
   
-  prev_match_idx++;
-
   // base condition
   if (cur_recog_idx == N)
     return 0;
@@ -40,10 +38,9 @@ int solve(int cur_recog_idx, int prev_match_idx) {
   int& choose = CHOICE[cur_recog_idx][prev_match_idx];
   // recursion
   for (int cur_match_idx = 0; cur_match_idx < m; ++cur_match_idx) {
-    double cand = (prev_match_idx == 0 ?
-                   B[cur_match_idx] :
-                   T[prev_match_idx][cur_match_idx]) +
-        M[cur_match_idx][R[cur_recog_idx]] + solve(cur_recog_idx + 1, cur_match_idx);
+    double cand = T[prev_match_idx][cur_match_idx] +
+                  M[cur_match_idx][R[cur_recog_idx]] +
+                  _solve(cur_recog_idx + 1, cur_match_idx);
     if (r < cand) {
       r = cand;
       choose = cur_match_idx;
@@ -52,9 +49,25 @@ int solve(int cur_recog_idx, int prev_match_idx) {
   return r;
 }
 
+void solve() {
+  for (int i = 0; i < 102; ++i)
+    for (int j = 0; j < 502; ++j)
+      CACHE[i][j] = 1.0;
+
+  double r = -1e200;
+  for (int cur_match_idx = 0; cur_match_idx = m; ++cur_match_idx) {
+    double cand = B[cur_match_idx] + M[cur_match_idx][R[0]] +
+        _solve(1, cur_match_idx);
+    if (r < cand) {
+      CACHE[0][0] = cand;
+      CHOICE[0][0] = cur_match_idx;
+    }
+  }
+
+}
+
 // TODO(iamslash): prev_match_idx can be negative
 std::string reconstruct(int cur_recog_idx, int prev_match_idx) {
-  prev_match_idx++;
   int choose = CHOICE[cur_recog_idx][prev_match_idx];
   // printf("  %d %d %d\n", cur_recog_idx, prev_match_idx, choose);
   std::string r = WORDS[choose];
@@ -90,18 +103,15 @@ int main() {
     }
   }
   for (int i = 0; i < q; ++i) {
-    for (int i = 0; i < 102; ++i)
-      for (int j = 0; j < 502; ++j)
-        CACHE[i][j] = 1.0;
-
+    
     scanf("%d", &N);
     for (int j = 0; j < N; ++j) {
       char buf[1024];
       scanf("%s", buf);
       R[j] = word_to_idx(buf);
     }
-    solve(0, -1);
-    printf("%s\n", reconstruct(0, -1).c_str());
+    solve();
+    printf("%s\n", reconstruct(0, 0).c_str());
   }
 }
 
