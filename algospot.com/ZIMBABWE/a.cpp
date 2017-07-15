@@ -1,81 +1,60 @@
-//https://algospot.com/judge/problem/read/ZIMBABWE
+// Copyright (C) 2017 by iamslash
+// https://algospot.com/judge/problem/read/ZIMBABWE
 
 #include <cstdio>
 #include <string>
-#include <vector>
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-
-using namespace std;
 
 const int MOD = 1000000007;
-string e, digits;
+
+std::string E;
+std::string DIGITS;
 int N, M;
-int CACHE[1<<14][20][2]; // taken, mod, less
+// CACHE[i][j][j] : taken, mod, less
+int CACHE[1<<14][20][2];
 
-int price(int index, int taken, int mod, int less)
-{
-    //printf("[%d] %c : %d %d %d\n", index, e[index], taken, mod, less );
-    
-    // base condition
-    if (index == N)
-        return (less && mod == 0) ? 1 : 0;
-
-    // memoization
-    int & r = CACHE[taken][mod][less];
-    if ( r >= 0) return r;
-
-    // recursion
-    r = 0;
-
-    for (int next = 0; next < N; ++next)
-    {
-        if ( (taken & (1 << next)) == 0)
-        {
-            // 
-            if (!less && e[index] < digits[next])
-                continue;
-            // 같은 숫자는 한번만
-            if (next > 0 && digits[next-1] == digits[next] &&
-                (taken & (1 << (next-1))) == 0)
-                continue;
-            //
-            int nextTaken = taken | (1 << next);
-            int nextMod = (mod * 10 + digits[next] - '0') % M;
-            int nextLess = less || e[index] > digits[next];
-
-            //printf(" [%d] %c\n", next, digits[next]);
-            
-            r += price(index+1, nextTaken, nextMod, nextLess);
-            r %= MOD;
-        }
-    }
-
+int solve(int idx, int taken, int mod, int less) {
+  // base condition
+  if (idx == N)
+    return (less && mod == 0) ? 1 : 0;
+  // memoization
+  int& r = CACHE[taken][mod][less];
+  if (r != -1)
     return r;
+  // recursion
+  r = 0;
+  for (int next = 0; next < N; ++next) {
+    if (!less && E[idx] < DIGITS[next])
+      continue;
+    if (next > 0 && DIGITS[next-1] == DIGITS[next] &&
+        (taken & (1 << (next-1))) == 0)
+      continue;
+    int next_taken = taken | (1 << next);
+    int next_mod = (mod * 10 + DIGITS[next] - '0') % M;
+    int next_less = less || E[idx] > DIGITS[next];
+    r += solve(idx + 1, next_taken, next_mod, next_less);
+    r %= MOD;
+  }
+  return r;
 }
 
 int main() {
-    
-    int C; // number of cases
-    scanf("%d", &C);
-    
-    for(int c=0; c<C; ++c)
-    {
-        // init variables
-        memset(CACHE, -1, sizeof(CACHE));
-
-        char buff[32] = {0,};
-        scanf("%s", buff);
-        e = buff;
-        digits = buff;
-        sort(digits.begin(), digits.end());
-        N = e.size();
-        scanf("%d", &M);
-
-        //
-        printf("%d\n", price(0, 0, 0, 0));
+  int T;
+  scanf("%d", &T);
+  for (int t = 0; t < T; ++t) {
+    for (int i = 0; i < (1<<14); ++i) {
+      for (int j = 0; j < 20; ++j) {
+        for (int k = 0; k < 2; ++k) {
+          CACHE[i][j][k] = -1;
+        }
+      }
     }
-  
-    return 0;
+    char buf[32];
+    scanf("%s %d", buf, &M);
+    E = buf;
+    DIGITS = buf;
+    N = E.size();
+    std::sort(DIGITS.begin(), DIGITS.end());
+    printf("%d\n", solve(0, 0, 0, 0));
+  }
+  return 0;
 }
