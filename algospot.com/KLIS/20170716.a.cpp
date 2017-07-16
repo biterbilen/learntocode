@@ -2,18 +2,22 @@
 
 #include <cstdio>
 #include <vector>
+#include <map>
+#include <algorithm>
 
 const int MAX_INT = 2000000001;
 int N, K;
-std::vector<int> S;
-int CACHE_CNT[501];
 int CACHE_LEN[501];
+int CACHE_CNT[501];
+std::vector<int> S;
 
 int lis(int start) {
+  // memoization
   int& r = CACHE_LEN[start + 1];
-  if (r !=  -1)
+  if (r != -1)
     return r;
   r = 1;
+  // recursion
   for (int next = start + 1; next < N; ++next) {
     if (start == -1 || S[start] < S[next]) {
       r = std::max(r, lis(next) + 1);
@@ -22,38 +26,30 @@ int lis(int start) {
   return r;
 }
 
-// idx : 0 1 2 3 4
-// S   : 1 5 4 3 2
-// lis : 2 1 1 1 1
-// cnt : 4 1 1 1 1
 int count(int start) {
+  // base condition
   if (lis(start) == 1)
     return 1;
-  int& r = CACHE_CNT[start + 1];
+  // memoization
+  int&r = CACHE_CNT[start + 1];
   if (r != -1)
     return r;
   r = 0;
+  // recursion
   for (int next = start + 1; next < N; ++next) {
     if ((start == -1 || S[start] < S[next]) &&
         lis(start) == lis(next) + 1) {
-      r += std::min<int64_t>(MAX_INT, (int64_t)r + count(next));
+      r = std::min<int64_t>(MAX_INT,
+                              (int64_t)r + count(next));
     }
   }
-
   return r;
 }
 
-// idx : -1 0 1 2 3 4
-// S   :    1 5 4 3 2
-// lis :  3 2 1 1 1 1
-// cnt :  4 4 1 1 1 1
-
-// start : -1
-// skip : 1
-void solve(int start, int skip, std::vector<int>& v) {
+// 어떻게 사전순서를 보장하는 걸까???
+void solve(int start, int skip, std::vector<int>& l) {
   if (start != -1)
-    v.push_back(S[start]);
-  // S[i], i
+    l.push_back(S[start]);
   std::vector<std::pair<int, int> > followers;
   for (int next = start + 1; next < N; ++next) {
     if ((start == -1 || S[start] < S[next]) &&
@@ -68,7 +64,7 @@ void solve(int start, int skip, std::vector<int>& v) {
     if (cnt <= skip) {
       skip -= cnt;
     } else {
-      solve(idx, skip, v);
+      solve(idx, skip, l);
       break;
     }
   }
@@ -94,5 +90,4 @@ int main() {
       printf("%d ", v[i]);
     printf("\n");
   }
-  return 0;
 }
