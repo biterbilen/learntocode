@@ -12,17 +12,21 @@ std::vector<double> P; // 태윤이가 좋아하는 곡이 재생되고 있을 �
 
 // rule
 // 모든 곡들의 길이는 모두 1, 2, 3, 4분
+double CACHE[1000000][50];
 
-// min후에 cur노래가 시작될 확률
-doulbe solve(int min, int cur) {
+// min후에 cur가 재생되고 있을 확률
+double solve(int min, int cur) {
   // base condition
-  if (rmn_min <= 0)
-    return 0;
+  if (min <= 0)
+    return 1.0;
   // memoization
+  double& r = CACHE[min][cur];
+  if (r != -1.0)
+    return r;
   // recursion
-  double r = 0.0;
+  r = 0.0;
   for (int i = 0; i < N; ++i) {
-    r += solve(i, rmn_min - L[i]) * TRANS[i][cur_idx];
+    r += solve(min - L[i], i) * TRANS[i][cur];
   }
 
   return r;
@@ -33,6 +37,9 @@ int main() {
   int T;
   scanf("%d", &T);
   for (int t = 0; t < T; ++t) {
+    for (int i = 0; i < 1000000; ++i)
+      for (int j = 0; j < 50; ++j)
+        CACHE[i][j] = -1.0;
     scanf("%d %d %d", &N, &K, &M);
     L.resize(N);
     Q.resize(M);
@@ -42,14 +49,14 @@ int main() {
     }
     for (int i = 0; i < N; ++i) {
       for (int j = 0; j < N; ++j) {
-        scanf("%f", &TRANS[i][j]);
+        scanf("%lf", &TRANS[i][j]);
       }
     }
     for (int i = 0; i < M; ++i) {
       scanf("%d", &Q[i]);
     }
     for (int i = 0; i < M; ++i) {
-      printf("%0.8f ", solve(Q[i], K));
+      printf("%0.8lf ", solve(K, Q[i]));
     }
     printf("\n");
   }
