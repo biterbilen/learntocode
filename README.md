@@ -8,6 +8,7 @@
 - [Programming Interviews Exposed](https://www.amazon.com/Programming-Interviews-Exposed-Secrets-Landing-ebook/dp/B008SGNJOW/ref=pd_cp_351_2?_encoding=UTF8&psc=1&refRID=A7HZWTE0YTRTEPZ9RZXM)
 - [geeksforgeeks](http://www.geeksforgeeks.org/)
 - [Dynamic Programming for Coding Interviews: A Bottom-Up approach to problem solving](https://www.amazon.com/Dynamic-Programming-Coding-Interviews-Bottom-Up-ebook/dp/B01N4P93O7/ref=sr_1_1?ie=UTF8&qid=1500344454&sr=8-1&keywords=dynamic+programming+for+coding+interviews)
+- [programming pearls](https://www.amazon.com/Programming-Pearls-2nd-Jon-Bentley/dp/0201657880/ref=sr_1_1?s=books&ie=UTF8&qid=1473590537&sr=1-1&keywords=programming+pearls)
 
 # Practice
 
@@ -475,7 +476,6 @@
   - [iterative vs recursive](doc/dynamic_iterative_vs_recursive.md)
   - [SUSHI](https://algospot.com/judge/problem/read/SUSHI)
   - [GENIUS](https://algospot.com/judge/problem/read/GENIUS)
-  - [programming pearls](https://www.amazon.com/Programming-Pearls-2nd-Jon-Bentley/dp/0201657880/ref=sr_1_1?s=books&ie=UTF8&qid=1473590537&sr=1-1&keywords=programming+pearls)
 
 - Greedy
   - [MATCHORDER](https://algospot.com/judge/problem/read/MATCHORDER)
