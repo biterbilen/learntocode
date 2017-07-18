@@ -17,7 +17,7 @@ double CACHE[1000000][50];
 // min후에 cur가 재생되고 있을 확률
 double solve(int min, int cur) {
   // base condition
-  if (min <= 0)
+  if (min < 0)
     return 1.0;
   // memoization
   double& r = CACHE[min][cur];
