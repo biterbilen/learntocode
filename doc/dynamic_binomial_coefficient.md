@@ -8,7 +8,7 @@
   nPr = n x (n-1) x (n-2) x ... x (n-r+1)이다. 따라서 다음과 같은 
   정리를 유도할 수 있다.
 
-```latex
+```math
 _{n}P_{r} = n (n-1) (n-2) \cdot\cdot\cdot (n-r+1) = \frac{n!}{(n-r)!}
 ```
 
