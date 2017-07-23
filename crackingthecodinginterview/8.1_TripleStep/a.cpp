@@ -13,9 +13,9 @@ int N;
 int CACHE[MAX_STAIRS];
 
 int solve(int indent, int n) {
-  for (int i = 0; i < indent; ++i)
-    printf(" ");
-  printf("  %d\n", n);
+  // for (int i = 0; i < indent; ++i)
+  //   printf(" ");
+  // printf("  %d\n", n);
   // base condition
   if (n <= 0)
     return 0;
@@ -25,12 +25,16 @@ int solve(int indent, int n) {
     return r;
   // recursion
   r = 0;
+  // base condition
+  if (n == 1)
+    return r = 1;
+  else if (n == 2 || n == 3)
+    r += 1;
   for (int step = 1; step <= 3; ++step)
     r += solve(indent++, n-step);
-  for (int i = 0; i < indent; ++i)
-    printf(" ");
-  printf("  %d\n", r);
-
+  // for (int i = 0; i < indent; ++i)
+  //   printf(" ");
+  // printf("  %d\n", r);
   return r;
 }
 
