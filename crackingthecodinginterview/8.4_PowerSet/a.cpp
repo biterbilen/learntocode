@@ -8,11 +8,18 @@
 int N;
 std::vector<int> V;
 
-// example : 1 2 3 4 5
-std::vector<std::vector<int> > solve(
-    const std::vector<std::vector<int> >& v, int idx) {
+std::vector<std::vector<int> > solve_iterative() {
+  //
   std::vector<std::vector<int> > r;
-
+  r.push_back(std::vector<int>());
+  for (int i = 0; i < V.size(); ++i) {
+    std::vector<std::vector<int> > prev_r(r);
+    for (const std::vector<int> set : prev_r) {
+      std::vector<int> new_set(set);
+      new_set.push_back(V[i]);
+      r.push_back(new_set);
+    }
+  }
   return r;
 }
 
@@ -26,8 +33,8 @@ int main() {
       scanf("%d", &V[i]);
     }
     std::vector<std::vector<int> > v;
-    std::vector<std::vector<int> > r = solve(v, 0);
-    for (const std::vector& v : r) {
+    std::vector<std::vector<int> > r = solve_iterative();
+    for (const std::vector<int>& v : r) {
       for (int i = 0; i < v.size(); ++i)
         printf("%d ", v[i]);
       printf("\n");
