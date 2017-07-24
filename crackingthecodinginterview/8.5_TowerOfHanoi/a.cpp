@@ -20,6 +20,15 @@
 int N;
 std::stack<int> TOWERS[3];
 
+void move_top_disc(int n, int from, int to) {
+  int e = TOWERS[from].top();
+  TOWERS[from].pop();
+  TOWERS[to].push(e);
+  // for (int i = n; i < N; ++i)
+  //   printf(" ");
+  // printf("[%c] => [%c]\n", 'A' + from, 'A' + to);
+}
+
 void solve(int n, int from, int to, int by) {
   // for (int i = n; i < N; ++i)
   //   printf(" ");
@@ -29,13 +38,8 @@ void solve(int n, int from, int to, int by) {
     return;
   // recursion
   solve(n - 1, from, by, to);
-  int e = TOWERS[from].top();
-  TOWERS[from].pop();
-  TOWERS[to].push(e);
-  for (int i = n; i < N; ++i)
-    printf(" ");
-  printf("[%d] => [%d], %d\n", from, to, e);
-  solve(n - 1, by, from, to);
+  move_top_disc(n, from, to);
+  solve(n - 1, by, to, from);
 }
 
 void print_towers() {
