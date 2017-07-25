@@ -8,6 +8,7 @@
 #include <cstring>
 #include <algorithm>
 #include <string>
+#include <set>
 
 // ex) ABA
 // AAB
@@ -15,29 +16,48 @@
 // AAB ABA BAA
 
 int N;
+std::set<std::string> ST;
 
 void print_indent(int indent) {
   for (int i = 0; i < indent; ++i)
     printf(" ");
 }
 
+// void solve(int indent, std::string s, int l) {
+//   print_indent(indent);
+//   printf("%d\n", l);
+//   // base condition
+//   if (l == N - 1 && ST.find(s) == SET.end()) {
+//     print_indent(indent);
+//     printf("%s\n", s.c_str());
+//     return;
+//   }
+//   // recursion
+//   for (int i = l; i < N; ++i) {
+//     std::sort(s.begin() + i, s.end());
+//     if (i == 0 || (i > 0 && s[i-1] != s[i])) {
+//       std::swap(s[l], s[i]);
+//       solve(indent + 1, s, l + 1);
+//       std::swap(s[l], s[i]);
+//     }
+//   }
+// }
+
 void solve(int indent, std::string s, int l) {
-  print_indent(indent);
-  printf("%d\n", l);
+  // print_indent(indent);
+  // printf("%d\n", l);
   // base condition
-  if (l == N - 1) {
-    print_indent(indent);
+  if (l == N - 1 && ST.find(s) == ST.end()) {
+    // print_indent(indent);
     printf("%s\n", s.c_str());
+    ST.insert(s);
     return;
   }
   // recursion
   for (int i = l; i < N; ++i) {
-    std::sort(s.begin(), s.end());
-    if (i == 0 || (i > 0 && s[i-1] != s[i])) {
-      std::swap(s[l], s[i]);
-      solve(indent + 1, s, l + 1);
-      std::swap(s[l], s[i]);
-    }
+    std::swap(s[l], s[i]);
+    solve(indent + 1, s, l + 1);
+    std::swap(s[l], s[i]);
   }
 }
 
@@ -49,7 +69,6 @@ int main() {
     scanf("%s", buf);
     N = strlen(buf);
     std::string s = buf;
-    std::sort(s.begin(), s.end());
     solve(0, buf, 0);
   }
   
