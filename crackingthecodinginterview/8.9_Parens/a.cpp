@@ -26,12 +26,14 @@ std::set<std::string> solve(int n) {
     return r;
   }
   // recursion
-  std::set<std::string> prev_set = solve(n-1);
+  std::set<std::string> prev_set = solve(n - 1);
   for (const std::string& s : prev_set) {
-    set.insert("()" + s);
+    r.insert("()" + s);
     for (int i = 0; i < s.size(); ++i) {
       if (s[i] == '(') {
         std::string s2 = s.substr(0, i) + "()" + s.substr(i+1);
+        printf("%d %s\n", n, s2.c_str());
+        r.insert(s2);
       }
     }
   }
@@ -43,13 +45,11 @@ int main() {
   int T;
   scanf("%d", &T);
   for (int t = 0; t < T; ++t) {
-    R.clear();
-    R.insert("");
     scanf("%d", &N);
     std::set<std::string> R = solve(N);
-    for (const std::string& s : R) {
-      printf("%s\n", s.c_str());
-    }
+    // for (const std::string& s : R) {
+    //   printf("%s\n", s.c_str());
+    // }
   }
   return 0;
 }
