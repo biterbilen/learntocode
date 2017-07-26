@@ -24,17 +24,17 @@ void print_indent(int indent) {
 }
 
 // void solve(int indent, std::string s, int l) {
-//   print_indent(indent);
-//   printf("%d\n", l);
+//   // print_indent(indent);
+//   // printf("%d\n", l);
 //   // base condition
-//   if (l == N - 1 && ST.find(s) == SET.end()) {
-//     print_indent(indent);
+//   if (l == N - 1) {
+//     // print_indent(indent);
 //     printf("%s\n", s.c_str());
 //     return;
 //   }
+//   std::sort(s.begin() + l, s.end());
 //   // recursion
 //   for (int i = l; i < N; ++i) {
-//     std::sort(s.begin() + i, s.end());
 //     if (i == 0 || (i > 0 && s[i-1] != s[i])) {
 //       std::swap(s[l], s[i]);
 //       solve(indent + 1, s, l + 1);
