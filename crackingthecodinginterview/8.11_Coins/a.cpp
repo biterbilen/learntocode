@@ -12,18 +12,20 @@ int CACHE[1024][4];
 
 int solve(int n, int idx) {
   // base condition
-  if (idx >= 4)
+  if (n == 0)
     return 1;
+  else if (n < 0)
+    return 0;
+  if (idx >= 4)
+    return 0;
   // memoization
   int& r = CACHE[n][idx];
   if (r != -1)
     return r;
   // recursion
   r = 0;
-  for (int i = 0; i * denoms[idx] <= n; ++i) {
-    int remain = n - i * denoms[idx];
-    r += solve(remain, idx + 1);
-  }
+  r += solve(n, idx + 1);
+  r += solve(n - denoms[idx], idx);
   return r;
 }
 
