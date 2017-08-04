@@ -31,17 +31,8 @@ int solve(int from) {
   if (r != -1)
     return r;
   // recursion
-  r = BOXES[from][1];
-  for (int next = from + 1; next < N; ++next) {
-    if ((BOXES[from][0] > BOXES[next][0]) &&
-        (BOXES[from][1] > BOXES[next][1]) &&
-        (BOXES[from][2] > BOXES[next][2]))
-    {
-      r += solve(next);
-      // r = std::max(r, r + solve(next));
-    }
-  }
-
+  r = solve(from + 1);
+  r = std::max(BOXES[from][1] + r, r);
   return r;
 }
 
