@@ -8,4 +8,58 @@
 // possible stack.The height of a stack is the sum of the heights of
 // each box.
 
+#include <cstdio>
+#include <vector>
+#include <algorithm>
 
+int N;
+std::vector<std::vector<int>> BOXES;
+int CACHE[100];
+
+void print_boxes() {
+  for (int i = 0; i < BOXES.size(); ++i)
+    printf("%d %d %d\n", BOXES[i][0], BOXES[i][1], BOXES[i][2]);
+}
+
+int solve(int from) {
+  // printf("  %d\n", from);
+  // base condition
+  if (from >= N)
+    return 0;
+  // memoization
+  int& r = CACHE[from];
+  if (r != -1)
+    return r;
+  // recursion
+  r = BOXES[from][1];
+  for (int next = from + 1; next < N; ++next) {
+    if ((BOXES[from][0] > BOXES[next][0]) &&
+        (BOXES[from][1] > BOXES[next][1]) &&
+        (BOXES[from][2] > BOXES[next][2]))
+    {
+      r += solve(next);
+      // r = std::max(r, r + solve(next));
+    }
+  }
+
+  return r;
+}
+
+int main() {
+  int T;
+  scanf("%d", &T);
+  for (int t = 0; t < T; ++t) {
+    for (int i = 0; i < 100; ++i)
+      CACHE[i] = -1;
+    scanf("%d", &N);
+    BOXES.clear();
+    for (int i = 0; i < N; ++i) {
+      std::vector<int> b(3, 0);
+      scanf("%d %d %d", &b[0], &b[1], &b[2]);
+      BOXES.push_back(b);
+    }
+    // print_boxes();
+    printf("%d\n", solve(0));
+  }
+  return 0;
+}
