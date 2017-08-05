@@ -17,52 +17,55 @@
 std::vector<char> OPS;
 
 int CACHE[100][100][2];
+
+
+void print_indent(int indent) {
+  for (int i = 0; i < indent; ++i)
+    printf("  ");
+}
 // return : profit case count
-int solve(int start, int end, int result) {
-  printf("%d %d %d\n", start, end, result);
-  // base condition
-  if (start == end - 1 && (OPS[start] == 0 || OPS[start] == 1)) {
-    return OPS[start] == result;
-  }
+int solve(int indent, int start, int end, char result) {
+  // print_indent(indent);
+  // printf("%d %d %c\n", start, end, result);
   // memoization
-  int& r = CACHE[start][end][result];
-  if (r != -1)
+  int& r = CACHE[start][end][result-'0'];
+  if (r != -1) {
+    // print_indent(indent);
+    // printf(";%d\n", r);
     return r;
+  }
+  // base condition
+  if (start == end - 1 && (OPS[start] == '0' || OPS[start] == '1')) {
+    r = (OPS[start] == result ? 1 : 0);
+    // print_indent(indent);
+    // // printf(".%c %c %d\n", OPS[start], result, r);
+    // printf(".%d\n", r);
+    return r;
+  }
+
   // recursion
   r = 0;
-  for (int i = start; i <= end; ++i) {
-    if (result == 1) {
-      switch (OPS[i]) {
-      case '&':
-        r += solve(start, i, 1) * solve(i + 1, end, 1);
-        break;
-      case '|':
-        r += solve(start, i, 1) * solve(i + 1, end, 1);
-        r += solve(start, i, 0) * solve(i + 1, end, 1);
-        r += solve(start, i, 1) * solve(i + 1, end, 0);
-        break;
-      case '^':
-        r += solve(start, i, 1) * solve(i + 1, end, 0);
-        r += solve(start, i, 0) * solve(i + 1, end, 1);
-        break;
-      }
-    } else {
-      switch (OPS[i]) {
-      case '&':
-        r += solve(start, i, 0) * solve(i + 1, end, 0);
-        r += solve(start, i, 1) * solve(i + 1, end, 0);
-        r += solve(start, i, 0) * solve(i + 1, end, 1);
-        break;
-      case '|':
-        r += solve(start, i, 0) * solve(i + 1, end, 0);
-        break;
-      case '^':
-        r += solve(start, i, 1) * solve(i + 1, end, 1);
-        r += solve(start, i, 0) * solve(i + 1, end, 0);
-        break;
-      }
+  for (int i = start + 1; i < end; ++i) {
+    if (OPS[i] == '0' || OPS[i] == '1')
+      continue;
+    int left_true   = solve(indent+1, start, i, '1');  // 1
+    int left_false  = solve(indent+1, start, i, '0');  // 0
+    int right_true  = solve(indent+1, i+1, end, '1');  // 1
+    int right_false = solve(indent+1, i+1, end, '0');  // 0
+    int total       = (left_true + left_false) * (right_true + right_false);
+    int total_true  = 0;
+    if (OPS[i] == '&') {
+      total_true += left_true * right_true;
+    } else if (OPS[i] == '|') {
+      total_true += left_true * right_true + left_false * right_true +
+          left_true * right_false;
+    } else if (OPS[i] == '^') {
+      total_true += left_true * right_false + left_false * right_true;
     }
+    r += result == '1' ? total_true : total - total_true;
   }
+  // print_indent(indent);
+  // printf(".%d\n", r);
   return r;
 }
 
@@ -85,10 +88,8 @@ int main() {
     for (int i = 0; i < n_buf1_len; ++i) {
         OPS.push_back(buf1[i]);
     }
-    printf("%d\n", solve(0, OPS.size(), strcmp(buf2, "true") == 0 ? 1 : 0));
+    printf("%d\n",
+           solve(0, 0, OPS.size(), strcmp(buf2, "true") == 0 ? '1' : '0'));
   }
   return 0;
 }
-
-
-
