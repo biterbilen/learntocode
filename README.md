@@ -440,23 +440,23 @@
   - [FANMEETING](https://algospot.com/judge/problem/read/FANMEETING)★
 
 - Dynamic programming
-  - [overlapping subproblems](doc/dynamic_overlapping_subproblems.md)
-  - [binomial coefficient](doc/dynamic_binomial_coefficient.md)
-  - [JUMPGAME](https://algospot.com/judge/problem/read/JUMPGAME)
-  - [WILDCARD](https://algospot.com/judge/problem/read/WILDCARD)
-  - [optimal substructure](doc/dynamic_optimal_substructure.md)
-  - [TRIANGLEPATH](https://algospot.com/judge/problem/read/TRIANGLEPATH)
-  - [LIS](https://algospot.com/judge/problem/read/LIS)
-  - [JLIS](https://algospot.com/judge/problem/read/JLIS)
-  - [PI](https://algospot.com/judge/problem/read/PI)
-  - [QUANTIZE](https://algospot.com/judge/problem/read/QUANTIZE)
-  - [TILING2](https://algospot.com/judge/problem/read/TILING2)
-  - [TRIPATHCNT](https://algospot.com/judge/problem/read/TRIPATHCNT)
-  - [SNAIL](https://algospot.com/judge/problem/read/SNAIL)
-  - [ASYMTILING](https://algospot.com/judge/problem/read/ASYMTILING)
-  - [POLY](https://algospot.com/judge/problem/read/POLY)
-  - [NUMB3RS](https://algospot.com/judge/problem/read/NUMB3RS)★
-  - [Markov Chain](doc/dynamic_markov_chain.md)
+  - [알](https://algospot.com)[overlapping subproblems](doc/dynamic_overlapping_subproblems.md)
+  - [알](https://algospot.com)[binomial coefficient](doc/dynamic_binomial_coefficient.md)
+  - [알](https://algospot.com)[JUMPGAME](https://algospot.com/judge/problem/read/JUMPGAME)
+  - [알](https://algospot.com)[WILDCARD](https://algospot.com/judge/problem/read/WILDCARD)
+  - [알](https://algospot.com)[optimal substructure](doc/dynamic_optimal_substructure.md)
+  - [알](https://algospot.com)[TRIANGLEPATH](https://algospot.com/judge/problem/read/TRIANGLEPATH)
+  - [알](https://algospot.com)[LIS](https://algospot.com/judge/problem/read/LIS)
+  - [알](https://algospot.com)[JLIS](https://algospot.com/judge/problem/read/JLIS)
+  - [알](https://algospot.com)[PI](https://algospot.com/judge/problem/read/PI)
+  - [알](https://algospot.com)[QUANTIZE](https://algospot.com/judge/problem/read/QUANTIZE)
+  - [알](https://algospot.com)[TILING2](https://algospot.com/judge/problem/read/TILING2)
+  - [알](https://algospot.com)[TRIPATHCNT](https://algospot.com/judge/problem/read/TRIPATHCNT)
+  - [알](https://algospot.com)[SNAIL](https://algospot.com/judge/problem/read/SNAIL)
+  - [알](https://algospot.com)[ASYMTILING](https://algospot.com/judge/problem/read/ASYMTILING)
+  - [알](https://algospot.com)[POLY](https://algospot.com/judge/problem/read/POLY)
+  - [알](https://algospot.com)[NUMB3RS](https://algospot.com/judge/problem/read/NUMB3RS)★
+  - [알](https://algospot.com)[Markov Chain](doc/dynamic_markov_chain.md)
 
 - Dynamic programming technique
   - [PACKING](https://algospot.com/judge/problem/read/PACKING)
