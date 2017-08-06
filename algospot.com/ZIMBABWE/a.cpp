@@ -12,19 +12,38 @@ int N, M;
 // CACHE[i][j][j] : taken, mod, less
 int CACHE[1<<14][20][2];
 
+void print_indent(int indent) {
+  for (int i = 0; i < indent; ++i)
+    printf("  ");
+}
+
 int solve(int idx, int taken, int mod, int less) {
+  print_indent(idx);
+  printf("%d %d %d %d\n", idx, taken, mod, less);
   // base condition
-  if (idx == N)
-    return (less && mod == 0) ? 1 : 0;
+  if (idx == N) {
+    int r = (less && mod == 0) ? 1 : 0;
+    print_indent(idx);
+    printf(".%d\n", r);
+    return r;
+  }
   // memoization
   int& r = CACHE[taken][mod][less];
-  if (r != -1)
+  if (r != -1) {
+    print_indent(idx);
+    printf(";%d\n", r);
     return r;
+  }
   // recursion
   r = 0;
   for (int next = 0; next < N; ++next) {
+    // already used???
+    if ((taken & (1 << (next))) == 1)
+      continue;
+    // past price should be lesser than current price
     if (!less && E[idx] < DIGITS[next])
       continue;
+    // consider same digit just once
     if (next > 0 && DIGITS[next-1] == DIGITS[next] &&
         (taken & (1 << (next-1))) == 0)
       continue;
@@ -34,6 +53,8 @@ int solve(int idx, int taken, int mod, int less) {
     r += solve(idx + 1, next_taken, next_mod, next_less);
     r %= MOD;
   }
+  print_indent(idx);
+  printf(".%d\n", r);
   return r;
 }
 
