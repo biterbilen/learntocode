@@ -254,7 +254,7 @@
   - [GALLERY](http://algospot.com/judge/problem/read/GALLERY)
     - dominating set
     - unrooted tree
-  - [MEETINGROOM](doc/algospot_MEETEINGROOM.md) ★
+  - [MEETINGROOM](doc/algospot_MEETINGROOM.md) ★
     - sat (SATisfiability, boolean satisfiability problem)
     - conjunctive normal form
     - 2-sat
@@ -481,11 +481,12 @@
   - [GENIUS](https://algospot.com/judge/problem/read/GENIUS)
 
 - Greedy
-  - [MATCHORDER](https://algospot.com/judge/problem/read/MATCHORDER)
-  - [LUNCHBOX](https://algospot.com/judge/problem/read/LUNCHBOX)
-  - [STRJOIN](https://algospot.com/judge/problem/read/STRJOIN)
-  - huffman code
-  - [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)
+  - [알](algospot.com/MEETINGROOM/) | [MEETINGROOM](https://algospot.com/judge/problem/read/MEETINGROOM)
+  - [알](algospot.com/MATCHORDER/) | [MATCHORDER](https://algospot.com/judge/problem/read/MATCHORDER)
+  - [알](algospot.com/LUNCHBOX/) | [LUNCHBOX](https://algospot.com/judge/problem/read/LUNCHBOX)
+  - [알](algospot.com/STRJOIN/) | [STRJOIN](https://algospot.com/judge/problem/read/STRJOIN)
+  - 알 | huffman code
+  - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)
 
 - Combinatorial Search
   - back tracking
