@@ -11,7 +11,7 @@
 - [programming pearls](https://www.amazon.com/Programming-Pearls-2nd-Jon-Bentley/dp/0201657880/ref=sr_1_1?s=books&ie=UTF8&qid=1473590537&sr=1-1&keywords=programming+pearls)
 - [Dynamic Programming for Coding Interviews: A Bottom-Up approach to problem solving](https://www.amazon.com/Dynamic-Programming-Coding-Interviews-Bottom-Up-ebook/dp/B01N4P93O7/ref=sr_1_1?ie=UTF8&qid=1500344454&sr=8-1&keywords=dynamic+programming+for+coding+interviews)
 
-# online junges
+# online judges
 
 - [codeforces](http://codeforces.com/)
 - [geekforgeeks practice](http://www.practice.geeksforgeeks.org/)
@@ -20,6 +20,25 @@
 - [baekunonline](https://www.acmicpc.net/)
 - [hackerrank](https://www.hackerrank.com/)
 - [programming-challnges](http://www.programming-challenges.com/)
+
+# references
+
+## video
+
+- [c++로 배우는 알고리즘 동영상](https://www.youtube.com/watch?v=mzM3S5FtKuw&list=PLl5LpJCoD2mCIRn0Fkt8z07EK320ZmHgY)
+- [Sedgewick Algorithms I](https://www.youtube.com/user/algorithmscourses/playlists?shelf_id=2&view=50&sort=dd)
+- [Sedgewick Algorithms II](https://www.youtube.com/user/algorithmscourses/playlists?flow=list&shelf_id=3&view=50)
+- [michael sambol short videos](https://www.youtube.com/channel/UCzDJwLWoYCUQowF_nG3m5OQ)
+- [Curtis Lassam short videos](https://www.youtube.com/watch?v=r4r1DZcx1cM&list=PLmVb1OknmNJuC5POdcDv5oCS7_OUkDgpj&index=22)
+  - trie, bloom filters, Endainness, scrum
+
+## Book
+
+- [알고리즘문제해결전략](http://book.algospot.com/)
+- [c로 배우는 알고리즘](http://www.yes24.com/24/goods/18005?scode=032&OzSrank=1)
+- [Algorithms 4th Edition by Robert Sedgewick and Kevin Wayne](http://algs4.cs.princeton.edu/home/)
+- [The Algorithm Design Manual 2nd Edition by Steven S Skiena](http://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1848000693/ref=sr_1_1?s=books&ie=UTF8&qid=1460283355&sr=1-1&keywords=the+algorithm+design+manual)
+- [Data Structures and Algorithm Analysis in C 2nd Edition by Mark A. Weiss ](https://users.cs.fiu.edu/~weiss/)
 
 # tools
 
