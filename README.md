@@ -515,7 +515,7 @@
   - 알 | [greedy algorithm proof](doc/greedy_proof.md)
   - 알 | [optimization problem](doc/greedy_optimization_problem.md)
   - 알 | [meta heuristics](doc/greedy_metaheuristics.md)
-  - [알](algospot.com/MEETINGROOM/) | [MEETINGROOM](https://algospot.com/judge/problem/read/MEETINGROOM)
+  - [알](acmicpc.net/회의실배정/) | [회의실배정](https://www.acmicpc.net/problem/1931)
   - 알 | [activity selection problem](doc/greedy_activity_selection_problem.md)  
   - [알](algospot.com/MATCHORDER/) | [MATCHORDER](https://algospot.com/judge/problem/read/MATCHORDER)
   - [알](algospot.com/LUNCHBOX/) | [LUNCHBOX](https://algospot.com/judge/problem/read/LUNCHBOX)
