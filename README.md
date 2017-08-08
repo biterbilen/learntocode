@@ -1,7 +1,7 @@
 # Materials
 
 - I | [interactive coding challenges](https://github.com/donnemartin/interactive-coding-challenges)
-- 알 | [알고리즘문제해결전략](http://book.algospot.com/)
+- ?? | [?�고리즘문제?�결?�략](http://book.algospot.com/)
 - C | [cracking the coding interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=zg_bs_132570011_1?_encoding=UTF8&psc=1&refRID=3XW52MQJXCEJEWNTYJQ4)
 - G | [geeksforgeeks](http://www.geeksforgeeks.org/)
 - [elements of programming interviews in c++](https://www.amazon.com/Elements-Programming-Interviews-Insiders-Guide/dp/1479274836)
@@ -11,7 +11,6 @@
 - [programming pearls](https://www.amazon.com/Programming-Pearls-2nd-Jon-Bentley/dp/0201657880/ref=sr_1_1?s=books&ie=UTF8&qid=1473590537&sr=1-1&keywords=programming+pearls)
 - [Dynamic Programming for Coding Interviews: A Bottom-Up approach to problem solving](https://www.amazon.com/Dynamic-Programming-Coding-Interviews-Bottom-Up-ebook/dp/B01N4P93O7/ref=sr_1_1?ie=UTF8&qid=1500344454&sr=8-1&keywords=dynamic+programming+for+coding+interviews)
 
-# online junges
 
 - [codeforces](http://codeforces.com/)
 - [geekforgeeks practice](http://www.practice.geeksforgeeks.org/)
@@ -37,7 +36,7 @@
 | unsigned short int | 2byte             | 0 to 65,535               |
 | int       | 4byte             | -2,147,483,648 to 2,147,483,647                        |
 | unsigned int       | 4byte             | 0 to 4,294,967,295                        |
-| long long | 8byte             | –9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807 |
+| long long | 8byte             | ??9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807 |
 | unsigned long long | 8byte             | 0 ~ 18,446,744,073,709,551,615 |
 
 # Algorithm Proof
@@ -55,10 +54,10 @@
 - The RAM Model of Computation
 - The asymptotic analysis of worst-case complexity
 - notations
-  - f(n) = O(g(n)) means c · g(n) is an upper bound on f (n). Thus there exists some constant c such that f (n) is always ≤ c · g(n), for large enough n (i.e. , n ≥ n0 for some constant n0).
-  - f(n) = Ω(g(n)) means c · g(n) is a lower bound on f(n). Thus there exists some constant c such that f(n) is always ≥ c · g(n), for all n ≥ n0.
-  - f(n) = Θ(g(n)) means c1 · g(n) is an upper bound on f(n) and c2 · g(n) is a lower bound on f(n), for all n ≥ n0. Thus there exist constants c1 and c2 such that f (n) ≤ c1 · g(n) and f (n) ≥ c2 · g(n). This means that g(n) provides a nice, tight bound on f(n).
-  - ![Graphic examples of the Θ, O, and Ω notations.](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_img/Graphic%20examples%20of%20the%20%CE%98%2C%20O%2C%20and%20%E2%84%A6%20notations.jpeg)
+  - f(n) = O(g(n)) means c · g(n) is an upper bound on f (n). Thus there exists some constant c such that f (n) is always ?? c · g(n), for large enough n (i.e. , n ?? n0 for some constant n0).
+  - f(n) = Ω(g(n)) means c · g(n) is a lower bound on f(n). Thus there exists some constant c such that f(n) is always ?? c · g(n), for all n ?? n0.
+  - f(n) = ?(g(n)) means c1 · g(n) is an upper bound on f(n) and c2 · g(n) is a lower bound on f(n), for all n ?? n0. Thus there exist constants c1 and c2 such that f (n) ?? c1 · g(n) and f (n) ?? c2 · g(n). This means that g(n) provides a nice, tight bound on f(n).
+  - ![Graphic examples of the ?, O, and Ω notations.](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_img/Graphic%20examples%20of%20the%20%CE%98%2C%20O%2C%20and%20%E2%84%A6%20notations.jpeg)
   - ![Algorithm Graphs](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_img/alg_graph.jpeg)
 
 
@@ -93,7 +92,7 @@
   - sieve of eratosthenes
   - 15 puzzle
   - priority queue with O(1)
-  - maximal stable set ★
+  - maximal stable set ??
   - [GRADUATION](https://algospot.com/judge/problem/read/GRADUATION)
   - [Bit Twiddling Hacks](http://graphics.stanford.edu/~seander/bithacks.html)
 
@@ -139,13 +138,13 @@
 
 - String
   - search with naive algorithm
-  - search with kmp algorithm ★
+  - search with kmp algorithm ??
     - needle, haystack, begin, matched, pi[]
     - O(|N| + |H|)
   - [NAMING](http://algospot.com/judge/problem/read/NAMING)
   - [PALINDROMIZE](http://algospot.com/judge/problem/read/PALINDROMIZE)
   - [JAEHASAFE](http://algospot.com/judge/problem/read/JAEHASAFE)
-  - suffix array ★
+  - suffix array ??
     - [Manber, Udi; Myers, Gene (1990). Suffix arrays: a new method for on-line string searches](http://webglimpse.net/pubs/suffix.pdf)
   - get suffix array using naive algorithm
     - O(N^2lgN)
@@ -162,7 +161,7 @@
     - O(|N| + lg|H|)
   - [Rabin-Karp algorithm](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm)
   - suffix
-  - Aho–Corasick algorithm
+  - Aho?�Corasick algorithm
     - children, fail, terminal, output, insert, compute_fail_func, search
 
 - Tree
@@ -192,7 +191,7 @@
   - [MORDOR](http://algospot.com/judge/problem/read/MORDOR)
   - [FAMILYTREE](http://algospot.com/judge/problem/read/FAMILYTREE)
   - fenwick tree (binary indexed tree)
-  - [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME) ★
+  - [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME) ??
   - union-find (merge-find)
     - union rank optimization
     - pass compression optimization
@@ -213,7 +212,7 @@
   - radix tree (patricia tree)
     - compress trie like suffix tree.
   - [SOLONG](http://algospot.com/judge/problem/read/SOLONG)
-  - Aho–Corasick algorithm ★
+  - Aho?�Corasick algorithm ??
     - children, fail, terminal, insert, fail, output, compute_fail, search
   - [NH](http://algospot.com/judge/problem/read/NH)
 
@@ -239,7 +238,7 @@
   - [dfs spanning tree](doc/graph_dfs_spanning_tree.md)
     - tree edge, forward edge, back edge, cross edge
     - adj, discovered, finished, counter, dfs_spanning_tree
-  - [proof of topological sort](doc/graph_proof_of_topological_srt.md) ★
+  - [proof of topological sort](doc/graph_proof_of_topological_srt.md) ??
   - [check the cycle](doc/graph_check_the_cycle.md)
   - [cut vertex (articulation point)](doc/graph_cut_vertex.md)
     - biconnected components
@@ -250,11 +249,11 @@
     - scc (strongly connected components)
     - condensation
     - adj, scc_id, discovered, finished, stck, scc_counter, vertex_counter, dfs_scc, tarjan_scc
-  - [topological sort of scc](doc/graph_topological_sort_of_scc) ★
+  - [topological sort of scc](doc/graph_topological_sort_of_scc) ??
   - [GALLERY](http://algospot.com/judge/problem/read/GALLERY)
     - dominating set
     - unrooted tree
-  - [MEETINGROOM](doc/algospot_MEETINGROOM.md) ★
+  - [MEETINGROOM](doc/algospot_MEETINGROOM.md) ??
     - sat (SATisfiability, boolean satisfiability problem)
     - conjunctive normal form
     - 2-sat
@@ -266,7 +265,7 @@
   - [bfs shortest path](doc/graph_bfs_shortest_path.md)
     - adj, get_shortest_path, bfs, distance, parent, q
   - [SORTGAME](http://algospot.com/judge/problem/read/SORTGAME)
-  - [CHILDRENDAY](doc/algospot_CHILDRENDAY.md) ★
+  - [CHILDRENDAY](doc/algospot_CHILDRENDAY.md) ??
   - [15 puzzle - bfs](doc/graph_15_puzzle_bfs.md)
     - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, bfs
   - [15 puzzle - bfs bidrectional search](doc/graph_15_puzzle_bfs_bs.md)
@@ -286,7 +285,7 @@
     - O(|V|^2 + |E|)
   - [ROUTING](http://algospot.com/judge/problem/read/ROUTING)
   - [FIRETRUCKS](http://algospot.com/judge/problem/read/FIRETRUCKS)
-  - [NTHLON](http://algospot.com/judge/problem/read/NTHLON) ★
+  - [NTHLON](http://algospot.com/judge/problem/read/NTHLON) ??
   - [Bellman-Ford algorithm](doc/graph_bellman_ford.md)
     ```cpp
     vector<pair<int, int>> adj[], bellmanford, vector<int> upper, bool updated
@@ -322,19 +321,19 @@
   - [MILEAGE](http://algospot.com/judge/problem/read/MILEAGE)
   - [SAINTTAIL](http://algospot.com/judge/problem/read/SAINTTAIL)
   - [MATCHFIX](http://algospot.com/judge/problem/read/MATCHFIX)
-  - [PROJECTS](http://algospot.com/judge/problem/read/PROJECTS) ★
+  - [PROJECTS](http://algospot.com/judge/problem/read/PROJECTS) ??
   - [bipartite matching](doc/graph_bipartite_matching.md)
     - adj[][], amatch, bmatch, visited, dfs, bipartite_match
     - O(|V||E|)
   - [TRAVELPICTURES](http://algospot.com/judge/problem/read/TRAVELPICTURES)
   - [DOMINOS](http://algospot.com/judge/problem/read/DOMINOS)
   - [BISHOPS](http://algospot.com/judge/problem/read/BISHOPS)
-  - [TRAPCARD](http://algospot.com/judge/problem/read/TRAPCARD) ★
+  - [TRAPCARD](http://algospot.com/judge/problem/read/TRAPCARD) ??
   - [maxium independent set problem](doc/graph_max_independent_set.md)
   - [dinic algorithm](doc/graph_dinic.md)
     - O(|V|^2|E|)
   - [successive shortest path](doc/graph_successive_shortest_path.md)
-  - [Kuhn–Munkres algorithm (hungarian algorithm)](doc/graph_hungarian.md)
+  - [Kuhn?�Munkres algorithm (hungarian algorithm)](doc/graph_hungarian.md)
   - vertex cover problem
     - Kőnig's theorem
   - Hopcroft-Karp algorithm
@@ -436,41 +435,41 @@
   - quick sort
   - Karatsuba
   - [QUADTREE](https://algospot.com/judge/problem/read/QUADTREE)
-  - [FENCE](https://algospot.com/judge/problem/read/FENCE)★ 
-  - [FANMEETING](https://algospot.com/judge/problem/read/FANMEETING)★
+  - [FENCE](https://algospot.com/judge/problem/read/FENCE)?? 
+  - [FANMEETING](https://algospot.com/judge/problem/read/FANMEETING)??
 
 - Dynamic programming
   - C | [boolean evaluation](crackingthecodinginterview/8.14_BooleanEvaluation/a.cpp)
-  - 알 | [overlapping subproblems](doc/dynamic_overlapping_subproblems.md)
-  - 알 | [binomial coefficient](doc/dynamic_binomial_coefficient.md)
-  - 알 | [JUMPGAME](https://algospot.com/judge/problem/read/JUMPGAME)
-  - 알 | [WILDCARD](https://algospot.com/judge/problem/read/WILDCARD)
-  - 알 | [optimal substructure](doc/dynamic_optimal_substructure.md)
-  - 알 | [TRIANGLEPATH](https://algospot.com/judge/problem/read/TRIANGLEPATH)
-  - 알 | [LIS](https://algospot.com/judge/problem/read/LIS)
-  - 알 | [JLIS](https://algospot.com/judge/problem/read/JLIS)
-  - 알 | [PI](https://algospot.com/judge/problem/read/PI)
-  - 알 | [QUANTIZE](https://algospot.com/judge/problem/read/QUANTIZE)
-  - 알 | [TILING2](https://algospot.com/judge/problem/read/TILING2)
-  - 알 | [TRIPATHCNT](https://algospot.com/judge/problem/read/TRIPATHCNT)
-  - 알 | [SNAIL](https://algospot.com/judge/problem/read/SNAIL)
-  - 알 | [ASYMTILING](https://algospot.com/judge/problem/read/ASYMTILING)
-  - 알 | [POLY](https://algospot.com/judge/problem/read/POLY)
-  - 알 | [NUMB3RS](https://algospot.com/judge/problem/read/NUMB3RS)★
-  - 알 | [Markov Chain](doc/dynamic_markov_chain.md)
+  - ?? | [overlapping subproblems](doc/dynamic_overlapping_subproblems.md)
+  - ?? | [binomial coefficient](doc/dynamic_binomial_coefficient.md)
+  - ?? | [JUMPGAME](https://algospot.com/judge/problem/read/JUMPGAME)
+  - ?? | [WILDCARD](https://algospot.com/judge/problem/read/WILDCARD)
+  - ?? | [optimal substructure](doc/dynamic_optimal_substructure.md)
+  - ?? | [TRIANGLEPATH](https://algospot.com/judge/problem/read/TRIANGLEPATH)
+  - ?? | [LIS](https://algospot.com/judge/problem/read/LIS)
+  - ?? | [JLIS](https://algospot.com/judge/problem/read/JLIS)
+  - ?? | [PI](https://algospot.com/judge/problem/read/PI)
+  - ?? | [QUANTIZE](https://algospot.com/judge/problem/read/QUANTIZE)
+  - ?? | [TILING2](https://algospot.com/judge/problem/read/TILING2)
+  - ?? | [TRIPATHCNT](https://algospot.com/judge/problem/read/TRIPATHCNT)
+  - ?? | [SNAIL](https://algospot.com/judge/problem/read/SNAIL)
+  - ?? | [ASYMTILING](https://algospot.com/judge/problem/read/ASYMTILING)
+  - ?? | [POLY](https://algospot.com/judge/problem/read/POLY)
+  - ?? | [NUMB3RS](https://algospot.com/judge/problem/read/NUMB3RS)??
+  - ?? | [Markov Chain](doc/dynamic_markov_chain.md)
 
 - Dynamic programming technique
   - [PACKING](https://algospot.com/judge/problem/read/PACKING)
   - [knapsack problem](doc/dynamic_knapsack_problem.md)
-  - [OCR](https://algospot.com/judge/problem/read/OCR)★
+  - [OCR](https://algospot.com/judge/problem/read/OCR)??
   - Hidden Markov Model, HMM
     - Viterbi algorithm
   - [MORSE](https://algospot.com/judge/problem/read/MORSE)
-  - [KLIS](https://algospot.com/judge/problem/read/KLIS)★
+  - [KLIS](https://algospot.com/judge/problem/read/KLIS)??
   - [DRAGON](https://algospot.com/judge/problem/read/DRAGON)
   - [memoization with non-integer parameters](doc/dynamic_memoization_with_non_integer.md)
   - [TSP](https://algospot.com/judge/problem/read/TSP1)
-  - [ZIMBABWE](https://algospot.com/judge/problem/read/ZIMBABWE)★
+  - [ZIMBABWE](https://algospot.com/judge/problem/read/ZIMBABWE)??
   - [RESTORE](https://algospot.com/judge/problem/read/RESTORE)
   - [combinatorial game](doc/dynamic_combinatorial_game.md)
   - [TICTACTOE](https://algospot.com/judge/problem/read/TICTACTOE)
@@ -481,30 +480,18 @@
   - [GENIUS](https://algospot.com/judge/problem/read/GENIUS)
 
 - Greedy
-  - 알 | [greedy algorithm proof](doc/greedy_proof.md)
-  - 알 | [optimization problem](doc/greedy_optimization_problem.md)
-  - [알](algospot.com/MEETINGROOM/) | [MEETINGROOM](https://algospot.com/judge/problem/read/MEETINGROOM)
-  - [알](algospot.com/MATCHORDER/) | [MATCHORDER](https://algospot.com/judge/problem/read/MATCHORDER)
-  - [알](algospot.com/LUNCHBOX/) | [LUNCHBOX](https://algospot.com/judge/problem/read/LUNCHBOX)
-  - [알](algospot.com/STRJOIN/) | [STRJOIN](https://algospot.com/judge/problem/read/STRJOIN)
-  - 알 | huffman code
-  - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)
+  - ?? | [greedy algorithm proof](doc/greedy_proof.md)
+  - ?? | [optimization problem](doc/greedy_optimization_problem.md)
+  - [??(algospot.com/MEETINGROOM/) | [MEETINGROOM](https://algospot.com/judge/problem/read/MEETINGROOM)
+  - [??(algospot.com/MATCHORDER/) | [MATCHORDER](https://algospot.com/judge/problem/read/MATCHORDER)
+  - [??(algospot.com/LUNCHBOX/) | [LUNCHBOX](https://algospot.com/judge/problem/read/LUNCHBOX)
+  - [??(algospot.com/STRJOIN/) | [STRJOIN](https://algospot.com/judge/problem/read/STRJOIN)
+  - ?? | huffman code
+  - [??(algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)
 
 - Combinatorial Search
-  - 알 | [back tracking](doc/combinatorial_backtracking.md)
-  - [알](algospot.com/TSP/) | [TSP (dynamic programming)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (exhaustive search](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (simple heuristic)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (greedy)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (MST heuristic)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (memoization)](https://algospot.com/judge/problem/read/TSP2)
-  - 알 | [BOARDCOVER2](https://algospot.com/judge/problem/read/BOARDCOVER2)
-  - 알 | [ALLERGY](https://algospot.com/judge/problem/read/ALLERGY)
-  - 알 | [KAKURO2](https://algospot.com/judge/problem/read/KAKURO2)
-  - 알 | [Artificial Intelligence: A Modern Approach](https://www.amazon.com/Artificial-Intelligence-Modern-Approach-3rd/dp/0136042597)
-  - 알 | [sudoku](http://norvig.com/sudoku.html)
     - [sudoku-kor](https://github.com/jongman/articles/wiki/solving-every-sudoku-puzzle)
-  - 알 | [Georgia Tech's TSP](http://www.tsp.gatech.edu/)
+  - ?? | [Georgia Tech's TSP](http://www.tsp.gatech.edu/)
 
 - optimization problems to Decision problems
   - [DARPA](https://algospot.com/judge/problem/read/DARPA)
