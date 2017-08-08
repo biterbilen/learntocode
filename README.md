@@ -3,10 +3,10 @@
 * [materials](#materials)
 * [online judges](#online-judges)
 * [references](#references)
-* [datatype ranges](#datatype-ranges)
+* [datatype range](#datatype-range)
 * [algorithm proof](#algorithm-proof)
 * [algorithm analysis](#algorithm-analysis)
-* [P, NP, NP Hard, NP Complete](P,-NP,-NP-Hard,-NP-Complete)
+* [NP Completeness](NP-Completeness)
 * [problems](#problems)
 
 # materials
@@ -93,7 +93,7 @@
   - ![Algorithm Graphs](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_img/alg_graph.jpeg)
 
 
-# P, NP, NP Hard, NP Complete
+# NP Completeness
 
 - P
   - P means the existence of an algorithm for the task that runs in polynomial time.
