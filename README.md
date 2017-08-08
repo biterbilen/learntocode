@@ -36,6 +36,8 @@
 
 ## video
 
+- [백준온라인강좌](https://code.plus/courses/1)
+  - 유료이긴하지만 다양한 문제풀이 강좌가 있다.
 - [c++로 배우는 알고리즘 동영상](https://www.youtube.com/watch?v=mzM3S5FtKuw&list=PLl5LpJCoD2mCIRn0Fkt8z07EK320ZmHgY)
 - [Sedgewick Algorithms I](https://www.youtube.com/user/algorithmscourses/playlists?shelf_id=2&view=50&sort=dd)
 - [Sedgewick Algorithms II](https://www.youtube.com/user/algorithmscourses/playlists?flow=list&shelf_id=3&view=50)
