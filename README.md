@@ -6,7 +6,7 @@
 * [datatype range](#datatype-range)
 * [algorithm proof](#algorithm-proof)
 * [algorithm analysis](#algorithm-analysis)
-* [NP Completeness](NP-Completeness)
+* [NP Completeness](#NP-Completeness)
 * [problems](#problems)
 
 # materials
