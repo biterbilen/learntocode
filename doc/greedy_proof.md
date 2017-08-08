@@ -4,11 +4,24 @@
   greedy choice property(탐욕적 선택 속성) 과 optimal
   substructure(최적 부분 구조)라는 두 가지 속성을 만족하는지
   증명해야 한다.
-- greedy choice property는 앞의 선택이 이후의 선택에 영향을 주지 않는
-  다는 것이다.  optimal substructure는 문제에 대한 최적해가 부분문제에
-  대해서도 역시 최적해라는 것이다.
+- dynamic programming으로 해결하기에는 필요한 시간과 메모리가
+  너무 클때 greedy algorithm을 적용해보자.
+- greedy choice property는 dynamic programming처럼 답의 모든 부분을
+  고려하지 않고 탐욕적으로만(지금 이순간 최저 혹은 최고) 선택하더라도
+  최적해를 구할 수 있다는 것이다.  optimal substructure는 문제에 대한
+  최적해가 부분문제에 대해서도 역시 최적해라는 것이다.
 
-# proof of [회의실배정](https://www.acmicpc.net/problem/1931)
+# how to prove it
+
+- greedy choice property
+  - 선택한 답을 포함하는 최적해가 존재함을 보이자. 이 증명은 선택한 답과
+    다른 최적해가 존재함을 가정하고, 이것을 조작해서 우리가 선택한 답을 포함하는
+    최적해로 바꿀 수 있음을 보이자.
+- optimal substructure
+  - 각 단계에서 탐욕적으로(최적의) 선택했을때 전체 최적해를 구할 수
+    있음을 보이자. 대부분의 경우 자명하다.
+
+# example : [회의실배정](https://www.acmicpc.net/problem/1931)
 
 - greedy choice property
   - "가장 종료 시간이 빠른 회의(S-min)을 포함하는 최적해가 반드시 존재한다."를
