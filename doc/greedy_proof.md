@@ -1,9 +1,28 @@
 # abstract
 
 - greedy algorithm을 적용할 수 있는지 판단 하려면 해당 문제에 대해
-  greedy choice property(탐욕스러운 선택 조건) 과 optimal
-  substructure(최적 부분 구조 조건)라는 두 가지 속성을 만족하는지
+  greedy choice property(탐욕적 선택 속성) 과 optimal
+  substructure(최적 부분 구조)라는 두 가지 속성을 만족하는지
   증명해야 한다.
--  greedy choice property는 앞의 선택이 이후의 선택에 영향을 주지 않는
+- greedy choice property는 앞의 선택이 이후의 선택에 영향을 주지 않는
   다는 것이다.  optimal substructure는 문제에 대한 최적해가 부분문제에
   대해서도 역시 최적해라는 것이다.
+
+# proof of MEETINGROOM
+
+- greedy choice property
+  - "가장 종료 시간이 빠른 회의(S-min)을 포함하는 최적해가 반드시 존재한다."를
+    증명해보자.
+  - S의 최적해 중에 S-min을 포함하지 않는 답이 있다고 하자. 이 답은
+    서로 겹치지 않는 회의의 목록인데, 이 목록에서 첫 번째로 개최되는
+    회의를 지우고 S-min을 대신 추가해서 새로운 목록을 만들자. S-min은
+    S에서 가장 일찍 끝나는 회의이기 때문에 지워진 회의는 S-min보다
+    일찍 끝날 수 없다. 따라서 두 번째 회의와 S-min은 겹치는 일이
+    없으며, 새로 만든 목록도 최적해 중 하나가 된다. 따라서 항상
+    S-min을 포함하는 최적해는 존재한다. 이러한 증명은 우리가 가장 일찍
+    끝나는 회의를 선택해서 최적해를 얻는 것이 불가능해지는 경우는
+    없음을 보여준다.
+- optimal substructure
+  - 자명해서 따로 증명할 필요가 없는 경우가 대부분이다. 첫 번째 회의를
+    잘 선택하고 겹치는 회의를 모두 걸러냈다면, 남은 회의 중에 당연히
+    최대한 많은 회의를 선택해야 한다.
