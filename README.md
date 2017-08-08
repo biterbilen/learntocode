@@ -516,6 +516,7 @@
   - back tracking
   - TSP (dynamic programming)
   - TSP (exhaustive search)
+  - TSP (exhaustive search with pruning)
   - TSP (simple heuristic)
   - TSP (greedy)
   - TSP (MST heuristic)
