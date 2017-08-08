@@ -469,7 +469,7 @@
   - [KLIS](https://algospot.com/judge/problem/read/KLIS)★
   - [DRAGON](https://algospot.com/judge/problem/read/DRAGON)
   - [memoization with non-integer parameters](doc/dynamic_memoization_with_non_integer.md)
-  - TSP
+  - [TSP](https://algospot.com/judge/problem/read/TSP1)
   - [ZIMBABWE](https://algospot.com/judge/problem/read/ZIMBABWE)★
   - [RESTORE](https://algospot.com/judge/problem/read/RESTORE)
   - [combinatorial game](doc/dynamic_combinatorial_game.md)
@@ -491,20 +491,20 @@
   - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)
 
 - Combinatorial Search
-  - back tracking
-  - TSP (dynamic programming)
-  - TSP (exhaustive search)
-  - TSP (simple heuristic)
-  - TSP (greedy)
-  - TSP (MST heuristic)
-  - TSP (memoization)
-  - [BOARDCOVER2](https://algospot.com/judge/problem/read/BOARDCOVER2)
-  - [ALLERGY](https://algospot.com/judge/problem/read/ALLERGY)
-  - [KAKURO2](https://algospot.com/judge/problem/read/KAKURO2)
-  - [Artificial Intelligence: A Modern Approach](https://www.amazon.com/Artificial-Intelligence-Modern-Approach-3rd/dp/0136042597)
-  - [sudoku](http://norvig.com/sudoku.html)
+  - 알 | [back tracking](doc/combinatorial_backtracking.md)
+  - [알](algospot.com/TSP/) | [TSP (dynamic programming)](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP/) | [TSP (exhaustive search](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP/) | [TSP (simple heuristic)](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP/) | [TSP (greedy)](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP/) | [TSP (MST heuristic)](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP/) | [TSP (memoization)](https://algospot.com/judge/problem/read/TSP2)
+  - 알 | [BOARDCOVER2](https://algospot.com/judge/problem/read/BOARDCOVER2)
+  - 알 | [ALLERGY](https://algospot.com/judge/problem/read/ALLERGY)
+  - 알 | [KAKURO2](https://algospot.com/judge/problem/read/KAKURO2)
+  - 알 | [Artificial Intelligence: A Modern Approach](https://www.amazon.com/Artificial-Intelligence-Modern-Approach-3rd/dp/0136042597)
+  - 알 | [sudoku](http://norvig.com/sudoku.html)
     - [sudoku-kor](https://github.com/jongman/articles/wiki/solving-every-sudoku-puzzle)
-  - [Georgia Tech's TSP](http://www.tsp.gatech.edu/)
+  - 알 | [Georgia Tech's TSP](http://www.tsp.gatech.edu/)
 
 - optimization problems to Decision problems
   - [DARPA](https://algospot.com/judge/problem/read/DARPA)
