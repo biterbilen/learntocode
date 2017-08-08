@@ -544,4 +544,3 @@
   - 알 | [ARCTIC](https://algospot.com/judge/problem/read/ARCTIC)
   - 알 | [CANADATRIP](https://algospot.com/judge/problem/read/CANADATRIP)
   - 알 | [WITHDRAWAL](https://algospot.com/judge/problem/read/WITHDRAWAL)
-
