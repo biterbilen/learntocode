@@ -1,4 +1,15 @@
-# Materials
+# Contents
+
+* [materials](#materials)
+* [online judges](#online-judges)
+* [references](#references)
+* [datatype ranges](#datatype-ranges)
+* [algorithm proof](#algorithm-proof)
+* [algorithm analysis](#algorithm-analysis)
+* [P, NP, NP Hard, NP Complete](P,-NP,-NP-Hard,-NP-Complete)
+* [problems](#problems)
+
+# materials
 
 - I | [interactive coding challenges](https://github.com/donnemartin/interactive-coding-challenges)
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
@@ -60,7 +71,7 @@
 | long long | 8byte             | –9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807 |
 | unsigned long long | 8byte             | 0 ~ 18,446,744,073,709,551,615 |
 
-# Algorithm Proof
+# algorithm proof
 
 - Mathmatical Induction
 - Proof by Contradiction
@@ -70,7 +81,7 @@
 - Proof by Counter Example
 - if and only if proof
 
-# Algorithm Analysis
+# algorithm analysis
 
 - The RAM Model of Computation
 - The asymptotic analysis of worst-case complexity
