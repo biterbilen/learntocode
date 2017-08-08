@@ -8,7 +8,7 @@
   다는 것이다.  optimal substructure는 문제에 대한 최적해가 부분문제에
   대해서도 역시 최적해라는 것이다.
 
-# proof of MEETINGROOM
+# proof of [회의실배정](https://www.acmicpc.net/problem/1931)
 
 - greedy choice property
   - "가장 종료 시간이 빠른 회의(S-min)을 포함하는 최적해가 반드시 존재한다."를
