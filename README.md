@@ -543,7 +543,7 @@
   - [알](algospot.com/MATCHORDER/) | [MATCHORDER](https://algospot.com/judge/problem/read/MATCHORDER)
   - [알](algospot.com/LUNCHBOX/) | [LUNCHBOX](https://algospot.com/judge/problem/read/LUNCHBOX)
   - [알](algospot.com/STRJOIN/) | [STRJOIN](https://algospot.com/judge/problem/read/STRJOIN)
-  - 알 | huffman code
+  - 알 | [huffman code](doc/greedy_huffman_code.md)
   - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)★
 
 - Combinatorial Search
