@@ -1,71 +1,47 @@
-//https://algospot.com/judge/problem/read/MATCHORDER
-
+// Copyright (C) 2017 by iamslash
+// https://algospot.com/judge/problem/read/MATCHORDER
 #include <cstdio>
-#include <string>
 #include <vector>
-#include <iostream>
-#include <cstring>
-#include <algorithm>
 #include <set>
-
-using namespace std;
+#include <algorithm>
 
 int N;
+std::vector<int> RUS;
+std::vector<int> KOR;
+std::multiset<int> KORSET;
 
-int get_korean_wins(const vector<int> & v_russians,
-                    const vector<int> & v_koreans)
-{
-    int n_size_of_russians = v_russians.size();
-    int n_wins = 0;
-
-    multiset<int> ratings(v_koreans.begin(), v_koreans.end());
-
-    for(int n_rus = 0; n_rus < n_size_of_russians; ++n_rus)
-    {
-        // 이길 수 없는 경우
-        if ( *ratings.rbegin() < v_russians[n_rus])
-        {
-            ratings.erase(ratings.begin());
-        }
-        // 이길 수 있는 경우
-        else
-        {
-            ratings.erase(ratings.lower_bound(v_russians[n_rus]));
-            n_wins++;
-        }
+// return max win cnt
+int solve() {
+  int r = 0;
+  // sort
+  std::sort(RUS.begin(), RUS.end());
+  for (int i = 0; i < KOR.size(); ++i)
+    KORSET.insert(KOR[i]);
+  for (int i = RUS.size() - 1; i >= 0; --i) {
+    if (*KORSET.rbegin() < RUS[i]) {  // use kor min cand
+      KORSET.erase(KORSET.begin());
+    } else {  // use next big cand
+      KORSET.erase(KORSET.lower_bound(RUS[i]));
+      r++;
     }
-    
-    return n_wins;
+  }
+  return r;
 }
 
 int main() {
-    
-    int C; // number of cases
-    scanf("%d", &C);
-    
-    for(int c=0; c<C; ++c)
-    {
-        scanf("%d", &N);
-
-        vector<int> v_russians;
-        vector<int> v_koreans;
-
-        for(int i=0; i<N; ++i)
-        {
-            int n;
-            scanf("%d", &n);
-            v_russians.push_back(n);
-        }
-
-        for(int i=0; i<N; ++i)
-        {
-            int n;
-            scanf("%d", &n);
-            v_koreans.push_back(n);
-        }
-
-        printf("%d\n", get_korean_wins(v_russians, v_koreans));
-    }
-
-    return 0;
+  int T;
+  scanf("%d", &T);
+  for (int t = 0; t < T; ++t) {
+    scanf("%d", &N);
+    RUS.resize(N);
+    KOR.resize(N);
+    for (int i = 0; i < N; ++i)
+      scanf("%d", &RUS[i]);
+    for (int i = 0; i < N; ++i)
+      scanf("%d", &KOR[i]);
+    printf("%d\n", solve());
+  }
+  return 0;
 }
+
+
