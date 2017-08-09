@@ -10,18 +10,17 @@ int N;
 std::vector<std::pair<int, int> > TIME;
 
 int solve() {
-  int r;
+  int r;  // total time
+  int m_acc = 0; // accumulated micro-wave time
   std::sort(TIME.begin(), TIME.end(), std::greater<std::pair<int, int> >());
-  int m_acc = 0; // accumulated time
   for (int i = 0; i < TIME.size(); ++i) {
     int e = TIME[i].first;
     int m = TIME[i].second;
     r = std::max(r, m_acc + m + e);
-    m_acc += 0;
+    m_acc += m;
   }
   return r;
 }
-    
 
 int main() {
   int T;
@@ -38,4 +37,3 @@ int main() {
   }
   return 0;
 }
-
