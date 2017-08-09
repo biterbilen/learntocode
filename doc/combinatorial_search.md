@@ -10,3 +10,8 @@
   simple pruning, pruning with simple heuristic, greedy, pruning with
   swapping adjacent cities, pruning with swaping sub paths, pruning
   with MST heuristic , memoization등으로 해결 할 수 있다. (예, TSP)
+  
+# reference
+
+- [artificial intelligence: a modern approach by stuart russel, peter norvig](https://www.amazon.com/Artificial-Intelligence-Approach-Stuart-Russell/dp/1292024208/ref=mt_paperback?_encoding=UTF8&me=)
+  - combinatorial search를 잘 설명한 인공지능 교과서이다. java, python소스가 제공된다.
