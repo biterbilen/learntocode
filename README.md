@@ -1,3 +1,7 @@
+# Abstract
+
+- 프로그래밍 훈련을 위해 유용한 문제들을 체계적으로 분류해서 정리해 본다.
+
 # Contents
 
 * [materials](#materials)
@@ -516,6 +520,21 @@
   - 알 | [GENIUS](https://algospot.com/judge/problem/read/GENIUS)
 
 - Greedy
+  - 알 | [knapsack problem](doc/dynamic_knapsack_problem.md)
+  - 알 | [Kruskal's minimum spanning tree](doc/graph_kruskal.md)
+  - 알 | [Prim's minimum spanning tree](doc/graph_prim.md)
+  - 알 | [Dijkstra algorithm](doc/graph_dijkstra.md)
+  - 백 | [동전 0](https://www.acmicpc.net/problem/11047)
+  - 백 | [회의실배정](https://www.acmicpc.net/problem/1931)
+  - 백 | [ATM](https://www.acmicpc.net/problem/11399)
+  - 백 | [잃어버린 괄호](https://www.acmicpc.net/problem/1541)
+  - 백 | [수 묶기](https://www.acmicpc.net/problem/1744)
+  - 백 | [대회 or 인턴](https://www.acmicpc.net/problem/2875)
+  - 백 | [30](https://www.acmicpc.net/problem/10610)
+  - 백 | [병든 나이트](https://www.acmicpc.net/problem/1783)
+  - 백 | [NMK](https://www.acmicpc.net/problem/1201)
+  - 백 | [행렬](https://www.acmicpc.net/problem/1080)
+  - 백 | [롤러코스터](https://www.acmicpc.net/problem/2873)
   - 알 | [greedy algorithm proof](doc/greedy_proof.md)
   - 알 | [optimization problem](doc/greedy_optimization_problem.md)
   - 알 | [meta heuristic](doc/greedy_metaheuristic.md)
