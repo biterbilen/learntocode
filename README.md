@@ -12,7 +12,9 @@
 * [algorithm analysis](#algorithm-analysis)
 * [NP Completeness](#NP-Completeness)
 * [problems](#problems)
-
+  * [bitmask](#bitmask)
+  * [partial sum](#partial-sum)
+  
 # materials
 
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
@@ -572,55 +574,55 @@
   - AVL Tree Search
 
 - Numerical Analysis
-  - bisection method
-  - [ROOTS](https://algospot.com/judge/problem/read/ROOTS)
-  - [LOAN](https://algospot.com/judge/problem/read/LOAN)
-  - [RATIO](https://algospot.com/judge/problem/read/RATIO)
-  - ternary search
-  - [FOSSIL](https://algospot.com/judge/problem/read/FOSSIL)
-  - simpson's method
+  - 알 | bisection method
+  - 알 | [ROOTS](https://algospot.com/judge/problem/read/ROOTS)
+  - 알 | [LOAN](https://algospot.com/judge/problem/read/LOAN)
+  - 알 | [RATIO](https://algospot.com/judge/problem/read/RATIO)
+  - 알 | ternary search
+  - 알 | [FOSSIL](https://algospot.com/judge/problem/read/FOSSIL)
+  - 알 | simpson's method
 
 - Number Theory
-  - prime number, composite number
-  - prime factorization
-  - sieve of eratosthenes
-  - prime factorization with sive of eratosthenes
-  - [PASS486](https://algospot.com/judge/problem/read/PASS486)
-  - Euclidean algorithm
-  - [POTION](https://algospot.com/judge/problem/read/POTION)
-  - modular arithmetic
+  - 알 | prime number, composite number
+  - 알 | prime factorization
+  - 알 | sieve of eratosthenes
+  - 알 | prime factorization with sive of eratosthenes
+  - 알 | [PASS486](https://algospot.com/judge/problem/read/PASS486)
+  - 알 | Euclidean algorithm
+  - 알 | [POTION](https://algospot.com/judge/problem/read/POTION)
+  - 알 | modular arithmetic
     - add, sub, mul
     - div
-  - extended euclidean algorithm
-  - chinese remainder theorem
-  - lucas' theorem
+  - 알 | extended euclidean algorithm
+  - 알 | chinese remainder theorem
+  - 알 | lucas' theorem
 
 - Computational Geometry
-  - how much closer
-  - dot product
-  - cross product
-  - line intersection
-  - segment intersection
-  - segment intersects (counter clock wise)
-  - point to line
-  - [PINBALL](https://algospot.com/judge/problem/read/PINBALL)
-  - polygon area
-  - polygon inside
-  - [TREASURE](https://algospot.com/judge/problem/read/TREASURE)
-  - [NERDS](https://algospot.com/judge/problem/read/NERDS)
-  - convex hull (Gift Wrapping)
-  - convex hull (Javis's March)
-  - convex hull (Graham Scan)
-  - plane sweeping, line sweeping
-  - segment intersects (Shamos-Hoey)
-  - segment intersects (Bentley-Ottmann)
-  - rotating calipers
-  - spline (bezier spline)
-  - spline (hermite spline)
-  - spline (B-spline, Basis spline)
-  - closest pair of points
-  - voronoi diagrams
-  - further reading
+  - 알 | how much closer
+  - 알 | dot product
+  - 알 | cross product
+  - 알 | line intersection
+  - 알 | segment intersection
+  - 알 | segment intersects (counter clock wise)
+  - 알 | point to line
+  - 알 | [PINBALL](https://algospot.com/judge/problem/read/PINBALL)
+  - 알 | polygon area
+  - 알 | polygon inside
+  - 알 | [TREASURE](https://algospot.com/judge/problem/read/TREASURE)
+  - 알 | [NERDS](https://algospot.com/judge/problem/read/NERDS)
+  - 알 | convex hull (Gift Wrapping)
+  - 알 | convex hull (Javis's March)
+  - 알 | convex hull (Graham Scan)
+  - 알 | plane sweeping, line sweeping
+  - 알 | segment intersects (Shamos-Hoey)
+  - 알 | segment intersects (Bentley-Ottmann)
+  - 알 | rotating calipers
+  - 알 | spline (bezier spline)
+  - 알 | spline (hermite spline)
+  - 알 | spline (B-spline, Basis spline)
+  - 알 | closest pair of points
+  - 알 | voronoi diagrams
+  - 알 | further reading
     - [geometry algorithms](http://geomalgorithms.com/)
 
 - recursion
