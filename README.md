@@ -118,7 +118,7 @@
 # Problems
 
 - Bitmask
-  - bitmask set
+  - 알 | bitmask set
     - null set, full set
     - add a element
     - check a element included
@@ -129,12 +129,12 @@
     - find a min element (__builtin_ctz())
     - del a min element
     - traversal of set
-  - sieve of eratosthenes
-  - 15 puzzle
-  - priority queue with O(1)
-  - maximal stable set★
-  - [GRADUATION](https://algospot.com/judge/problem/read/GRADUATION)
-  - [Bit Twiddling Hacks](http://graphics.stanford.edu/~seander/bithacks.html)
+  - 알 | sieve of eratosthenes
+  - 알 | 15 puzzle
+  - 알 | priority queue with O(1)
+  - 알 | maximal stable set★
+  - 알 | [GRADUATION](https://algospot.com/judge/problem/read/GRADUATION)
+  - 알 | [Bit Twiddling Hacks](http://graphics.stanford.edu/~seander/bithacks.html)
 
 - [Partial Sum](doc/partial_sum.md)
   - 백 | [구간 합 구하기 4]()
@@ -149,7 +149,7 @@
   - 알 | variance
   - 알 | grid sum
   - 알 | range which is close to zero
-  - [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
+  - 알 | [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
 
 - [partial min](doc/partial_min.md)
   - 백 | [최소값과 최대값]()
@@ -159,238 +159,392 @@
   - 알 | [union-find (merge-find)]()
 
 - List
-  - dynamic array
-  - singly linked list
-  - doubly linked list
-  - [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
-  - [Dancing Links](https://arxiv.org/abs/cs/0011047)
+  - 알 | dynamic array
+  - 알 | singly linked list
+  - 알 | doubly linked list
+  - 알 | [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
+  - 알 | [Dancing Links](https://arxiv.org/abs/cs/0011047)
 
 - Stack 
-  - [FENCE](http://algospot.com/judge/problem/read/FENCE)
-  - [BRACKETS2](http://algospot.com/judge/problem/read/BRACKETS2)
-  - [Longest valid Parentheses](http://www.practice.geeksforgeeks.org/problem-page.php?pid=1247)
-  - [Maximum of minimum for every window size](http://www.practice.geeksforgeeks.org/problem-page.php?pid=170)
+  - 알 | [FENCE](http://algospot.com/judge/problem/read/FENCE)
+  - 알 | [BRACKETS2](http://algospot.com/judge/problem/read/BRACKETS2)
+  - G | [Longest valid Parentheses](http://www.practice.geeksforgeeks.org/problem-page.php?pid=1247)
+  - G | [Maximum of minimum for every window size](http://www.practice.geeksforgeeks.org/problem-page.php?pid=170)
 
 - Queue
-  - [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
-  - [ITES](http://algospot.com/judge/problem/read/ITES)
+  - 알 | [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
+  - 알 | [ITES](http://algospot.com/judge/problem/read/ITES)
     - online algorithm
     - offline algorithm
 
 - Deque
-  - [Level order traversal in spiral form](http://www.practice.geeksforgeeks.org/problem-page.php?pid=700201)
+  - G | [Level order traversal in spiral form](http://www.practice.geeksforgeeks.org/problem-page.php?pid=700201)
 
 - Map (Hash)
-    - seperate chaining
-    - linear probing (open addressing)
-    - quadratic probing
-    - double hashing
-    - consistent hashing
-    - [A Simple Fraction](http://www.practice.geeksforgeeks.org/problem-page.php?pid=514)
+  - 알 | seperate chaining
+  - 알 | linear probing (open addressing)
+  - 알 | quadratic probing
+  - 알 | double hashing
+  - 알 | consistent hashing
+  - 알 | [A Simple Fraction](http://www.practice.geeksforgeeks.org/problem-page.php?pid=514)
 
 - String
-  - search with naive algorithm
-  - search with kmp algorithm★
+  - 백 | [KMP는 왜 KMP일까?]()
+  - 백 | [찾기]()
+  - 백 | [광고]()
+  - 백 | [Cubeditor]()
+  - 백 | [Boggle]()
+  - 백 | [전화번호 목록]()
+  - 백 | [문자열 집합 판별]()
+  - 백 | [돌연변이]()
+  - 백 | [접미사 배열]()
+  - 백 | [접미사 배열 2]()
+  - 백 | [접미사 배열 1]()
+  - 백 | [서로 다른 부분 문자열의 개수]()
+  - 백 | [서로 다른 부분 문자열의 개수 2]()
+  - 백 | [Suffix Array]()
+  - 백 | [Cubeditor]()
+  - 백 | [공통 부분 문자열]()
+  - 백 | [Hidden Password]()
+  - 백 | [가장 긴 팰린드롬 부분 문자열]()
+  - 알 | search with naive algorithm
+  - 알 | search with kmp algorithm★
     - needle, haystack, begin, matched, pi[]
     - O(|N| + |H|)
-  - [NAMING](http://algospot.com/judge/problem/read/NAMING)
-  - [PALINDROMIZE](http://algospot.com/judge/problem/read/PALINDROMIZE)
-  - [JAEHASAFE](http://algospot.com/judge/problem/read/JAEHASAFE)
-  - suffix array★
+  - 알 | [NAMING](http://algospot.com/judge/problem/read/NAMING)
+  - 알 | [PALINDROMIZE](http://algospot.com/judge/problem/read/PALINDROMIZE)
+  - 알 | [JAEHASAFE](http://algospot.com/judge/problem/read/JAEHASAFE)
+  - 알 | suffix array★
     - [Manber, Udi; Myers, Gene (1990). Suffix arrays: a new method for on-line string searches](http://webglimpse.net/pubs/suffix.pdf)
-  - get suffix array using naive algorithm
+  - 알 | get suffix array using naive algorithm
     - O(N^2lgN)
-  - get suffix array using manber myers algorithm
+  - 알 | get suffix array using manber myers algorithm
     - sa[], group[], t
     - O(N(lgN)^2)
-  - suffix array search
-  - circular string
-  - the number of different substrings
-  - [HABIT](http://algospot.com/judge/problem/read/HABIT)
-  - Boyer Moore algorithm
+  - 알 | suffix array search
+  - 알 | circular string
+  - 알 | the number of different substrings
+  - 알 | [HABIT](http://algospot.com/judge/problem/read/HABIT)
+  - 알 | Boyer Moore algorithm
     - [Boyer, Robert S.; Moore, J Strother (October 1977). "A Fast String Searching Algorithm."](https://www.cs.utexas.edu/users/moore/publications/fstrpos.pdf)
-  - [Kasai, T. et al., "Linear-Time Longest-Common-Prefix Computation in Suffix Arrays and Its Applications"](http://alumni.cs.ucr.edu/~rakthant/cs234/01_KLAAP_Linear%20time%20LCP.PDF)
+  - 알 | [Kasai, T. et al., "Linear-Time Longest-Common-Prefix Computation in Suffix Arrays and Its Applications"](http://alumni.cs.ucr.edu/~rakthant/cs234/01_KLAAP_Linear%20time%20LCP.PDF)
     - O(|N| + lg|H|)
-  - [Rabin-Karp algorithm](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm)
-  - suffix
-  - Aho–Corasick algorithm
+  - 알 | [Rabin-Karp algorithm](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm)
+  - 알 | suffix
+  - 알 | Aho–Corasick algorithm
     - children, fail, terminal, output, insert, compute_fail_func, search
 
-- Tree
-  - terms and definitions
+- [Tree](doc/tree.md)
+  - 백 | [트리 순회]()
+  - 백 | [트리의 부모 찾기]()
+  - 백 | [트리의 지름]()
+  - 백 | [트리의 지름]()
+  - 백 | [LCA]()
+  - 백 | [정점들의 거리]()
+  - 백 | [LCA 2]()
+  - 백 | [도로 네트워크]()
+  - 백 | [LCA 2]()
+  - 알 | terms and definitions
     - node, edge
     - parent, child, sibling
     - ancestor, descendant
     - root, leaf
     - depth, height
-  - [TRAVERSAL](http://algospot.com/judge/problem/read/TRAVERSAL)
-  - [FORTRESS](http://algospot.com/judge/problem/read/FORTRESS)
-  - binary search tree
-  - red black tree (balanced binary search tree)
-  - AVL tree (balanced binary search tree)
-  - treap
+  - 알 | [TRAVERSAL](http://algospot.com/judge/problem/read/TRAVERSAL)
+  - 알 | [FORTRESS](http://algospot.com/judge/problem/read/FORTRESS)
+  - 알 | binary search tree
+  - 알 | red black tree (balanced binary search tree)
+  - 알 | AVL tree (balanced binary search tree)
+  - 알 | treap
     - insert, split, erase, merge
-  - get kth element
-  - get count of elements which are lesser than X
-  - [NERD2](http://algospot.com/judge/problem/read/NERD2)
-  - [INSERTION](http://algospot.com/judge/problem/read/INSERTION)
-  - priority queue with heap
+  - 알 | get kth element
+  - 알 | get count of elements which are lesser than X
+  - 알 | [NERD2](http://algospot.com/judge/problem/read/NERD2)
+  - 알 | [INSERTION](http://algospot.com/judge/problem/read/INSERTION)
+  - 알 | priority queue with heap
     - push_heap, pop_heap
-  - [RUNNINGMEDIAN](http://algospot.com/judge/problem/read/RUNNINGMEDIAN)
-  - rmq (range minimum query) with segment tree
-  - get two smallest in a range
-  - get the maximum frequency of occurrence in the range of ordered sequences
-  - [MORDOR](http://algospot.com/judge/problem/read/MORDOR)
-  - [FAMILYTREE](http://algospot.com/judge/problem/read/FAMILYTREE)
-  - fenwick tree (binary indexed tree)
-  - [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME)★
-  - union-find (merge-find)
+  - 알 | [RUNNINGMEDIAN](http://algospot.com/judge/problem/read/RUNNINGMEDIAN)
+  - 알 | rmq (range minimum query) with segment tree
+  - 알 | get two smallest in a range
+  - 알 | get the maximum frequency of occurrence in the range of ordered sequences
+  - 알 | [MORDOR](http://algospot.com/judge/problem/read/MORDOR)
+  - 알 | [FAMILYTREE](http://algospot.com/judge/problem/read/FAMILYTREE)
+  - 알 | fenwick tree (binary indexed tree)
+  - 알 | [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME)★
+  - 알 | union-find (merge-find)
     - union rank optimization
     - pass compression optimization
-  - check the connectivity of a graph
-  - track the largest set
-  - [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
-  - trie 
+  - 알 | check the connectivity of a graph
+  - 알 | track the largest set
+  - 알 | [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
+  - 알 | trie 
     - [pdf](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_pdf/trie.pdf) [video]()
     - TrieNode, children, terminal, insert, find
     - a tree whose key is a character for searching strings
     - use too much memory
-  - triple array trie
+  - 알 | triple array trie
     - use less memory than trie
-  - suffix trie
+  - 알 | suffix trie
     - a trie which saves suffix array but uses too much memeory.
-  - suffix tree
+  - 알 | suffix tree
     - a tree which saves suffix array and uses less memory. but time complexity of simple algorithm is O(N^2). suffix array is better.
-  - radix tree (patricia tree)
+  - 알 | radix tree (patricia tree)
     - compress trie like suffix tree.
-  - [SOLONG](http://algospot.com/judge/problem/read/SOLONG)
-  - Aho–Corasick algorithm★
+  - 알 | [SOLONG](http://algospot.com/judge/problem/read/SOLONG)
+  - 알 | Aho–Corasick algorithm★
     - children, fail, terminal, insert, fail, output, compute_fail, search
-  - [NH](http://algospot.com/judge/problem/read/NH)
+  - 알 | [NH](http://algospot.com/judge/problem/read/NH)
 
-- Graph
-  - [terms and definitions](doc/graph_terms_and_definitions.md)
+- segment tree
+  - 백 | [히스토그램에서 가장 큰 직사각형]()
+  - 백 | [가장 긴 증가하는 부분 수열 2]()
+  - 백 | [가장 긴 증가하는 부분 수열 3]()
+  - 백 | [굉장한 학생]()
+  - 백 | [터보소트]()
+  - 백 | [영화 수집]()
+  - 백 | [공장]()
+  - 백 | [나무 심기]()
+  - 백 | [라운드 로빈 스케줄러]()
+  - 백 | [불만 정렬]()
+  - 백 | [음주 코딩]()
+  - 백 | [사탕상자]()
+  - 백 | [중앙값 측정]()
+  - 백 | [순열]()
+  - 백 | [조세퍼스 문제 2]()
+
+- [Graph](doc/graph.md)
+  - 백 | [DFS와 BFS]()
+  - 백 | [연결 요소의 개수]()
+  - 백 | [이분 그래프]()
+  - 백 | [순열 사이클]()
+  - 백 | [반복수열]()
+  - 백 | [텀 프로젝트]()
+  - 백 | [단지번호붙이기]()
+  - 백 | [섬의 개수]()
+  - 백 | [미로 탐색]()
+  - 백 | [토마토]()
+  - 백 | [다리 만들기]()
+  - 백 | [줄 세우기]()
+  - 백 | [문제집]()
+  - 백 | [작업]()
+  - 백 | [게임 개발]()
+  - 백 | [임계경로]()
+  - 백 | [네트워크 연결]()
+  - 백 | [최소 스패닝 트리]()
+  - 백 | [타임머신]()
+  - 백 | [웜홀]()
+  - 백 | [최소비용 구하기]()
+  - 백 | [최소비용 구하기 2]()
+  - 백 | [특정한 최단 경로]()
+  - 백 | [최단경로]()
+  - 백 | [경로 찾기]()
+  - 백 | [플로이드]()
+  - 백 | [플로이드 2]()
+  - 백 | [케빈 베이컨의 6단계 법칙]()
+  - 백 | [궁금한 민호]()
+  - 백 | [운동]()
+  - 백 | [타임머신]()
+  - 백 | [오일러 회로]()
+  - 백 | [Strongly Connected Component]()
+  - 백 | [단절점]()
+  - 백 | [단절선]()
+  - 백 | [동치 증명]()
+  - 백 | [도시 계획]()
+  - 백 | [ATM]()
+  - 백 | [교통 체계]()
+  - 백 | [2-SAT - 1]()
+  - 백 | [2-SAT - 2]()
+  - 백 | [2-SAT - 3]()
+  - 백 | [2-SAT - 4]()
+  - 백 | [가위바위보]()
+  - 백 | [사랑과 전쟁]()
+  - 백 | [완벽한 선거!]()
+  - 백 | [타워 디펜스]()
+  - 알 | [terms and definitions](doc/graph_terms_and_definitions.md)
     - vertex, edge, directed graph, undirected graph, weighted graph, multi graph, simple graph
     - unrooted tree, bipartite graph, DAG (directed asyclick graph), simple path
     - cycle, circuit, adjacency list, adjacency matrix , sparse graph, dense graph, implicit graph
-  - dfs (depth first search)
+  - 알 | dfs (depth first search)
     - adj, visited, dfs, dfs_all
-  - finding out two vertices are connected
+  - 알 | finding out two vertices are connected
     - dfs(u) and find out whether v is visited.
-  - counting the number of components 
+  - 알 | counting the number of components 
     - count the number of dfs in dfs_all.
-  - [topological sort](doc/graph_topological_sort.md)
+  - 알 | [topological sort](doc/graph_topological_sort.md)
     - adj, visited, dfs, dfs_topological_sort, order
-  - [DICTIONARY](http://algospot.com/judge/problem/read/DICTIONARY)
-  - [eulerian circuit](doc/graph_eulerian_circuit.md)
+  - 알 | [DICTIONARY](http://algospot.com/judge/problem/read/DICTIONARY)
+  - 알 | [eulerian circuit](doc/graph_eulerian_circuit.md)
     - adj, circuit, dfs_get_eulerian_circuit
-  - [eulerian trail](doc/graph_eulerian_trail.md)
+  - 알 | [eulerian trail](doc/graph_eulerian_trail.md)
     - adj, trail, dfs_get_eulerian_circuit, dfs_get_eulerian_trail
-  - [WORDCHAIN](http://algospot.com/judge/problem/read/WORDCHAIN)
-  - [dfs spanning tree](doc/graph_dfs_spanning_tree.md)
+  - 알 | [WORDCHAIN](http://algospot.com/judge/problem/read/WORDCHAIN)
+  - 알 | [dfs spanning tree](doc/graph_dfs_spanning_tree.md)
     - tree edge, forward edge, back edge, cross edge
     - adj, discovered, finished, counter, dfs_spanning_tree
-  - [proof of topological sort](doc/graph_proof_of_topological_srt.md)★
-  - [check the cycle](doc/graph_check_the_cycle.md)
-  - [cut vertex (articulation point)](doc/graph_cut_vertex.md)
+  - 알 | [proof of topological sort](doc/graph_proof_of_topological_srt.md)★
+  - 알 | [check the cycle](doc/graph_check_the_cycle.md)
+  - 알 | [cut vertex (articulation point)](doc/graph_cut_vertex.md)
     - biconnected components
     - adj, discovered, is_cut_vertex, counter, dfs_find_cut_vertex
-  - [bridge](doc/graph_bridge.md)
+  - 알 | [bridge](doc/graph_bridge.md)
     - adj, discovered, bridge, counter, dfs_find_bridge
-  - [tarjan's algorithm](doc/graph_tarjan_algorithm.md)
+  - 알 | [tarjan's algorithm](doc/graph_tarjan_algorithm.md)
     - scc (strongly connected components)
     - condensation
     - adj, scc_id, discovered, finished, stck, scc_counter, vertex_counter, dfs_scc, tarjan_scc
-  - [topological sort of scc](doc/graph_topological_sort_of_scc)★
-  - [GALLERY](http://algospot.com/judge/problem/read/GALLERY)
+  - 알 | [topological sort of scc](doc/graph_topological_sort_of_scc)★
+  - 알 | [GALLERY](http://algospot.com/judge/problem/read/GALLERY)
     - dominating set
     - unrooted tree
-  - [MEETINGROOM](doc/algospot_MEETINGROOM.md)★
+  - 알 | [MEETINGROOM](doc/algospot_MEETINGROOM.md)★
     - sat (SATisfiability, boolean satisfiability problem)
     - conjunctive normal form
     - 2-sat
     - implication graph
-  - bfs (breadth first search)
+  - 알 | bfs (breadth first search)
     - adj, bfs, discovered, q, order
     - O(|V| + |E|) adjacency list
     - O(|V|^2) adjacency matrix
-  - [bfs shortest path](doc/graph_bfs_shortest_path.md)
+  - 알 | [bfs shortest path](doc/graph_bfs_shortest_path.md)
     - adj, get_shortest_path, bfs, distance, parent, q
-  - [SORTGAME](http://algospot.com/judge/problem/read/SORTGAME)
-  - [CHILDRENDAY](doc/algospot_CHILDRENDAY.md)★
-  - [15 puzzle - bfs](doc/graph_15_puzzle_bfs.md)
+  - 알 | [SORTGAME](http://algospot.com/judge/problem/read/SORTGAME)
+  - 알 | [CHILDRENDAY](doc/algospot_CHILDRENDAY.md)★
+  - 알 | [15 puzzle - bfs](doc/graph_15_puzzle_bfs.md)
     - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, bfs
-  - [15 puzzle - bfs bidrectional search](doc/graph_15_puzzle_bfs_bs.md)
+  - 알 | [15 puzzle - bfs bidrectional search](doc/graph_15_puzzle_bfs_bs.md)
     - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, get_sign, incr, bfs_bs
-  - [15 puzzle - bfs ids (iteratively deep searching)](doc/graph_15_puzzle_bfs_ids.md)
+  - 알 | [15 puzzle - bfs ids (iteratively deep searching)](doc/graph_15_puzzle_bfs_ids.md)
     - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, best, dfs, ids
-  - [HANOI4](http://algospot.com/judge/problem/read/HANOI4)
-  - [Dijkstra algorithm](doc/graph_dijkstra.md)
+  - 알 | [HANOI4](http://algospot.com/judge/problem/read/HANOI4)
+  - 알 | [Dijkstra algorithm](doc/graph_dijkstra.md)
     ```cpp
     vector<pair<int, int>> adj, dijkstra, dist, priority_queue<pair<int, int>> pq
     ```
     - O(|E|lg|V|)
-  - [Dijkstra algorithm without priority queue](doc/graph_dijkstra_without_pq.md)
+  - 알 | [Dijkstra algorithm without priority queue](doc/graph_dijkstra_without_pq.md)
     ```cpp
     vector<pair<int, int>> adj, dijkstra, dist, visited
     ```
     - O(|V|^2 + |E|)
-  - [ROUTING](http://algospot.com/judge/problem/read/ROUTING)
-  - [FIRETRUCKS](http://algospot.com/judge/problem/read/FIRETRUCKS)
-  - [NTHLON](http://algospot.com/judge/problem/read/NTHLON)★
-  - [Bellman-Ford algorithm](doc/graph_bellman_ford.md)
+  - 알 | [ROUTING](http://algospot.com/judge/problem/read/ROUTING)
+  - 알 | [FIRETRUCKS](http://algospot.com/judge/problem/read/FIRETRUCKS)
+  - 알 | [NTHLON](http://algospot.com/judge/problem/read/NTHLON)★
+  - 알 | [Bellman-Ford algorithm](doc/graph_bellman_ford.md)
     ```cpp
     vector<pair<int, int>> adj[], bellmanford, vector<int> upper, bool updated
     ```
     - O(|E||V|)
-  - [TIMETRIP](http://algospot.com/judge/problem/read/TIMETRIP)
-  - [Floyd algorithm](doc/graph_floyd.md)
+  - 알 | [TIMETRIP](http://algospot.com/judge/problem/read/TIMETRIP)
+  - 알 | [Floyd algorithm](doc/graph_floyd.md)
     ```cpp
     adj[][], via[][], floyd, reconstruct
     ```
-  - [DRUNKEN](http://algospot.com/judge/problem/read/DRUNKEN)
-  - [PROMISES](http://algospot.com/judge/problem/read/PROMISES)
-  - [Kruskal's minimum spanning tree](doc/graph_kruskal.md)
+  - 알 | [DRUNKEN](http://algospot.com/judge/problem/read/DRUNKEN)
+  - 알 | [PROMISES](http://algospot.com/judge/problem/read/PROMISES)
+  - 알 | [Kruskal's minimum spanning tree](doc/graph_kruskal.md)
     - adj, DisjointSet, kruskal, totalcost, mst, edges
     - O(|E|lg|E|)
-  - [Prim's minimum spanning tree](doc/graph_prim.md)
+  - 알 | [Prim's minimum spanning tree](doc/graph_prim.md)
     - adj, prim, totalcost, mst, added, min_weight, parent
     - O(|V|^2+|E|), O(|V|^2)
-  - [LAN](http://algospot.com/judge/problem/read/LAN)
-  - [TPATH](http://algospot.com/judge/problem/read/TPATH)
-  - [Ford-Fulkerson algorithm with adjacency matrix](doc/graph_ford_fulkerson.md)
+  - 알 | [LAN](http://algospot.com/judge/problem/read/LAN)
+  - 알 | [TPATH](http://algospot.com/judge/problem/read/TPATH)
+  - 알 | [Ford-Fulkerson algorithm with adjacency matrix](doc/graph_ford_fulkerson.md)
     ```cpp
     capacity[][], flow[][],
     ford_fulkerson, parent, q
     ```
     - small one between O(|E|f) and O(|V||E|^2)
-  - [Ford-Fulkerson algorithm with adjacency list](doc/graph_ford_fulkerson_adj_list.md)
+  - 알 | [Ford-Fulkerson algorithm with adjacency list](doc/graph_ford_fulkerson_adj_list.md)
     ```cpp
     capacity[][], Edge, add_edge, get_edge 
     ford_fulkerson, parent, q
     ```
     - small one between O(|E|f) and O(|V||E|^2)
-  - [MILEAGE](http://algospot.com/judge/problem/read/MILEAGE)
-  - [SAINTTAIL](http://algospot.com/judge/problem/read/SAINTTAIL)
-  - [MATCHFIX](http://algospot.com/judge/problem/read/MATCHFIX)
-  - [PROJECTS](http://algospot.com/judge/problem/read/PROJECTS)★
-  - [bipartite matching](doc/graph_bipartite_matching.md)
+  - 알 | [MILEAGE](http://algospot.com/judge/problem/read/MILEAGE)
+  - 알 | [SAINTTAIL](http://algospot.com/judge/problem/read/SAINTTAIL)
+  - 알 | [MATCHFIX](http://algospot.com/judge/problem/read/MATCHFIX)
+  - 알 | [PROJECTS](http://algospot.com/judge/problem/read/PROJECTS)★
+  - 알 | [bipartite matching](doc/graph_bipartite_matching.md)
     - adj[][], amatch, bmatch, visited, dfs, bipartite_match
     - O(|V||E|)
-  - [TRAVELPICTURES](http://algospot.com/judge/problem/read/TRAVELPICTURES)
-  - [DOMINOS](http://algospot.com/judge/problem/read/DOMINOS)
-  - [BISHOPS](http://algospot.com/judge/problem/read/BISHOPS)
-  - [TRAPCARD](http://algospot.com/judge/problem/read/TRAPCARD)★
-  - [maxium independent set problem](doc/graph_max_independent_set.md)
-  - [dinic algorithm](doc/graph_dinic.md)
+  - 알 | [TRAVELPICTURES](http://algospot.com/judge/problem/read/TRAVELPICTURES)
+  - 알 | [DOMINOS](http://algospot.com/judge/problem/read/DOMINOS)
+  - 알 | [BISHOPS](http://algospot.com/judge/problem/read/BISHOPS)
+  - 알 | [TRAPCARD](http://algospot.com/judge/problem/read/TRAPCARD)★
+  - 알 | [maxium independent set problem](doc/graph_max_independent_set.md)
+  - 알 | [dinic algorithm](doc/graph_dinic.md)
     - O(|V|^2|E|)
-  - [successive shortest path](doc/graph_successive_shortest_path.md)
-  - [Kuhn–Munkres algorithm (hungarian algorithm)](doc/graph_hungarian.md)
-  - vertex cover problem
+  - 알 | [successive shortest path](doc/graph_successive_shortest_path.md)
+  - 알 | [Kuhn–Munkres algorithm (hungarian algorithm)](doc/graph_hungarian.md)
+  - 알 | vertex cover problem
     - Kőnig's theorem
-  - Hopcroft-Karp algorithm
+  - 알 | Hopcroft-Karp algorithm
+  
+- [network flow](doc/network_flow.md)
+  - 백 | [최대 유량]()
+  - 백 | [열혈강호]()
+  - 백 | [열혈강호 2]()
+  - 백 | [열혈강호 3]()
+  - 백 | [열혈강호 4]()
+  - 백 | [축사 배정]()
+  - 백 | [노트북의 주인을 찾아서]()
+  - 백 | [소수 쌍]()
+  - 백 | [상어의 저녁식사]()
+  - 백 | [주차장]()
+  - 백 | [학교 가지마!]()
+  - 백 | [돌멩이 제거]()
+  - 백 | [게시판 구멍 막기]()
+  - 백 | [컨닝 2]()
+  - 백 | [등번호]()
+  - 백 | [N-Rook]()
+  - 백 | [비숍2]()
+  - 백 | [흔한 수열 문제]()
+  - 백 | [Crucial Links]()
+  - 백 | [돼지 잡기]()
+  - 백 | [좀비 아포칼립스]()
+  - 백 | [스타 대결]()
+  - 백 | [No Smoking, Please]()
+  - 백 | [천하제일 서든어택 대회]()
+  - 백 | [도시 왕복하기]()
+  - 백 | [숫자판 만들기]()
+  - 백 | [틀렸습니다]()
+  - 백 | [Fake scoreboard]()
+  - 백 | [블럭 퍼즐]()
+  - 백 | [체스판 2]()
+  - 백 | [달리기]()
+  - 백 | [빨간 선분 파란 선분]()
 
-- Sort
+- min cost max flow
+  - 백 | [책 구매하기]()
+  - 백 | [책 구매하기 2]()
+  - 백 | [책 구매하기 3]()
+  - 백 | [열혈강호 5]()
+  - 백 | [열혈강호 6]()
+  - 백 | [선발 명단]()
+  - 백 | [최고의 팀 만들기]()
+  - 백 | [풍선]()
+  - 백 | [경찰]()
+  - 백 | [왕복 여행]()
+  - 백 | [제독]()
+  - 백 | [Concert Hall Scheduling]()
+  - 백 | [Crazy Bits]()
+  - 백 | [Job Postings]()
+  - 백 | [제주도 관광]()
+  - 백 | [칙칙폭폭]()
+  - 백 | [Train Tickets]()
+  - 백 | [Catering]()
+
+- sort
+  - 백 | [수 정렬하기 2]()
+  - 백 | [좌표 정렬하기]()
+  - 백 | [좌표 정렬하기 2]()
+  - 백 | [나이순 정렬]()
+  - 백 | [국영수]()
+  - 백 | [수 정렬하기 3]()
+  - 백 | [카드]()
+  - 백 | [K번째 수]()
+  - 백 | [버블 소트]()
   - Selection Sort
   - Isnertion sort
   - Bubble Sort
@@ -542,7 +696,75 @@
   - 백 | [피자판매]()
   - 백 | [두 배열의 합]()
 
-- Dynamic programming
+- [Dynamic programming](doc/dynamic_programming.md)
+  - 백 | [1로 만들기]()
+  - 백 | [2×n 타일링]()
+  - 백 | [2×n 타일링 2]()
+  - 백 | [1, 2, 3 더하기]()
+  - 백 | [붕어빵 판매하기]()
+  - 백 | [쉬운 계단 수]()
+  - 백 | [오르막 수]()
+  - 백 | [이친수]()
+  - 백 | [스티커]()
+  - 백 | [포도주 시식]()
+  - 백 | [가장 긴 증가하는 부분 수열]()
+  - 백 | [가장 큰 증가 부분 수열]()
+  - 백 | [가장 긴 감소하는 부분 수열]()
+  - 백 | [가장 긴 바이토닉 부분 수열]()
+  - 백 | [연속합]()
+  - 백 | [계단 오르기]()
+  - 백 | [제곱수의 합]()
+  - 백 | [타일 채우기]()
+  - 백 | [파도반 수열]()
+  - 백 | [합분해]()
+  - 백 | [암호코드]()
+  - 백 | [이동하기]()
+  - 백 | [점프]()
+  - 백 | [팰린드롬?]()
+  - 백 | [팰린드롬 분할]()
+  - 백 | [동전 1]()
+  - 백 | [동전 2]()
+  - 백 | [내리막 길]()
+  - 백 | [파일 합치기]()
+  - 백 | [행렬 곱셈 순서]()
+  - 백 | [구간 나누기]()
+  - 백 | [자두나무]()
+  - 백 | [고층 빌딩]()
+  - 백 | [타일 코드]()
+  - 백 | [기타리스트]()
+  - 백 | [1학년]()
+  - 백 | [올바른 괄호 문자열]()
+  - 백 | [같은 탑]()
+  - 백 | [타일 채우기]()
+  - 백 | [외판원 순회]()
+  - 백 | [발전소]()
+  - 백 | [계단 수]()
+  - 백 | [박성원]()
+  - 백 | [격자판 채우기]()
+  - 백 | [연습시즌]()
+  - 백 | [팰린드롬 경로]()
+  - 백 | [개근상]()
+  - 백 | [토끼의 이동]()
+  - 백 | [공의 충돌]()
+  - 백 | [축구]()
+  - 백 | [복권]()
+  - 백 | [주사위 게임]()
+  - 백 | [조약돌 꺼내기]()
+  - 백 | [카지노]()
+  - 백 | [토러스]()
+  - 백 | [연휴]()
+  - 백 | [동전 뒤집기]()
+  - 백 | [생태학]()
+  - 백 | [랜덤 소트]()
+  - 백 | [복권 + 은행]()
+  - 백 | [파일 합치기]()
+  - 백 | [문자열 자르기]()
+  - 백 | [행렬 곱셈 순서]()
+  - 백 | [탈옥]()
+  - 백 | [수열의 OR 점수]()
+  - 백 | [나무 자르기]()
+  - 백 | [땅따먹기]()
+  - 백 | [특공대]()
   - C | [boolean evaluation](crackingthecodinginterview/8.14_BooleanEvaluation/a.cpp)
   - 알 | [overlapping subproblems](doc/dynamic_overlapping_subproblems.md)
   - 알 | [binomial coefficient](doc/dynamic_binomial_coefficient.md)
@@ -563,6 +785,14 @@
   - 알 | [Markov Chain](doc/dynamic_markov_chain.md)
 
 - Dynamic programming technique
+  - 백 | [트리의 독립집합]()
+  - 백 | [토너먼트 만들기]()
+  - 백 | [택배]()
+  - 백 | [가로등 끄기]()
+  - 백 | [사수아탕]()
+  - 백 | [Sequence]()
+  - 백 | [축구]()
+  - 백 | [팰린드롬의 개수]()
   - 알 | [PACKING](https://algospot.com/judge/problem/read/PACKING)
   - 알 | [knapsack problem](doc/dynamic_knapsack_problem.md)
   - 알 | [OCR](https://algospot.com/judge/problem/read/OCR)★
@@ -634,3 +864,18 @@
   - 알 | [ARCTIC](https://algospot.com/judge/problem/read/ARCTIC)
   - 알 | [CANADATRIP](https://algospot.com/judge/problem/read/CANADATRIP)
   - 알 | [WITHDRAWAL](https://algospot.com/judge/problem/read/WITHDRAWAL)
+
+- [algorithm game](doc/algorithm_game.md)
+  - 백 | [돌 게임]()
+  - 백 | [돌 게임 2]()
+  - 백 | [돌 게임 3]()
+  - 백 | [돌 게임 4]()
+  - 백 | [돌 게임 5]()
+  - 백 | [돌 게임 6]()
+  - 백 | [돌 게임 7]()
+  - 백 | [돌 게임 8]()
+  - 백 | [박스 나누기 게임]()
+  - 백 | [님 게임 2]()
+  - 백 | [님블]()
+  - 백 | [님 게임 홀짝]()
+  - 백 | [님 게임 나누기]()
