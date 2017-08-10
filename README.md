@@ -12,9 +12,9 @@
 * [algorithm analysis](#algorithm-analysis)
 * [NP Completeness](#NP-Completeness)
 * [problems](#problems)
-  * [Bitmask](#Bitmask)
-  * [Partial Sum](#Partial-Sum)
-  * [Partial Min](#Partial-Min)
+  * [Bitmask](##Bitmask)
+  * [Partial Sum](##Partial-Sum)
+  * [Partial Min](##Partial-Min)
   
 # materials
 
