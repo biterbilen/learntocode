@@ -610,7 +610,7 @@
   - 알 | [huffman code](doc/greedy_huffman_code.md)
   - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)★
 
-- Combinatorial Search
+- [Combinatorial Search](doc/combinatorial_search.md)
   - 알 | [back tracking](doc/combinatorial_backtracking.md)
   - [알](algospot.com/TSP/) | [TSP (dynamic programming)](https://algospot.com/judge/problem/read/TSP2)
   - [알](algospot.com/TSP/) | [TSP (exhaustive search](https://algospot.com/judge/problem/read/TSP2)
@@ -621,12 +621,15 @@
   - 알 | [BOARDCOVER2](https://algospot.com/judge/problem/read/BOARDCOVER2)
   - 알 | [ALLERGY](https://algospot.com/judge/problem/read/ALLERGY)
   - 알 | [KAKURO2](https://algospot.com/judge/problem/read/KAKURO2)
-  - 알 | [Artificial Intelligence: A Modern Approach](https://www.amazon.com/Artificial-Intelligence-Modern-Approach-3rd/dp/0136042597)
+  - 알 | [artificial intelligence: a modern approach by stuart russel, peter norvig](https://www.amazon.com/Artificial-Intelligence-Approach-Stuart-Russell/dp/1292024208/ref=mt_paperback?_encoding=UTF8&me=)
+    - combinatorial search를 잘 설명한 인공지능 교과서이다. java, python소스가 제공된다.
   - 알 | [sudoku](http://norvig.com/sudoku.html)
+    - 스도쿠 퍼즐을 해결하는 방법에 관한 에세이이다.
     - [sudoku-kor](https://github.com/jongman/articles/wiki/solving-every-sudoku-puzzle)
   - 알 | [Georgia Tech's TSP](http://www.tsp.gatech.edu/)
+    - TSP를 해결하는 각종 기법들이 잘 기술되어 있다.
 
-- optimization problems to Decision problems
+- [optimization problems to Decision problems](doc/optimization_to_decision.md)
   - 알 | [DARPA](https://algospot.com/judge/problem/read/DARPA)
   - 알 | [ARCTIC](https://algospot.com/judge/problem/read/ARCTIC)
   - 알 | [CANADATRIP](https://algospot.com/judge/problem/read/CANADATRIP)
