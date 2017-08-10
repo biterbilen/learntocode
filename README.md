@@ -12,8 +12,9 @@
 * [algorithm analysis](#algorithm-analysis)
 * [NP Completeness](#NP-Completeness)
 * [problems](#problems)
-  * [bitmask](#bitmask)
-  * [partial sum](#partial-sum)
+  * [Bitmask](#Bitmask)
+  * [Partial Sum](#Partial-Sum)
+  * [Partial Min](#Partial-Min)
   
 # materials
 
@@ -153,7 +154,7 @@
   - 알 | range which is close to zero
   - 알 | [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
 
-- [partial min](doc/partial_min.md)
+- [Partial Min](doc/partial_min.md)
   - 백 | [최소값과 최대값]()
   - 백 | [최소값 찾기]()
 
