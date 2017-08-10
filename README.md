@@ -136,15 +136,27 @@
   - [GRADUATION](https://algospot.com/judge/problem/read/GRADUATION)
   - [Bit Twiddling Hacks](http://graphics.stanford.edu/~seander/bithacks.html)
 
-- Partial Sum
-  - partial sum, range sum
-  - variance
-  - grid sum
-  - range which is close to zero
+- [Partial Sum](doc/partial_sum.md)
+  - 백 | [구간 합 구하기 4]()
+  - 백 | [나머지 합]()
+  - 백 | [구간 합 구하기 5]()
+  - 백 | [구간 합 구하기]()
+  - 백 | [구간 합 구하기 2]()
+  - 백 | [스위치]()
+  - 백 | [구간 합 구하기]()
+  - 백 | [구간 합 구하기 3]()
+  - 알 | partial sum, range sum
+  - 알 | variance
+  - 알 | grid sum
+  - 알 | range which is close to zero
   - [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
 
+- [partial min](doc/partial_min.md)
+  - 백 | [최소값과 최대값]()
+  - 백 | [최소값 찾기]()
+
 - Disjoint Set
-  - union-find (merge-find)
+  - 알 | [union-find (merge-find)]()
 
 - List
   - dynamic array
@@ -469,6 +481,18 @@
   - 알 | [CLOCKSYNC](https://algospot.com/judge/problem/read/CLOCKSYNC)
 
 - Divide and Conquor
+  - 백 | [숫자 카드](https://www.acmicpc.net/problem/10815)
+  - 백 | [숫자 카드 2](https://www.acmicpc.net/problem/10816)
+  - 백 | [배열 합치기](https://www.acmicpc.net/problem/11728)
+  - 백 | [종이의 개수](https://www.acmicpc.net/problem/1780)
+  - 백 | [하노이 탑 이동 순서](https://www.acmicpc.net/problem/11729)
+  - 백 | [트리의 순회](https://www.acmicpc.net/problem/2263)
+  - 백 | [쿼드트리](https://www.acmicpc.net/problem/1992)
+  - 백 | [별찍기 - 10](https://www.acmicpc.net/problem/2447)
+  - 백 | [별찍기 - 11](https://www.acmicpc.net/problem/2448)
+  - 백 | [Z](https://www.acmicpc.net/problem/1074)
+  - 백 | [버블 소트](https://www.acmicpc.net/problem/1517)
+  - 백 | [가장 가까운 두 점](https://www.acmicpc.net/problem/2261)
   - 알 | The fast sum of a sequence
   - 알 | the fast square of a matrix
   - 알 | merge sort
@@ -477,6 +501,46 @@
   - 알 | [QUADTREE](https://algospot.com/judge/problem/read/QUADTREE)
   - 알 | [FENCE](https://algospot.com/judge/problem/read/FENCE)★ 
   - 알 | [FANMEETING](https://algospot.com/judge/problem/read/FANMEETING)★
+
+- binary search
+  - 백 | [랜선 자르기](https://www.acmicpc.net/problem/1654)
+  - 백 | [나무 자르기](https://www.acmicpc.net/problem/2805)
+  - 백 | [공유기 설치](https://www.acmicpc.net/problem/2110)
+  - 백 | [중량제한](https://www.acmicpc.net/problem/1939)
+  - 백 | [놀이 공원](https://www.acmicpc.net/problem/1561)
+  - 백 | [사다리](https://www.acmicpc.net/problem/2022)
+  
+- [exhaustive search](doc/exhaustive_search.md)
+  - 백 | [집합]()
+  - 백 | [다음 순열]()
+  - 백 | [이전 순열]()
+  - 백 | [모든 순열]()
+  - 백 | [순열의 순서]()
+  - 백 | [날짜 계산]()
+  - 백 | [리모컨]()
+  - 백 | [1, 2, 3 더하기]()
+  - 백 | [차이를 최대로]()
+  - 백 | [외판원 순회 2]()
+  - 백 | [로또]()
+  - 백 | [숨바꼭질]()
+  - 백 | [소수 경로]()
+  - 백 | [DSLR]()
+  - 백 | [퍼즐]()
+  - 백 | [물통]()
+  - 백 | [암호 만들기]()
+  - 백 | [N-Queen]()
+  - 백 | [스도쿠]()
+  - 백 | [알파벳]()
+  - 백 | [로또]()
+  - 백 | [부분집합의 합]()
+  - 백 | [수들의 합 2]()
+  - 백 | [부분합]()
+  - 백 | [소수의 연속합]()
+  - 백 | [알고스팟]()
+  - 백 | [부분집합의 합 2]()
+  - 백 | [합이 0인 네 정수]()
+  - 백 | [피자판매]()
+  - 백 | [두 배열의 합]()
 
 - Dynamic programming
   - C | [boolean evaluation](crackingthecodinginterview/8.14_BooleanEvaluation/a.cpp)
