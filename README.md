@@ -15,7 +15,34 @@
   * [Bitmask](#bitmask)
   * [Partial Sum](#partial-sum)
   * [Partial Min](#partial-min)
-  
+  * [Disjoint Set](#disjoint-set)
+  * [List](#list)
+  * [Stack](#stack)
+  * [Queue](#queue)
+  * [Deque](#deque)
+  * [Map (Hash)](#map-(hash))
+  * [String](#string)
+  * [Tree](#tree)
+  * [Segment Tree](#segment-tree)
+  * [Graph](#graph)
+  * [Network Flow](#network-flow)
+  * [Min Cost Max Flow](#min-cost-max-flow)
+  * [Sort](#sort)
+  * [Search](#search)
+  * [Numerical Analysis](#numerical-analysis)
+  * [Number Theory](#number-theory)
+  * [Computational Geometry](#computational-geometry)
+  * [Recursion](#recursion)
+  * [Brute Force](#brute-force)
+  * [Divide And Conquor](#divide-and-conquor)
+  * [Binary Search](#binary-search)
+  * [Exhaustive Search](#exhaustive-search)
+  * [Dynamic Programming](#dynamic-programming)
+  * [Dynamic programming technique](#dynamic-programming-technique)
+  * [Greedy](#greedy)
+  * [Combinatorial Search](#combinatorial-search)
+  * [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
+  * [algorithm Game](#algorithm-game)
 # materials
 
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
@@ -158,32 +185,32 @@
   - 백 | [최소값과 최대값]()
   - 백 | [최소값 찾기]()
 
-- Disjoint Set
+## Disjoint Set
   - 알 | [union-find (merge-find)]()
 
-- List
+## List
   - 알 | dynamic array
   - 알 | singly linked list
   - 알 | doubly linked list
   - 알 | [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
   - 알 | [Dancing Links](https://arxiv.org/abs/cs/0011047)
 
-- Stack 
+## Stack 
   - 알 | [FENCE](http://algospot.com/judge/problem/read/FENCE)
   - 알 | [BRACKETS2](http://algospot.com/judge/problem/read/BRACKETS2)
   - G | [Longest valid Parentheses](http://www.practice.geeksforgeeks.org/problem-page.php?pid=1247)
   - G | [Maximum of minimum for every window size](http://www.practice.geeksforgeeks.org/problem-page.php?pid=170)
 
-- Queue
+## Queue
   - 알 | [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
   - 알 | [ITES](http://algospot.com/judge/problem/read/ITES)
     - online algorithm
     - offline algorithm
 
-- Deque
+## Deque
   - G | [Level order traversal in spiral form](http://www.practice.geeksforgeeks.org/problem-page.php?pid=700201)
 
-- Map (Hash)
+## Map (Hash)
   - 알 | seperate chaining
   - 알 | linear probing (open addressing)
   - 알 | quadratic probing
@@ -191,7 +218,7 @@
   - 알 | consistent hashing
   - 알 | [A Simple Fraction](http://www.practice.geeksforgeeks.org/problem-page.php?pid=514)
 
-- String
+## String
   - 백 | [KMP는 왜 KMP일까?]()
   - 백 | [찾기]()
   - 백 | [광고]()
@@ -237,7 +264,7 @@
   - 알 | Aho–Corasick algorithm
     - children, fail, terminal, output, insert, compute_fail_func, search
 
-- [Tree](doc/tree.md)
+## [Tree](doc/tree.md)
   - 백 | [트리 순회]()
   - 백 | [트리의 부모 찾기]()
   - 백 | [트리의 지름]()
@@ -297,7 +324,7 @@
     - children, fail, terminal, insert, fail, output, compute_fail, search
   - 알 | [NH](http://algospot.com/judge/problem/read/NH)
 
-- segment tree
+## Segment Tree
   - 백 | [히스토그램에서 가장 큰 직사각형]()
   - 백 | [가장 긴 증가하는 부분 수열 2]()
   - 백 | [가장 긴 증가하는 부분 수열 3]()
@@ -314,7 +341,7 @@
   - 백 | [순열]()
   - 백 | [조세퍼스 문제 2]()
 
-- [Graph](doc/graph.md)
+## [Graph](doc/graph.md)
   - 백 | [DFS와 BFS]()
   - 백 | [연결 요소의 개수]()
   - 백 | [이분 그래프]()
@@ -483,7 +510,7 @@
     - Kőnig's theorem
   - 알 | Hopcroft-Karp algorithm
   
-- [network flow](doc/network_flow.md)
+## [Network Flow](doc/network_flow.md)
   - 백 | [최대 유량]()
   - 백 | [열혈강호]()
   - 백 | [열혈강호 2]()
@@ -517,7 +544,7 @@
   - 백 | [달리기]()
   - 백 | [빨간 선분 파란 선분]()
 
-- min cost max flow
+## Min Cost Max Flow
   - 백 | [책 구매하기]()
   - 백 | [책 구매하기 2]()
   - 백 | [책 구매하기 3]()
@@ -537,7 +564,7 @@
   - 백 | [Train Tickets]()
   - 백 | [Catering]()
 
-- sort
+## Sort
   - 백 | [수 정렬하기 2]()
   - 백 | [좌표 정렬하기]()
   - 백 | [좌표 정렬하기 2]()
@@ -559,7 +586,7 @@
   - Binary Tree Sort
   - counting sort
 
-- Search
+## Search
   - Sequential Search with array
   - Sequential Search with linked list
   - Binary Search with array
@@ -573,7 +600,7 @@
   - Red-Black Tree Search
   - AVL Tree Search
 
-- Numerical Analysis
+## Numerical Analysis
   - 알 | bisection method
   - 알 | [ROOTS](https://algospot.com/judge/problem/read/ROOTS)
   - 알 | [LOAN](https://algospot.com/judge/problem/read/LOAN)
@@ -582,7 +609,7 @@
   - 알 | [FOSSIL](https://algospot.com/judge/problem/read/FOSSIL)
   - 알 | simpson's method
 
-- [Number Theory](doc/number_theory.md)
+## [Number Theory](doc/number_theory.md)
   - 백 | [나머지]()
   - 백 | [최대공약수와 최소공배수]()
   - 백 | [최소공배수]()
@@ -640,7 +667,7 @@
   - 알 | chinese remainder theorem
   - 알 | lucas' theorem
 
-- Computational Geometry
+## Computational Geometry
   - 알 | how much closer
   - 알 | dot product
   - 알 | cross product
@@ -668,18 +695,18 @@
   - 알 | further reading
     - [geometry algorithms](http://geomalgorithms.com/)
 
-- recursion
+## Recursion
   - tower of hanoi
   - fibonacci number
   - pick k numbers from n numbers
 
-- Brute Force
+## Brute Force
   - 알 | [BOGGLE](https://algospot.com/judge/problem/read/BOGGLE)
   - 알 | [PICNIC](https://algospot.com/judge/problem/read/PICNIC)
   - 알 | [BOARDCOVER](https://algospot.com/judge/problem/read/BOARDCOVER)
   - 알 | [CLOCKSYNC](https://algospot.com/judge/problem/read/CLOCKSYNC)
 
-- Divide and Conquor
+## Divide And Conquor
   - 백 | [숫자 카드](https://www.acmicpc.net/problem/10815)
   - 백 | [숫자 카드 2](https://www.acmicpc.net/problem/10816)
   - 백 | [배열 합치기](https://www.acmicpc.net/problem/11728)
@@ -701,7 +728,7 @@
   - 알 | [FENCE](https://algospot.com/judge/problem/read/FENCE)★ 
   - 알 | [FANMEETING](https://algospot.com/judge/problem/read/FANMEETING)★
 
-- binary search
+## Binary Search
   - 백 | [랜선 자르기](https://www.acmicpc.net/problem/1654)
   - 백 | [나무 자르기](https://www.acmicpc.net/problem/2805)
   - 백 | [공유기 설치](https://www.acmicpc.net/problem/2110)
@@ -709,7 +736,7 @@
   - 백 | [놀이 공원](https://www.acmicpc.net/problem/1561)
   - 백 | [사다리](https://www.acmicpc.net/problem/2022)
   
-- [exhaustive search](doc/exhaustive_search.md)
+## [Exhaustive Search](doc/exhaustive_search.md)
   - 백 | [집합]()
   - 백 | [다음 순열]()
   - 백 | [이전 순열]()
@@ -741,7 +768,7 @@
   - 백 | [피자판매]()
   - 백 | [두 배열의 합]()
 
-- [Dynamic programming](doc/dynamic_programming.md)
+## [Dynamic Programming](doc/dynamic_programming.md)
   - 백 | [1로 만들기]()
   - 백 | [2×n 타일링]()
   - 백 | [2×n 타일링 2]()
@@ -829,7 +856,7 @@
   - 알 | [NUMB3RS](https://algospot.com/judge/problem/read/NUMB3RS)★
   - 알 | [Markov Chain](doc/dynamic_markov_chain.md)
 
-- Dynamic programming technique
+## Dynamic Programming Technique
   - 백 | [트리의 독립집합]()
   - 백 | [토너먼트 만들기]()
   - 백 | [택배]()
@@ -858,7 +885,7 @@
   - 알 | [SUSHI](https://algospot.com/judge/problem/read/SUSHI)
   - 알 | [GENIUS](https://algospot.com/judge/problem/read/GENIUS)
 
-- Greedy
+## Greedy
   - 알 | [knapsack problem](doc/dynamic_knapsack_problem.md)
   - 알 | [Kruskal's minimum spanning tree](doc/graph_kruskal.md)
   - 알 | [Prim's minimum spanning tree](doc/graph_prim.md)
@@ -885,7 +912,7 @@
   - 알 | [huffman code](doc/greedy_huffman_code.md)
   - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)★
 
-- [Combinatorial Search](doc/combinatorial_search.md)
+## [Combinatorial Search](doc/combinatorial_search.md)
   - 알 | [back tracking](doc/combinatorial_backtracking.md)
   - [알](algospot.com/TSP/) | [TSP (dynamic programming)](https://algospot.com/judge/problem/read/TSP2)
   - [알](algospot.com/TSP/) | [TSP (exhaustive search](https://algospot.com/judge/problem/read/TSP2)
@@ -904,13 +931,13 @@
   - 알 | [Georgia Tech's TSP](http://www.tsp.gatech.edu/)
     - TSP를 해결하는 각종 기법들이 잘 기술되어 있다.
 
-- [optimization problems to Decision problems](doc/optimization_to_decision.md)
+## [Optimization Problems To Decision Problems](doc/optimization_to_decision.md)
   - 알 | [DARPA](https://algospot.com/judge/problem/read/DARPA)
   - 알 | [ARCTIC](https://algospot.com/judge/problem/read/ARCTIC)
   - 알 | [CANADATRIP](https://algospot.com/judge/problem/read/CANADATRIP)
   - 알 | [WITHDRAWAL](https://algospot.com/judge/problem/read/WITHDRAWAL)
 
-- [algorithm game](doc/algorithm_game.md)
+## [Algorithm Game](doc/algorithm_game.md)
   - 백 | [돌 게임]()
   - 백 | [돌 게임 2]()
   - 백 | [돌 게임 3]()
