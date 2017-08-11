@@ -769,6 +769,7 @@
   - 백 | [두 배열의 합]()
 
 ## [Dynamic Programming](doc/dynamic_programming.md)
+  - C | [boolean evaluation](crackingthecodinginterview/8.14_BooleanEvaluation/a.cpp)
   - 백 | [1로 만들기]()
   - 백 | [2×n 타일링]()
   - 백 | [2×n 타일링 2]()
@@ -837,7 +838,6 @@
   - 백 | [나무 자르기]()
   - 백 | [땅따먹기]()
   - 백 | [특공대]()
-  - C | [boolean evaluation](crackingthecodinginterview/8.14_BooleanEvaluation/a.cpp)
   - 알 | [overlapping subproblems](doc/dynamic_overlapping_subproblems.md)
   - 알 | [binomial coefficient](doc/dynamic_binomial_coefficient.md)
   - 알 | [JUMPGAME](https://algospot.com/judge/problem/read/JUMPGAME)
@@ -913,9 +913,9 @@
   - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)★
 
 ## [Combinatorial Search](doc/combinatorial_search.md)
-  - 알 | [back tracking](doc/combinatorial_backtracking.md)
+  - [알](fundamentals/backtracking/) | [back tracking](doc/combinatorial_backtracking.md)
   - [알](algospot.com/TSP/) | [TSP (dynamic programming)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (exhaustive search](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP/) | [TSP (exhaustive search)](https://algospot.com/judge/problem/read/TSP2)
   - [알](algospot.com/TSP/) | [TSP (simple heuristic)](https://algospot.com/judge/problem/read/TSP2)
   - [알](algospot.com/TSP/) | [TSP (greedy)](https://algospot.com/judge/problem/read/TSP2)
   - [알](algospot.com/TSP/) | [TSP (MST heuristic)](https://algospot.com/judge/problem/read/TSP2)
