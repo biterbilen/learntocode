@@ -12,9 +12,9 @@
 * [algorithm analysis](#algorithm-analysis)
 * [NP Completeness](#NP-Completeness)
 * [problems](#problems)
-  * [Bitmask](#Bitmask)
-  * [Partial Sum](#Partial-Sum)
-  * [Partial Min](#Partial-Min)
+  * [Bitmask](#bitmask)
+  * [Partial Sum](#partial-sum)
+  * [Partial Min](#partial-min)
   
 # materials
 
@@ -139,7 +139,7 @@
   - 알 | [GRADUATION](https://algospot.com/judge/problem/read/GRADUATION)
   - 알 | [Bit Twiddling Hacks](http://graphics.stanford.edu/~seander/bithacks.html)
 
-- [Partial Sum](doc/partial_sum.md)
+## [Partial Sum](doc/partial_sum.md)
   - 백 | [구간 합 구하기 4]()
   - 백 | [나머지 합]()
   - 백 | [구간 합 구하기 5]()
@@ -154,7 +154,7 @@
   - 알 | range which is close to zero
   - 알 | [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
 
-- [Partial Min](doc/partial_min.md)
+## [Partial Min](doc/partial_min.md)
   - 백 | [최소값과 최대값]()
   - 백 | [최소값 찾기]()
 
@@ -280,8 +280,7 @@
   - 알 | check the connectivity of a graph
   - 알 | track the largest set
   - 알 | [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
-  - 알 | trie 
-    - [pdf](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_pdf/trie.pdf) [video]()
+  - 알 | trie [video](https://www.youtube.com/watch?v=aiy-uY8OB8g) [pdf](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_pdf/trie.pdf) 
     - TrieNode, children, terminal, insert, find
     - a tree whose key is a character for searching strings
     - use too much memory
