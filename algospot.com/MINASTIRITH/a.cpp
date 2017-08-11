@@ -1,6 +1,11 @@
 // Copyright (C) 2017 by iamslash
 // https://algospot.com/judge/problem/read/MINASTIRITH
 
+#include <cstdio>
+#include <map>
+#include <vector>
+
+std::vector<std::pair<double, double> > RANGES;
 int N;
 double Y[100], X[100], R[100];
 
