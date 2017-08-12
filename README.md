@@ -914,12 +914,7 @@
 
 ## [Combinatorial Search](doc/combinatorial_search.md)
   - [알](fundamentals/backtracking/) | [back tracking](doc/combinatorial_backtracking.md)
-  - [알](algospot.com/TSP/) | [TSP (dynamic programming)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (exhaustive search)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (simple heuristic)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (greedy)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (MST heuristic)](https://algospot.com/judge/problem/read/TSP2)
-  - [알](algospot.com/TSP/) | [TSP (memoization)](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP2/) | [TSP (dynamic programming, exhaustive search, simple heuristic, greedy, MST heuristric, memoization )](https://algospot.com/judge/problem/read/TSP2)
   - 알 | [BOARDCOVER2](https://algospot.com/judge/problem/read/BOARDCOVER2)
   - 알 | [ALLERGY](https://algospot.com/judge/problem/read/ALLERGY)
   - 알 | [KAKURO2](https://algospot.com/judge/problem/read/KAKURO2)
