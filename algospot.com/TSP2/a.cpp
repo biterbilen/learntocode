@@ -11,9 +11,35 @@ double DIST[MAX][MAX];
 double BEST;
 
 ////////////////////////////////////////////////////////////////////////////////
-// exhaustive search
+// simple pruning
 ////////////////////////////////////////////////////////////////////////////////
-void _solve_exhaustive_search(std::vector<int>& path,
+void solve_simple_pruning(std::vector<int>& path,
+                                std::vector<bool>& visited,
+                                int past_dist) {
+  int here = path.back();
+  // base condition
+  if (path.size() == N) {
+    BEST = std::min(BEST, past_dist + DIST[here][0]);
+  }
+  // pruning
+  if (BEST <= past_dist)
+    return;
+  // recursion
+  for (int next = 0; next < N; ++next) {
+    if (visited[next])
+      continue;
+    visited[next] = true;
+    path.push_back(next);
+    solve_simple_pruning(path, visited, past_dist + DIST[here][next]);
+    path.pop_back();
+    visited[next] = false;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// backtracking
+////////////////////////////////////////////////////////////////////////////////
+void solve_backtracking(std::vector<int>& path,
                                 std::vector<bool>& visited,
                                 int past_dist) {
   int here = path.back();
@@ -27,18 +53,18 @@ void _solve_exhaustive_search(std::vector<int>& path,
       continue;
     visited[next] = true;
     path.push_back(next);
-    _solve_exhaustive_search(path, visited, past_dist + DIST[here][next]);
+    solve_backtracking(path, visited, past_dist + DIST[here][next]);
     path.pop_back();
     visited[next] = false;
   }
 }
 
-double solve_exhaustive_search() {
+double solve() {
   BEST = INF;
   std::vector<bool> visited(N, false);
   std::vector<int> path(1, 0);
   visited[0] = true;
-  _solve_exhaustive_search(path, visited, 0);
+  solve_backtracking(path, visited, 0);
   return BEST;
 }
 
@@ -52,7 +78,7 @@ int main() {
         scanf("%lf", &DIST[i][j]);
       }
     }
-    printf("%lf\n", solve_exhaustive_search());
+    printf("%lf\n", solve());
   }
   return 0;
 }
