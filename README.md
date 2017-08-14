@@ -916,7 +916,7 @@
   - [알](fundamentals/backtracking/) | [back tracking](doc/combinatorial_search_backtracking.md)
   - 알 | [heuristic](doc/combinatorial_search_heuristic.md)
   - 알 | [metaheuristic](doc/combinatorial_search_metaheuristic.md)
-  - [알](algospot.com/TSP2/) | [TSP (dynamic programming, backtracking, simple pruning, simple heuristic pruning, greedy, MST heuristic pruning, MAST heuristic pruning with memoization )](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP2/) | [TSP (dynamic programming, backtracking, simple pruning, simple heuristic pruning, greedy, pruningwith past path, MST heuristic pruning, MST heuristic pruning with memoization )](https://algospot.com/judge/problem/read/TSP2)
   - 알 | [BOARDCOVER2](https://algospot.com/judge/problem/read/BOARDCOVER2)
   - 알 | [ALLERGY](https://algospot.com/judge/problem/read/ALLERGY)
   - 알 | [KAKURO2](https://algospot.com/judge/problem/read/KAKURO2)
