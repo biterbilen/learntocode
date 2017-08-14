@@ -108,6 +108,8 @@
 | unsigned int       | 4byte             | 0 to 4,294,967,295                        |
 | long long | 8byte             | –9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807 |
 | unsigned long long | 8byte             | 0 ~ 18,446,744,073,709,551,615 |
+| float | 4byte             | -3.4E +/- 38 ~ 3.4E +/- 38 (7 digits) |
+| double | 8byte             | -1.7E +/- 308 ~ 1.7E +/- 308 (15 digits) |
 
 # algorithm proof
 
@@ -926,7 +928,8 @@
     - 스도쿠 퍼즐을 해결하는 방법에 관한 에세이이다.
     - [sudoku-kor](https://github.com/jongman/articles/wiki/solving-every-sudoku-puzzle)
   - 알 | [Georgia Tech's TSP](http://www.tsp.gatech.edu/)
-    - TSP를 해결하는 각종 기법들이 잘 기술되어 있다.
+    - TSP 해결 프로그램중 가장 강력한 Concorde가 기술되어
+      있다. Concorde는 1000개의 도시를 갖는 입력을 10분만에 풀어낸다.
 
 ## [Optimization Problems To Decision Problems](doc/optimization_to_decision.md)
   - 알 | [DARPA](https://algospot.com/judge/problem/read/DARPA)
