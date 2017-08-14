@@ -922,6 +922,7 @@
   - 알 | [BOARDCOVER2](https://algospot.com/judge/problem/read/BOARDCOVER2)
   - 알 | [ALLERGY](https://algospot.com/judge/problem/read/ALLERGY)
   - 알 | [KAKURO2](https://algospot.com/judge/problem/read/KAKURO2)
+  - CSP (constraint satisfaction problem)
   - 알 | [artificial intelligence: a modern approach by stuart russel, peter norvig](https://www.amazon.com/Artificial-Intelligence-Approach-Stuart-Russell/dp/1292024208/ref=mt_paperback?_encoding=UTF8&me=)
     - combinatorial search를 잘 설명한 인공지능 교과서이다. java, python소스가 제공된다.
   - 알 | [sudoku](http://norvig.com/sudoku.html)
