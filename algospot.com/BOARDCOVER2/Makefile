@@ -1,6 +1,6 @@
 # 
 CC  = c99
-CXX = g++
+CXX = g++ -std=c++11
 
 all: TAGS a.out
 
