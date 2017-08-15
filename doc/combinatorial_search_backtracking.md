@@ -1,9 +1,11 @@
 # abstract
 
 - 완전 탐색의 방법으로 접근할때 새로운 search space를 탐색하고 다시
-  이전 search space로 돌아가서 새로운 search space를 탐색하는 방법
-- 주로 loop 안에서 recursion하는 형태이다.
-- 다음은 [TSP](../algospot.com/TSP2)를 backtracking을 이용하여 해결한 코드이다.
+  이전 search space로 돌아가서 새로운 search space를 탐색하는 방법이다.
+  주로 recursion전에 상태를 바꾸고 recursion후에 상태를 원래대로 복원하는
+  방법을 사용한다.
+- 다음은 [TSP](../algospot.com/TSP2)를 backtracking을 이용하여 해결한
+  코드이다.
 
 ```cpp
 ////////////////////////////////////////////////////////////////////////////////
