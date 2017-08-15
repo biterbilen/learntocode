@@ -915,7 +915,7 @@
   - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)★
 
 ## [Combinatorial Search](doc/combinatorial_search.md)
-  - [알](fundamentals/backtracking/) | [back tracking](doc/combinatorial_search_backtracking.md)
+  - 알 | [back tracking](doc/combinatorial_search_backtracking.md)
   - 알 | [heuristic](doc/combinatorial_search_heuristic.md)
   - 알 | [metaheuristic](doc/combinatorial_search_metaheuristic.md)
   - [알](algospot.com/TSP2/) | [TSP (dynamic programming, backtracking, simple pruning, simple heuristic pruning, greedy, pruningwith past path, MST heuristic pruning, MST heuristic pruning with memoization )](https://algospot.com/judge/problem/read/TSP2)
