@@ -13,6 +13,14 @@
 // Write a program to move the disks from the first tower to the last
 // using Stacks.
 
+// timecomplexity
+// T(0) = 0
+// T(n) = 1 + 2T(n-1)
+//      = 1 + 2(1 + 2T(n-2)) = 1 + 2 + 4 T(n-2)
+//      = 1 + 2 + 4 + 8 + ... + 2^n-1 + 2^n T(n-n)
+//      = 2^n - 1 + 0
+//      O(2^n)
+
 #include <cstdio>
 #include <vector>
 #include <stack>

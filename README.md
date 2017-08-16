@@ -698,7 +698,7 @@
     - [geometry algorithms](http://geomalgorithms.com/)
 
 ## Recursion
-  - tower of hanoi
+  - [C](crackingthecodinginterview/8.6_TowerOfHanoi/) | tower of hanoi
   - fibonacci number
   - pick k numbers from n numbers
 
