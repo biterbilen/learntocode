@@ -59,13 +59,13 @@
 
 # online judges
 
-- [codeforces](http://codeforces.com/)
-- [topcoder](https://arena.topcoder.com)
-- [geekforgeeks practice](http://www.practice.geeksforgeeks.org/)
 - [leetcode](https://leetcode.com/)
+- [geekforgeeks practice](http://www.practice.geeksforgeeks.org/)
+- [hackerrank](https://www.hackerrank.com/)
 - [백준온라인](https://www.acmicpc.net/)
 - [알고스팟](https://algospot.com/)
-- [hackerrank](https://www.hackerrank.com/)
+- [codeforces](http://codeforces.com/)
+- [topcoder](https://arena.topcoder.com)
 - [programming-challnges](http://www.programming-challenges.com/)
 
 # references
