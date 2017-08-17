@@ -1,10 +1,11 @@
 # abstract
 
 - 복수의 제약 조건을 충족하는 상태를 찾아내는 수학 문제이다.
-- 고도의 복잡성을 보이기 때문에 적정한 시간 내에 문제를 풀기 위해서는
-  휴리스틱과 조합최적화기법을 혼용할 필요가 있다.
-- eight queens puzzle, map coloring problem, sudoku, crosswrods,
-  futoshiki, kakuro, numbrix, hidato등이 해당된다.
+- 주로 combinatorial search로 해결한다. 이때 contraint propagation(제약조건전파)와
+  variable, value ordering(변수,값 순서 정하기)가 중요한다.
+- [eight queens puzzle](crackingthecodinginterview/8.12_EightQueens/),
+  [kakuro](algospot.com/KAKURO2/), map coloring problem, sudoku,
+  crosswrods, futoshiki, numbrix, hidato등이 해당된다. 
 
 # references
 
