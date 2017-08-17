@@ -11,6 +11,55 @@ double DIST[MAX][MAX];
 double BEST;
 
 ////////////////////////////////////////////////////////////////////////////////
+// swapping past paths pruning
+////////////////////////////////////////////////////////////////////////////////
+
+// check last 4 elements of path
+// if swapping them past_dist can be shorter???
+bool path_swap_prunig(const std::vector<int>& path) {
+
+}
+
+// check sub elements of path except start, end element
+// if swapping them past_dist can be shorter???
+bool path_reverse_pruning(const std::vector<int>& path) {
+
+}
+
+void _solve_swapping_past_paths_pruning(std::vector<int>& path,
+                                std::vector<bool>& visited,
+                                        int past_dist) {
+  int here = path.back();
+  // base condition
+  if (path.size() == N) {
+    BEST = std::min(BEST, past_dist + DIST[here][0]);
+  }
+  // pruning
+  if (path_swap_prunig(path))
+    return;
+  // recursion
+  for (int next = 0; next < N; ++next) {
+    if (visited[next])
+      continue;
+    visited[next] = true;
+    path.push_back(next);
+    _solve_backtracking(path, visited, past_dist + DIST[here][next]);
+    path.pop_back();
+    visited[next] = false;
+  }  
+}
+
+double solve_swapping_past_paths_pruning() {
+  BEST = INF;
+  std::vector<bool> visited(N, false);
+  std::vector<int> path(1, 0);
+  visited[0] = true;
+  _solve_swapping_past_paths_pruning(path, visited, 0);
+  return BEST;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
 // greedy
 ////////////////////////////////////////////////////////////////////////////////
 std::vector<int> NEAREST[MAX];
