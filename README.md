@@ -80,6 +80,7 @@
 - [michael sambol short videos](https://www.youtube.com/channel/UCzDJwLWoYCUQowF_nG3m5OQ)
 - [Curtis Lassam short videos](https://www.youtube.com/watch?v=r4r1DZcx1cM&list=PLmVb1OknmNJuC5POdcDv5oCS7_OUkDgpj&index=22)
   - trie, bloom filters, Endainness, scrum
+- [mycodeschool @ youtube](https://www.youtube.com/user/mycodeschool/featured)
 
 ## Book
 
