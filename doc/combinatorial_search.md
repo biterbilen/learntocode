@@ -6,10 +6,10 @@
   정점의 목록과 현재 위치로 구성된다. 
 - 완전 탐색을 포함해서 유한한 크기의 탐색공간을 뒤지면서 답을 찾아내는 알고리즘들을
   combinatorial search(조합탐색)이라고 한다.
-- combinatorial search는 dynamic programming, exhaustive search,
-  simple pruning, pruning with simple heuristic, greedy, pruning with
-  swapping adjacent cities, pruning with swaping sub paths, pruning
-  with MST heuristic , memoization등으로 해결 할 수 있다. (예, TSP)
+- combinatorial search는 dynamic programming, backtracking,
+  simple pruning, simple heuristic pruning, greedy,
+  swapping past paths pruning, mst heuristic pruning,
+  partial dynamic programming 등으로 해결 할 수 있다. (예, TSP)
   
 # reference
 

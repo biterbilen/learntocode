@@ -42,7 +42,7 @@
   * [Greedy](#greedy)
   * [Combinatorial Search](#combinatorial-search)
   * [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
-  * [algorithm Game](#algorithm-game)
+  * [Algorithm Game](#algorithm-game)
 # materials
 
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
@@ -919,7 +919,7 @@
   - 알 | [back tracking](doc/combinatorial_search_backtracking.md)
   - 알 | [heuristic](doc/combinatorial_search_heuristic.md)
   - 알 | [metaheuristic](doc/combinatorial_search_metaheuristic.md)
-  - [알](algospot.com/TSP2/) | [TSP (dynamic programming, backtracking, simple pruning, simple heuristic pruning, greedy, pruningwith past path, MST heuristic pruning, MST heuristic pruning with memoization )](https://algospot.com/judge/problem/read/TSP2)
+  - [알](algospot.com/TSP2/) | [TSP (dynamic programming, backtracking, simple pruning, simple heuristic pruning, greedy, swapping past paths pruning, MST heuristic pruning, partial dynamic programming)](https://algospot.com/judge/problem/read/TSP2)
   - [알](algospot.com/BOARDCOVER2) | [BOARDCOVER2](https://algospot.com/judge/problem/read/BOARDCOVER2)
   - [알](algospot.com/ALLERGY) | [ALLERGY](https://algospot.com/judge/problem/read/ALLERGY)
   - [알](algospot.com/KAKURO2) | [KAKURO2](https://algospot.com/judge/problem/read/KAKURO2)
