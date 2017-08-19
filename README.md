@@ -477,7 +477,7 @@
   - [알](fundamentals/graph/kruskal/) | [Kruskal's minimum spanning tree](doc/graph_kruskal.md)
     - adj, DisjointSet, kruskal, totalcost, mst, edges
     - O(|E|lg|E|)
-  - [알](fundamentals/graph/prim/| [Prim's minimum spanning tree](doc/graph_prim.md)
+  - [알](fundamentals/graph/prim/) | [Prim's minimum spanning tree](doc/graph_prim.md)
     - adj, prim, totalcost, mst, added, min_weight, parent
     - O(|V|^2+|E|), O(|V|^2)
   - 알 | [LAN](http://algospot.com/judge/problem/read/LAN)
