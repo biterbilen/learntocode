@@ -1,4 +1,4 @@
-# intro
+# Abstract
 
 - MST(minimum spanning tree)를 구하는 알고리즘이다.
 - unweighted graph의 spanning tree는 원래 graph의 vertex 전부와
@@ -7,7 +7,7 @@
   tree이기 때문에 cycle은 없다.
 - graph의 spanning tree는 여러개 일 수 있다.
 
-# keyword
+# Keyword
 
 ```cpp
 vector<pair<int, int> > adj[], DisjointSet,
