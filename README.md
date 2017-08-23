@@ -43,6 +43,7 @@
   * [Combinatorial Search](#combinatorial-search)
   * [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
   * [Algorithm Game](#algorithm-game)
+
 # materials
 
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
@@ -152,8 +153,8 @@
 # Problems
 
 ## Bitmask
-  - 알 | bitmask set
-  - 알 | sieve of eratosthenes
+  - [알](fundamentals/bitmaskset/) | [bitmask set](doc/bitmask_bitmask_set.md)
+  - [알](fundamentals/sieveoferatosthenes/) | [sieve of eratosthenes](doc/bitmask_sieve_of_eratosthenes.md)
   - 알 | 15 puzzle
   - 알 | priority queue with O(1)
   - 알 | maximal stable set★
