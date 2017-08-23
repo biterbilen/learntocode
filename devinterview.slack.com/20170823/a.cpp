@@ -41,12 +41,13 @@ void solve(Node* p_node, int n_lv) {
       1     5   
       
 */
-  // BFS                // n_lv 2
-  int n_depth = 0;      // 1
-  std::queue<Node*> q;  // 2 4
-  std::queue<Node*> qq;
+  // BFS                
+                // n_lv // 1
+  int n_depth = 1;      // 1
+  std::queue<Node*> q;  // 2 6
+  std::queue<Node*> qq; // 
   q.push(p_node);
-  while (!q.empty() && n_depth < n_lv) {
+  while (n_lv > 1 && !q.empty() && n_depth < n_lv) {
     Node* p_cur = q.front(); q.pop();
     if (p_cur->m_p_left != NULL)
       qq.push(p_cur->m_p_left);
@@ -54,9 +55,12 @@ void solve(Node* p_node, int n_lv) {
       qq.push(p_cur->m_p_right);
     if (q.empty()) {
       n_depth++;
-      q = qq;
-      qq.clear();
+      std::swap(q, qq);
     }
+  }
+  while (!q.empty()) {
+    Node* p = q.front(); q.pop();
+    printf("%d ", p->m_n_val);
   }
   printf("\n");
 }
