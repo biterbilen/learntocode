@@ -153,8 +153,8 @@
 # Problems
 
 ## Bitmask
-  - [알](fundamentals/bitmaskset/) | [bitmask set](doc/bitmask_bitmask_set.md)
-  - [알](fundamentals/sieveoferatosthenes/) | [sieve of eratosthenes](doc/bitmask_sieve_of_eratosthenes.md)
+  - [알](fundamentals/bitmask/bitmaskset/) | [bitmask set](doc/bitmask_set.md)
+  - [알](fundamentals/bitmask/sieveoferatosthenes/) | [sieve of eratosthenes](doc/bitmask_sieve_of_eratosthenes.md)
   - 알 | 15 puzzle
   - 알 | priority queue with O(1)
   - 알 | maximal stable set★
