@@ -1,5 +1,7 @@
 // Copyright (C) 2016 by iamslash
 
+// g++ a.cpp -std=c++11 -o a.exe
+
 #include <cstdio>
 #include <cstdint>
 
@@ -19,16 +21,17 @@ bool is_stable(int set) {
 }
 
 // get count of maximal stable set
-int cnt_stable_set() {
+int solve() {
   int r = 0;
 
   for (int set = 1; set < (1 << N); ++set) {
     if (!is_stable(set))
       continue;
-    //
+
     bool can_extend = false;
     for (int i = 0; i < N; ++i) {
       if (((set & (1 << i)) == 0) && ((set & explodes[i]) == 0)) {
+        // printf("%x %d\n", set, i);
         can_extend = true;
         break;
       }
@@ -42,18 +45,15 @@ int cnt_stable_set() {
 
 int main() {
   // total 5 elements
-  N = 3;
+  N = 4;
   // 0th element will explode with 3th element
-  explodes[0] = 0x03;  // 00000011
-  explodes[1] = 0x07;  // 00000111
-  explodes[2] = 0x0E;  // 00001111
-  int set = 0x00;
-
-  set = 0x02;
-  printf("%x is %d\n", set, is_stable(set));
-  // element = 0x09;
-  // printf("%x is %d\n", element, IsStable(element));
-  // printf("%d\n", CountStableSet());
+  explodes[0] = 0x02;  // 00000010
+  explodes[1] = 0x01;  // 00000001
+  explodes[2] = 0x08;  // 00001000
+  explodes[3] = 0x04;  // 00000100
+  // printf("%x is %d\n", set, is_stable(0x03));
+  // printf("%x is %d\n", set, is_stable(0x01));
+  printf("%d\n", solve());
 
   return 0;
 }
