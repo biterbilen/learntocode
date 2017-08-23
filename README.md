@@ -155,7 +155,7 @@
 ## Bitmask
   - [알](fundamentals/bitmask/bitmaskset/) | [bitmask set](doc/bitmask_set.md)
   - [알](fundamentals/bitmask/sieveoferatosthenes/) | [sieve of eratosthenes](doc/bitmask_sieve_of_eratosthenes.md)
-  - 알 | 15 puzzle
+  - [알](fundamentals/bitmask/15puzzle/ | [15 puzzle](doc/bitmask_15_puzzle.md)
   - 알 | priority queue with O(1)
   - 알 | maximal stable set★
   - 알 | [GRADUATION](https://algospot.com/judge/problem/read/GRADUATION)
