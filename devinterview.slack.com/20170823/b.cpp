@@ -15,26 +15,35 @@
 
 std::vector<int> N = {10, 9, 2, 5, 3, 6, 101, 18};
 
-int CACHE[100][100];
+int CACHE[100];
 
-int solve(int cur, int prv) {
-  // base condition
-  if (cur >= N.size() || N[cur] < N[prv])
-    return 0;
+int _solve(int cur) {
+  printf("  [%d] %d\n", cur, N[cur]);
   // memoization
-  int& r = CACHE[cur][prv];
+  int& r = CACHE[cur];
   if (r != -1)
     return r;
   // recursion
-  r = std::max(solve(cur + 1, cur), 1 + solve(cur + 1, cur));
+  r = 0;
+  for (int nxt = cur + 1; nxt < N.size(); ++nxt) {
+    if (N[cur] < N[nxt]) {
+      r = std::max(r, 1 + _solve(nxt));
+    }
+  }
   return r;
+}
+
+int solve() {
+  int r = 0;
+  for (int i = 0; i < N.size(); ++i)
+    r = std::max(r, _solve(i));
+  return r + 1;
 }
 
 int main() {
   for (int i = 0; i < 100; ++i)
-    for (int j = 0; j < 100; ++j)
-      CACHE[i][j] = -1;
-  printf("%d\n", solve(0, -1));
+      CACHE[i] = -1;
+  printf("%d\n", solve());
   
   return 0;
 }
