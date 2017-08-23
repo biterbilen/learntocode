@@ -153,16 +153,6 @@
 
 ## Bitmask
   - 알 | bitmask set
-    - null set, full set
-    - add a element
-    - check a element included
-    - dell a element
-    - toggle a element
-    - set operation (added, intersection, removed, toggled)
-    - size of set (__builtin_popcount())
-    - find a min element (__builtin_ctz())
-    - del a min element
-    - traversal of set
   - 알 | sieve of eratosthenes
   - 알 | 15 puzzle
   - 알 | priority queue with O(1)
