@@ -16,8 +16,6 @@
 #include <vector>
 #include <algorithm>
 
-std::vector<int> N = {10, 9, 2, 5, 3, 7, 101, 18};
-
 // ex.0
 // 10 20 40 25 20 50 30 70 85
 // 10 20 25 30 70 85
@@ -26,20 +24,21 @@ std::vector<int> N = {10, 9, 2, 5, 3, 7, 101, 18};
 // 10 9 2 5 3 7 101 18
 // 2 3 7 18
 
-int solve() {
-  std::vector<int> r;
+int solve(const std::vector<int>&& N) {
+  std::vector<int> r = {-1};
   for (const auto& n : N) {
     if (r.back() < n) {
       r.push_back(n);
     } else {
-      const auto& it = std::lower_bound(r.begin(), r.end(), n);
-      r[r.begin() - it] = *it;
+      int idx = std::lower_bound(r.begin(), r.end(), n) - r.begin();
+      r[idx] = n;
     }
   }
-  return r.size();
+  return r.size() - 1;
 }
 
 int main() {
-  printf("%d\n", solve());
+  printf("%d\n", solve({10, 9, 2, 5, 3, 7, 101, 18}));
+  printf("%d\n", solve({10, 20, 40, 25, 20, 50, 30, 70, 85}));
   return 0;
 }
