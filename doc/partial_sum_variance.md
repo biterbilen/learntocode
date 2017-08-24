@@ -7,11 +7,15 @@
 - 정수열의 인덱스 a부터 b까지의 분산은 a부터 b까지 (mean - a[i])^2의
   합이다. 식을 전개하면 sqpsum, psum, range_sum을 이용하여 구 할 수 있다.
 
+![](partial_sum_variance_eq.png)
+
 ```latex
-variance = \sum_{i = a}^{b}(mean - a[i])^{2} 
-= \sum_{i = a}^{b}(mean^{2} - 2\cdot mean \cdot a[i] + a[i]^{2} ) 
-= \sum_{i = a}^{b}mean^{2} - 2 \cdot mean \sum_{i=a}^{b} a[i] + \sum_{i=a}^{b} a[i]^{2}
-= (b - a + 1)mean^{2} + 2 \cdot mean \cdot psum(a, b) + sqpsum(a, b)
+\begin{align*}
+variance &= \frac{1}{b - a + 1} \sum_{i = a}^{b}(mean - a[i])^{2} \\ 
+         &= \frac{1}{b - a + 1} \sum_{i = a}^{b}(mean^{2} - 2\cdot mean \cdot a[i] + a[i]^{2} ) \\
+         &= \frac{1}{b - a + 1} \sum_{i = a}^{b}mean^{2} - 2 \cdot mean \sum_{i=a}^{b} a[i] + \sum_{i=a}^{b} a[i]^{2} \\
+         &= \frac{1}{b - a + 1} ((b - a + 1)mean^{2} + 2 \cdot mean \cdot psum(a, b) + sqpsum(a, b)) \\
+\end{align*}
 ```
 
 ```cpp
