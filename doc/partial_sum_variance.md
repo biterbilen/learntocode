@@ -1,9 +1,20 @@
-// Copyright (C) 2016 by iamslash
+# Abstract
 
-#include <cstdio>
-#include <cstdint>
-#include <vector>
+- 분산을 부분합과 구간합등을 이용하여 구해보자.
 
+# Variance
+
+- 정수열의 인덱스 a부터 b까지의 분산은 a부터 b까지 (mean - a[i])^2의
+  합이다. 식을 전개하면 sqpsum, psum, range_sum을 이용하여 구 할 수 있다.
+
+```latex
+variance = \sum_{i = a}^{b}(mean - a[i])^{2} 
+= \sum_{i = a}^{b}(mean^{2} - 2\cdot mean \cdot a[i] + a[i]^{2} ) 
+= \sum_{i = a}^{b}mean^{2} - 2 \cdot mean \sum_{i=a}^{b} a[i] + \sum_{i=a}^{b} a[i]^{2}
+= (b - a + 1)mean^{2} + 2 \cdot mean \cdot psum(a, b) + sqpsum(a, b)
+```
+
+```cpp
 std::vector<int> PartialSum(const std::vector<int>& a) {
   std::vector<int> r(a.size());
   r[0] = a[0];
@@ -48,3 +59,4 @@ int main()
 
   return 0;
 }
+```

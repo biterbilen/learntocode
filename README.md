@@ -38,7 +38,7 @@
   * [Binary Search](#binary-search)
   * [Exhaustive Search](#exhaustive-search)
   * [Dynamic Programming](#dynamic-programming)
-  * [Dynamic programming technique](#dynamic-programming-technique)
+  * [Dynamic Programming Technique](#dynamic-programming-technique)
   * [Greedy](#greedy)
   * [Combinatorial Search](#combinatorial-search)
   * [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
@@ -162,16 +162,16 @@
   - 알 | [Bit Twiddling Hacks](http://graphics.stanford.edu/~seander/bithacks.html)
 
 ## [Partial Sum](doc/partial_sum.md)
-  - 백 | [구간 합 구하기 4]()
-  - 백 | [나머지 합]()
-  - 백 | [구간 합 구하기 5]()
-  - 백 | [구간 합 구하기]()
-  - 백 | [구간 합 구하기 2]()
-  - 백 | [스위치]()
-  - 백 | [구간 합 구하기]()
-  - 백 | [구간 합 구하기 3]()
-  - 알 | partial sum, range sum
-  - 알 | variance
+  - 백 | [구간 합 구하기 4](https://www.acmicpc.net/problem/11659)
+  - 백 | [나머지 합](https://www.acmicpc.net/problem/10986)
+  - 백 | [구간 합 구하기 5](https://www.acmicpc.net/problem/11660)
+  - 백 | [구간 합 구하기](https://www.acmicpc.net/problem/2042)
+  - 백 | [구간 합 구하기 2](https://www.acmicpc.net/problem/10999)
+  - 백 | [스위치](https://www.acmicpc.net/problem/1395)
+  - 백 | [구간 합 구하기](https://www.acmicpc.net/problem/2042)
+  - 백 | [구간 합 구하기 3](https://www.acmicpc.net/problem/11658)
+  - [알](fundamentals/partialsum/partialsum/) | [partial sum, range sum](doc/partial_sum_range_sum.md)
+  - [알](fundamentals/partialsum/variance/) | [variance](doc/partial_sum_variance.md)
   - 알 | grid sum
   - 알 | range which is close to zero
   - 알 | [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
