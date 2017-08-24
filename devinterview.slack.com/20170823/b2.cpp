@@ -1,48 +1,45 @@
-// http://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
+// Copyright (C) 2017 by iamslash
 
-#include <iostream>
+//
+// Given [10, 9, 2, 5, 3, 7, 101, 18],
+// The longest increasing subsequence is [2, 3, 7, 101], therefore the
+// length is 4.
+// Note that there may be more than one LIS combination, it is only
+// necessary for you to return the length.
+
+// build : g++ b2.cpp -std=c++11 -o b2.exe
+
+// Time Complexity : O(NlgN)
+// Space Complexity : O(1)
+
+#include <cstdio>
 #include <vector>
+#include <algorithm>
 
-// Binary search (note boundaries in the caller)
-int Ceil_idx(std::vector<int> &v, int l, int r, int key) {
-  while (r - l > 1) {
-    int m = l + (r - l) / 2;
-    if (v[m] >= key)
-      r = m;
-    else
-      l = m;
+std::vector<int> N = {10, 9, 2, 5, 3, 7, 101, 18};
+
+// ex.0
+// 10 20 40 25 20 50 30 70 85
+// 10 20 25 30 70 85
+
+// ex.1
+// 10 9 2 5 3 7 101 18
+// 2 3 7 18
+
+int solve() {
+  std::vector<int> r;
+  for (const auto& n : N) {
+    if (r.back() < n) {
+      r.push_back(n);
+    } else {
+      const auto& it = std::lower_bound(r.begin(), r.end(), n);
+      r[r.begin() - it] = *it;
+    }
   }
-
-  return r;
-}
-
-int solve(std::vector<int> &v) {
-  if (v.size() == 0)
-    return 0;
- 
-  std::vector<int> tail(v.size(), 0);
-  int length = 1; // always points empty slot in tail
- 
-  tail[0] = v[0];
-  for (size_t i = 1; i < v.size(); i++) {
-    if (v[i] < tail[0])
-      // new smallest value
-      tail[0] = v[i];
-    else if (v[i] > tail[length-1])
-      // v[i] extends largest subsequence
-      tail[length++] = v[i];
-    else
-      // v[i] will become end candidate of an existing subsequence or
-      // Throw away larger elements in all LIS, to make room for upcoming grater elements than v[i]
-      // (and also, v[i] would have already appeared in one of LIS, identify the location and replace it)
-      tail[ceil_idx(tail, -1, length - 1, v[i])] = v[i];
-  }
-  return length;
+  return r.size();
 }
 
 int main() {
-  std::vector<int> v{ 2, 5, 3, 7, 11, 8, 10, 13, 6 };
-  std::cout << "Length of Longest Increasing Subsequence is " <<
-      solve(v) << std::endl;
+  printf("%d\n", solve());
   return 0;
 }
