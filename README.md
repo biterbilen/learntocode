@@ -172,8 +172,8 @@
   - 백 | [구간 합 구하기 3](https://www.acmicpc.net/problem/11658)
   - [알](fundamentals/partialsum/partialsum/) | [partial sum, range sum](doc/partial_sum_range_sum.md)
   - [알](fundamentals/partialsum/variance/) | [variance](doc/partial_sum_variance.md)
-  - 알 | grid sum
-  - 알 | range which is close to zero
+  - [알](fundamentals/partialsum/gridsum/) | [grid sum](doc/partial_sum_grid_sum.md)
+  - [알](fundamentals/partialsum/rangewhichisclosetozero/) | [range which is close to zero](doc/partial_sum_range_which_is_close_to_zero.md)
   - 알 | [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
 
 ## [Partial Min](doc/partial_min.md)
