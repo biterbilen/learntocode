@@ -11,9 +11,9 @@
 
 ```latex
 \begin{align*}
-variance &= \frac{1}{b - a + 1} \sum_{i = a}^{b}(mean - a[i])^{2} \\ 
-         &= \frac{1}{b - a + 1} \sum_{i = a}^{b}(mean^{2} - 2\cdot mean \cdot a[i] + a[i]^{2} ) \\
-         &= \frac{1}{b - a + 1} \sum_{i = a}^{b}mean^{2} - 2 \cdot mean \sum_{i=a}^{b} a[i] + \sum_{i=a}^{b} a[i]^{2} \\
+variance &= \frac{1}{b - a + 1} \sum_{i\ =\ a}^{b}(mean - a[i])^{2} \\ 
+         &= \frac{1}{b - a + 1} \sum_{i\ =\ a}^{b}(mean^{2} - 2\cdot mean \cdot a[i] + a[i]^{2} ) \\
+         &= \frac{1}{b - a + 1} \sum_{i\ =\ a}^{b}mean^{2} - 2 \cdot mean \sum_{i\ =\ a}^{b} a[i] + \sum_{i\ =\ a}^{b} a[i]^{2} \\
          &= \frac{1}{b - a + 1} ((b - a + 1)mean^{2} + 2 \cdot mean \cdot psum(a, b) + sqpsum(a, b)) \\
 \end{align*}
 ```
