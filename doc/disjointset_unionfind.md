@@ -4,14 +4,23 @@
 
 # Implementation
 
-- parent[u] 에 u의 부모를 저장하자. 만약 u가 root라면 parent[u] = u이다.
-- rank[u] 에 u가 속한 트리의 max level을 저장하자. 이것은 merge에서 사용된다.
-- find(u)는 u의 root를 반환 한다.
-- merge(u, v)는 u, v를 같은 트리에 배치한다. 이때 find(u)의 성능을 위해
-  트리의 level을 가능한 낮게 유지한다. rank가 큰 root가 rank가 작은
-  root의 부모가 되도록한다. 만약 u와 v의 rank가 같다면 v의 rank만 하나
-  늘리자. u의 부모가 v이기 때문이다.
+- parent[u] 에 u의 부모를 저장하자. 만약 u가 root라면 parent[u] =
+  u이다.
 
+- rank[u] 에 u가 포함된 트리의 max level을 저장하자. 이것은 merge에서
+  사용된다.
+  
+- find(u)는 u가 포함된 트리의 root를 반환 한다. 만약 u의 부모가 u가
+  포함된 트리의 root가 아니라면 u의 부모를 u가 포함된 트리의 root로
+  교체한다. 이것은 트리의 level을 가능한 낮게 유지하여 검색 속도를
+  향상할 수 있는 좋은 방법이다.
+  
+- merge(u, v)는 u, v를 같은 트리에 배치한다. u가 포함된 트리의 root와
+  v가 포함된 트리의 root중 rank가 큰 녀석이 rank가 작은 녀석의 부모가
+  되도록 하자. 트리의 level을 낮게 유지하여 검색 속도를 향상할 수 있는
+  좋은 방법이다. 만약 u의 root와 v의 root가 rank가 같다면 v의 rank를
+  하나만 늘리자. u의 부모가 v가 되기 때문이다.
+  
 ```cpp
 struct DisjointSet {
   std::vector<int> parent, rank;
