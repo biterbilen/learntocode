@@ -177,11 +177,11 @@
   - [알](algospot.com/CHRISTMAS/) | [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
 
 ## [Partial Min](doc/partial_min.md)
-  - 백 | [최소값과 최대값]()
-  - 백 | [최소값 찾기]()
+  - 백 | [최소값과 최대값](https://www.acmicpc.net/problem/2357)
+  - 백 | [최소값 찾기](https://www.acmicpc.net/problem/11003)
 
 ## Disjoint Set
-  - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjoint_set_union_find.md)
+  - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjointset_unionfind.md)
 
 ## List
   - 알 | dynamic array
