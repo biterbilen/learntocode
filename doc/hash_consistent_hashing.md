@@ -11,7 +11,7 @@
 
 # Implementation
 
-- []()
+- [A Fast, Minimal Memory, Consistent Hash Algorithm](https://arxiv.org/pdf/1406.2294.pdf)
 
 ```cpp
 #include <iostream>
