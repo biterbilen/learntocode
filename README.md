@@ -20,7 +20,7 @@
   * [Stack](#stack)
   * [Queue](#queue)
   * [Deque](#deque)
-  * [Map (Hash)](#map-(hash))
+  * [Hash](#hash)
   * [String](#string)
   * [Tree](#tree)
   * [Segment Tree](#segment-tree)
@@ -184,34 +184,34 @@
   - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjointset_unionfind.md)
 
 ## List
-  - 알 | dynamic array
-  - 알 | singly linked list
-  - 알 | doubly linked list
-  - 알 | [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
+  - [알](fundamentals/list/dynamicarray/) | [dynamic array](doc/list_dynamic_array.md)
+  - 알 | [singly linked list](doc/list_singly_linked.md)
+  - [알](fundamentals/list/doublylinkedlist/) | [doubly linked list](doc/list_doubly_linked.md)
+  - [알](algospot.com/JOSEPHUS/) | [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
   - 알 | [Dancing Links](https://arxiv.org/abs/cs/0011047)
 
 ## Stack 
-  - 알 | [FENCE](http://algospot.com/judge/problem/read/FENCE)
-  - 알 | [BRACKETS2](http://algospot.com/judge/problem/read/BRACKETS2)
+  - [알](algospot.com/FENCE/) | [FENCE](http://algospot.com/judge/problem/read/FENCE)
+  - [알](algospot.com/BRACKETS2/ | [BRACKETS2](http://algospot.com/judge/problem/read/BRACKETS2)
   - G | [Longest valid Parentheses](http://www.practice.geeksforgeeks.org/problem-page.php?pid=1247)
   - G | [Maximum of minimum for every window size](http://www.practice.geeksforgeeks.org/problem-page.php?pid=170)
 
 ## Queue
-  - 알 | [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
-  - 알 | [ITES](http://algospot.com/judge/problem/read/ITES)
+  - [알](algospot.com/JOSEPHUS/) | [JOSEPHUS](https://algospot.com/judge/problem/read/JOSEPHUS)
+  - [알](algospot.com/ITES/) | [ITES](http://algospot.com/judge/problem/read/ITES)
     - online algorithm
     - offline algorithm
 
 ## Deque
   - G | [Level order traversal in spiral form](http://www.practice.geeksforgeeks.org/problem-page.php?pid=700201)
 
-## Map (Hash)
-  - 알 | seperate chaining
-  - 알 | linear probing (open addressing)
+## Hash
+  - [알](fundamentals/hash/separatechaining/) | [separate chaining](doc/hash_separate_chaining.md)
+  - [알](fundamentals/hash/linearprobing/) | [linear probing (open addressing)](doc/hash_linear_probing.md)
   - 알 | quadratic probing
-  - 알 | double hashing
-  - 알 | consistent hashing
-  - 알 | [A Simple Fraction](http://www.practice.geeksforgeeks.org/problem-page.php?pid=514)
+  - [알](fundamentals/hash/doublehashing/) | [double hashing](doc/hash_double_hashing.md)
+  - [알](fundamentals/hash/consistenthashing/) | [consistent hashing](doc/hash_consistent_hashing.md)
+  - [알](geeksforgeeks/asimplefraction/) | [A Simple Fraction](http://www.practice.geeksforgeeks.org/problem-page.php?pid=514)
 
 ## String
   - 백 | [KMP는 왜 KMP일까?]()
