@@ -211,7 +211,7 @@
   - 알 | quadratic probing
   - [알](fundamentals/hash/doublehashing/) | [double hashing](doc/hash_double_hashing.md)
   - [알](fundamentals/hash/consistenthashing/) | [consistent hashing](doc/hash_consistent_hashing.md)
-  - [알](geeksforgeeks/asimplefraction/) | [A Simple Fraction](http://www.practice.geeksforgeeks.org/problem-page.php?pid=514)
+  - [G](geeksforgeeks/asimplefraction/) | [A Simple Fraction](http://www.practice.geeksforgeeks.org/problem-page.php?pid=514)
 
 ## String
   - 백 | [KMP는 왜 KMP일까?]()
