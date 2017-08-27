@@ -52,3 +52,4 @@ int main(int argc, char **argv) {
 
 - [consisten hashing @ joinc](https://www.joinc.co.kr/w/man/12/hash/consistent)
 - [A Fast, Minimal Memory, Consistent Hash Algorithm](https://arxiv.org/pdf/1406.2294.pdf)
+- [Consistent hashing and random trees: Distributed caching protocols for relieving hot spots on the World Wide Web (1997)](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.147.1879)
