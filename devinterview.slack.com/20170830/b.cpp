@@ -15,3 +15,14 @@
 //             target = PLEA
 // Output: 7
 // Explanation: TOON - POON - POIN - POIE - PLIE - PLEE - PLEA
+
+
+// 
+int solve(std::vector<std::string> v, std::string start, std::string target) {
+  
+}
+
+int main() {
+  printf("%d\n", solve({"POON", "PLEE", "SAME", "POIE", "PLEA", "PLIE", "POIN"}, "TOON", "PLEA");
+  return 0;
+}

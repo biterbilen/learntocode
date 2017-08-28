@@ -12,9 +12,34 @@
 
 #include <cstdio>
 #include <vector>
+#include <algorithm>
 
-void solve(const std::vector<int>&& v) {
-  
+// Strategy         : exhaustive search
+// Time Complexity  : O(N^2)
+// Space Complexity : O(1)
+//
+// 2^16 two to the sixteen
+// {6, -2, 5, -4, 9}
+// {-4, -2, 5, 6, 9}
+bool solve(std::vector<int> v) {
+  int l, r, sum;
+  std::sort(v.begin(), v.end());
+  for (int i = 0; i < v.size() - 1; ++i) {
+    l = i + 1;
+    r = v.size() - 1;
+    while (l < r) {
+      sum = v[i] + v[l] + v[r];
+      if (sum == 0) {
+        printf("%d %d %d\n", v[i], v[l], v[r]);
+        return true;
+      } else if (sum < 0) {
+        ++l;
+      } else {
+        --r;
+      }
+    }
+  }
+  return false;
 }
 
 int main() {
