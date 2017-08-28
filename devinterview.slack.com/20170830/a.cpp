@@ -7,3 +7,17 @@
 // e.g.
 // input = [6, -2, 5, -4, 9]
 // output = [6.-2.-4]
+
+// g++ a.cpp -std=c++11 -o a.exe
+
+#include <cstdio>
+#include <vector>
+
+void solve(const std::vector<int>&& v) {
+  
+}
+
+int main() {
+  solve({6, -2, 5, -4, 9});
+  return 0;
+}
