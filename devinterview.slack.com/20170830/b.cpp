@@ -54,6 +54,8 @@ bool is_adj(const std::string& a, const std::string& b) {
   return false;
 }
 
+
+
 //////////////////////////////////////////////////////////////////////
 // Backtracking
 // O(N^2M)
@@ -92,7 +94,7 @@ int solve(const std::vector<std::string>& v, std::string start, std::string targ
       visited[i] = false;
     }
   }
-  return BEST;
+  return (BEST == 0 || BEST == MAX) ? 0 : BEST + 2;
 }
 
 // //////////////////////////////////////////////////////////////////////
@@ -125,9 +127,9 @@ int solve(const std::vector<std::string>& v, std::string start, std::string targ
 // }
 
 int main() {
-  int r = solve({"POON", "PLEE", "SAME", "POIE", "PLEA", "PLIE", "POIN"}, "TOON", "PLEA");
-  r += 2;
-  if (r == 0 || r == MAX) {
+  // int r = solve({"POON", "PLEE", "SAME", "POIE", "PLEA", "PLIE", "POIN"}, "TOON", "PLEA");
+  int r = solve({"hot", "dot", "dog", "lot", "log"}, "hit", "cog");
+  if (r == 0) {
     printf("IMPOSSIBLE\n");
   } else {
     printf("%d\n", r);
