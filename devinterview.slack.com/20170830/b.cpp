@@ -30,6 +30,14 @@
 // ???
 int MAX = 987654321;
 int BEST = MAX;
+
+void print_indent(int n) {
+  n++;
+  for (int i = 0; i < n; ++i) {
+    printf("  ");
+  }
+}
+
 bool is_adj(const std::string& a, const std::string& b) {
   if (a.size() != b.size())
     return false;
@@ -46,66 +54,79 @@ bool is_adj(const std::string& a, const std::string& b) {
   return false;
 }
 
-// void _solve(std::set<std::string>& s, const std::string& prev, const std::string& end, int n_lv) {
-//   // base condition
-//   if (s.empty()) {
-//     BEST = n_lv;
-//     return;
-//   }
-//   // pruning
-//   if (BEST <= n_lv)
-//     return;
-//   // recursion
-//   for (const auto& e : s) {
-//     if (is_adj(e, prev)) {
-//       s.remove(e);
-//       _solve(s, e, end, n_lv + 1);
-//       s.insert(e);
+//////////////////////////////////////////////////////////////////////
+// Backtracking
+// O(N^2M)
+// ???
+void _solve(const std::vector<std::string>& v, std::vector<bool>& visited,
+            const std::string& prev, const std::string& end, int n_lv) {
+  // base condition
+  if (is_adj(prev, end)) {
+    BEST = std::min(BEST, n_lv);
+    return;
+  }
+  // pruning
+  if (BEST <= n_lv)
+    return;
+  // recursion
+  for (int i = 0; i < v.size(); ++i) {
+    std::string next = v[i];   
+    if (visited[i] == false && is_adj(prev, next)) {
+      print_indent(n_lv);
+      printf("%s %s\n", prev.c_str(), next.c_str());
+      visited[i] = true;
+      _solve(v, visited, next, end, n_lv + 1);
+      visited[i] = false;
+    }
+  }
+}
+
+int solve(const std::vector<std::string>& v, std::string start, std::string target) {
+  std::vector<bool> visited(v.size(), false);
+  for (int i = 0; i < v.size(); ++i) {
+    std::string next = v[i];
+    if (visited[i] == false && is_adj(start, next)) {
+      printf("%s %s\n", start.c_str(), next.c_str());
+      visited[i] = true;
+      _solve(v, visited, next, target, 1);
+      visited[i] = false;
+    }
+  }
+  return BEST;
+}
+
+// //////////////////////////////////////////////////////////////////////
+// // BFS
+// // O(N^2M)
+// // ???
+// int _solve(const std::string& start, const std::string& target,
+//           std::set<std::string>& s) {
+//   std::queue<std::pair<std::string, int> > q;
+//   q.push(std::make_pair(start, 1));
+//   while (!q.empty()) {
+//     std::pair<std::string, int> p = q.front(); q.pop();
+//     for (auto it = s.begin(); it != s.end(); ++it) {
+//       std::string tmp = *it;
+//       if (is_adj(p.first, tmp)) {
+//         q.push(std::make_pair(tmp, p.second + 1));
+//         s.erase(tmp);
+//         if (tmp == target)
+//           return p.second;
+//       }
 //     }
 //   }
+//   return 0;
 // }
-
 // int solve(const std::vector<std::string>& v, std::string start, std::string target) {
 //   std::set<std::string> s;
 //   for (const auto& e : v)
 //     s.insert(e);
-//   for (const auto& e : s) {
-//     _solve(s, e, target, 0);
-//   }
-//   return BEST;
+//   return _solve(start, target, s);
 // }
-
-//////////////////////////////////////////////////////////////////////
-// BFS
-// O(N^2M)
-// ???
-int _solve(const std::string& start, const std::string& target,
-          std::set<std::string>& s) {
-  std::queue<std::pair<std::string, int> > q;
-  q.push(std::make_pair(start, 1));
-  while (!q.empty()) {
-    std::pair<std::string, int> p = q.front(); q.pop();
-    for (auto it = s.begin(); it != s.end(); ++it) {
-      std::string tmp = *it;
-      if (is_adj(p.first, tmp)) {
-        q.push(std::make_pair(tmp, p.second + 1));
-        s.erase(tmp);
-        if (tmp == target)
-          return p.second;
-      }
-    }
-  }
-  return 0;
-}
-int solve(const std::vector<std::string>& v, std::string start, std::string target) {
-  std::set<std::string> s;
-  for (const auto& e : v)
-    s.insert(e);
-  return _solve(start, target, s);
-}
 
 int main() {
   int r = solve({"POON", "PLEE", "SAME", "POIE", "PLEA", "PLIE", "POIN"}, "TOON", "PLEA");
+  r += 2;
   if (r == 0 || r == MAX) {
     printf("IMPOSSIBLE\n");
   } else {
