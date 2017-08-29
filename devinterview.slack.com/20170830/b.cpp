@@ -26,7 +26,8 @@
 // Exhaustive search
 // O(N!)
 // ???
-int BEST = 987654321;
+int MAX = 987654321;
+int BEST = MAX;
 bool is_adj(const std::string& a, const std::string&b) {
   if (a.size() != b.size())
     return false;
@@ -53,7 +54,13 @@ void _solve(std::set<std::string>& s, const std::string& prev, const std::string
   if (BEST <= n_lv)
     return;
   // recursion
-  
+  for (const auto& e : s) {
+    if (is_adj(e, prev)) {
+      s.remove(e);
+      _solve(s, e, end, n_lv + 1);
+      s.insert(e);
+    }
+  }
 }
 
 int solve(const std::vector<std::string>& v, std::string start, std::string target) {
