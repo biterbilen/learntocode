@@ -22,13 +22,15 @@
 #include <vector>
 #include <set>
 #include <string>
+#include <queue>
+#include <map>
 
 // Exhaustive search
 // O(N!)
 // ???
 int MAX = 987654321;
 int BEST = MAX;
-bool is_adj(const std::string& a, const std::string&b) {
+bool is_adj(const std::string& a, const std::string& b) {
   if (a.size() != b.size())
     return false;
   int n = 0;
@@ -44,33 +46,62 @@ bool is_adj(const std::string& a, const std::string&b) {
   return false;
 }
 
-void _solve(std::set<std::string>& s, const std::string& prev, const std::string& end, int n_lv) {
-  // base condition
-  if (s.empty()) {
-    BEST = n_lv;
-    return;
-  }
-  // pruning
-  if (BEST <= n_lv)
-    return;
-  // recursion
-  for (const auto& e : s) {
-    if (is_adj(e, prev)) {
-      s.remove(e);
-      _solve(s, e, end, n_lv + 1);
-      s.insert(e);
+// void _solve(std::set<std::string>& s, const std::string& prev, const std::string& end, int n_lv) {
+//   // base condition
+//   if (s.empty()) {
+//     BEST = n_lv;
+//     return;
+//   }
+//   // pruning
+//   if (BEST <= n_lv)
+//     return;
+//   // recursion
+//   for (const auto& e : s) {
+//     if (is_adj(e, prev)) {
+//       s.remove(e);
+//       _solve(s, e, end, n_lv + 1);
+//       s.insert(e);
+//     }
+//   }
+// }
+
+// int solve(const std::vector<std::string>& v, std::string start, std::string target) {
+//   std::set<std::string> s;
+//   for (const auto& e : v)
+//     s.insert(e);
+//   for (const auto& e : s) {
+//     _solve(s, e, target, 0);
+//   }
+//   return BEST;
+// }
+
+//////////////////////////////////////////////////////////////////////
+// BFS
+// O(N^2M)
+// ???
+int _solve(const std::string& start, const std::string& target,
+          std::set<std::string>& s) {
+  std::queue<std::pair<std::string, int> > q;
+  q.push(std::make_pair(start, 1));
+  while (!q.empty()) {
+    std::pair<std::string, int> p = q.front(); q.pop();
+    for (auto it = s.begin(); it != s.end(); ++it) {
+      std::string tmp = *it;
+      if (is_adj(p.first, tmp)) {
+        q.push(std::make_pair(tmp, p.second + 1));
+        s.erase(tmp);
+        if (tmp == target)
+          return p.second;
+      }
     }
   }
+  return 0;
 }
-
 int solve(const std::vector<std::string>& v, std::string start, std::string target) {
   std::set<std::string> s;
   for (const auto& e : v)
     s.insert(e);
-  for (const auto& e : s) {
-    _solve(s, e, target, 0);
-  }
-  return BEST;
+  return _solve(start, target, s);
 }
 
 int main() {
