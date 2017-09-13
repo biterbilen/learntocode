@@ -49,24 +49,20 @@ void print_v(const std::vector<std::vector<int>> & v) {
   }
 }
 
-void solve(const std::vector<std::vector<int>> & v, int angle) {
-  std::vector<std::vector<int>> r = v;
-  int rot = (angle / 90) % 4;
-  //
-  for (int y = 0; y < N; ++y) {
-    for (int x = 0; x < N; ++x) {
-      if (rot == 0) {
-        r[y][x] = v[y][x];
-      } else if (rot == 1 || rot == -3) {
-        r[y][x] = v[x][N-y-1];
-      } else if (rot == 2 || rot == -2) {
-        r[y][x] = v[N-x-1][N-y-1];
-      } else if (rot == 3 || rot == -1) {
-        r[y][x] = v[N-x-1][y];
-      }
+void rotate(int& a, int& b, int& c, int& d) {
+  int tmp = a;
+  a = b;
+  b = c;
+  c = d;
+  d = tmp;
+}
+
+void solve(std::vector<std::vector<int>> & v) {
+  for (int y = 0; y < N/2; ++y) {
+    for (int x = 0; x < (N+1)/2; ++x) {
+      rotate(v[y][x], v[x][N-1-y], v[N-1-y][N-1-x], v[N-1-x][y]);
     }
   }
-  print_v(r);
 }
 
 int main() {
@@ -80,7 +76,8 @@ int main() {
         scanf("%d", &V[i][j]);
       }
     }
-    solve(V, A);
+    solve(V);
+    print_v(V);
   }
   return 0;
 }
