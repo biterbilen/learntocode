@@ -1,13 +1,16 @@
 // Copyright (C) 2017 by iamslash
 
-// Given a long integer, `x`, count the number of values of `a` satisfying the following conditions:
+// Given a long integer, `x`, count the number of values of `a`
+// satisfying the following conditions:
 
 // 1. a `XOR` x > x
 // 2. 0 < a < x
 
-// where `a` and `x` are long integers and `XOR` is the bitwise XOR operator.
+// where `a` and `x` are long integers and `XOR` is the bitwise XOR
+// operator.
 
-// Print the total number of values of `a` satisfying the conditions above on a new line.
+// Print the total number of values of `a` satisfying the conditions
+// above on a new line.
 
 // ex)
 // input 10
