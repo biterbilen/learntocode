@@ -12,6 +12,7 @@
 * [algorithm analysis](#algorithm-analysis)
 * [NP Completeness](#NP-Completeness)
 * [problems](#problems)
+  * [Matrix](#matrix)
   * [Bitmask](#bitmask)
   * [Partial Sum](#partial-sum)
   * [Partial Min](#partial-min)
@@ -63,7 +64,7 @@
 
 - [leetcode](https://leetcode.com/)
 - [geekforgeeks practice](http://www.practice.geeksforgeeks.org/)
-- [hackerrank](https://www.hackerrank.com/)
+- H | [hackerrank](https://www.hackerrank.com/)
 - [백준온라인](https://www.acmicpc.net/)
 - [알고스팟](https://algospot.com/)
 - [codeforces](http://codeforces.com/)
@@ -152,7 +153,11 @@
 
 # Problems
 
+## Matrix
+  - [G](geeksforgeeks/rotateby90degree/) | [rotate by 90 degree](http://practice.geeksforgeeks.org/problems/rotate-by-90-degree/0)
+
 ## Bitmask
+  - [H](hackerrank/algorithms/TheGreatXor/) | [The Great XOR](https://www.hackerrank.com/challenges/the-great-xor)
   - [알](fundamentals/bitmask/bitmaskset/) | [bitmask set](doc/bitmask_set.md)
   - [알](fundamentals/bitmask/sieveoferatosthenes/) | [sieve of eratosthenes](doc/bitmask_sieve_of_eratosthenes.md)
   - [알](fundamentals/bitmask/15puzzle/) | [15 puzzle](doc/bitmask_15_puzzle.md)
@@ -932,10 +937,10 @@
       있다. Concorde는 1000개의 도시를 갖는 입력을 10분만에 풀어낸다.
 
 ## [Optimization Problems To Decision Problems](doc/optimization_to_decision.md)
-  - 알 | [DARPA](https://algospot.com/judge/problem/read/DARPA)
-  - 알 | [ARCTIC](https://algospot.com/judge/problem/read/ARCTIC)
-  - 알 | [CANADATRIP](https://algospot.com/judge/problem/read/CANADATRIP)
-  - 알 | [WITHDRAWAL](https://algospot.com/judge/problem/read/WITHDRAWAL)
+  - [알](algospot.com/DARKPA/) | [DARPA](https://algospot.com/judge/problem/read/DARPA)
+  - [알](algospot.com/ARCTIC/) | [ARCTIC](https://algospot.com/judge/problem/read/ARCTIC)
+  - [알](algospot.com/CANADATRIP/) | [CANADATRIP](https://algospot.com/judge/problem/read/CANADATRIP)
+  - [알](algospot.com/WITHDRAWAL/ | [WITHDRAWAL](https://algospot.com/judge/problem/read/WITHDRAWAL)
 
 ## [Algorithm Game](doc/algorithm_game.md)
   - 백 | [돌 게임](https://www.acmicpc.net/problem/9655)
