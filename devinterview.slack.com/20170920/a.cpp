@@ -90,6 +90,6 @@ int main() {
       scanf("%d", &NUMS[i]);
       sum += NUMS[i];
     }
-    printf("%s\n", solve(sum) ? "YES" : "NO");
+    printf("%s\n", solve_iter(sum) ? "YES" : "NO");
   }
 }
