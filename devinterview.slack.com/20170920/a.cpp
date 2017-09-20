@@ -69,6 +69,13 @@ bool solve(int sum) {
   return exist_subset(0, sum/2);
 }
 
+bool solve_iter(int sum) {
+  if (sum % 2 != 0)
+    return false;
+
+  //
+}
+
 int main() {
   int T;
   scanf("%d", &T);
