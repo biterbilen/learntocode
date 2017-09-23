@@ -940,7 +940,7 @@
   - [알](algospot.com/DARKPA/) | [DARPA](https://algospot.com/judge/problem/read/DARPA)
   - [알](algospot.com/ARCTIC/) | [ARCTIC](https://algospot.com/judge/problem/read/ARCTIC)
   - [알](algospot.com/CANADATRIP/) | [CANADATRIP](https://algospot.com/judge/problem/read/CANADATRIP)
-  - [알](algospot.com/WITHDRAWAL/ | [WITHDRAWAL](https://algospot.com/judge/problem/read/WITHDRAWAL)
+  - [알](algospot.com/WITHDRAWAL/) | [WITHDRAWAL](https://algospot.com/judge/problem/read/WITHDRAWAL)
 
 ## [Algorithm Game](doc/algorithm_game.md)
   - 백 | [돌 게임](https://www.acmicpc.net/problem/9655)
