@@ -599,11 +599,11 @@
   - AVL Tree Search
 
 ## Numerical Analysis
-  - 알 | bisection method
-  - 알 | [ROOTS](https://algospot.com/judge/problem/read/ROOTS)
-  - 알 | [LOAN](https://algospot.com/judge/problem/read/LOAN)
-  - 알 | [RATIO](https://algospot.com/judge/problem/read/RATIO)
-  - 알 | ternary search
+  - 알 | [bisection method](doc/numerical_anal_bisection.md)
+  - [알](algospot.com/ROOTS/) | [ROOTS](https://algospot.com/judge/problem/read/ROOTS)
+  - [알](algospot.com/LOAN/) | [LOAN](https://algospot.com/judge/problem/read/LOAN)
+  - [알](algospot.com/RATIO/) | [RATIO](https://algospot.com/judge/problem/read/RATIO)
+  - 알 | [ternary search](doc/numeriacal_anal_ternary.md)
   - 알 | [FOSSIL](https://algospot.com/judge/problem/read/FOSSIL)
   - 알 | simpson's method
 
