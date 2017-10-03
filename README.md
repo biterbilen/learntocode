@@ -604,7 +604,7 @@
   - [알](algospot.com/ROOTS/) | [ROOTS](https://algospot.com/judge/problem/read/ROOTS)
   - [알](algospot.com/LOAN/) | [LOAN](https://algospot.com/judge/problem/read/LOAN)
   - [알](algospot.com/RATIO/) | [RATIO](https://algospot.com/judge/problem/read/RATIO)
-  - 알 | [ternary search](doc/numeriacal_anal_ternary.md)
+  - 알 | [ternary search](doc/numerical_anal_ternary.md)
   - [U](uva/10385_Duathlon) | [Duathlon](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=15&page=show_problem&problem=1326)
   - 알 | [FOSSIL](https://algospot.com/judge/problem/read/FOSSIL)
   - 알 | simpson's method
