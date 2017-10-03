@@ -62,15 +62,15 @@
 
 # online judges
 
-- [leetcode](https://leetcode.com/)
-- [geekforgeeks practice](http://www.practice.geeksforgeeks.org/)
+- L | [leetcode](https://leetcode.com/)
+- G | [geekforgeeks practice](http://www.practice.geeksforgeeks.org/)
 - H | [hackerrank](https://www.hackerrank.com/)
+- U | [UVa online](https://uva.onlinejudge.org/)
 - [백준온라인](https://www.acmicpc.net/)
 - [알고스팟](https://algospot.com/)
 - [codeforces](http://codeforces.com/)
 - [topcoder](https://arena.topcoder.com)
 - [programming-challnges](http://www.programming-challenges.com/)
-- [UVa online](https://uva.onlinejudge.org/)
 
 # references
 
@@ -605,6 +605,7 @@
   - [알](algospot.com/LOAN/) | [LOAN](https://algospot.com/judge/problem/read/LOAN)
   - [알](algospot.com/RATIO/) | [RATIO](https://algospot.com/judge/problem/read/RATIO)
   - 알 | [ternary search](doc/numeriacal_anal_ternary.md)
+  - [U](uva/10385_Duathlon) | [Duathlon](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=15&page=show_problem&problem=1326)
   - 알 | [FOSSIL](https://algospot.com/judge/problem/read/FOSSIL)
   - 알 | simpson's method
 
