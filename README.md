@@ -70,6 +70,7 @@
 - [codeforces](http://codeforces.com/)
 - [topcoder](https://arena.topcoder.com)
 - [programming-challnges](http://www.programming-challenges.com/)
+- [UVa online](https://uva.onlinejudge.org/)
 
 # references
 
