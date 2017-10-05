@@ -655,11 +655,11 @@
   - 백 | [이항 계수 3]()
   - [알](fundamentals/numbertheory/primenumber/) | [prime number, composite number](doc/number_prime.md)
   - [알](fundamentals/numbertheory/primefactorization/) | [prime factorization](doc/number_prime_factorization.md)
-  - 알 | sieve of eratosthenes
-  - 알 | prime factorization with sive of eratosthenes
-  - 알 | [PASS486](https://algospot.com/judge/problem/read/PASS486)
-  - 알 | Euclidean algorithm
-  - 알 | [POTION](https://algospot.com/judge/problem/read/POTION)
+  - [알](fundamentals/numbertheory/sieveoferatosthenes/) | [sieve of eratosthenes](doc/number_sieve_of_eratosthenes.md)
+  - [알](fundamentals/numbertheory/primefactorizationwithsieveoferatosthenes/) | [prime factorization with sieve of eratosthenes](doc/number_prime_sieve.md)
+  - [알](algospot.com/PASS486/ | [PASS486](https://algospot.com/judge/problem/read/PASS486)
+  - [알](fundamentals/numbertheory/euclideanalgorithm/) | [Euclidean algorithm](doc/number_euclidean.md)
+  - [알](algospot.com/POTION/ | [POTION](https://algospot.com/judge/problem/read/POTION)
   - 알 | modular arithmetic
     - add, sub, mul
     - div
