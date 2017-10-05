@@ -653,8 +653,8 @@
   - 백 | [GCD(n, k) = 1]()
   - 백 | [해의 개수]()
   - 백 | [이항 계수 3]()
-  - 알 | prime number, composite number
-  - 알 | prime factorization
+  - [알](fundamentals/numbertheory/primenumber/) | [prime number, composite number](doc/number_prime.md)
+  - [알](fundamentals/numbertheory/primenumberfactorization) | [prime factorization](doc/number_prime_factorization.md)
   - 알 | sieve of eratosthenes
   - 알 | prime factorization with sive of eratosthenes
   - 알 | [PASS486](https://algospot.com/judge/problem/read/PASS486)
