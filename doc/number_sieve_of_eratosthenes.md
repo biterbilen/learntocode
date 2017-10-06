@@ -30,7 +30,11 @@ i보다 작다면 x * i는 이미 처리되었기 때문이다.
 ```cpp
 #define MAX_N 987654321
 unsigned char SIEVE[(MAX_N+7)/8];
-// 7 = 0111
+// char에 8개 숫자의 소수 여부를 저장하기 위해
+// 8을 이용해서 나눈 몫과 나머지를 이용하여
+// 인덱싱 한다.
+// k >> 3 은 k를 8로 나눈 몫이다.
+// 1 << (k & 7) 은 k를 8로 나눈 나머지다.
 inline bool is_prime(int k) {
     return SIEVE[k >> 3] & (1 << (k & 7));
 }
