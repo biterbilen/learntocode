@@ -657,7 +657,7 @@
   - [알](fundamentals/numbertheory/primefactorization/) | [prime factorization](doc/number_prime_factorization.md)
   - [알](fundamentals/numbertheory/sieveoferatosthenes/) | [sieve of eratosthenes](doc/number_sieve_of_eratosthenes.md)
   - [알](fundamentals/numbertheory/primefactorizationwithsieveoferatosthenes/) | [prime factorization with sieve of eratosthenes](doc/number_prime_factorization_with_sieve.md)
-  - [알](algospot.com/PASS486/ | [PASS486](https://algospot.com/judge/problem/read/PASS486)
+  - [알](algospot.com/PASS486/) | [PASS486](https://algospot.com/judge/problem/read/PASS486)
   - [알](fundamentals/numbertheory/euclideanalgorithm/) | [Euclidean algorithm](doc/number_euclidean.md)
   - [알](algospot.com/POTION/ | [POTION](https://algospot.com/judge/problem/read/POTION)
   - 알 | modular arithmetic
