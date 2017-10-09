@@ -6,8 +6,12 @@
 
 특정 숫자 p와 q의 최대 공약수를 구해보자. p = p'g, q = q'g로
 표현하자. 이때 p >= q이고 p'와 q'는 서로소, g는 최대공약수이다.
-p - q = p'g - q'g, p - q = g(p' - q')이다.
+
+```
+p - q = p'g - q'g
+p - q = g(p' - q')
 p와 q의 최대 공약수는 q와 p-q의 최대 공약수와 같다.
+```
 
 이번에는 조금 다르게 접근해 보자.
 
@@ -49,6 +53,6 @@ int gcd_2(int p, int q) {
 
 # References
 
-[유클리드 호제법 @ youtube](https://www.youtube.com/watch?v=5VvZbcxu5oI)
-[유클리드 호제법 @ 나무위키](https://namu.wiki/w/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C%20%ED%98%B8%EC%A0%9C%EB%B2%95)
-[유클리드 호제법 @ wikipedia](https://ko.wikipedia.org/wiki/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C_%ED%98%B8%EC%A0%9C%EB%B2%95)
+* [유클리드 호제법 @ youtube](https://www.youtube.com/watch?v=5VvZbcxu5oI)
+* [유클리드 호제법 @ 나무위키](https://namu.wiki/w/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C%20%ED%98%B8%EC%A0%9C%EB%B2%95)
+* [유클리드 호제법 @ wikipedia](https://ko.wikipedia.org/wiki/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C_%ED%98%B8%EC%A0%9C%EB%B2%95)
