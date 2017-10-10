@@ -660,9 +660,7 @@
   - [알](algospot.com/PASS486/) | [PASS486](https://algospot.com/judge/problem/read/PASS486)
   - [알](fundamentals/numbertheory/euclideanalgorithm/) | [Euclidean algorithm](doc/number_euclidean.md)
   - [알](algospot.com/POTION/) | [POTION](https://algospot.com/judge/problem/read/POTION)
-  - 알 | modular arithmetic
-    - add, sub, mul
-    - div
+  - 알 | [modular arithmetic](doc/number_modular.md)
   - 알 | extended euclidean algorithm
   - 알 | chinese remainder theorem
   - 알 | lucas' theorem
