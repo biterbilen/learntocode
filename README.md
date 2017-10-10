@@ -4,14 +4,14 @@
 
 # Contents
 
-* [materials](#materials)
-* [online judges](#online-judges)
-* [references](#references)
-* [datatype range](#datatype-range)
-* [algorithm proof](#algorithm-proof)
-* [algorithm analysis](#algorithm-analysis)
+* [Materials](#materials)
+* [Online Judges](#online-judges)
+* [References](#references)
+* [Datatype Range](#datatype-range)
+* [Algorithm Proof](#algorithm-proof)
+* [Algorithm Analysis](#algorithm-analysis)
 * [NP Completeness](#NP-Completeness)
-* [problems](#problems)
+* [Problems](#problems)
   * [Matrix](#matrix)
   * [Bitmask](#bitmask)
   * [Partial Sum](#partial-sum)
@@ -116,7 +116,7 @@
 | float | 4byte             | -3.4E +/- 38 ~ 3.4E +/- 38 (7 digits) |
 | double | 8byte             | -1.7E +/- 308 ~ 1.7E +/- 308 (15 digits) |
 
-# algorithm proof
+# [algorithm proof](doc/proof.md)
 
 - Mathmatical Induction
 - Proof by Contradiction
