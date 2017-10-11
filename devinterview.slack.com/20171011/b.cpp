@@ -39,3 +39,40 @@
 
 // Return false. There is no way to jump to the last stone as 
 // the gap between the 5th and 6th stone is too large.
+
+char CACHE[1101][1101];
+bool is_stone(const vector<int>& v, int n) {
+  if (n < 0 || n >= v.size())
+    return false;
+  for (int i = 0; i < v.size(); ++i) {
+    if (v[i] == n)
+      return true;
+    else if (v[i] > n)
+      return false;
+  }
+}
+bool solve(const vector<int>& v, int here, int k) {
+  // base condition
+  if (is_stone(v, here) == false)
+    return false;
+  else if (here == v.back())
+    return true;
+  // memoization
+  char& r = CACHE[here][k];
+  if (r != -1)
+    return r > 0;
+  // recursion
+  r = 0;
+  for (int i = -1; i < 2; ++i) {
+    int next = v[here] + i;
+    if (next > here && solve(next, k + i)) {
+      r = 1;
+      break;
+    }
+  }
+  return r;
+}
+
+int main() {
+  solve(v, 1, 1);
+}
