@@ -138,7 +138,7 @@
   - ![Algorithm Graphs](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_img/alg_graph.jpeg)
 
 
-# NP Completeness
+# [P VS NP](https://github.com/iamslash/TIL/tree/master/pvsnp/README.md)
 
 - P
   - P means the existence of an algorithm for the task that runs in polynomial time.
