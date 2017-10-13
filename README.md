@@ -661,9 +661,9 @@
   - [알](fundamentals/numbertheory/euclideanalgorithm/) | [Euclidean algorithm](doc/number_euclidean.md)
   - [알](algospot.com/POTION/) | [POTION](https://algospot.com/judge/problem/read/POTION)
   - 알 | [modular arithmetic](doc/number_modular.md)
-  - 알 | extended euclidean algorithm
-  - 알 | chinese remainder theorem
-  - 알 | lucas' theorem
+  - 알 | [extended euclidean algorithm](doc/number_ex_euclidean.md)
+  - 알 | [chinese remainder theorem](doc/number_chinese_remainder.md)
+  - 알 | [lucas' theorem](doc/number_lucas.md)
 
 ## Computational Geometry
   - 알 | how much closer
