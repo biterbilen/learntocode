@@ -7,10 +7,11 @@
 * [Materials](#materials)
 * [Online Judges](#online-judges)
 * [References](#references)
+* [Online Interviews](#online-interviews)
 * [Datatype Range](#datatype-range)
 * [Algorithm Proof](#algorithm-proof)
 * [Algorithm Analysis](#algorithm-analysis)
-* [NP Completeness](#NP-Completeness)
+* [P vs NP](#p-vs-np)
 * [Problems](#problems)
   * [Matrix](#matrix)
   * [Bitmask](#bitmask)
@@ -45,7 +46,7 @@
   * [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
   * [Algorithm Game](#algorithm-game)
 
-# materials
+# Materials
 
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
 - 백 | [백준온라인강좌](https://code.plus/courses/1)
@@ -60,7 +61,7 @@
 - [programming pearls](https://www.amazon.com/Programming-Pearls-2nd-Jon-Bentley/dp/0201657880/ref=sr_1_1?s=books&ie=UTF8&qid=1473590537&sr=1-1&keywords=programming+pearls)
 - [Dynamic Programming for Coding Interviews: A Bottom-Up approach to problem solving](https://www.amazon.com/Dynamic-Programming-Coding-Interviews-Bottom-Up-ebook/dp/B01N4P93O7/ref=sr_1_1?ie=UTF8&qid=1500344454&sr=8-1&keywords=dynamic+programming+for+coding+interviews)
 
-# online judges
+# Online Judges
 
 - L | [leetcode](https://leetcode.com/)
 - G | [geekforgeeks practice](http://www.practice.geeksforgeeks.org/)
@@ -72,7 +73,7 @@
 - [topcoder](https://arena.topcoder.com)
 - [programming-challnges](http://www.programming-challenges.com/)
 
-# references
+# References
 
 ## video
 
@@ -95,28 +96,28 @@
 - [Data Structures and Algorithm Analysis in C 2nd Edition by Mark A. Weiss ](https://users.cs.fiu.edu/~weiss/)
 - [Introduction to Algorithms, 3rd Edition (MIT Press)](http://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?s=books&ie=UTF8&qid=1460283565&sr=1-1&keywords=introduction+to+algorithms)
 
-# tools
+# Online Interviews
 
 - [codeshare](https://codeshare.io/)
 - [coding.sh](http://coding.sh/)
 - [pramp](https://www.pramp.com/)
 
-# datatype range
+# Datatype Range
 
-| Type      | Typical Bit Width | Typical Range                   |
-| :-------- | :-----------------| :-----------------------------: |
-| char      | 1byte             | -128 to 127                     |
-| unsigned char      | 1byte             | 0 to 255                     |
-| short int | 2byte             | -32,768 to 32,767               |
-| unsigned short int | 2byte             | 0 to 65,535               |
-| int       | 4byte             | -2,147,483,648 to 2,147,483,647                        |
-| unsigned int       | 4byte             | 0 to 4,294,967,295                        |
-| long long | 8byte             | –9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807 |
-| unsigned long long | 8byte             | 0 ~ 18,446,744,073,709,551,615 |
-| float | 4byte             | -3.4E +/- 38 ~ 3.4E +/- 38 (7 digits) |
-| double | 8byte             | -1.7E +/- 308 ~ 1.7E +/- 308 (15 digits) |
+| Type               | Typical Bit Width | Typical Range                   |
+| :----------------- | :-----------------| :-----------------------------: |
+| char               | 1byte             | -128 to 127                     |
+| unsigned char      | 1byte             | 0 to 255                        |
+| short int          | 2byte             | -32,768 to 32,767               |
+| unsigned short int | 2byte             | 0 to 65,535                                            |
+| int                | 4byte             | -2,147,483,648 to 2,147,483,647                        |
+| unsigned int       | 4byte             | 0 to 4,294,967,295                                     |
+| long long          | 8byte             | –9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807 |
+| unsigned long long | 8byte             | 0 ~ 18,446,744,073,709,551,615                         |
+| float              | 4byte             | -3.4E +/- 38 ~ 3.4E +/- 38 (7 digits)                  |
+| double             | 8byte             | -1.7E +/- 308 ~ 1.7E +/- 308 (15 digits)               |
 
-# [algorithm proof](doc/proof.md)
+# [Algorithm Proof](doc/proof.md)
 
 - Mathmatical Induction
 - Proof by Contradiction
@@ -126,7 +127,7 @@
 - Proof by Counter Example
 - if and only if proof
 
-# algorithm analysis
+# Algorithm Analysis
 
 - The RAM Model of Computation
 - The asymptotic analysis of worst-case complexity
