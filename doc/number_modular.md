@@ -144,8 +144,44 @@ bx + My = 1 (y는 음수도 가능하기 때문에)
 b와 M은 서로소이므로 gcd(b, M) = 1이다.
 bx + My = gcd(b, M) 
 위 식은 확장 유클리드 호제법의 식과 같다.
-x를 구할 수 있다. y는 관심 없다.
+x 즉 b^{-1}를 확장 유클리드 호제법을 이용하여 구할 수 있다.
+```
 
+[확장 유클리드 호제법](number_ex_euclidean.md)
+
+다음의 코드를 이용하여 x를 구하자.
+
+```cpp
+#include <cstdio>
+#include <cstdlib>
+
+int xgcd(int a, int b, int& x, int &y) {
+    // baseb condition
+    if (b == 0) {
+        x = 1;
+        y = 0;
+        printf("%d = %d * %d + %d * %d\n", a, a, x, b, y); 
+        return a;
+    }
+
+    // recursion
+    int x1, y1;
+    int gcd = xgcd(b, a%b, x1, y1);
+    x = y1;
+    y = x1 - a/b * y1;
+    printf("%d = %d * %d + %d * %d\n", gcd, a, x, b, y);
+    return gcd;
+}
+
+int main() {
+    int a = 3, b = 4;
+    int x, y;
+    int gcd = xgcd(a, b, x, y);
+    return 0;
+}
+```
+
+```
 예를 들어서 (7 / 3) % 4 를 구해보자.
 
 먼저 3의 나머지에 대한 곱셈의 역원
@@ -155,12 +191,10 @@ x를 구할 수 있다. y는 관심 없다.
 3x + 4y = gcd(3, 4) 을 만족하는 x를
 확장 유클리디안 호제법을 이용하여 구하자.
 
+x가 -1이고 y가 1일때 3 * -1 + 4 * 1 = 1을 만족한다.
+따라서 x는 -1이고 이것은 3의 나머지에 대한 곱셈의 역원이다.
 
-
-x가 3이고 y가 -2일때 3 * 3 + 4 * (-2) = 1을 만족한다.
-따라서 x는 3이고 이것은 3의 나머지에 대한 곱셈의 역원이다.
-
-(7 / 3) % 4 = ((7 % 4) * (3)) % 4
+(7 / 3) % 4 = ((7 % 4) * (-1)) % 4
+            = -1
             = 3
 ```
-
