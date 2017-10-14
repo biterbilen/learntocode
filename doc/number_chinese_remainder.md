@@ -27,6 +27,8 @@ x = 11 + 60 * m
 
 ## Naive Approcch 
 
+[CRT @ geeksforgeeks](http://www.geeksforgeeks.org/chinese-remainder-theorem-set-1-introduction/)
+
 ```
 #include <cstdio>
 
@@ -57,7 +59,8 @@ int main() {
 
 ## modular multiplicative inverse
 
-[chinese remainder theorem @ youtube](https://www.youtube.com/watch?v=ru7mWZJlRQg)
+[CRT @ geeksforgeeks](http://www.geeksforgeeks.org/chinese-remainder-theorem-set-2-implementation/)
+[CRT @ youtube](https://www.youtube.com/watch?v=ru7mWZJlRQg)
 
 ```
 num[] = {3, 4, 5}    // modular
