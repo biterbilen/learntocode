@@ -62,10 +62,23 @@ for (int i = 0; i < N; ++i) {
 ```
 (a / b) % M = (a * b^{-1}) % M
             = ((a % M) * (b^{-1} % M)) % M
-b^{-1} % M 을 구할 수 있으면 해결된다.
-b^{-1} % M 을 b의 나머지연산에 대한 곱셈의 역원(modular muliplicative inverse) 
-이라 하고 modinv(b, M)이라고 표기하자.
+b^{-1} % M 을 b의 나머지연산에 대한 곱셈의 역원
+(modular muliplicative inverse) 이라 하고 
+modinv(b, M)이라고 표기하자.
+modinv(b, M)을 구하면 다음과 같이 전개해서 해결한다.
+
+(a / b) % M = ((a % M) * modinv(b, M)) % M
 ```
+
+나머지 곱셈의 역원의 개념은 어렵다. 기억이 나지 않는다면
+다음의 링크를 읽고 돌아오자.
+[나머지 곱셈의 역원](https://github.com/iamslash/TIL/tree/master/numbertheory#나머지-곱셈의-역원-modular-multiplicative-inverse)
+
+나머지 곱셈의 역원(modular muliplicative inverse)를 구하는 
+방법은 무식한 방법, 페르마의 소정리를 이용한 방법,
+확장 유클리드를 이용한 방법등이 있다.
+
+이중 페르마의 소정리를 이용한 방법이 구현이 간단하다.
 
 ## 무식한 방법 (brute force)
 
@@ -96,10 +109,6 @@ for (int i = 1; i < M; ++i) {
 (7 / 3) % 4 = ((7 % 4) * (3)) % 4
             = 3
 ```
-
-위 방법의 시간복잡도(time complexity)는 O(M)이다.  이것을 페르마의
-소정리(Fermat's little theorem) 혹은 확장 유클리드 호제법(extended
-Euclidean algorithm) 을 이용하여 시간복잡도를 개선 할 수 있다.
 
 ## 페르마의 소정리(Fermat's little theorem)을 이용한 방법
 
@@ -143,7 +152,7 @@ bx - My = 1
 bx + My = 1 (y는 음수도 가능하기 때문에)
 b와 M은 서로소이므로 gcd(b, M) = 1이다.
 bx + My = gcd(b, M) 
-위 식은 확장 유클리드 호제법의 식과 같다.
+위 식은 확장 베주의 항등식과 같다.
 x 즉 b^{-1}를 확장 유클리드 호제법을 이용하여 구할 수 있다.
 ```
 
@@ -160,7 +169,7 @@ int xgcd(int a, int b, int& x, int &y) {
     if (b == 0) {
         x = 1;
         y = 0;
-        printf("%d = %d * %d + %d * %d\n", a, a, x, b, y); 
+        // printf("%d = %d * %d + %d * %d\n", a, a, x, b, y); 
         return a;
     }
 
@@ -169,15 +178,19 @@ int xgcd(int a, int b, int& x, int &y) {
     int gcd = xgcd(b, a%b, x1, y1);
     x = y1;
     y = x1 - a/b * y1;
-    printf("%d = %d * %d + %d * %d\n", gcd, a, x, b, y);
+    // printf("%d = %d * %d + %d * %d\n", gcd, a, x, b, y);
     return gcd;
 }
 
+int modinv(int a, int M) {
+  int x, y;
+  int gcd = xgcd(a, M, x, y);
+  return x;
+}
+
 int main() {
-    int a = 3, b = 4;
-    int x, y;
-    int gcd = xgcd(a, b, x, y);
-    return 0;
+  printf("%d\n", modinv(3, 4));
+  return 0;
 }
 ```
 
@@ -196,5 +209,5 @@ x가 -1이고 y가 1일때 3 * -1 + 4 * 1 = 1을 만족한다.
 
 (7 / 3) % 4 = ((7 % 4) * (-1)) % 4
             = -1
-            = 3
+            = 3 (-1 + 4)
 ```
