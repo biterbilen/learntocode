@@ -1,27 +1,36 @@
 // Copyright (C) 2017 by iamslash
 
 #include <cstdio>
+#include <vector>
+#include <cmath>
 
-int solve(int num[], int rem[], int k) {
+int modinv(int a, int M) {
   int r = 1;
-  while (true) {
-    int j;
-    for (j = 0; j < k; ++j) {
-      if (r % num[j] != rem[j])
-        break;
-    }
-    if (j == k)
-      return r;
-    ++r;
-  }
+  int n = M - 2;
+  for (int i = 0; i < n; ++i)
+    r *= a % M;
+  printf("%d %d : %d\n", a, M, r);
   return r;
 }
 
+int solve(const std::vector<int>& num, const std::vector<int>& rem) {
+  int n = num.size();
+  int prd = 1;
+  int r = 0; // result
+
+  for (int i = 0; i < n; ++i)
+    prd *= num[i];
+  for (int i = 0; i < n; ++i) {
+    int pbi = prd / num[i];
+    r += rem[i] * modinv(pbi, num[i]) * pbi;
+  }
+
+  return r % prd;
+}
+
 int main() {
-  int num[] = {3, 4, 5};
-  int rem[] = {2, 3, 1};
-  int k = ;
-  printf("%d\n", sizeof(num) / sizeof(num[0]));
-  printf("%d\n", solve(num, rem, k));
+  std::vector<int>num = {3, 4, 5};
+  std::vector<int>rem = {2, 3, 1};
+  printf("%d\n", solve(num, rem));
   return 0;
 }
