@@ -89,10 +89,10 @@ int main() {
 
 # 나머지 곱셈의 역원(modular multiplicative inverse)을 이용한 방법
 
-
-
+[중국인의 나머지 정리 @ 나무위키](https://namu.wiki/w/%EC%A4%91%EA%B5%AD%EC%9D%B8%EC%9D%98%20%EB%82%98%EB%A8%B8%EC%A7%80%20%EC%A0%95%EB%A6%AC)
 [CRT @ geeksforgeeks](http://www.geeksforgeeks.org/chinese-remainder-theorem-set-2-implementation/)
-[CRT @ youtube](https://www.youtube.com/watch?v=ru7mWZJlRQg)
+
+
 
 ```
 num[] = {3, 4, 5}    // modular
