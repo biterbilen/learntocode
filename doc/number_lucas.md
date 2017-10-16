@@ -31,7 +31,25 @@ long long 으로도 overflow를 막을 순 없다.
 이항계수를 표현하기 위한 파스칼의 삼각형과 나머지 연산자를 이용하였다.
 
 ```cpp
-
+// in every line first value is always 0 + 1 pattern
+// C[1] = C[1] + C[0] = 0 + 1 = 1
+//   C[2] = C[2] + C[1] = 0 + 1 = 1
+//   C[1] = C[1] + C[0] = 1 + 1 = 2
+//     C[3] = C[3] + C[2] = 0 + 1 = 1
+//     C[2] = C[2] + C[1] = 2 + 1 = 3
+//     C[1] = C[1] + C[0] = 2 + 1 = 3
+// pascal triangle
+int nCr_dp(int n, int r, int p) {
+  int C[r+1] = {0,};
+  C[0] = 1; // top row of pascal triangle
+  for (int i = 1; i <= n; ++i) {
+    for (int j = std::min(i, r); j > 0; --j) {
+      // nCj = (n-1)Cj + (n-1)C(j-1)
+      C[j] = (C[j] + C[j-1]) % p;
+    }
+  }
+  return C[r];
+}
 ```
 
 그러나 n = 1000000000, r = 500000000 인 경우
@@ -45,6 +63,43 @@ nCr을 연산하는데 매우 긴 시간이 걸릴 것이다.
 다음은 앞서 언급한 알고리즘을 구현한 것이다.
 
 ```cpp
+// Copyright (C) 2017 by iamslash
+
+#include <cstdio>
+#include <algorithm>
+
+// pascal triangle
+int nCr_dp(int n, int r, int p) {
+  int C[r+1] = {0,};
+  C[0] = 1; // top row of pascal triangle
+  for (int i = 1; i <= n; ++i) {
+    for (int j = std::min(i, r); j > 0; --j) {
+      // nCj = (n-1)Cj + (n-1)C(j-1)
+      C[j] = (C[j] + C[j-1]) % p;
+    }
+  }
+  return C[r];
+}
+
+int nCr_lucas(int n, int r, int p) {
+  // base condition
+  if (r == 0)
+    return 1;
+
+  // recursion
+  int ni = n % p;
+  int ri = r % p;
+  return (nCr_lucas(n/p, r/p, p) *
+          nCr_dp(ni, ri, p)) % p;  
+}
+
+int main() {
+  int n = 1000;
+  int r = 900;
+  int p = 13;
+  printf("%d\n", nCr_lucas(n, r, p));
+  return 0;
+}
 ```
 
 그러나 페르마의 소정리를 이용하면 더욱 개선할 수 있다.
