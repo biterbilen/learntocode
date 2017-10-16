@@ -62,6 +62,8 @@ _{n}C_{r} = _{n-1}C_{n-r} + _{n-1}C_{r}
 
 ## 파스칼의 삼각형을 이용한 방법
 
+* [Dynamic Programming | Set 9 (Binomial Coefficient) @ geeksforgeeks ](http://www.geeksforgeeks.org/dynamic-programming-set-9-binomial-coefficient/)
+
 파스칼의 삼각형은 다음과 같다. 숫자들과 nCr의 관계를 잘 살펴보자.
 
 ![](../_img/paskal_triangle.png)
@@ -103,8 +105,9 @@ int nCr_dp(int n, int r, int p) {
 이용하여 이항계수를 구해보자. 나머지 연산자에 대한 곱셈의 역원은
 페르마의 소정리를 이용하여 시간복잡도를 더욱 개선할 수 있다.
 
-[나머지 곱셈의 역원 @ TIL](https://github.com/iamslash/TIL/tree/master/numbertheory#나머지-곱셈의-역원-modular-multiplicative-inverse)
-[나머지 곱셈의 역원을 페르마의 소정리를 이용하여 구하는 법 @ learntocode](https://github.com/iamslash/learntocode/blob/master/doc/number_modular.md#페르마의-소정리fermats-little-theorem을-이용한-방법)
+* [나머지 곱셈의 역원 @ TIL](https://github.com/iamslash/TIL/tree/master/numbertheory#나머지-곱셈의-역원-modular-multiplicative-inverse)
+* [나머지 곱셈의 역원을 페르마의 소정리를 이용하여 구하는 법 @ learntocode](https://github.com/iamslash/learntocode/blob/master/doc/number_modular.md#페르마의-소정리fermats-little-theorem을-이용한-방법)
+* [Compute nCr % p | Set 3 (Using Fermat Little Theorem) @ geeksforgeeks](http://www.geeksforgeeks.org/compute-ncr-p-set-3-using-fermat-little-theorem/)
 
 ```
 nCr 을 빠르게 구해보자.
@@ -160,3 +163,4 @@ int main() {
     return 0;
 }
 ```
+
