@@ -96,8 +96,7 @@ int nCr_dp(int n, int r, int p) {
 
 ## [lucas' theorem](doc/number_lucas.md)을 이용한 방법
 
-파스칼의 삼각형을 이용한 방법보다 시간복잡도를
-개선할 수 있다.
+파스칼의 삼각형을 이용한 방법보다 시간복잡도를 개선할 수 있다.
 
 ## 나머지 연산자 곱셈의 역원(modular multiplicative inverse)을 이용한 방법
 
@@ -114,13 +113,41 @@ int nCr_dp(int n, int r, int p) {
 nCr 을 빠르게 구해보자.
 overflow를 막기위해 소수 p를 이용한다.
 nCr = n! / (n-r)! * r! % p
-이때 a = n!, b = (n-r)! * r!이라고 하면
-nCr = a / b % p 
-    = a * b^{p-2} % p (폐르마의 소정리)
+    = n! * modinv((n-r)!, p) * modinv(r!, p) % p
+modinv(a, p) = a^{p-2} % p (페르마의 소정리) 
 ```
 
 앞서 언급한 알고리즘의 구현은 다음과 같다.
+p가 n보다 크지 않으면 modinv의 첫번재 인자가 팩토리얼이기 때문에
+modinv의 결과가 0이 될 수 있다.
 
 ```cpp
-```
+int power(int x, unsigned int y, int p) {
+  int r = 1;
+  while (y > 0) {
+    if (y & 1) {
+      r *= x;
+      r %= p;
+    }
+    y = y >> 1;
+    x *= x;
+    x %= p;
+  }
+  return r;
+}
 
+int modinv(int n, int p) {
+  return power(n, p-2, p);
+}
+
+int nCr_ferma(int n, int r, unsigned int p) {
+  if (r == 0)
+    return 1;
+  int fac[n + 1];
+  fac[0] = 1;
+  for (int i = 1; i <= n; ++i) {
+    fac[i] = fac[i-1] * i % p;
+  }
+  return (fac[n] * modinv(fac[r], p) % p * modinv(fac[n-r], p) % p) % p;
+}
+```
