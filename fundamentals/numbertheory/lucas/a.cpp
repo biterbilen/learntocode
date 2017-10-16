@@ -75,7 +75,7 @@ int main() {
   int n = 1000;
   int r = 900;
   int p = 13;
-  printf("%d\n", nCr_lucas(n, r, p));
+  printf("%d\n", nCr_lucas(n, r, 1000000007));
   // printf("%d\n", nCr_ferma(n, r, p));
   // printf("%d\n", mul(3, 5, 7)); // 0x0101
   // printf("%d\n", power(3, 5, 7)); // 0x0101
