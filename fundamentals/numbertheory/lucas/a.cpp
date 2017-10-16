@@ -42,11 +42,25 @@ int mul(int x, int y, int p) {
     return r;
 }
 
-int nCr_ferma(int n, int r, int p) {
+int power(int x, unsigned int y, int p) {
+  int r = 1;
+  while (y > 0) {
+    if (y & 1) {
+      r *= x;
+      r %= p;
+    }
+    y = y >> 1;
+    x *= x;
+    x %= p;
+  }
+  return r;
+}
+
+int nCr_ferma(int n, int r, unsigned int p) {
     int ans = 1;
     int t1 = 1;
     int t2 = 1;
-    for (int i=1; i<=n; i++) {
+    for (int i=1; i <= n; ++i) {
         t1 *= i;
         t1 %= p;
     }
@@ -58,9 +72,9 @@ int nCr_ferma(int n, int r, int p) {
         t2 *= i;
         t2 %= p;
     }
-    int t3 = mul(t2,p-2,p);
+    int t3 = power(t2, p-2, p);
     t3 %= p;
-    ans = t1*t3;
+    ans = t1 * t3;
     ans %= p;
     return ans;
 }
@@ -71,5 +85,8 @@ int main() {
   int p = 13;
   // printf("%d\n", nCr_lucas(n, r, p));
   printf("%d\n", nCr_ferma(n, r, p));
+  // printf("%d\n", mul(3, 5, 7)); // 0x0101
+  // printf("%d\n", power(3, 5, 7)); // 0x0101
+  
   return 0;
 }
