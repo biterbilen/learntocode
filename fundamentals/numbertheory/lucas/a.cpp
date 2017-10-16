@@ -56,35 +56,27 @@ int power(int x, unsigned int y, int p) {
   return r;
 }
 
+int modinv(int n, int p) {
+  return power(n, p-2, p);
+}
+
 int nCr_ferma(int n, int r, unsigned int p) {
-    int ans = 1;
-    int t1 = 1;
-    int t2 = 1;
-    for (int i=1; i <= n; ++i) {
-        t1 *= i;
-        t1 %= p;
-    }
-    for (int i=1; i<=r; i++) {
-        t2 *= i;
-        t2 %= p;
-    }
-    for (int i=1; i<=n-r; i++) {
-        t2 *= i;
-        t2 %= p;
-    }
-    int t3 = power(t2, p-2, p);
-    t3 %= p;
-    ans = t1 * t3;
-    ans %= p;
-    return ans;
+  if (r == 0)
+    return 1;
+  int fac[n + 1];
+  fac[0] = 1;
+  for (int i = 1; i <= n; ++i) {
+    fac[i] = fac[i-1] * i % p;
+  }
+  return (fac[n] * modinv(fac[r], p) % p * modinv(fac[n-r], p) % p) % p;
 }
 
 int main() {
   int n = 1000;
   int r = 900;
   int p = 13;
-  // printf("%d\n", nCr_lucas(n, r, p));
-  printf("%d\n", nCr_ferma(n, r, p));
+  printf("%d\n", nCr_lucas(n, r, p));
+  // printf("%d\n", nCr_ferma(n, r, p));
   // printf("%d\n", mul(3, 5, 7)); // 0x0101
   // printf("%d\n", power(3, 5, 7)); // 0x0101
   
