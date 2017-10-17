@@ -25,16 +25,36 @@
 //    }
 // };
 
+#include <cstdio>
+#include <string>
+
+using namespace std;
 
 class Solution {
 public:
-    int numDecodings(string s) {
-        
-    }
+  int _numDecodings(string s) {
+    // base condition
+    if (s.size() == 0)
+      return 1;
+    else if (s.size() == 1)
+      return stoi(s) > 0 ? 1 : 0;
+    // recursion
+    // s.size() >= 2
+    int n = stoi(s.substr(0, 2));
+    if (n > 26)
+      return numDecodings(s.substr(1));
+    return numDecodings(s.substr(1)) +
+        numDecodings(s.substr(2));
+  }
+  int numDecodings(string s) {
+    if (s.empty())
+      return 0;
+    return _numDecodings(s);
+  }
 };
 
 int main() {
   Solution s;
-  printf("%d\n", s.sumDecodings("12"));  
+  printf("%d\n", s.numDecodings("10"));  
   return 0;
 }
