@@ -70,7 +70,7 @@ _{n}C_{r} = _{n-1}C_{n-r} + _{n-1}C_{r}
 
 다음은 파스칼의 삼각형을 이용하여 이항계수를 구현한 것이다.  트리의
 깊이가 곧 n과 같다.  overflow를 막기 위해 나머지 연산자를 이용하였다.
-시간복잡도는 O(n^2)이다.
+시간복잡도는 O(nr)이다.
 
 ```cpp
 // in every line first value is always 0 + 1 pattern
@@ -96,13 +96,19 @@ int nCr_dp(int n, int r, int p) {
 
 ## [lucas' theorem](doc/number_lucas.md)을 이용한 방법
 
-파스칼의 삼각형을 이용한 방법보다 시간복잡도를 개선할 수 있다.
+파스칼의 삼각형을 이용한 방법보다 시간복잡도를 `O(p^{2} \log_{p}n)`으로 개선 할 수 있다.
+이때 p가 너무 크면 파스칼의 삼각형을 이용한 방법보다 시간복잡도가 클 수 있다.
+lucas' theorem은 p가 작은 경우 사용한다. 
+
+p가 너무 큰경우 (n < p) 나머지 연산자 곱셈의 역원을 이용한 방법이 더욱
+효율적이다. n보다 p가 작거나 같은 경우는 페르마의 소정리를 이용하여
+나머지 연산자 곱셈의 역원을 구하면 결과가 0일 수 있다.
 
 ## 나머지 연산자 곱셈의 역원(modular multiplicative inverse)을 이용한 방법
 
 나머지 연산자에 대한 곱셈의 역원(modular multiplicative inverse)을
 이용하여 이항계수를 구해보자. 나머지 연산자에 대한 곱셈의 역원은
-페르마의 소정리를 이용하여 시간복잡도를 더욱 개선할 수 있다.
+페르마의 소정리를 이용해서 구하면 전체 시간복잡도를 더욱 개선할 수 있다.
 
 * [나머지 곱셈의 역원 @ TIL](https://github.com/iamslash/TIL/tree/master/numbertheory#나머지-곱셈의-역원-modular-multiplicative-inverse)
 * [나머지 곱셈의 역원을 페르마의 소정리를 이용하여 구하는 법 @ learntocode](https://github.com/iamslash/learntocode/blob/master/doc/number_modular.md#페르마의-소정리fermats-little-theorem을-이용한-방법)
@@ -117,9 +123,11 @@ nCr = n! / (n-r)! * r! % p
 modinv(a, p) = a^{p-2} % p (페르마의 소정리) 
 ```
 
-앞서 언급한 알고리즘의 구현은 다음과 같다.
-p가 n보다 크지 않으면 modinv의 첫번재 인자가 팩토리얼이기 때문에
-modinv의 결과가 0이 될 수 있다.
+앞서 언급한 알고리즘의 구현은 다음과 같다. 반드시 p는 n보다 커야 한다.
+그렇지 않으면 modinv의 첫번재 인자가 팩토리얼이기 때문에 modinv의
+결과가 0이 될 수 있다. power의 시간복잡도는 `O(\log_{2}n)`이기 때문에
+전체 시간복잡도는 `O(n \log_{2}n)`이다.  만약 fac[]를 한번만 만들어
+두고 재활용한다면 시간복잡도는 `O(\log_{2}n)`이다.
 
 ```cpp
 int power(int x, unsigned int y, int p) {

@@ -31,23 +31,30 @@ long long 으로도 overflow를 막을 순 없다.
 그러나 n = 1000000000, r = 500000000 인 경우
 nCr을 연산하는데 매우 긴 시간이 걸릴 것이다.
 
-그래서 다음과 같은 뤼카의 정리를 이용하여 시간복잡도와
+그래서 뤼카의 정리를 이용하여 시간복잡도와
 공간복잡도를 개선해 보자.
+뤼카의 정리는 다음과 같다.
 
 ![](../_img/lucas_eq_1.png)
 
 ![](../_img/lucas_eq_2.png)
 
-예를 들어 1432 C 342 % 7 의 경우를 살펴보자.
+```
+예를 들어 1000 C 900 % 13 의 경우를 살펴보자.
 
-![](../_img/lucas_eq_3.png)
+1000 = 5 * 13^{2} + 11 * 13^{2} + 12 * 13^{0}
+900  = 5 * 13^{2} +  4 * 13^{2} +  3 * 13^{0}
+1000 C 900 % 13 = 5C5 * 11C4 * 12C3 % 13
+                = 8
+python을 이용해서 1000 C 900 % 13을 구해보았다.
+>>> factorial(11) / factorial(7) * factorial(4) * factorial(12) / factorial(9) * factorial(3) % 13
+8
+```
 
-![](../_img/lucas_eq_4.png)
-
-n_{i} < m_{i} 이면 n_{i} C m_{i}는 0으로 취급하자.
-그 이유는 증명을 통해 이해해야 한다. 어렵다.
-
-다음은 앞서 언급한 알고리즘을 구현한 것이다.
+다음은 앞서 언급한 알고리즘을 구현한 것이다.  nCr_dp의 n은 항상
+p미만이기 때문에 nCr_dp의 시간복잡도는 `O(p^{2})`이다. p진법으로
+자리변환 한 것의 개수가 `\log_{p}n`이므로 전체 시간복잡도는 `O(p^{2}
+\log_{p}n)`이다.
 
 ```cpp
 // Copyright (C) 2017 by iamslash
@@ -77,7 +84,7 @@ int nCr_lucas(int n, int r, int p) {
   int ni = n % p;
   int ri = r % p;
   return (nCr_lucas(n/p, r/p, p) *
-          nCr_dp(ni, ri, p)) % p;  
+          nCr_dp(ni, ri, p)) % p;
 }
 
 int main() {
