@@ -33,18 +33,21 @@ using namespace std;
 class Solution {
 public:
   int _numDecodings(string s) {
+    // printf("%d %s\n", s.size(), s.c_str());
+                                 
     // base condition
     if (s.size() == 0)
       return 1;
     else if (s.size() == 1)
-      return stoi(s) > 0 ? 1 : 0;
+      return s[0] != '0' ? 1 : 0;
     // recursion
     // s.size() >= 2
+    if (s[0] == '0')
+      return 0;
     int n = stoi(s.substr(0, 2));
     if (n > 26)
-      return numDecodings(s.substr(1));
-    return numDecodings(s.substr(1)) +
-        numDecodings(s.substr(2));
+      return _numDecodings(s.substr(1));
+    return _numDecodings(s.substr(1)) + _numDecodings(s.substr(2));
   }
   int numDecodings(string s) {
     if (s.empty())
@@ -55,6 +58,8 @@ public:
 
 int main() {
   Solution s;
-  printf("%d\n", s.numDecodings("10"));  
+  printf("%d\n", s.numDecodings("1"));
+  // string s = "10";
+  // printf("%d %d\n", s.substr(1).size(), s.substr(2).size());
   return 0;
 }
