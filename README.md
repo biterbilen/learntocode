@@ -667,9 +667,8 @@
   - [알](fundamentals/numbertheory/lucas/) | [lucas' theorem](doc/number_lucas.md)
 
 ## Computational Geometry
-  - 알 | how much closer
-  - 알 | dot product
-  - 알 | cross product
+  - 알 | [vector class](doc/geometry_vector.md)
+    - how much closer, dot product, cross product
   - 알 | line intersection
   - 알 | segment intersection
   - 알 | segment intersects (counter clock wise)
