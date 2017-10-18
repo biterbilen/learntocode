@@ -94,7 +94,7 @@ int nCr_dp(int n, int r, int p) {
 }
 ```
 
-## [lucas' theorem](doc/number_lucas.md)을 이용한 방법
+## [lucas' theorem](number_lucas.md)을 이용한 방법
 
 파스칼의 삼각형을 이용한 방법보다 시간복잡도를 `O(p^{2} \log_{p}n)`으로 개선 할 수 있다.
 이때 p가 너무 크면 파스칼의 삼각형을 이용한 방법보다 시간복잡도가 클 수 있다.

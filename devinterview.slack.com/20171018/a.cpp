@@ -30,29 +30,64 @@
 
 using namespace std;
 
-class Solution {
-public:
-  int _numDecodings(string s) {
-    // printf("%d %s\n", s.size(), s.c_str());
+// class Solution {
+// public:
+//   int _numDecodings(string s) {
+//     // printf("%d %s\n", s.size(), s.c_str());
                                  
-    // base condition
-    if (s.size() == 0)
-      return 1;
-    else if (s.size() == 1)
-      return s[0] != '0' ? 1 : 0;
-    // recursion
-    // s.size() >= 2
-    if (s[0] == '0')
-      return 0;
-    int n = stoi(s.substr(0, 2));
-    if (n > 26)
-      return _numDecodings(s.substr(1));
-    return _numDecodings(s.substr(1)) + _numDecodings(s.substr(2));
-  }
+//     // base condition
+//     if (s.size() == 0)
+//       return 1;
+//     else if (s.size() == 1)
+//       return s[0] != '0' ? 1 : 0;
+//     // recursion
+//     // s.size() >= 2
+//     if (s[0] == '0')
+//       return 0;
+//     int n = stoi(s.substr(0, 2));
+//     if (n > 26)
+//       return _numDecodings(s.substr(1));
+//     return _numDecodings(s.substr(1)) + _numDecodings(s.substr(2));
+//   }
+//   int numDecodings(string s) {
+//     if (s.empty())
+//       return 0;
+//     return _numDecodings(s);
+//   }
+// };
+
+class Solution {
+ public:
   int numDecodings(string s) {
+    // base condition
     if (s.empty())
       return 0;
-    return _numDecodings(s);
+    if (s.size() == 1)
+      return s[0] == '0' ? 0 : 1;
+    if (s.size() == 2) {
+      int n = stoi(s);
+      if (n > 0 && n <= 26)
+        return 2;
+      return 0;
+    }
+    // iteration
+    int a = 1;
+    int b = 1;
+    int r = 0;
+
+    for (int i = 2; i < s.size(); ++i) {
+      r = 0;
+      if (s[i-1] == '0' && s[i-2] == '0') {
+        return 0;
+      } else if (s[i-1] > '0') {
+        r = b;
+      } else if (s[i-2] == '1' || (s[i-2] == '2' && s[i-1] <= '6')) {
+        r += a;
+      }
+      a = b;
+      b = r;
+    }
+    return r;
   }
 };
 
