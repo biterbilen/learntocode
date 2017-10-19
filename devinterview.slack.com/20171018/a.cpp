@@ -58,32 +58,40 @@ using namespace std;
 
 class Solution {
  public:
+  bool isAlph(char a, char b) {
+    if (a == '1' || (a == '2' && b <= '6'))
+      return true;
+    return false;
+  }
   int numDecodings(string s) {
+    int n = s.size();
     // base condition
-    if (s.empty())
+    if (n == 0)
       return 0;
-    if (s.size() == 1)
-      return s[0] == '0' ? 0 : 1;
-    if (s.size() == 2) {
-      int n = stoi(s);
-      if (n > 0 && n <= 26)
+    else if (n > 0 && s[0] == '0')
+      return 0;
+    else if (n == 1)
+      return 1;
+    else if (n == 2) {
+      if (s[0] > '2' && s[1] == '0')
+        return 0;
+      else if (s[1] != '0' && isAlph(s[0], s[1]))
         return 2;
-      return 0;
+      return 1;
     }
     // iteration
-    int a = 1;
+    int a = isAlph(s[0], s[1]) ? 1 : 0;
     int b = 1;
     int r = 0;
-
-    for (int i = 2; i < s.size(); ++i) {
+    for (int i = 2; i <= n; ++i) {
+      // printf("%c%c\n", s[i-2], s[i-1]);
       r = 0;
-      if (s[i-1] == '0' && s[i-2] == '0') {
-        return 0;
-      } else if (s[i-1] > '0') {
+      if (s[i-1] > '0')
         r = b;
-      } else if (s[i-2] == '1' || (s[i-2] == '2' && s[i-1] <= '6')) {
+      if (isAlph(s[i-2], s[i-1])) 
         r += a;
-      }
+      if (r == 0)
+        return 0;
       a = b;
       b = r;
     }
@@ -93,7 +101,7 @@ class Solution {
 
 int main() {
   Solution s;
-  printf("%d\n", s.numDecodings("1"));
+  printf("%d\n", s.numDecodings("30"));
   // string s = "10";
   // printf("%d %d\n", s.substr(1).size(), s.substr(2).size());
   return 0;
