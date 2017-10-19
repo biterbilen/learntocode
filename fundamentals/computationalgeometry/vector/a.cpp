@@ -49,7 +49,18 @@ struct vector2 {
     vector2 r = rhs.normalize();
     return r * r.dot(*this);
   }
-  
+  double howmuchcloser(vector2 p, vector2 a, vector2 b) {
+    return (b - p).norm() - (a - p).norm();
+  }
+  // positive number for ccw b from a
+  // negative number for cw b from a
+  double ccw(vector2 a, vector2 b) {
+    return a.cross(b);
+  }
+  double ccw(vector2 p, vector2 a, vector2 b) {
+    return ccw(a-p, b-p);
+  }
+    
   std::string tostring() const {
     char buf[32] = {0, };
     snprintf(buf, sizeof(buf), "(%0.2lf, %0.2lf)", x, y);

@@ -668,7 +668,7 @@
 
 ## Computational Geometry
   - 알 | [vector class](doc/geometry_vector.md)
-    - how much closer, dot product, cross product
+    - normalize, dot product, cross product, polar, how much closer
   - 알 | line intersection
   - 알 | segment intersection
   - 알 | segment intersects (counter clock wise)
@@ -690,8 +690,7 @@
   - 알 | spline (B-spline, Basis spline)
   - 알 | closest pair of points
   - 알 | voronoi diagrams
-  - 알 | further reading
-    - [geometry algorithms](http://geomalgorithms.com/)
+  - [geometry algorithms](http://geomalgorithms.com/)
 
 ## Recursion
   - [C](crackingthecodinginterview/8.6_TowerOfHanoi/) | tower of hanoi
