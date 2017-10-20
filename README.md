@@ -667,12 +667,11 @@
   - [알](fundamentals/numbertheory/lucas/) | [lucas' theorem](doc/number_lucas.md)
 
 ## Computational Geometry
-  - 알 | [vector class](doc/geometry_vector.md)
+  - [알](fundamentals/computationalgeometry/vector/) | [vector class](doc/geometry_vector.md)
     - normalize, dot product, cross product, polar, how much closer
-  - 알 | line intersection
-  - 알 | segment intersection
-  - 알 | segment intersects (counter clock wise)
-  - 알 | point to line
+  - [알](fundamentals/computationalgeometry/intersection/] | [line intersection](doc/geometry_intersection.md)
+    - line, segment, segment without cross point
+  - [알](fundamentals/computationalgeometry/pointtoline/] | [point to line](doc/geometry_pointtoline.md)
   - 알 | [PINBALL](https://algospot.com/judge/problem/read/PINBALL)
   - 알 | polygon area
   - 알 | polygon inside
