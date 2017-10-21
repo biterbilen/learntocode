@@ -669,9 +669,9 @@
 ## Computational Geometry
   - [알](fundamentals/computationalgeometry/vector/) | [vector class](doc/geometry_vector.md)
     - normalize, dot product, cross product, polar, how much closer
-  - [알](fundamentals/computationalgeometry/intersection/] | [line intersection](doc/geometry_intersection.md)
+  - [알](fundamentals/computationalgeometry/intersection/) | [line intersection](doc/geometry_intersection.md)
     - line, segment, segment without cross point
-  - [알](fundamentals/computationalgeometry/pointtoline/] | [point to line](doc/geometry_pointtoline.md)
+  - [알](fundamentals/computationalgeometry/pointtoline/) | [point to line](doc/geometry_pointtoline.md)
   - 알 | [PINBALL](https://algospot.com/judge/problem/read/PINBALL)
   - 알 | polygon area
   - 알 | polygon inside
