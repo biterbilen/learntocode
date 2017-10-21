@@ -22,3 +22,8 @@
 
 ```cpp
 ```
+
+
+# References
+
+* [직선의 벡터방정식](http://koc.chunjae.co.kr/Dic/dicDetail.do?idx=22585)
