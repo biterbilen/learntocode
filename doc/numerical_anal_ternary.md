@@ -38,3 +38,8 @@ double ternary(double lo, double hi) {
 
 물론 도함수 값이 0인 점들을 하나 하나 시도해서 해결해도 되지만
 미분할 수 없는 함수의 경우도 해결 할 수 있다.
+
+삼분 검색은 최고점 혹은 최저점의 y값을 모를때 사용한다.  만약 y값을
+알고 있다면 ternary search 보다는 bisection method가 성능이
+더욱 좋다.
+
