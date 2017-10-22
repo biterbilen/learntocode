@@ -68,6 +68,20 @@ bool line_intersection(vector2 a, vector2 b,
 }
 ```
 
+위의 내용을 요약하여 정리를 만들어 보자.
+
+```
+직선 f를 지나는 점 a, b와
+직선 g를 지나는 점 c, d가 있을때
+두직선 f와 g를 지나는 교점 x는 다음과 같다.
+
+f = a + p * u (f는 직선위의 무수히 많은 점, u는 방향벡터 b - a)
+g = c + q * v (g는 직선위의 무수히 많은 점, v는 방향벡터 d -c)
+x = a + p * u (a는 점 p는 실수 u는 방향 벡터)
+p = ((c - a) × v) / (u × v)
+x = a + ((c - a) × v) / (u × v) * u
+```
+
 # Segment Intersection
 
 
