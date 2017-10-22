@@ -2,7 +2,7 @@
 
 직선과 직선의 교차 선분과 선분의 교차에 대해 정리한다.
 
-# Line Intersection
+# Line Intersection Point
 
 직선을 한점과 방향 벡터로 표현할 수 있다. 이것을 [직선의 벡터
 방정식](http://koc.chunjae.co.kr/Dic/dicDetail.do?idx=22585)이라고
@@ -82,13 +82,13 @@ p = ((c - a) × v) / (u × v)
 x = a + ((c - a) × v) / (u × v) * u
 ```
 
-# Segment Intersection
+# Segment Intersection Point
 
 
 ```cpp
 ```
 
-# Segment Intersection without cross point
+# Segment Intersection 
 
 ```cpp
 ```
