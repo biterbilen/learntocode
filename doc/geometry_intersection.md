@@ -143,10 +143,13 @@ bool segment_intersection(vector2 a, vector2 b,
 선분 g의 양 끝점에 해당하는 c, d가 주어졌을때
 두 선분이 교차 하는지 판별해보자.
 
-두 선분 f, g가 같은 직선위에 있는 경우
-f 와 g가 겹치는 부분이 있는지 검사한다.
+두 선분 f, g가 같은 직선위에 있는 경우 두 선분이 겹치기 위해서는
+ccw(a, b, c), ccw(a, b, d), ccw(c, d, a), ccw(c, d, b)가 0 이고 한
+선분의 끝점이 다른 선분에 포함되어 있어야 한다.
 
-
+두 선분 f, g가 같은 직선위에 있지 않은 경우 두 선분이 겹치기 위해서는
+ccw(a, b, c)와 ccw(a, b, d)의 부호가 다르고 ccw(c, d, a)와 ccw(c, d,
+b)가 부호가 달라야 한다.
 
 ```cpp
 bool segment_intersect(vector2 a, vector2 b,
@@ -165,7 +168,6 @@ bool segment_intersect(vector2 a, vector2 b,
   return ab <= 0 && cd <= 0;
 }
 ```
-
 
 # References
 
