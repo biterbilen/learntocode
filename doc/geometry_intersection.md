@@ -103,11 +103,67 @@ f와 g가 평행한다면 다음과 같이 네가지 경우를 생각해 볼 수
 다음은 언급한 알고리즘을 구현한 것이다.
 
 ```cpp
+bool pararrel_segments(vector2 a, vector2 b,
+                         vector2 c, vector2 d,
+                         vector2& p) {
+  if (b < a)
+    std::swap(a, b);
+  if (d < c)
+    std::swap(c, d);
+  // not on the same line, not overlapping case
+  if (ccw(a, b, c) != 0 || b < c || d < a)
+    return false;
+  // two segments overlap
+  if (a < c)
+    p = c;
+  else
+    p = a;
+  return true;
+}
+
+bool in_bounding_rectangle(vector2 p, vector2 a, vector2 b) {
+  if (b < a)
+    std::swap(a, b);
+  return p == a || p == b || (a < p && p < b);
+}
+
+bool segment_intersection(vector2 a, vector2 b,
+                         vector2 c, vector2 d,
+                         vector2& p) {
+  if (!line_intersection(a, b, c, d, p))
+    return pararrel_segments(a, b, c, d, p);
+  return in_bounding_rectangle(p, a, b) &&
+      in_bounding_rectangle(p, c, d);
+}
 ```
 
 # Segment Intersection 
 
+선분 f의 양 끝점에 해당하는 a, b와 
+선분 g의 양 끝점에 해당하는 c, d가 주어졌을때
+두 선분이 교차 하는지 판별해보자.
+
+두 선분 f, g가 같은 직선위에 있는 경우
+f 와 g가 겹치는 부분이 있는지 검사한다.
+
+
+
 ```cpp
+bool segment_intersect(vector2 a, vector2 b,
+                       vector2 c, vector2 d) {
+  double ab = ccw(a, b, c) * ccw(a, b, d);
+  double cd = ccw(c, d, a) * ccw(c, d, b);
+  // two segments on the same line
+  // end point overlap
+  if (ab == 0 && cd == 0) {
+    if (b < a)
+      std::swap(a, b);
+    if (d < c)
+      std::swap(c, d);
+    return !(b < c || d < a);
+  }
+  return ab <= 0 && cd <= 0;
+}
 ```
 
 

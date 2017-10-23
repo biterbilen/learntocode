@@ -6,6 +6,7 @@
 // acos(0)   = π/2
 
 #include <cstdio>
+#include <limits>
 #include <cmath>
 #include <string>
 
@@ -68,27 +69,71 @@ struct vector2 {
   }
 };
 
+double ccw(vector2 a, vector2 b) {
+  return a.cross(b);
+}
+
+double ccw(vector2 p, vector2 a, vector2 b) {
+  return ccw(a-p, b-p);
+}
 
 bool line_intersection(vector2 a, vector2 b,
                        vector2 c, vector2 d,
                        vector2& x) {
   double det = (b - a).cross(d - c);
+  if (fabs(det) < std::numeric_limits<double>::epsilon())
+    return false;
+  x = a + (b - a) * ((c - a).cross(d - c) / det);
+  return true;
 }
 
 bool pararrel_segments(vector2 a, vector2 b,
                          vector2 c, vector2 d,
                          vector2& p) {
-
+  if (b < a)
+    std::swap(a, b);
+  if (d < c)
+    std::swap(c, d);
+  // not on the same line, not overlapping case
+  if (ccw(a, b, c) != 0 || b < c || d < a)
+    return false;
+  // two segments overlap
+  if (a < c)
+    p = c;
+  else
+    p = a;
+  return true;
 }
 
-bool is_in_bounding_rectangle(vector2 p, vector2 a, vector2 b) {
-
+bool in_bounding_rectangle(vector2 p, vector2 a, vector2 b) {
+  if (b < a)
+    std::swap(a, b);
+  return p == a || p == b || (a < p && p < b);
 }
 
-bool sement_intersection(vector2 a, vector2 b,
+bool segment_intersection(vector2 a, vector2 b,
                          vector2 c, vector2 d,
                          vector2& p) {
+  if (!line_intersection(a, b, c, d, p))
+    return pararrel_segments(a, b, c, d, p);
+  return in_bounding_rectangle(p, a, b) &&
+      in_bounding_rectangle(p, c, d);
+}
 
+bool segment_intersect(vector2 a, vector2 b,
+                       vector2 c, vector2 d) {
+  double ab = ccw(a, b, c) * ccw(a, b, d);
+  double cd = ccw(c, d, a) * ccw(c, d, b);
+  // two segments on the same line
+  // end point overlap
+  if (ab == 0 && cd == 0) {
+    if (b < a)
+      std::swap(a, b);
+    if (d < c)
+      std::swap(c, d);
+    return !(b < c || d < a);
+  }
+  return ab <= 0 && cd <= 0;
 }
 
 int main() {
