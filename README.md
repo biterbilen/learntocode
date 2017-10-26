@@ -933,6 +933,7 @@
   - 알 | [Georgia Tech's TSP](http://www.tsp.gatech.edu/)
     - TSP 해결 프로그램중 가장 강력한 Concorde가 기술되어
       있다. Concorde는 1000개의 도시를 갖는 입력을 10분만에 풀어낸다.
+  - [알](algospot.com/NQUEEN/) | [NQUEEN](https://algospot.com/judge/problem/read/NQUEEN)
 
 ## [Optimization Problems To Decision Problems](doc/optimization_to_decision.md)
   - [알](algospot.com/DARKPA/) | [DARPA](https://algospot.com/judge/problem/read/DARPA)

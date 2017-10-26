@@ -1,5 +1,5 @@
 // Copyright (C) 2017 by iamslash
-// https://algospot.com/judge/problem/read/NQUEENS
+// https://algospot.com/judge/problem/read/NQUEEN
 
 #include <cstdio>
 #include <vector>
@@ -8,19 +8,29 @@
 
 int N;
 int Q[12];
+long long BEST = 0;
 
-bool Nqueen(int y, int x) {
-  
+bool is_past_ok(int y, int x) {
+  return true;
 }
 
-int Solve() {
-  int r = 0;
+bool is_settable(int y, int x) {
+  // base condition
+  if (y >= N || x >= N)
+    return true;
+  
+  // recursion
+  
+  return false;
+}
 
-  for (int y = 0; y < N; ++y) {
-    
+long long solve() {
+  
+  for (int x = 0; x < N; ++x) {
+    is_settable(0, x);
   }
   
-  return r;
+  return BEST;
 }
 
 int main() {
@@ -29,6 +39,6 @@ int main() {
   for (int t = 0; t < T; ++t) {
     memset(Q, -1, sizeof(Q));
     scanf("%d", &N);
-    printf("%d\n", Solve());
+    printf("%ld\n", solve());
   }
 }
