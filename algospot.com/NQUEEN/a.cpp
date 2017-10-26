@@ -11,26 +11,49 @@ int Q[12];
 long long BEST = 0;
 
 bool is_past_ok(int y, int x) {
+  int i, j;
+  // check row on this left side
+  if (Q[y] < 0)
+    return false;
+
+  // check upper diagonal on this left side
+  for (i = y, j = x; i >= 0 && j >= 0; --i, --j)
+    if (Q[i] != j)
+      return false;
+  
+  // check lower diagonal on this left side
+  for (i = y, j = x; i < N && j >= 0; ++i, --j)
+    if (Q[i] != j)
+      return false;
+  
   return true;
 }
 
-bool is_settable(int y, int x) {
+bool nqueen(int y) {
   // base condition
-  if (y >= N || x >= N)
+  if (y >= N) {
+    BEST++;
     return true;
+  }
   
   // recursion
+  for (int x = 0; x < N; ++x) {
+    if (is_past_ok(y, x)) {
+      Q[y] = x;
+      if (nqueen(y+1)) {
+        return true;
+      }
+      Q[y] = -1;
+    }
+  }
   
   return false;
 }
 
 long long solve() {
-  
-  for (int x = 0; x < N; ++x) {
-    is_settable(0, x);
-  }
-  
-  return BEST;
+  if (nqueen(0))
+    return BEST;
+  return 0;
 }
 
 int main() {
