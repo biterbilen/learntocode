@@ -6,23 +6,35 @@
 
 int N;
 
+int gcd(int a, int b) {
+  return b == 0 ? a : gcd(b, a % b);
+}
+
 std::vector<int> solve(const std::vector<int>& R,
                        const std::vector<int>& P) {
-  double X = 0.0;
-  int Y;
-  std::vector<int> A(N);
+  std::vector<int> r(N);
 
+  // get X
+  double X = 0.0;
   for (int i = 0; i < N; ++i) {
     X = fmax(X, static_cast<double>(P[i]) / R[i]);
   }
-  Y = floor(X);
-  printf("  %lf %d\n", X, Y);
 
-  for (int i = 0; i < N; ++i) {
-    A[i] = fmax(0, R[i] * Y - P[i]);
+  // get b
+  int b = R[0];
+  for (int i = 1; i < N; ++i) {
+    b = gcd(b, R[i]);
   }
 
-  return A;
+  // get a
+  // Y is 1 at least
+  int a = ceil(X * b);
+
+  for (int i = 0; i < N; ++i) {
+    r[i] = R[i] * a / b - P[i];
+  }
+
+  return r;
 }
 
 int main() {
