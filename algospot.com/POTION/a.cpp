@@ -15,10 +15,11 @@ std::vector<int> solve(const std::vector<int>& R,
   for (int i = 0; i < N; ++i) {
     X = fmax(X, static_cast<double>(P[i]) / R[i]);
   }
-  Y = ceil(X);
+  Y = floor(X);
+  printf("  %lf %d\n", X, Y);
 
   for (int i = 0; i < N; ++i) {
-    A[i] = R[i] * Y - P[i];
+    A[i] = fmax(0, R[i] * Y - P[i]);
   }
 
   return A;
