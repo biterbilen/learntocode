@@ -13,7 +13,7 @@ std::vector<int> solve(const std::vector<int>& R,
   std::vector<int> A(N);
 
   for (int i = 0; i < N; ++i) {
-    X = fmax(X, P[i] / R[i]);
+    X = fmax(X, static_cast<double>(P[i]) / R[i]);
   }
   Y = ceil(X);
 
@@ -45,3 +45,9 @@ int main() {
   }
   return 0;
 }
+
+// int main() {
+//   double d = 2 / (double)3;
+//   printf("%lf", d);
+//   return 0;
+// }
