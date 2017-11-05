@@ -673,7 +673,7 @@
     - line intersection point, segment intersection point, segment intersection
   - [알](fundamentals/computationalgeometry/pointtoline/) | [point to line](doc/geometry_pointtoline.md)
   - [알](algospot.com/PINBALL/) | [PINBALL](https://algospot.com/judge/problem/read/PINBALL)
-  - 알 | polygon area
+  - [알](fundamentals/computationalgeometry/polygonarea/) | [polygon area](doc/geometry_polygonarea.md)
   - 알 | polygon inside
   - 알 | [TREASURE](https://algospot.com/judge/problem/read/TREASURE)
   - 알 | [NERDS](https://algospot.com/judge/problem/read/NERDS)
