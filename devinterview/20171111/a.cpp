@@ -1,4 +1,6 @@
+// Copyright (C) 2017 by iamslash
 // https://leetcode.com/problems/minimum-window-substring/description/
+// http://www.geeksforgeeks.org/find-the-smallest-window-in-a-string-containing-all-characters-of-another-string/
 
 // Given a string S and a string T, find the minimum window in S witch
 // will contain all the characters in T in complexity O(n).
