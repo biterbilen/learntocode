@@ -110,3 +110,7 @@ int solve(const std::vector<vector2>& p) {
 # Time Complexity
 
 O(N)
+
+# References
+
+* [Area of a polygon with given n ordered vertices @ geeksforgeeks](http://www.geeksforgeeks.org/area-of-a-polygon-with-given-n-ordered-vertices/)
