@@ -13,7 +13,18 @@ class Vector2 {
 };
 
 bool solve(const std::vector<Vector2>& v, Vector2 p) {
-  return true;
+  int cross_cnt = 0;
+  for (int i = 0; i < v.size(); ++i) {
+    int j = (i + 1) % v.size();
+    if ((v[i].y > p.y) != (v[j].y > p.y)) {
+      double at_x = (v[j].x - v[i].x) * (p.y - v[i].y) /
+          (v[j].y - v[i].y) + v[i].x;
+      if (p.x < at_x) {
+        cross_cnt++;
+      }
+    }
+  }
+  return (cross_cnt & 1) > 0;
 }
 
 int main() {
