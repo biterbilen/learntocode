@@ -674,9 +674,9 @@
   - [알](fundamentals/computationalgeometry/pointtoline/) | [point to line](doc/geometry_pointtoline.md)
   - [알](algospot.com/PINBALL/) | [PINBALL](https://algospot.com/judge/problem/read/PINBALL)
   - [알](fundamentals/computationalgeometry/polygonarea/) | [polygon area](doc/geometry_polygonarea.md)
-  - 알 | polygon inside
-  - 알 | [TREASURE](https://algospot.com/judge/problem/read/TREASURE)
-  - 알 | [NERDS](https://algospot.com/judge/problem/read/NERDS)
+  - [알](fundamentals/computationalgeometry/polygoninside/) | [polygon inside](doc/geometry_polygoninside.md)
+  - [알](algospot.com/TREASURE/) | [TREASURE](https://algospot.com/judge/problem/read/TREASURE)
+  - [알](algospot.com/NERDS/) | [NERDS](https://algospot.com/judge/problem/read/NERDS)
   - 알 | convex hull (Gift Wrapping)
   - 알 | convex hull (Javis's March)
   - 알 | convex hull (Graham Scan)

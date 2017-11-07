@@ -74,8 +74,20 @@ int solve(const std::vector<vector2>& p) {
 }
 
 int main() {
-  std::vector<vector2> p(0);
-
+  std::vector<vector2> p;
+  p.push_back(vector2(0, 0));
+  p.push_back(vector2(4, 0));
+  p.push_back(vector2(4, 4));
+  p.push_back(vector2(0, 4));
+  // 16
   printf("%d\n", solve(p));
+
+  // std::vector<vector2> p;
+  // p.push_back(vector2(0, 0));
+  // p.push_back(vector2(4, 0));
+  // p.push_back(vector2(2, 4));
+  // // 8
+  // printf("%d\n", solve(p));
+
   return 0;
 }
