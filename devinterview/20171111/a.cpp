@@ -20,17 +20,21 @@
 // if there are multiple such windows, you are guaranteed that there
 // will always be only one unique minimum window in S.
 
-//  t
+//  t  f
 // “ADOBECODEBANC”
 // "ABC"
+
+const int MAX_INT = 9876543210;
+
 class Solution {
  public:
   std::string minWindow(std::string s, std::string t) {
     int matched_cnt = 0;
     int s_cnt[256] = {0,};
     int t_cnt[256] = {0,};
-    int fr_idx_min = 0;
-    int len_min = s.size();
+    int fr_idx_min = MAX_INT;
+    int len_min = MAX_INT;
+    int fr_idx = 0;
 
     // validate s
     if (s.size() < t.size())
@@ -38,11 +42,25 @@ class Solution {
 
     // set t_cnt
     for (int i = 0; i < t.size(); ++i) {
-      t_cnt[i]++;
+      t_cnt[t[i]]++;
+      s_cnt[s[i]]++;
     }
 
-    // traverse s to make a minim window
-    for (int to_idx_min = 0; to_idx_min < s.size(); ++to_idx_min) {
+    // traverse s to make a min window
+    for (int to_idx = t.size(); to_idx < s.size(); ++to_idx) {
+      // move right idx of window
+      s_cnt[s[to_idx]]++;
+      
+      // move left idx of window
+      if (matched_cnt == t.size()) {
+
+      }
+
+      // set len_min
+      if (len_min > (to_idx - fr_idx + 1)) {
+        fr_idx_min = fr_idx;
+        len_min = to_dix - fr_idx + 1;
+      }
       
     }
 
