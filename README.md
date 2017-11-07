@@ -676,6 +676,7 @@
   - [알](fundamentals/computationalgeometry/polygonarea/) | [polygon area](doc/geometry_polygonarea.md)
   - [알](fundamentals/computationalgeometry/polygoninside/) | [polygon inside](doc/geometry_polygoninside.md)
   - [알](algospot.com/TREASURE/) | [TREASURE](https://algospot.com/judge/problem/read/TREASURE)
+  - [알](fundamentals/computationalgeometry/sutherland_hodgman/) | [sutherland hodgman algorithm](doc/geometry_sutherland_hodgman.md)
   - [알](algospot.com/NERDS/) | [NERDS](https://algospot.com/judge/problem/read/NERDS)
   - 알 | convex hull (Gift Wrapping)
   - 알 | convex hull (Javis's March)
