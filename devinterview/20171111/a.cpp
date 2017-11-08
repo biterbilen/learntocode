@@ -56,16 +56,18 @@ class Solution {
       // c is in t
       char to_c = s[to_idx];
       s_cnt[to_c]++;
-      if (t_cnt[to_c] != 0 && s_cnt[to_c] < t_cnt[to_c])
+      if (t_cnt[to_c] > 0 && s_cnt[to_c] <= t_cnt[to_c])
         matched++;
       
+      // printf("%2d s_cnt: %d t_cnt: %d matched: %d\n", to_idx, s_cnt[to_c], t_cnt[to_c], matched);
       if (matched == t.size()) {
         // move left idx of window
         char fr_c = s[fr_idx];
-        while (t[fr_c] == 0 || s[fr_c] > t[fr_c]) {
-          if (s[fr_c] > t[fr_c])
-            s[fr_c]--;
-          fr_idx++;
+        while (t_cnt[fr_c] == 0 || s_cnt[fr_c] > t_cnt[fr_c]) {
+          // printf("%2d fr_c: %c s_cnt: %d t_cnt: %d matched: %d\n", fr_idx, fr_c, s_cnt[fr_c], t_cnt[fr_c], matched);
+          if (s_cnt[fr_c] > t_cnt[fr_c])
+            s_cnt[fr_c]--;
+          fr_c = s[++fr_idx];
         }
         // set len_min
         int len_cur = to_idx - fr_idx + 1;
@@ -73,7 +75,8 @@ class Solution {
           fr_idx_min = fr_idx;
           len_min = len_cur;
         }
-      }
+        printf("%2d s_cnt: %d t_cnt: %d matched: %d\n", to_idx, s_cnt[to_c], t_cnt[to_c], matched);       
+      }      
     }
 
     // There is no window
