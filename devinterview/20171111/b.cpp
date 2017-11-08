@@ -4,8 +4,8 @@
 
 // There are n bottles. Every bottle has p_i spoonfuls of different
 // kinds of liquids. (0 <= i < n). Every each liquid changes to
-// solid when collected in r_i spoonfuls.  You need to change the
-// liquid of all bottles to solid using q_i spoonfuls.  You must use
+// solid when collected in r_i spoonfuls.  You need to keep the
+// solid-liquid ratio of all bottles using q_i spoonfuls.  You must use
 // minimum q_i spoonfuls.
 //
 // For examples:
