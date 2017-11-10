@@ -4,11 +4,16 @@ convex hull algorithm들중 graham scan algorithm에 대해 정리한다.
 
 # Idea
 
-필드에 꽃혀 있는 무수히 많은 압정들을 생각해 보자. 고무줄을 하나
-구해서 제일 아래쪽의 압정에 걸어서 모든 압정들을 둘러싸게 한바퀴 돌려보자.
-고무줄은 모든 점들을 둘러싸게 되고 이것이 바로 convex hull이다.
+모든 점들을 y값의 오름차순으로 정렬하고 가장 작은 y값을 갖는 점을
+p라고 하자. 정렬된 점들을 p와 연결하여 만들어진 선분들의 극각도의
+오름차순으로 다시 정렬한다. 정렬된 점들의 첫번째 점은 convex hull이
+명백하다. 첫번째 두번째 세번째 점을 가각 a, b, c라고 할때
+ccw(a, b, c)가 0보다 작으면 b는 convex hull이 아니다.
 
 # Implementation
+
+```cpp
+```
 
 # Time Complexity
 

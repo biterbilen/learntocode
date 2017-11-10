@@ -82,7 +82,7 @@ Polygon solve(const Polygon& p) {
   for (int i = 2; i < n; ++i) {
     Vector2 top = hull.back(); hull.pop_back();
     Vector2 no2 = hull.back();
-    while (ccw(no2, top, p[i]) <= 0) {
+    while (ccw(top, no2, p[i]) <= 0) {
       top = hull.back();
       hull.pop_back();
     }
