@@ -59,7 +59,7 @@ Polygon solve(const Polygon& p) {
   Vector2 pivot = *std::min_element(p.begin(), p.end(), mycomp);
   hull.push_back(pivot);
 
-  while(true) {
+  while (true) {
     Vector2 ph = hull.back();
     Vector2 next = p[0];
     for (int i = 1; i < n; ++i) {
