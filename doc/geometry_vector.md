@@ -110,14 +110,6 @@ struct vector2 {
   double howmuchcloser(vector2 p, vector2 a, vector2 b) {
     return (b - p).norm() - (a - p).norm();
   }
-  // positive number for ccw b from a
-  // negative number for cw b from a
-  double ccw(vector2 a, vector2 b) {
-    return a.cross(b);
-  }
-  double ccw(vector2 p, vector2 a, vector2 b) {
-    return ccw(a-p, b-p);
-  }
     
   std::string tostring() const {
     char buf[32] = {0, };
@@ -126,10 +118,22 @@ struct vector2 {
   }
 };
 
+// positive number for ccw b from a
+// negative number for cw b from a
+double ccw(vector2 a, vector2 b) {
+  return a.cross(b);
+}
+double ccw(vector2 p, vector2 a, vector2 b) {
+  return ccw(a-p, b-p);
+}
 
 int main() {
-  vector2 v(2.0, 3.0);
-  printf("%s\n", v.tostring().c_str());
+  vector2 p(2.0, 3.0);
+  vector2 q(3.0, 3.0);
+  printf("%lf\n", ccw(p, q));
+  printf("%lf\n", ccw(q, p));
+  printf("%lf\n", ccw(p, p));
+  printf("%lf\n", ccw(p, p, q));
   return 0;
 }
 ```
