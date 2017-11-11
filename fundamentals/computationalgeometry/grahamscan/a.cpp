@@ -4,6 +4,8 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
+#include <string>
+#include <iostream>
 
 const double PI = 2.0 * acos(0.0);
 
@@ -55,6 +57,8 @@ double ccw(Vector2 p, Vector2 a, Vector2 b) {
 typedef std::vector<Vector2> Polygon;
 
 bool order_by_y(const Vector2& l, const Vector2& r) {
+  if (l.y == r.y)
+    return l.x < r.y;
   return l.y < r.y;
 }
 
@@ -62,32 +66,32 @@ class OrderByPolar {
  public:
   Vector2 p;
   explicit OrderByPolar(Vector2 _p) : p(_p) {}
-  bool operator() (Vector2 a, Vector2 b) {
+  bool operator() (const Vector2& a, const Vector2& b) {
     return (a-p).polar() < (b-p).polar();
   }
 };
 
-Polygon solve(const Polygon& p) {
+Polygon solve(Polygon& p) {
   int n = p.size();
   Polygon hull;
 
   // sort p by y order
   std::sort(p.begin(), p.end(), order_by_y);
   // sort p by p[0]-i polar angle
-  // OrderByPolar comp(p[0]);
-  // std::sort(p.begin(), p.end(), comp);
+  std::sort(p.begin(), p.end(), OrderByPolar(p[0]));
 
   hull.push_back(p[0]);
   hull.push_back(p[1]);
   for (int i = 2; i < n; ++i) {
-    Vector2 top = hull.back(); hull.pop_back();
-    Vector2 no2 = hull.back();
-    while (ccw(top, no2, p[i]) <= 0) {
-      top = hull.back();
-      hull.pop_back();
+    Vector2 b = hull.back(); hull.pop_back();
+    Vector2 a = hull.back();
+    printf("  %d %lu\n", i, hull.size());
+    while (ccw(a, b, p[i]) <= 0) {
+      b = hull.back(); hull.pop_back();
     }
-    hull.push_back(top);
+    hull.push_back(b);
     hull.push_back(p[i]);
+    printf("    %d %lu\n", i, hull.size());
   }
 
   return hull;
@@ -96,7 +100,6 @@ Polygon solve(const Polygon& p) {
 int main() {
   Polygon p = {{0, 3}, {2, 2}, {1, 1}, {2, 1},
                {3, 0}, {0, 0}, {3, 3}};
-
   Polygon r = solve(p);
 
   for (Vector2 v : r) {
@@ -106,3 +109,4 @@ int main() {
 
   return 0;
 }
+
