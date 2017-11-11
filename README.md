@@ -115,8 +115,18 @@
 | unsigned int       | 4byte             | 0 to 4,294,967,295                                     |
 | long long          | 8byte             | –9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807 |
 | unsigned long long | 8byte             | 0 ~ 18,446,744,073,709,551,615                         |
-| float              | 4byte             | -3.4E +/- 38 ~ 3.4E +/- 38 (7 digits)                  |
-| double             | 8byte             | -1.7E +/- 308 ~ 1.7E +/- 308 (15 digits)               |
+| float              | 4byte             | -3.4E +/- 38 ~ 3.4E +/- 38 ()                  |
+| double             | 8byte             | -1.7E +/- 308 ~ 1.7E +/- 308 ()               |
+
+```
+float와 double로 표현할 수 있는 정수 범위
+
+float = 1 sign bit + 8 exponent bit + 23 fraction bit (-2^23 ~ 2^23)
+double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
+
+2^23 = 8,388,608
+2^52 = 4,503,599,627,370,496
+```
 
 # [Algorithm Proof](doc/proof.md)
 

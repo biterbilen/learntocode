@@ -83,15 +83,14 @@ Polygon solve(Polygon& p) {
   hull.push_back(p[0]);
   hull.push_back(p[1]);
   for (int i = 2; i < n; ++i) {
-    Vector2 b = hull.back(); hull.pop_back();
-    Vector2 a = hull.back();
-    printf("  %d %lu\n", i, hull.size());
-    while (ccw(a, b, p[i]) <= 0) {
+    Vector2 a(0, 0);
+    Vector2 b(0, 0);
+    do {
       b = hull.back(); hull.pop_back();
-    }
+      a = hull.back();
+    } while (ccw(a, b, p[i]) <= 0);
     hull.push_back(b);
     hull.push_back(p[i]);
-    printf("    %d %lu\n", i, hull.size());
   }
 
   return hull;
