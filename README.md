@@ -73,6 +73,7 @@
 - [codeforces](http://codeforces.com/)
 - [topcoder](https://arena.topcoder.com)
 - [programming-challnges](http://www.programming-challenges.com/)
+- [spoj](http://www.spoj.com/)
 
 # References
 
