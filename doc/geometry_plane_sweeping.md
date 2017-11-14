@@ -2,31 +2,34 @@
 
 평면 스위핑 혹은 라인 스위핑에 대해 알아보자.
 
-# Problems
+# Problem. Area of rectangular union (직사각형 합집합의 면적)
 
-## Area of rectangular union (직사각형 합집합의 면적)
+## Idea
 
-### Idea
+## Implementation
 
-### Implementation
+[src](../fundamentals/computationalgeometry/planesweepingareaunion/a.cpp)
 
-### Time Complexity
+## Time Complexity
 
-## Width of polygon intersection (다각형 교집합의 넓이)
+# Problem. Width of polygon intersection (다각형 교집합의 넓이)
 
-### Idea
+## Idea
 
-### Implementation
+## Implementation
 
-### Time Complexity
+[src](../fundamentals/computationalgeometry/planesweepingareaintersect/a.cpp)
 
-## Intersecting lines (교차하는 선분들)
+## Time Complexity
 
-### Idea
+# Problem. Intersecting lines (교차하는 선분들)
 
-### Implementation
+## Idea
 
-### Time Complexity
+## Implementation
 
+[src](../fundamentals/computationalgeometry/planesweepingintersectinglines/a.cpp)
+
+## Time Complexity
 
 # References
