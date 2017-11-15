@@ -695,6 +695,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](fundamentals/computationalgeometry/giftwrapping/) | [convex hull (Gift Wrapping aks Javis's March)](fundamentals/computationalgeometry/giftwrapping/README.md)
   - [알](fundamentals/computationalgeometry/grahamscan/) | [convex hull (Graham Scan)](fundamentals/computationalgeometry/grahamscan/README.md)
   - [알](fundamentals/computationalgeometry/planesweeping/) | [plane sweeping, line sweeping](doc/geometry_plane_sweeping.md)
+    - union area, intersection area, segment intersect
   - 알 | segment intersects (Shamos-Hoey)
   - 알 | segment intersects (Bentley-Ottmann)
   - [알](fundamentals/computationalgeometry/rotatingcalipers/) | [rotating calipers](doc/geometry_rotating_calipers.md)
