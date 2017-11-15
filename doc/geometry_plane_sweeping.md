@@ -32,4 +32,6 @@
 
 ## Time Complexity
 
-# References
+## References
+
+* [Given n line segments, find if any two segments intersect @ geeksforgeeks](http://www.geeksforgeeks.org/given-a-set-of-line-segments-find-if-any-two-segments-intersect/)
