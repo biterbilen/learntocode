@@ -79,6 +79,7 @@ struct Vector2
 typedef std::vector<Vector2> Polygon;
 struct Rectangle {
   int x1, y1, x2, y2;
+  Rectangle(int _x1, int _y1, int _x2, int _y2) : x1(_x1), y1(_y1), x2(_x2), y2(_y2) {}
 };
 
 double ccw(Vector2 a, Vector2 b) {
@@ -90,54 +91,60 @@ double ccw(Vector2 p, Vector2 a, Vector2 b) {
 }
 
 // return area of rectangles
-int union_area(const vector<Rectangle>& rects) {
+int union_area(const std::vector<Rectangle>& rects) {
   if (rects.empty())
     return 0;
 
-  // event informations
   // x, left or right, number of rectangle
-  typedef pair<int, pair<int, int> > Event;
-  vector<Event> events;
-  vector<int> ys;
+  typedef std::pair<int, std::pair<int, int> > event;
+  std::vector<event> events;
+  std::vector<int> ys;
 
   // get y, events
-  for (int i=0; i < rects.size(); ++i) {
+  for (int i = 0; i < rects.size(); ++i) {
     ys.push_back(rects[i].y1);
     ys.push_back(rects[i].y2);
-    events.push_back(Event(rects[i].x1, make_pair(1, i)));
-    events.push_back(Event(rects[i].x2, make_pair(-1, i)));
+    events.push_back(event(rects[i].x1, std::make_pair(1, i)));
+    events.push_back(event(rects[i].x2, std::make_pair(-1, i)));
   }
 
   // sort ys, remove duplication
   sort(ys.begin(), ys.end());
-  ys.erase(unique(ys.begin(), ys.end()), ys.end());
+  ys.erase(std::unique(ys.begin(), ys.end()), ys.end());
 
   // sort events
-  sort(event.begin(), events.end());
+  std::sort(events.begin(), events.end());
   int r;
 
-  // count[i] = counts of duplicated rectangles between ys[i] and ys[i+1] 
-  vector<int> count(ys.size()-1, 0);
+  // count[i] = counts of duplicated rectangles between y1 and y2 of event i
+  //   rects[events[i].second.second]
+  std::vector<int> count(ys.size() - 1, 0);
 
-  for (int i=0; i < events.size(); ++i) {
-    int x = events[i].first;
-    int delta = events[i].second.first;
-    int rectangle = events[i].second.seond;
+  for (int i = 0; i < events.size(); ++i) {
+    int x         = events[i].first;
+    int delta     = events[i].second.first;
+    int rectangle = events[i].second.second;
+    int y1        = rects[rectangle].y1;
+    int y2        = rects[rectangle].y2;
+
+    printf("event: %2d x: %2d delta: %2d rect: %2d\n", i, x, delta, rectangle);
     // refresh count
-    int y1 = rects[rectangle].y1;
-    int y2 = rects[rectangle].y2;
-    for (int j=0; i < ys.size(); ++j) {
+    for (int j = 0; j < ys.size(); ++j) {
       if (y1 <= ys[j] && ys[j] < y2) {
         count[j] += delta;
+        printf("  %2d\n", count[j]);
       }
+      printf("  %2d: %2d\n", j, count[j]);
     }
+
     // get cut_length
     int cut_length = 0;
-    for (int j=0; j < ys.size()-1; ++j) {
+    for (int j = 0; j < ys.size() - 1; ++j) {
       if (count[j] > 0) {
         cut_length += ys[j+1] - ys[j];
       }
     }
+
     // multiply cut_length with distance to next event
     if (i + 1 < events.size()) {
       r += cut_length * (events[i+1].first - x);
@@ -146,8 +153,8 @@ int union_area(const vector<Rectangle>& rects) {
   return r;
 }
 
-int inter_area(const vector<Rectangle>& rects) {
-  return true;
+int inter_area(const std::vector<Rectangle>& rects) {
+  return 0;
 }
 
 bool is_segment_intersected(const Polygon& p) {
@@ -156,12 +163,16 @@ bool is_segment_intersected(const Polygon& p) {
 
 
 int main() {
-  int T;  // number of T
-  scanf("%d", &T);
-  //
-  for (int t = 0; t < T; ++t) {
-    scanf("%d", &N);
-  }
+
+  // ys = {0, 1, 2, 3, 4}
+  // events = {{0, {-1, 0}}, {2, {1, 0}}, {1, {-1, 1}}, {3, {1, 1}}, {-1, {-1, 2}}, {2, {1, 2}}}
+  //        = {{-1, {-1, 2}}, {0, {-1, 0}}, {1, {-1, 1}}, {2, {1, 0}}, {2, {1, 2}}, {3, {1, 1}}}
+  //          
+  std::vector<Rectangle> v;
+  v.push_back(Rectangle(0, 0, 2, 2));
+  v.push_back(Rectangle(1, 0, 3, 3));
+  v.push_back(Rectangle(-1, 1, 2, 4));
+  printf("%d\n", union_area(v)); // 14
 
   return 0;
 }
