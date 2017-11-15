@@ -11,27 +11,29 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <limits>
 
 int N;
 
-void print_v(const std::vector<std::pair<int, int>>& v) {
+void print_v(const std::vector<std::pair<int64_t, int>>& v) {
   for (const std::pair<int, int>& p : v) {
     printf("[%d] %d, ", p.second, p.first);
   }
   printf("\n");
 }
 
-int64_t solve(std::vector<std::pair<int, int64_t>>& v) {
-  int64_t r = 99999999999999999;
+int64_t solve(std::vector<std::pair<int64_t, int>>& v) {
+  int64_t r = std::numeric_limits<int64_t>::max();
 
-  std::sort(v.begin(), v.end(), std::greater<std::pair<int, int64_t>>());
+  std::sort(v.begin(), v.end(), std::greater<std::pair<int64_t, int>>());
 
   // print_v(v);
 
   for (int i = 0; i < v.size() - 1; ++i) {
-    if (v[i].first - v[i+1].first < r) {
+    int64_t diff = v[i].first - v[i+1].first;
+    if (diff < r) {
       if (v[i].second < v[i+1].second) {
-        r = v[i].first - v[i+1].first;
+        r = diff;
       }
     }
   }
@@ -41,12 +43,12 @@ int64_t solve(std::vector<std::pair<int, int64_t>>& v) {
 
 int main() {
   scanf("%d", &N);
-  std::vector<std::pair<int, int64_t>> v;
+  std::vector<std::pair<int64_t, int>> v;
 
   for (int i = 0; i < N; ++i) {
     int64_t price;
     scanf("%lld", &price);
-    v.emplace_back(std::make_pair(price, i));
+    v.push_back(std::make_pair(price, i));
   }
 
   printf("%lld\n", solve(v));
