@@ -116,7 +116,7 @@ int union_area(const std::vector<Rectangle>& rects) {
   std::sort(events.begin(), events.end());
   int r;
 
-  // count[i] = counts of duplicated rectangles between y1 and y2 of event i
+  // count[i] = counts of duplicated rectangle block between y1 and y2 of event i
   //   rects[events[i].second.second]
   std::vector<int> count(ys.size() - 1, 0);
 
@@ -127,12 +127,11 @@ int union_area(const std::vector<Rectangle>& rects) {
     int y1        = rects[rectangle].y1;
     int y2        = rects[rectangle].y2;
 
-    printf("event: %2d x: %2d delta: %2d rect: %2d\n", i, x, delta, rectangle);
+    printf("event: %2d, x:%2d, delta:%2d, rect:%2d, y1:%2d, y2:%2d\n", i, x, delta, rectangle, y1, y2);
     // refresh count
     for (int j = 0; j < ys.size(); ++j) {
       if (y1 <= ys[j] && ys[j] < y2) {
         count[j] += delta;
-        printf("  %2d\n", count[j]);
       }
       printf("  %2d: %2d\n", j, count[j]);
     }

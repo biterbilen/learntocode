@@ -9,13 +9,33 @@
 
 ## Idea
 
+사각형의 데이터를 왼쪽 아래점(LBP)과 오른쪽 위점(RBP)을 이용해서 입력
+받자.  하나의 사각형은 LBP, RBP 와 같이 두개의 점으로 표현된다.
 
+모든 점들을 리스트에 모아 놓고 x좌표 를 기준으로 오름차순으로
+정렬한다. 리스트의 첫번째 점부터 한점 씩 순회 하면서 다음 점까지의 x축
+거리와 y축 거리를 얻어내면 부분 넓이를 얻을 수 있다.  이 것들을 모두
+더하면 모든 사각형들의 합집합의 넓이에 해당한다.
+
+예를 다음과 같은 세종류의 사각형이 있다고 하자.
+
+```
+ (0, 0), (2, 2)
+ (1, 0), (3, 3)
+(-1, 1), (2, 4)
+```
+
+![](../_img/plane_sweeping_union_area_ex1.png)
+
+위 그림에서 표시된 순서 대로 부분 넓이를 구하고 전체 넓이를 구할 수 있다.
 
 ## Implementation
 
 [src](../fundamentals/computationalgeometry/planesweepingareaunion/a.cpp)
 
 ## Time Complexity
+
+O(N^2)
 
 # Problem. Width of polygon intersection (다각형 교집합의 넓이)
 
