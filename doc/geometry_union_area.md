@@ -1,13 +1,12 @@
 # Abstract
 
-평면 스위핑 혹은 라인 스위핑에 대해 알아보자.  평면을 세로로 수직선을
-여러개 그어서 문제를 해결하는 방법이다. 주로 직사각형들의 합집합에
-해당하는 넓이의 합, 직사각형들의 교집합에 해당하는 넓이의 합, 교차하는
-선분이 있는지 검사할때 이용한다.
+직사각형들의 합집합에 해당하는 넓이의 합을 평면 스위핑을 이용하여
+구해보자.
 
-# Problem. Area of rectangular union (직사각형 합집합의 면적)
+평면 스위핑 혹은 라인 스위핑은 평면을 세로로 수직선을 여러개 그어서
+문제를 해결하는 방법이다.
 
-## Idea
+# Idea
 
 사각형의 데이터를 왼쪽 아래점(LBP, left bottom point)과 오른쪽
 위점(RTP, right top point)을 이용해서 입력 받자.  하나의 사각형은 LBP,
@@ -31,34 +30,10 @@ RTP 와 같이 두개의 점으로 표현된다.
 
 위 그림에서 표시된 순서 대로 부분 넓이를 구하고 전체 넓이를 구할 수 있다.
 
-## Implementation
+# Implementation
 
 [src](../fundamentals/computationalgeometry/unionarea/a.cpp)
 
-## Time Complexity
+# Time Complexity
 
 O(N^2)
-
-# Problem. Width of polygon intersection (다각형 교집합의 넓이)
-
-## Idea
-
-## Implementation
-
-[src](../fundamentals/computationalgeometry/interarea/a.cpp)
-
-## Time Complexity
-
-# Problem. Intersecting lines (교차하는 선분들)
-
-## Idea
-
-## Implementation
-
-[src](../fundamentals/computationalgeometry/interlines/a.cpp)
-
-## Time Complexity
-
-## References
-
-* [Given n line segments, find if any two segments intersect @ geeksforgeeks](http://www.geeksforgeeks.org/given-a-set-of-line-segments-find-if-any-two-segments-intersect/)

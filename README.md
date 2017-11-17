@@ -695,15 +695,16 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](algospot.com/NERDS/) | [NERDS](https://algospot.com/judge/problem/read/NERDS)
   - [알](fundamentals/computationalgeometry/giftwrapping/) | [convex hull (Gift Wrapping aks Javis's March)](fundamentals/computationalgeometry/giftwrapping/README.md)
   - [알](fundamentals/computationalgeometry/grahamscan/) | [convex hull (Graham Scan)](fundamentals/computationalgeometry/grahamscan/README.md)
-  - [알](fundamentals/computationalgeometry/planesweeping/) | [plane sweeping, line sweeping](doc/geometry_plane_sweeping.md)
-    - union area, intersection area, segment intersect
+  - [알](fundamentals/computationalgeometry/unionarea/) | [union area](doc/geometry_union_area.md) 
+  - [알](fundamentals/computationalgeometry/interarea/) | [intersection area](doc/geometry_inter_area.md) 
+  - [알](fundamentals/computationalgeometry/interlines/) | [intersection lines](doc/geometry_inter_lines.md) 
   - 알 | segment intersects (Shamos-Hoey)
   - 알 | segment intersects (Bentley-Ottmann)
   - [알](fundamentals/computationalgeometry/rotatingcalipers/) | [rotating calipers](doc/geometry_rotating_calipers.md)
   - 알 | spline (bezier spline)
   - 알 | spline (hermite spline)
   - 알 | spline (B-spline, Basis spline)
-  - 알 | closest pair of points
+  - [알](fundamentals/computationalgeometry/closestpair/) | [closest pair of points](doc/geometry_closest_pair.md)
   - 알 | voronoi diagrams
   - [geometry algorithms](http://geomalgorithms.com/)
 
