@@ -62,4 +62,4 @@ Vector2 reflect(Vector2 P, vector2 c, vector2 x) {
 
 # References
 
-* [반사벡터 @ tistory](http://toymaker.tistory.com/entry/%EB%B0%98%EC%82%AC-%EB%B2%A1%ED%84%B0-Reflection-Vector)
+* [반사벡터 @ tistory](http://ifyouwanna.tistory.com/entry/%EB%B0%98%EC%82%AC%EB%B2%A1%ED%84%B0)
