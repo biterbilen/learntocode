@@ -22,17 +22,50 @@
 
 
 
-// [1, 2, 3]
-// [5, 6, 7]
+// 1 3 5 7 9
+// 2 4 8
+// k = 6
+
+// 2 4 8
+// 5 7 9
+// k = 4
+
+// 2 4 8
+// 5 7 9
+// k = 4
+
+// 4 8
+// 5 7 9
+// k = 3
+
+// 5 7 9
+// 8
+// k = 2
+
+// 7 9
+// 8
+// k = 1
+
+// 8
+// 9
+// k = 0
+
 #include <cstdio>
 #include <vector>
 
 class Solution {
  public:
-  double _kth(const std::vector<int>& nums1, int a, int b,
-              const std::vector<int>& nums2, int c, int d, int k) {
-    double r;
-    return r;
+  double _kth(const std::vector<int>& nums1, int a,
+              const std::vector<int>& nums2, int b, int k) {
+    // base condition
+    if (k == 0)
+      return nums1[0];
+
+    // recursion
+    int m = a + (nums1.size() - a) / 2;
+    if (nums1[m] < nums2[0])
+      return _kth(nums1, m, nums2, b, k - m);
+    return _kth(nums2, b, nums1, m, k - m);
   }
   
   double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) {
