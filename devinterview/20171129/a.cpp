@@ -29,33 +29,19 @@
 
 class Solution {
  public:
-  std::vector<int> m_nums1;
-  std::vector<int> m_nums2;
-  int _kth(int a, int m, int b, int n, int k) {
-    // base condition
-    if (m < n)
-      return _kth(b, n, a, m, k);
-    if (n == 0)
-      return m_nums1[k-1];
-    if (k == 1)
-      return std::min(m_nums1[a], m_nums2[b]);
-
-    // recursion
-    int j = std::min(n, k/2);
-    int i = k - j;
-    if (m_nums1[i-1] > m_nums2[j-1])
-      return _kth(a, i, b+j, n-j, k-j);
-    return _kth(a-i, m-j, b, j, k-i);
+  double _kth(const std::vector<int>& nums1, int a, int b,
+              const std::vector<int>& nums2, int c, int d, int k) {
+    double r;
+    return r;
   }
+  
   double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) {
-    m_nums1 = nums1;
-    m_nums2 = nums2;
     int cnt1 = nums1.size();
     int cnt2 = nums2.size();
     int k = (cnt1 + cnt2) / 2;
-    int m1 = _kth(0, cnt1, 0, cnt2, k + 1);
+    int m1 = _kth(0, cnt1, 0, cnt2, k);
     if ((cnt1 + cnt2) % 2 == 0) {
-      int m2 = _kth(0, cnt1, 0, cnt2, k);
+      int m2 = _kth(0, cnt1, 0, cnt2, k-1);
       return (static_cast<double>(m1) + m2) / 2.0;
     }
     return m1;
