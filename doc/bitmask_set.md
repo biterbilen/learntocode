@@ -86,3 +86,10 @@ for (int subset = set; subset; subset = ((subset - 1) & set)) {
     //
 }
 ```
+
+# pickup rightmost one
+
+```cpp
+// -x = ~x + 1
+int y = set & -set;  // 0110 & 1010
+```
