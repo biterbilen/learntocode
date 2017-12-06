@@ -3,6 +3,7 @@
 // https://www.hackerrank.com/challenges/bear-and-steady-gene/problem
 // http://mxwell.github.io/draw-graph/?q=digraph
 
+// a.txt 2
 // b.txt 9
 // c.txt 45764845
 
@@ -22,6 +23,10 @@ void dfs(int here, int goal) {
 
   for (int j = 0; j < adj[here].size(); ++j) {
     int there = adj[here][j];
+    if (there == goal) {
+      ++cnt;
+      break;
+    }
     if (found[there] == false) {
       dfs(there, goal);
     }
@@ -41,7 +46,13 @@ int main() {
     a--; b--;
     adj[a].push_back(b);
   }
-  dfs(0, N-1);
+
+  try {
+    dfs(0, N-1);    
+  } catch (int n) {
+    is_cycle = true;
+  }
+  
   if (is_cycle)
     printf("INFINITE PATHS");
   else
