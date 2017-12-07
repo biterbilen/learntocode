@@ -73,12 +73,12 @@ Polygon cut(const Polygon& p, const Vector2& a, const Vector2& b) {
   return r;
 }
 
-Polygon solve(const Polygon& p, const Polygon& clipper) {
-  Vector2 a = clipper[0];
-  Vector2 b = clipper[3];
-  Vector2 c = clipper[2];
-  Vector2 d = clipper[1];
-  Polygon r = cut(p, a, b);
+Polygon solve(const Polygon& C, const Polygon& P) {
+  Vector2 a = C[0];
+  Vector2 b = C[3];
+  Vector2 c = C[2];
+  Vector2 d = C[1];
+  Polygon r = cut(P, a, b);
   r = cut(r, b, c);
   r = cut(r, c, d);
   r = cut(r, d, a);
