@@ -13,3 +13,7 @@
 # Time Complexity
 
 O(N(lgN)^2)
+
+# References
+
+* [closest pair of points @ geeksforgeeks](http://www.geeksforgeeks.org/closest-pair-of-points/)
