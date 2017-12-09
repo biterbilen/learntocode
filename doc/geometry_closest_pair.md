@@ -42,7 +42,7 @@ O(NlgN)
 
 # Implementation
 
-[src](../fundamentals/computationalgeometry/closest_pair/a.cpp)
+[src](../fundamentals/computationalgeometry/closestpair/a.cpp)
 
 # Time Complexity
 
