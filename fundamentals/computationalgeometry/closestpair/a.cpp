@@ -8,9 +8,9 @@
 
 class Point {
  public:
-  Point() : x(0), y(0) {}
-  Point(int _x, int _y) : x(_x), y(_y) {}
-  int x, y;
+  Point() : x(0.0), y(0.0) {}
+  Point(double _x, double _y) : x(_x), y(_y) {}
+  double x, y;
   double dist(const Point& r) const {
     return hypot(r.x - this->x, r.y - this->y);
   }
@@ -20,15 +20,16 @@ double brute_force(const std::vector<Point>& v) {
   double r = std::numeric_limits<double>::max();
   int n = v.size();
   for (int i = 0; i < n; ++i) {
-    for (int j = i; j < n; ++j) {
+    for (int j = i+1; j < n; ++j) {
       r = std::min(r, v[i].dist(v[j]));
+      // printf("  %lf\n", r);
     }
   }
   return r;
 }
 
-double divide_and_conquer(std::vector<Point> xsorted,
-                std::vector<Point> ysorted) {
+double divide_and_conquer(const std::vector<Point>& xsorted,
+                          const std::vector<Point>& ysorted) {
   int n = xsorted.size();
 
   // base condition
@@ -36,7 +37,7 @@ double divide_and_conquer(std::vector<Point> xsorted,
     return brute_force(xsorted);
 
   // recursion
-  int mid =  n / 2;
+  int mid =  (n-1) / 2;
   Point pmid = xsorted[mid];
 
   // make 2group ysorted
@@ -52,10 +53,11 @@ double divide_and_conquer(std::vector<Point> xsorted,
     }
   }
 
+  // 0, 1, 2, 3
   // get min dist from lgroup, rgroup
-  std::vector<Point> pxl(xsorted.begin(), xsorted.begin() + mid);
+  std::vector<Point> pxl(xsorted.begin(), xsorted.begin() + mid + 1);
   std::vector<Point> pxr(xsorted.begin() + mid + 1, xsorted.end());
-  float d = std::min(divide_and_conquer(pxl, pyl),
+  double d = std::min(divide_and_conquer(pxl, pyl),
                      divide_and_conquer(pxr, pyr));
 
   // get min dist from cgroup
@@ -66,9 +68,9 @@ double divide_and_conquer(std::vector<Point> xsorted,
   }
   // this loop takes O(N) because inner loop takes 5 time at most
   for (int i = 0; i < pyc.size(); ++i) {
-    for (int j = 0; (j < pyc.size()) && (pyc[j].y - pyc[i].y < d); ++j) {
+    for (int j = i+1; (j < pyc.size()) && pyc[j].y - pyc[i].y < d; ++j) {
       double d2 = pyc[i].dist(pyc[j]);
-      d = std::fminf(d, d2);
+      d = std::min(d, d2);
     }
   }
 
@@ -87,6 +89,7 @@ double solve(const std::vector<Point> v) {
 
 int main() {
   std::vector<Point> v = {{2, 3}, {12, 30}, {40, 50}, {5, 1}, {12, 10}, {3, 4}};
+  // std::vector<Point> v = {{2, 3}, {12, 30}, {40, 50}};
   printf("%lf\n", solve(v));
   return 0;
 }
