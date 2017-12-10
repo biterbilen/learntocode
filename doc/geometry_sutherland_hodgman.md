@@ -15,7 +15,7 @@ v2)을 이용해 다음과 같이 4가지 경우를 만들어낼 수 있다.
 
 # Implementation
 
-[src](../fundamentals/computationalgeometry/sutherland/a.cpp)
+[c++11](../fundamentals/computationalgeometry/sutherland/a.cpp)
 
 # Time Complexity
 
