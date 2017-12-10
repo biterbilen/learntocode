@@ -33,7 +33,7 @@ l캘리퍼스가 이루는 사이각을 θ_{l}라 하고 선분 r-(r+1)과 r캘�
 
 # Implementation
 
-[src](../fundamentals/computationalgeometry/rotatingcalipers/a.cpp)
+[c++11](../fundamentals/computationalgeometry/rotatingcalipers/a.cpp)
 
 # Time Complexity
 
