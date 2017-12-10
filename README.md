@@ -11,6 +11,7 @@
 * [Datatype Range](#datatype-range)
 * [Algorithm Proof](#algorithm-proof)
 * [Algorithm Analysis](#algorithm-analysis)
+* [Master Theorem](#master-theorem)
 * [P vs NP](#p-vs-np)
 * [Problems](#problems)
   * [Matrix](#matrix)
@@ -153,6 +154,9 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - ![Graphic examples of the Θ, O, and Ω notations.](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_img/Graphic%20examples%20of%20the%20%CE%98%2C%20O%2C%20and%20%E2%84%A6%20notations.jpeg)
   - ![Algorithm Graphs](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_img/alg_graph.jpeg)
 
+# Master Theorem
+
+![](_img/master_theorem.png)
 
 # [P VS NP](https://github.com/iamslash/TIL/tree/master/pvsnp/README.md)
 
