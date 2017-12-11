@@ -58,8 +58,10 @@ Polygon cut(const Polygon& p, const Vector2& a, const Vector2& b) {
   Polygon r;
   int n = p.size();
   std::vector<bool> inside(n);
+  // check p[i] is inside clipper
   for (int i = 0; i < n; ++i)
     inside[i] = ccw(a, b, p[i]) >= 0;
+  // save points which is inside in clipper or intersect with cliper
   for (int i = 0; i < n; ++i) {
     int j = (i + 1) % n;
     if (inside[i])
@@ -78,10 +80,15 @@ Polygon solve(const Polygon& C, const Polygon& P) {
   Vector2 b = C[3];
   Vector2 c = C[2];
   Vector2 d = C[1];
-  Polygon r = cut(P, a, b);
-  r = cut(r, b, c);
-  r = cut(r, c, d);
-  r = cut(r, d, a);
+  Polygon r0 = cut(P, a, b);
+  Polygon r1 = cut(P, b, c);
+  Polygon r2 = cut(P, c, d);
+  Polygon r3 = cut(P, d, a);
+  Polygon r;
+  // r.insert(r.end(), r0.begin(), r0.end());
+  // r.insert(r.end(), r1.begin(), r1.end());
+  // r.insert(r.end(), r2.begin(), r2.end());
+  r.insert(r.end(), r3.begin(), r3.end());
   return r;
 }
 
@@ -90,6 +97,7 @@ int main() {
                      {200, 200}, {200, 150}};
   Polygon clippee = {{100, 150}, {200, 250}, {300, 200}};
   Polygon p = solve(clipper, clippee);
+  // (150, 162) (150, 200) (200, 200) (200, 174)
   for (int i = 0; i < p.size(); ++i) {
     printf("(%d, %d) ", p[i].x, p[i].y);
   }
