@@ -80,15 +80,11 @@ Polygon solve(const Polygon& C, const Polygon& P) {
   Vector2 b = C[3];
   Vector2 c = C[2];
   Vector2 d = C[1];
-  Polygon r0 = cut(P, a, b);
-  Polygon r1 = cut(P, b, c);
-  Polygon r2 = cut(P, c, d);
-  Polygon r3 = cut(P, d, a);
   Polygon r;
-  // r.insert(r.end(), r0.begin(), r0.end());
-  // r.insert(r.end(), r1.begin(), r1.end());
-  // r.insert(r.end(), r2.begin(), r2.end());
-  r.insert(r.end(), r3.begin(), r3.end());
+  r = cut(P, a, b);
+  r = cut(r, b, c);
+  r = cut(P, c, d);
+  r = cut(P, d, a);
   return r;
 }
 
