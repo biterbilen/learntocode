@@ -30,9 +30,9 @@ class ConsistentHash:
         return continuum
 
     def get(self, key):
-        h = self._hash(key)
+        h = self._hash(key)[0]
         # 링의 해시값을 초과하면 링의 가장 처음녀석의 밸류를 넘기자.
-        if h > self.continuum[-1][3]:
+        if h > self.continuum[-1][3][0]:
             return self.continuum[0][2]
         return self.find_near_value(h)
 
@@ -42,7 +42,7 @@ class ConsistentHash:
         end = right = size
 
         while left < right:
-            mid = left + (right - left) / 2
+            mid = int(left + (right - left) / 2)
             if self.continuum[mid][3] < h:
                 left = middle + 1
             else:
