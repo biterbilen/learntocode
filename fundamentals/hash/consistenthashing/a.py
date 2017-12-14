@@ -43,10 +43,10 @@ class ConsistentHash:
 
         while left < right:
             mid = int(left + (right - left) / 2)
-            if self.continuum[mid][3] < h:
-                left = middle + 1
+            if self.continuum[mid][3][0] < h:
+                left = mid + 1
             else:
-                right = modulefinder
+                right = mid
         if right == end:
             right = begin
         return right, self.continuum[right][2]
