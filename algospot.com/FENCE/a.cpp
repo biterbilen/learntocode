@@ -2,19 +2,25 @@
 // https://algospot.com/judge/problem/read/FENCE
 
 #include <cstdio>
+#include <stack>
 #include <vector>
+#include <algorithm>
 
 int N;
 
-// return max square of H[left, right]
-int solve(const std::vector<int>& H, int left, int right) {
-  int r;
-  // base condition
-  if (left == right)
-    return H[left];
-  int mid = (left + right) / 2;
-  r = std::max(solve(left, mid), solve(mid+1, right));
-  return r;
+int solve(const std::vector<int>& h) {
+  int maxarea = 0;
+  std::stack<int> s;
+  s.push(0);
+  for (int r = 1; r < h.size(); ++r) {
+    while (h[s.top()] > h[r]) {
+      int i = s.top(); s.pop();
+      int l = s.top();
+      maxarea = std::max(maxarea, h[i] * (r - l - 1));
+    }
+    s.push(r);
+  }
+  return maxarea;
 }
 
 int main() {
@@ -22,12 +28,14 @@ int main() {
   scanf("%d", &T);
   for (int t = 0; t < T; ++t) {
     scanf("%d", &N);
-    std::vector<int> H(N);
+    std::vector<int> h(N);
     for (int i = 0; i < N; ++i) {
-      scanf("%d", &H[i]);
+      scanf("%d", &h[i]);
     }
-    printf("%d\n", solve(H, 0, N));
+    h.insert(h.begin(), -1);
+    h.push_back(0);
+    printf("%d\n", solve(h));
   }
-
+  
   return 0;
 }
