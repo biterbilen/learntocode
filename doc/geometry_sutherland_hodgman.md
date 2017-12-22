@@ -5,13 +5,11 @@
 
 # Idea
 
-클리핑을 수행하는 도형(C)과 클리핑의 대상이 되는 도형(P)의 두 점들(v1,
-v2)을 이용해 다음과 같이 4가지 경우를 만들어낼 수 있다.
+![](../_img/505px-Sutherland-Hodgman_clipping_sample.svg.png)
 
-* 선분 (v1, v2) 에서 v1, v2 가 C의 외부에 있는 경우
-* 선분 (v1, v2) 에서 v2만 C의 내부에 있는 경우 교점 v1'와 v2를 저장
-* 선분 (v1, v2) 에서 v1, v2 가 C의 내부에 있는 경우 v2를 저장
-* 선분 (v1, v2) 중 v1만 C의 내부에 있는 경우 교점 v2'를 저장
+clipper의 선분을 순회한다. 각 선분마다 clipper의 안쪽에 위치하는
+clippee점들과 clipper와 clippee의 교점을 저장한다. 저장된 점들은
+다음번 순회에서 입력으로 사용한다.
 
 # Implementation
 
@@ -21,5 +19,5 @@ v2)을 이용해 다음과 같이 4가지 경우를 만들어낼 수 있다.
 
 # References
 
+* [sutherland @ wikipedia](https://en.wikipedia.org/wiki/Sutherland%E2%80%93Hodgman_algorithm)
 * [Polygon Clipping | Sutherland–Hodgman Algorithm @ geeksforgeeks](http://www.geeksforgeeks.org/polygon-clipping-sutherland-hodgman-algorithm-please-change-bmp-images-jpeg-png/)
-* [Sutherland-Hodgman Polygon Clipping Algorithm @ youtube](https://www.youtube.com/watch?v=S091lKYWbSs)
