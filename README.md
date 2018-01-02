@@ -450,7 +450,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
     - 2-sat
     - implication graph
   - [알](fundamentals/graph/bfs/) | [bfs (breadth first search)](doc/graph_bfs.md)
-  - [알](fundamentals/graph/bfsshortestpath/ | [bfs shortest path](doc/graph_bfs_shortest_path.md)
+  - [알](fundamentals/graph/bfsshortestpath/) | [bfs shortest path](doc/graph_bfs_shortest_path.md)
   - 알 | [SORTGAME](http://algospot.com/judge/problem/read/SORTGAME)
   - 알 | [CHILDRENDAY](doc/algospot_CHILDRENDAY.md)★
   - 알 | [15 puzzle - bfs](doc/graph_15_puzzle_bfs.md)
