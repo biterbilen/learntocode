@@ -1,45 +1,42 @@
-// Copyright (C) 2016 by iamslash
+// Copyright (C) 2018 by iamslash
 
 #include <cstdio>
-#include <cstdlib>
 #include <vector>
-#include <limits>
-#include <cstring>
 #include <queue>
 
-int N = 5;
+using ADJ = std::vector<std::vector<int>>;
 
-// 그래프의 인접 행렬
-// adj[i][j] = i와 j사이의 간선의 수
-std::vector<std::vector<int> > adj;
+ADJ adj;
+int N = 10;
 
-void print_v_int(const std::vector<int>& v) {
-  for (int i = 0; i < v.size(); ++i) {
-    printf("%d ", v[i]);
+void print_v_int(std::vector<int> v) {
+  for (auto e : v) {
+    printf("%d ", e);
   }
   printf("\n");
 }
 
 std::vector<int> bfs(int root) {
-  std::vector<bool> discovered(N, false);
-  std::vector<int> r;
+  std::vector<int> order;
+  std::vector<bool> found(N, false);
   std::queue<int> q;
+  order.push_back(root);
+  found[root] = true;
   q.push(root);
 
   while (!q.empty()) {
-    int here = q.front();
-    q.pop();
-    r.push_back(here);
+    int here = q.front(); q.pop();
     for (int i = 0; i < adj[here].size(); ++i) {
-      int there = adj[here][i];
-      if (discovered[there] == false) {
-        q.push(there);
-        discovered[there] = true;
+      int next = adj[here][i];
+      if (!found[next]) {
+        found[next] = true;
+        order.push_back(next);
+        q.push(next);
       }
     }
   }
-
-  return r;
+  
+  return order;
 }
 
 int main() {

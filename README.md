@@ -449,10 +449,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
     - conjunctive normal form
     - 2-sat
     - implication graph
-  - 알 | bfs (breadth first search)
-    - adj, bfs, discovered, q, order
-    - O(|V| + |E|) adjacency list
-    - O(|V|^2) adjacency matrix
+  - [알](fundamentals/graph/bfs/) | [bfs (breadth first search)](doc/graph_bfs.md)
   - 알 | [bfs shortest path](doc/graph_bfs_shortest_path.md)
     - adj, get_shortest_path, bfs, distance, parent, q
   - 알 | [SORTGAME](http://algospot.com/judge/problem/read/SORTGAME)
