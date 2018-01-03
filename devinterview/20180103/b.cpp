@@ -2,31 +2,31 @@
 
 // https://www.hackerrank.com/challenges/kingdom-division/problem
 
-#include <map>
-#include <set>
-#include <list>
-#include <cmath>
-#include <ctime>
-#include <deque>
-#include <queue>
-#include <stack>
-#include <string>
-#include <bitset>
-#include <cstdio>
-#include <limits>
-#include <vector>
-#include <climits>
-#include <cstring>
-#include <cstdlib>
-#include <fstream>
-#include <numeric>
-#include <sstream>
-#include <iostream>
-#include <algorithm>
-#include <unordered_map>
+// Question
+// 0. BST?
 
-using namespace std;
+#include <cstdio>
+#include <vector>
+
+int N;
+const int MOD = 1000000007;
+std::vector<std::vector<int>> adj;
+
+int solve() {
+  return 0;
+}
+
 int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    return 0;
+  scanf("%d", &N);
+  adj.resize(N);
+  for (int i = 1; i < N; ++i) {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    --a;
+    --b;
+    adj[a].push_back(b);
+  }
+  printf("%d\n", solve());
+
+  return 0;
 }
