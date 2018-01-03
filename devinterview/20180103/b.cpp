@@ -7,13 +7,17 @@
 
 #include <cstdio>
 #include <vector>
+#include <map>
 
 int N;
 const int MOD = 1000000007;
 std::vector<std::vector<int>> adj;
 
 int solve() {
-  return 0;
+  std::map<int, int> D;
+  for (int i = 0; i < adj.size(); ++i) {
+    
+  }
 }
 
 int main() {
