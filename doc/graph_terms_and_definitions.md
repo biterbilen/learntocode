@@ -1,10 +1,14 @@
 - vertex, edge
+  - 그래프의 최소 구성 요소이며 정점과 간선이라고 한다.
 
 - directed graph
+  - 간선의 방향이 존재하는 그래프
 
 - undirected graph
+  - 간선의 방향이 존재하는 그래프
 
 - weighted graph
+  - 간선에 가중치가 존재하는 그래프
 
 - multi graph
   - 두 vertex사이에 두개 이상의 edge가 존재하는 graph
@@ -36,11 +40,11 @@
 
 - adjacency list 
   - vector<list<bool> > adj;
-  - O(|V|^2) 크기의 공간을 갖는다.
+  - O(|V| + |E|) 크기의 공간을 갖는다.
 
 - adjacency matrix 
   - vector<vector<bool> > adj;
-  - O(|V| + |E|) 크기의 공간을 갖는다.
+  - O(|V|^2) 크기의 공간을 갖는다.
 
 - sparse graph
   - edge의 수가 |V|^2에 비해 훨씬 적은 그래프
@@ -49,3 +53,5 @@
   - edge의 수가 |V|^2에 비례 하는 그래프
 
 - implicit graph
+  - 어떠한 문제가 명시적으로 그래프 처럼 보이지 않을때 암시적으로
+    정점과 간선으로 표현 가능한 그래프
