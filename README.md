@@ -879,7 +879,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [축구]()
   - 백 | [팰린드롬의 개수]()
   - 알 | [PACKING](https://algospot.com/judge/problem/read/PACKING)
-  - 알 | [knapsack problem](doc/dynamic_knapsack_problem.md)
+  - 알 | [0/1 knapsack problem](doc/dynamic_knapsack_problem.md)
+  - 알 | [unbounded knapsack problem](doc/dynamic_knapsack_problem.md)
   - 알 | [OCR](https://algospot.com/judge/problem/read/OCR)★
   - Hidden Markov Model, HMM
     - Viterbi algorithm
@@ -899,7 +900,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | [GENIUS](https://algospot.com/judge/problem/read/GENIUS)
 
 ## Greedy
-  - 알 | [knapsack problem](doc/dynamic_knapsack_problem.md)
+  - 알 | [fractional knapsack problem](doc/dynamic_knapsack_problem.md)
   - 알 | [Kruskal's minimum spanning tree](doc/graph_kruskal.md)
   - 알 | [Prim's minimum spanning tree](doc/graph_prim.md)
   - 알 | [Dijkstra algorithm](doc/graph_dijkstra.md)
