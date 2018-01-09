@@ -20,7 +20,7 @@ int solve(const int* w, const int* v, int c, int n) {
   if (w[n] > c)
     r = solve(w, v, c, n-1);
   else
-    r = std::max(v[n-1] + solve(w, v, c-w[n-1], n-1),
+    r = std::max(v[n] + solve(w, v, c-w[n], n-1),
                  solve(w, v, c, n-1));
   return r;
 }
@@ -28,14 +28,15 @@ int solve(const int* w, const int* v, int c, int n) {
 int solve_iter(const int* w, const int* v, int c, int n) {
   int DP[n+1][c+1];
   // build DP in bottom up style
+  // i-1 item is included or not
   for (int i = 0; i <= n; ++i) {
     for (int j = 0; j <= c; ++j) {
       if (i == 0 || j == 0)
         DP[i][j] = 0;
-      else if (w[i-1] <= c)
-        DP[i][j] = std::max(v[i-1] + DP[i-1][j-w[i-1]], DP[i-1][c]);
-      else
+      else if (w[i-1] > j)
         DP[i][j] = DP[i-1][j];
+      else
+        DP[i][j] = std::max(v[i-1] + DP[i-1][j-w[i-1]], DP[i-1][j]);
     }
   }
   return DP[n][c];
@@ -47,13 +48,15 @@ int main() {
   int C   = 50;
   int N   = 3;
 
-  for (int i = 0; i < 101; ++i) {
-    for (int j = 0; j < 101; ++j) {
-      CACHE[i][j] = -1;
-    }
-  }
-  printf("%d\n", solve(W, V, C, N-1));
-  // 220
+  // for (int i = 0; i < 101; ++i) {
+  //   for (int j = 0; j < 101; ++j) {
+  //     CACHE[i][j] = -1;
+  //   }
+  // }
+  // printf("%d\n", solve(W, V, C, N-1));
+
+  printf("%d\n", solve_iter(W, V, C, N));
   
+  // 220  
   return 0;
 }
