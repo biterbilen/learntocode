@@ -7,9 +7,9 @@
 using namespace std;
 
 int unboundedKnapsack(int k, vector <int> arr) {
-  int C[k+1];
+  int C[k+1] = {0,};
   int n = arr.size();
-  for (int i = 0; i < k; ++i) {
+  for (int i = 0; i <= k; ++i) {
     for (int j = 0; j < n; ++j) {
       if (arr[j] <= i)
         C[i] = max(C[i], arr[j] + C[i-arr[j]]);
