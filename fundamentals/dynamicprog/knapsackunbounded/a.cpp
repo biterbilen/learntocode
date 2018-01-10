@@ -3,24 +3,26 @@
 #include <cstdio>
 #include <algorithm>
 
-int CACHE[101][101];
+int CACHE[101];
+int N;
 
-int solve_recur(const int* w, const int* v, int c, int n) {
+int solve_recur(const int* w, const int* v, int c) {
   // base condition
-  if (n < 0 || c == 0)
+  if (c <= 0)
     return 0;
 
   // memoization
-  int& r = CACHE[c][n];
+  int& r = CACHE[c];
   if (r != -1)
     return r;
-  
+
   // recursion
-  if (w[n] > c)
-    r = solve(w, v, c, n-1);
-  else
-    r = std::max(v[n] + solve(w, v, c-w[n], n-1),
-                 solve(w, v, c, n-1));
+  r = 0;
+  for (int i = 0; i < N; ++i) {
+    int rr = std::max(v[i] + solve_recur(w, v, c-w[i]),
+                 solve_recur(w, v, c));
+    r = std::max(r, rr);
+  }
   return r;
 }
 
@@ -44,15 +46,12 @@ int main() {
   int V[] = {10, 30, 20};
   int W[] = {5, 10, 15};
   int C   = 100;
-  int N   = 3;
+  N   = 3;
 
   // for (int i = 0; i < 101; ++i) {
-  //   for (int j = 0; j < 101; ++j) {
-  //     CACHE[i][j] = -1;
-  //   }
+  //   CACHE[i] = -1;
   // }
-  // printf("%d\n", solve(W, V, C, N-1));
-  
+  // printf("%d\n", solve_recur(W, V, C));  
   printf("%d\n", solve_iter(W, V, C, N));
   // 300
   

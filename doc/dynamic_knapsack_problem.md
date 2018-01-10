@@ -41,7 +41,7 @@ style이다.
 
 ## Implementation
 
-[c++11](../fundamentals/dynamic/knapsack01/a.cpp)
+[c++11](../fundamentals/dynamicprog/knapsack01/a.cpp)
 
 ## Time Complexity
 
@@ -80,7 +80,7 @@ O(CN)  iteration
 
 ## Implementation
 
-[c++11](../fundamentals/dynamic/knapsackunbounded/a.cpp)
+[c++11](../fundamentals/dynamicprog/knapsackunbounded/a.cpp)
 
 ## Time Complexity
 
