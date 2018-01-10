@@ -15,6 +15,7 @@ int unboundedKnapsack(int k, vector <int> arr) {
         C[i] = max(C[i], arr[j] + C[i-arr[j]]);
     }
   }
+  return C[k];
 }
 
 int main() {
