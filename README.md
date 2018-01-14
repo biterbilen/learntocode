@@ -218,7 +218,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
 
 ## Stack 
   - [알](algospot.com/FENCE/) | [FENCE](http://algospot.com/judge/problem/read/FENCE)
-  - [알](algospot.com/BRACKETS2/ | [BRACKETS2](http://algospot.com/judge/problem/read/BRACKETS2)
+  - [알](algospot.com/BRACKETS2/) | [BRACKETS2](http://algospot.com/judge/problem/read/BRACKETS2)
   - G | [Longest valid Parentheses](http://www.practice.geeksforgeeks.org/problem-page.php?pid=1247)
   - G | [Maximum of minimum for every window size](http://www.practice.geeksforgeeks.org/problem-page.php?pid=170)
 
