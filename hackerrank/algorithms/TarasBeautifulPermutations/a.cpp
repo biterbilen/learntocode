@@ -2,34 +2,40 @@
 
 // https://www.hackerrank.com/challenges/taras-beautiful-permutations/problem
 
+#include <cstring>
 #include <cstdio>
 #include <vector>
 #include <algorithm>
-#include <set>
+#include <iostream>
 
 const int MOD = 1000000007;
-int CACHE[2048][2048]; // CACHE[i][j] = i-th order, j number
+// CACHE[i][j][k] =
+//   i = count of one occurrence
+//   j = count of two occurrence
+//   k = whether decreased number is from i or j
+int64_t CACHE[2000][2000][2]; 
 
 int N;
-std::vector<int> A;
 
-// examples
-// 1 1 2
-//
-// 1 1 2 X
-// 1 2 1 
-// 1 1 2 X
-// 1 2 1 
-// 2 1 1 X
-// 2 1 1 X
-
-int solve(const std::set<int> s) {
-  if (s.size() == 2)
-    return 1;
-  int r = 1;
-  for (int i = 0; i < s.size(); ++i) {
-    r = r * (i+1) % MOD;
+int64_t solve(int lv, int one, int two, int flag) {
+  for(int i = 0; i < lv; ++i)
+    printf("-");
+  printf("%d %d %d\n", one, two, flag);
+  // base condition
+  if (one == 0 && two == 0) {
+    return flag == 0;
+  } else if (one < 0 || two < 0) {
+    return 0;
   }
+  // memoization
+  int64_t& r = CACHE[one][two][flag];
+  if (r != -1)
+    return r;
+  // recursion
+  int64_t c = (flag == 1) ? (one - 1) : one;
+  int64_t a = solve(lv+1, one - 1, two, 0) * c % MOD;
+  int64_t b = solve(lv+1, one + 1, two - 1, 1) * two % MOD;
+  r = (a + b) % MOD;
   return r;
 }
 
@@ -37,20 +43,32 @@ int main() {
   int T;
   scanf("%d", &T);
   for (int t = 0; t < T; ++t) {
+    // this block makes time out !!!
     for (int i = 0; i < 2000; ++i) {
       for (int j = 0; j < 2000; ++j) {
-        CACHE[i][j] = -1;
+        CACHE[i][j][0] = CACHE[i][j][1] = -1;
       }
     }
     scanf("%d", &N);
-    A.resize(N);
+    std::vector<int> A;
     for (int i = 0; i < N; ++i) {
-      scanf("%d", &A[i]);
+      int a;
+      scanf("%d", &a);
+      A.push_back(a);
     }
     std::sort(A.begin(), A.end());
-    // std::erase(std::unique(A.begin(), A.end()), A.end());
-    std::set<int> s(A.begin(), A.end());
-    printf("%d\n", solve(s));
+    int one = 0;
+    int two = 0;
+    for (int i = 0; i < N;) {
+      if (i == N - 1 || A[i] != A[i+1]) {
+        one++;
+        i += 1;
+      } else {
+        two++;
+        i += 2;
+      }
+    }
+    printf("%lld\n", solve(0, one, two, 0));
   }
   return 0;
 }
