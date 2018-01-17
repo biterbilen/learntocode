@@ -13,12 +13,12 @@ const int MOD = 1000000007;
 //   i = count of one occurrence
 //   j = count of two occurrence
 //   k = whether decreased number is from i or j
-int64_t CACHE[2000][2000][2]; 
+int64_t CACHE[2000][2000][2];
 
 int N;
 
 int64_t solve(int lv, int one, int two, int flag) {
-  for(int i = 0; i < lv; ++i)
+  for (int i = 0; i < lv; ++i)
     printf("-");
   printf("%d %d %d\n", one, two, flag);
   // base condition
@@ -40,15 +40,16 @@ int64_t solve(int lv, int one, int two, int flag) {
 }
 
 int main() {
+  // this block makes time out !!!
+  for (int i = 0; i < 2000; ++i) {
+    for (int j = 0; j < 2000; ++j) {
+      CACHE[i][j][0] = CACHE[i][j][1] = -1;
+    }
+  }
+
   int T;
   scanf("%d", &T);
   for (int t = 0; t < T; ++t) {
-    // this block makes time out !!!
-    for (int i = 0; i < 2000; ++i) {
-      for (int j = 0; j < 2000; ++j) {
-        CACHE[i][j][0] = CACHE[i][j][1] = -1;
-      }
-    }
     scanf("%d", &N);
     std::vector<int> A;
     for (int i = 0; i < N; ++i) {
