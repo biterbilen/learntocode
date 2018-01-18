@@ -19,28 +19,35 @@ int N;
 
 int64_t solve(int lv, int one, int two, int flag) {
   for (int i = 0; i < lv; ++i)
-    printf("-");
-  printf("%d %d %d\n", one, two, flag);
+    printf("_");
   // base condition
   if (one == 0 && two == 0) {
-    return flag == 0;
+    int a = (flag == 0);
+    printf("%d %d %d : %d\n", one, two, flag, a);
+    return a;
   } else if (one < 0 || two < 0) {
+    printf("%d %d %d : 0\n", one, two, flag);
     return 0;
   }
   // memoization
   int64_t& r = CACHE[one][two][flag];
-  if (r != -1)
+  if (r != -1) {
+    printf("%d %d %d : %d\n", one, two, flag, r);
     return r;
+  }
+  printf("%d %d %d\n", one, two, flag);
   // recursion
   int64_t c = (flag == 1) ? (one - 1) : one;
   int64_t a = solve(lv+1, one - 1, two, 0) * c % MOD;
   int64_t b = solve(lv+1, one + 1, two - 1, 1) * two % MOD;
   r = (a + b) % MOD;
+  for (int i = 0; i < lv; ++i)
+    printf("_");  
+  printf(": %d\n", r);
   return r;
 }
 
 int main() {
-  // this block makes time out !!!
   for (int i = 0; i < 2000; ++i) {
     for (int j = 0; j < 2000; ++j) {
       CACHE[i][j][0] = CACHE[i][j][1] = -1;
