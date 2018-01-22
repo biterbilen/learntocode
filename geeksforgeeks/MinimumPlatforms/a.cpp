@@ -9,21 +9,26 @@
 #include <algorithm>
 
 int N;
-std::vector<std::pair<int, int> > TIME;
 
-int solve() {
-  std::sort(TIME.begin(), TIME.end());
-  int max = 0;
+int solve(const std::vector<int>& a,
+          const std::vector<int>& b) {
+
+  int i = 0;
+  int j = 0;
+  int r = 0;
   int need = 0;
-  for (int i = 0; i < TIME.size(); ++i) {
-    if (TIME[i].second == 0)
-      ++need;
-    else
-      --need;
-    std::max(max, need);
+
+  while (i < N || j < N) {
+    if (a[i] < b[j]) {
+      need++;
+      i++;
+    } else {
+      need--;
+      j++;
+    }
+    r = std::max(r, need);
   }
-  
-  return max;
+  return r;
 }
 
 int main() {
@@ -31,17 +36,13 @@ int main() {
   scanf("%d", &T);
   for (int t = 0; t < T; ++t) {
     scanf("%d", &N);
-    for (int i = 0; i < N; ++i) {
-      int a;
-      scanf("%d", &a);
-      TIME.emplace_back(a, 0);
-    }
-    for (int i = 0; i < N; ++i) {
-      int b;
-      scanf("%d", &b);
-      TIME.emplace_back(b, 1);
-    }
-    printf("%d\n", solve());
+    std::vector<int> a(N);
+    std::vector<int> b(N);
+    for (int i = 0; i < N; ++i)
+      scanf("%d", &a[i]);
+    for (int i = 0; i < N; ++i)
+      scanf("%d", &b[i]);
+    printf("%d\n", solve(a, b));
   }  
   return 0;
 }
