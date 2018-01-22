@@ -317,7 +317,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | get two smallest in a range
   - 알 | get the maximum frequency of occurrence in the range of ordered sequences
   - 알 | [MORDOR](http://algospot.com/judge/problem/read/MORDOR)
-  - 알 | [FAMILYTREE](http://algospot.com/judge/problem/read/FAMILYTREE)
+  - [알](algospot.com/FAMILYTREE/) | [FAMILYTREE](http://algospot.com/judge/problem/read/FAMILYTREE)
   - 알 | fenwick tree (binary indexed tree)
   - 알 | [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME)★
   - 알 | union-find (merge-find)
