@@ -313,7 +313,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | priority queue with heap
     - push_heap, pop_heap
   - 알 | [RUNNINGMEDIAN](http://algospot.com/judge/problem/read/RUNNINGMEDIAN)
-  - 알 | rmq (range minimum query) with segment tree
+  - [알](fundamentals/tree/rmq/) | [rmq (range minimum query) with segment tree](doc/tree_rmq.md)
   - 알 | get two smallest in a range
   - 알 | get the maximum frequency of occurrence in the range of ordered sequences
   - 알 | [MORDOR](http://algospot.com/judge/problem/read/MORDOR)
