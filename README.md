@@ -316,10 +316,10 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [G](geeksforgeeks/LowestCommonAncestorInABinaryTree/README.md) | [LCA](https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1)
   - [알](fundamentals/tree/rmq/) | [segment tree](doc/tree_segment_tree.md)
   - [알](fundamentals/tree/rmq/) | [RMQ (range minimum query)](doc/tree_rmq.md)
-  - 알 | get two smallest in a range
-  - 알 | get the maximum frequency of occurrence in the range of ordered sequences
-  - [알](algospot.com/MORDOR/) | [MORDOR](http://algospot.com/judge/problem/read/MORDOR)
-  - [알](algospot.com/FAMILYTREE/) | [FAMILYTREE](http://algospot.com/judge/problem/read/FAMILYTREE)
+  - [알](fundamentals/tree/gettwosmallest/) | [get two smallest in a range](fundamentals/tree/gettwosmallest/README.md)
+  - [알](fundamentals/tree/getthemaxfreq/) | [get the maximum frequency of occurrence in the range of ordered sequences](fundamentals/tree/getthemaxfreq/README.md)
+  - [알](algospot.com/MORDOR/README.md) | [MORDOR](http://algospot.com/judge/problem/read/MORDOR)
+  - [알](algospot.com/FAMILYTREE/README.md) | [FAMILYTREE](http://algospot.com/judge/problem/read/FAMILYTREE)
   - 알 | fenwick tree (binary indexed tree)
   - 알 | [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME)★
   - 알 | union-find (merge-find)

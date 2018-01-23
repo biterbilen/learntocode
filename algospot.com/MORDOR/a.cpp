@@ -57,16 +57,15 @@ int main() {
   for (int t = 0; t < T; ++t) {
     scanf("%d", &N);
     scanf("%d", &Q);
-    std::vector<int> H(N, 0);
+    std::vector<int> H1(N, 0);
+    std::vector<int> H2(N, 0);
     for (int i = 0; i < N; ++i) {
-      scanf("%d", &H[i]);
+      scanf("%d", &H1[i]);
+      H2[i] = -H1[i];
     }
-
     // build RMQT
-    RMQT rmqt0(H);
-    for (auto it = H.begin(); it != H.end(); ++it)
-      *it = *it * -1;
-    RMQT rmqt1(H);
+    RMQT rmqt0(H1);
+    RMQT rmqt1(H2);
 
     // printf("after rmqt.init\n");
     for (int i = 0; i < Q; ++i) {

@@ -1,7 +1,9 @@
 # Problem
 
-숫자들을 저장한 일차원 배열에서 특정 구간의 최소 값을 [구간트리](tree_segment_tree.md)를
-이용하여 찾아보자.
+숫자들을 저장한 일차원 배열에서 특정 구간의 최소 값을
+[구간트리](tree_segment_tree.md)를 이용하여 찾아보자.
+
+[Range Minimum Query @ hackerrank](https://www.hackerrank.com/challenges/range-minimum-query/problem)
 
 # Idea
 
