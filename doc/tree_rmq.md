@@ -165,6 +165,12 @@ O(N)   : segment tree build
 O(lgN) : range minimum query 
 ```
 
+# Space Complexity
+
+```
+O(N)   : segment tree array
+```
+
 # References
 
 [세그먼트트리 @ acmicpc.net](https://www.acmicpc.net/blog/view/9)
