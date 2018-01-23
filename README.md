@@ -322,9 +322,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](algospot.com/FAMILYTREE/README.md) | [FAMILYTREE](http://algospot.com/judge/problem/read/FAMILYTREE)
   - 알 | fenwick tree (binary indexed tree)
   - 알 | [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME)★
-  - 알 | union-find (merge-find)
-    - union rank optimization
-    - pass compression optimization
+  - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjointset_unionfind.md)
   - 알 | check the connectivity of a graph
   - 알 | track the largest set
   - 알 | [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
