@@ -81,30 +81,33 @@ class RFQT {
     return rangeitems[rmidx] = merge(litem, ritem);
   }
 
-  // RangeItem query(int vleft, int vright) {
-  //   return query(vleft, vright, 1, 0, n - 1);
-  // }
-  // // qvleft: query left index of vector
-  // // qvright: query right index of vector
-  // // rmidx: range min index
-  // RangeItem query(int qvleft, int qvright, int rmidx,
-  //                 int vleft, int vright) {
-  //   // base condition
-  //   if (qvright < vleft || vright < qvleft)
-  //     return MAX_INT;
-  //   if (qvleft <= vleft && vright <= qvright)
-  //     return m_rangemin[rmidx];
+  RangeItem query(int vleft, int vright) {
+    return query(vleft, vright, 1, 0, n - 1);
+  }
+  // qvleft: query left index of vector
+  // qvright: query right index of vector
+  // rmidx: range min index
+  RangeItem query(int qvleft, int qvright, int rmidx,
+                  int vleft, int vright) {
+    // base condition
+    if (qvright < vleft || vright < qvleft)
+      return RangeItem();
+    if (qvleft <= vleft && vright <= qvright)
+      return rangeitems[rmidx];
 
-  //   // recursion
-  //   int vmid = (vleft + vright) / 2;
-  //   return std::min(query(qvleft, qvright, rmidx * 2, vleft, vmid),
-  //                   query(qvleft, qvright, rmidx * 2 + 1, vmid + 1, vright));
-  // }
+    // recursion
+    int vmid = (vleft + vright) / 2;
+    RangeItem litem = query(qvleft, qvright, rmidx * 2, vleft, vmid);
+    RangeItem ritem = query(qvleft, qvright, rmidx * 2 + 1, vmid + 1, vright);
+    if (litem.size != 0 && ritem.size != 0)
+      return merge(litem, ritem);
+    return (litem.size != 0) ? litem : ritem;
+  }
 };
 
 int main() {
   std::vector<int> v = {1, 2, 2, 2, 2, 3, 3, 3};
   RFQT rfqt(v);
-  // printf("%d\n", rfqt.query(0, 7));
+  printf("%d\n", rfqt.query(0, 7).mostfreq);
   return 0;
 }
