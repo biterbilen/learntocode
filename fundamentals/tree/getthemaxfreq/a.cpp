@@ -14,14 +14,14 @@ struct RangeItem {
   int rightnum;   // right most number
   int rightfreq;  // frequency of the right most number
   RangeItem() {
-    size      = 0;
-    mostfreq  = 0;
-    leftnum   = 0;
-    leftfreq  = 0;
-    rightnum  = 0;
-    rightfreq = 0;
+    Set(0, 0, 0, 0, 0, 0);
   }
   explicit RangeItem(int _size, int _mostfreq, int _leftnum,
+                     int _leftfreq, int _rightnum, int _rightfreq) {
+    Set(_size, _mostfreq, _leftnum,
+        _leftfreq, _rightnum, _rightfreq);
+  }
+  void Set(int _size, int _mostfreq, int _leftnum,
                      int _leftfreq, int _rightnum, int _rightfreq) {
     size      = _size;
     mostfreq  = _mostfreq;
@@ -29,6 +29,10 @@ struct RangeItem {
     leftfreq  = _leftfreq;
     rightnum  = _rightnum;
     rightfreq = _rightfreq;
+  }
+  void Dump() {
+    printf("size: %d, modstfreq: %d, leftnum: %d, leftfreq: %d, rightnum: %d, rightfreq: %d\n",
+           size, mostfreq, leftnum, leftfreq, rightnum, rightfreq);
   }
 };
 
@@ -39,17 +43,20 @@ RangeItem merge(const RangeItem& a, const RangeItem& b) {
   r.leftnum = a.leftnum;
   r.leftfreq = a.leftfreq;
   // ex. [1, 1, 1, 1] [1, 2, 2, 2]
+  // ex. [2] [2]
   if (a.size == a.leftfreq && a.leftnum == b.leftnum)
     r.leftfreq += b.leftfreq;
   // handle right numbers
   r.rightnum = b.rightnum;
   r.rightfreq = b.rightfreq;
   // ex. [1, 1, 1, 2] [2, 2, 2, 2]
+  // ex. [2] [2]
   if (b.size == b.rightfreq && a.rightnum == b.rightnum)
     r.rightfreq += a.rightfreq;
   // handle mostfreq
   r.mostfreq = std::max(a.mostfreq, b.mostfreq);
   // ex. [1, 2, 2, 2] [2, 3, 3, 3]
+  // ex. [2] [2]
   if (a.rightnum == b.leftnum)
     r.mostfreq = std::max(r.mostfreq, a.rightfreq + b.leftfreq);
   return r;
@@ -69,8 +76,8 @@ class RFQT {
                  int rmidx) {
     // base condition
     if (vleft == vright) {
-      int num = rangeitems[vleft].leftnum;
-      return RangeItem(1, 1, num, 1, num, 1);
+      rangeitems[rmidx].Set(1, 1, v[vleft], 1, v[vleft], 1);
+      return rangeitems[rmidx];
     }
 
     // recursion
@@ -108,6 +115,8 @@ class RFQT {
 int main() {
   std::vector<int> v = {1, 2, 2, 2, 2, 3, 3, 3};
   RFQT rfqt(v);
-  printf("%d\n", rfqt.query(0, 7).mostfreq);
+  RangeItem ri = rfqt.query(0, 7);
+  // ri.Dump();
+  printf("%d\n", ri.mostfreq);
   return 0;
 }

@@ -4,7 +4,18 @@
 
 # Idea
 
+한개의 입력 데이터에 대해 다수의 질의가 존재하는 모델이다.  segment
+tree를 하나 제작하고 질의 한다면 `O(lnN)`으로 질의를 수행할 수 있다.
 
+[RMQ](/doc/tree_rmq.md)를 참고하여 segment tree를 제작하자.
+이때 가장 작은 두수를 `RangeItem`으로 정의하고 `rangeitems`는
+`RangeItem`의 vector로 정의하자.
+
+leaf node의 경우 `no1`을 leaf node의 숫자로 채우고 `no2`는 아주 큰
+수를 채운다. `no2`는 최소값 경쟁에서 쉽게 제외 시킬 수 있다.
+
+[RMQ](/doc/tree_rmq.md)와 다르게 `min`대신 `merge`를 사용한다.
+`merge`재귀 적으로 두 노드를 합하여 `no1`, `no2`를 다시 계산한다.
 
 # Implementation
 
