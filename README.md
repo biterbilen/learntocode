@@ -293,10 +293,10 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [트리의 지름](https://www.acmicpc.net/problem/1967)
   - [알](algospot.com/TRAVERSAL/) | [TRAVERSAL](http://algospot.com/judge/problem/read/TRAVERSAL)
   - [알](algospot.com/FORTRESS/) | [FORTRESS](http://algospot.com/judge/problem/read/FORTRESS)
-  - 알 | binary search tree
+  - [알](fundamentals/tree/binarysearchtree/) | [binary search tree](doc/tree_binary_search_tree.md)
   - 알 | red black tree (balanced binary search tree)
   - 알 | AVL tree (balanced binary search tree)
-  - 알 | treap
+  - [알](fundamentals/tree/treap/) | [treap](doc/tree_treap.md)
     - insert, split, erase, merge
   - 알 | get kth element
   - 알 | get count of elements which are lesser than X
