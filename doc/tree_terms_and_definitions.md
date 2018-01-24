@@ -40,3 +40,22 @@ root는 depth가 0이다.
 특정 노드가 최 하위 leaf로부터 얼만큼 떨어져 있는가를
 나타내는 수치이다.
 
+* balanced tree
+
+모든 leaf node들의 height차이가 1이하이다.
+balanced tree의 경우 최상의 검색 속도가 보장된다.
+
+![](../_img/BinaryTree.png)
+
+* full binary tree
+
+모든 node는 0개 혹은 2개의 자식들을 가지고 있다.
+
+* complete binary tree
+
+최 하위 leaf node를 제외하면 full binary tree이다.  최 하위 leaf
+node는 왼쪽에서 오른쪽으로 빈틈없이 채워져 있다.
+
+* perfect binary tree
+
+full binary tree이면서 complete binary tree이다.
