@@ -67,6 +67,7 @@ O(N)
 O(lgN) : call stack
 ```
 
+
 # Strategy with RMQ
 
 ## Idea

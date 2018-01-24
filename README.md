@@ -293,14 +293,11 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [LCA 2]()
   - 백 | [도로 네트워크]()
   - 백 | [LCA 2]()
-  - 알 | terms and definitions
-    - node, edge
-    - parent, child, sibling
-    - ancestor, descendant
-    - root, leaf
-    - depth, height
-  - 알 | [TRAVERSAL](http://algospot.com/judge/problem/read/TRAVERSAL)
-  - 알 | [FORTRESS](http://algospot.com/judge/problem/read/FORTRESS)
+  - 알 | [terms and definitions](doc/tree_terms_and_definitions.md)
+    - node, edge, parent, child, sibling
+    - ancestor, descendant, root, leaf, depth, height
+  - [알](algospot.com/TRAVERSAL/) | [TRAVERSAL](http://algospot.com/judge/problem/read/TRAVERSAL)
+  - [알](algospot.com/FORTRESS/) | [FORTRESS](http://algospot.com/judge/problem/read/FORTRESS)
   - 알 | binary search tree
   - 알 | red black tree (balanced binary search tree)
   - 알 | AVL tree (balanced binary search tree)
