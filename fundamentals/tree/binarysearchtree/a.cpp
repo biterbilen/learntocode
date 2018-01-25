@@ -23,6 +23,10 @@ struct Node {
     left = _left;
     right = _right;
   }
+
+  void Dump() {
+
+  }
 };
 
 Node* Search(Node* root, int val) {
@@ -47,9 +51,43 @@ Node* Insert(Node* root, int val) {
   return root;
 }
 
+Node* GetMinValNode(Node* node) {
+  Node* r = node;
+  while (r->left != NULL)
+    r = r->left;
+  return r;
+}
 
+Node* Delete(Node* root, int val) {
+  // base condition
+  if (root == NULL)
+    return root;
+
+  // recursion
+  if (val < root->val)
+    root->left = Delete(root->left, val);
+  else if (val > root->val)
+    root->right = Delete(root->right, val);
+  else {
+    if (root->left == NULL) {
+      Node* node = root->right;
+      delete root;
+      return node;
+    } else if (root->right == NULL) {
+      Node* node = root->left;
+      delete root;
+      return node;
+    }
+    // both children of root are not NULL
+    Node* node = GetMinValNode(root->right);
+    root->val = node->val;
+    root->right = Delete(root->right, node->val);
+  }
+  return root;
+}
 
 int main() {
+
   Node* root = new Node();
 
   root = Insert(root, 50);
