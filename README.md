@@ -12,7 +12,7 @@
 - [Algorithm Proof](#algorithm-proof)
 - [Algorithm Analysis](#algorithm-analysis)
 - [Master Theorem](#master-theorem)
-- [[P VS NP](https://github.com/iamslash/TIL/tree/master/pvsnp/README.md)](#p-vs-nphttpsgithubcomiamslashtiltreemasterpvsnpreadmemd)
+- [P VS NP](#p-vs-np)
 - [Problems](#problems)
     - [Matrix](#matrix)
     - [Bitmask](#bitmask)
@@ -166,8 +166,9 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
 
 ![](_img/master_theorem.png)
 
-# [P VS NP](https://github.com/iamslash/TIL/tree/master/pvsnp/README.md)
+# P VS NP
 
+- [overview](https://github.com/iamslash/TIL/tree/master/pvsnp/README.md)
 - P
   - P means the existence of an algorithm for the task that runs in polynomial time.
 - NP
