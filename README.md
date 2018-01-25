@@ -294,8 +294,6 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
 ## Tree
   - [overview](doc/tree.md)
   - 알 | [terms and definitions](doc/tree_terms_and_definitions.md)
-    - node, edge, parent, child, sibling
-    - ancestor, descendant, root, leaf, depth, height
   - 백 | [트리 순회](https://www.acmicpc.net/problem/1991)
   - 백 | [트리의 부모 찾기](https://www.acmicpc.net/problem/11725)
   - 백 | [트리의 지름](https://www.acmicpc.net/problem/1167)
