@@ -1,51 +1,56 @@
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Abstract](#abstract)
+- [Materials](#materials)
+- [Online Judges](#online-judges)
+- [References](#references)
+    - [video](#video)
+    - [Book](#book)
+- [Online Interviews](#online-interviews)
+- [Datatype Range](#datatype-range)
+- [Algorithm Proof](#algorithm-proof)
+- [Algorithm Analysis](#algorithm-analysis)
+- [Master Theorem](#master-theorem)
+- [[P VS NP](https://github.com/iamslash/TIL/tree/master/pvsnp/README.md)](#p-vs-nphttpsgithubcomiamslashtiltreemasterpvsnpreadmemd)
+- [Problems](#problems)
+    - [Matrix](#matrix)
+    - [Bitmask](#bitmask)
+    - [Partial Sum](#partial-sum)
+    - [Partial Min](#partial-min)
+    - [Disjoint Set](#disjoint-set)
+    - [List](#list)
+    - [Stack](#stack)
+    - [Queue](#queue)
+    - [Deque](#deque)
+    - [Hash](#hash)
+    - [String](#string)
+    - [Tree](#tree)
+    - [Graph](#graph)
+    - [Network Flow](#network-flow)
+    - [Min Cost Max Flow](#min-cost-max-flow)
+    - [Sort](#sort)
+    - [Search](#search)
+    - [Numerical Analysis](#numerical-analysis)
+    - [Number Theory](#number-theory)
+    - [Computational Geometry](#computational-geometry)
+    - [Recursion](#recursion)
+    - [Brute Force](#brute-force)
+    - [Divide And Conquor](#divide-and-conquor)
+    - [Binary Search](#binary-search)
+    - [Exhaustive Search](#exhaustive-search)
+    - [Dynamic Programming](#dynamic-programming)
+    - [Dynamic Programming Technique](#dynamic-programming-technique)
+    - [Greedy](#greedy)
+    - [Combinatorial Search](#combinatorial-search)
+    - [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
+    - [Algorithm Game](#algorithm-game)
+
+<!-- markdown-toc end -->
+
 # Abstract
 
 - 프로그래밍 훈련을 위해 유용한 문제들을 체계적으로 분류해서 정리해 본다.
-
-# Contents
-
-* [Materials](#materials)
-* [Online Judges](#online-judges)
-* [References](#references)
-* [Online Interviews](#online-interviews)
-* [Datatype Range](#datatype-range)
-* [Algorithm Proof](#algorithm-proof)
-* [Algorithm Analysis](#algorithm-analysis)
-* [Master Theorem](#master-theorem)
-* [P vs NP](#p-vs-np)
-* [Problems](#problems)
-  * [Matrix](#matrix)
-  * [Bitmask](#bitmask)
-  * [Partial Sum](#partial-sum)
-  * [Partial Min](#partial-min)
-  * [Disjoint Set](#disjoint-set)
-  * [List](#list)
-  * [Stack](#stack)
-  * [Queue](#queue)
-  * [Deque](#deque)
-  * [Hash](#hash)
-  * [String](#string)
-  * [Tree](#tree)
-  * [Segment Tree](#segment-tree)
-  * [Graph](#graph)
-  * [Network Flow](#network-flow)
-  * [Min Cost Max Flow](#min-cost-max-flow)
-  * [Sort](#sort)
-  * [Search](#search)
-  * [Numerical Analysis](#numerical-analysis)
-  * [Number Theory](#number-theory)
-  * [Computational Geometry](#computational-geometry)
-  * [Recursion](#recursion)
-  * [Brute Force](#brute-force)
-  * [Divide And Conquor](#divide-and-conquor)
-  * [Binary Search](#binary-search)
-  * [Exhaustive Search](#exhaustive-search)
-  * [Dynamic Programming](#dynamic-programming)
-  * [Dynamic Programming Technique](#dynamic-programming-technique)
-  * [Greedy](#greedy)
-  * [Combinatorial Search](#combinatorial-search)
-  * [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
-  * [Algorithm Game](#algorithm-game)
 
 # Materials
 
@@ -133,8 +138,9 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
 2^52 = 4,503,599,627,370,496
 ```
 
-# [Algorithm Proof](doc/proof.md)
+# Algorithm Proof
 
+- [Algorithm Proof](doc/proof.md)
 - Mathmatical Induction
 - Proof by Contradiction
 - Direct Proof
@@ -187,7 +193,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](algospot.com/GRADUATION/) | [GRADUATION](https://algospot.com/judge/problem/read/GRADUATION)
   - 알 | [Bit Twiddling Hacks](http://graphics.stanford.edu/~seander/bithacks.html)
 
-## [Partial Sum](doc/partial_sum.md)
+## Partial Sum
+  - [overview](doc/partial_sum.md)
   - 백 | [구간 합 구하기 4](https://www.acmicpc.net/problem/11659)
   - 백 | [나머지 합](https://www.acmicpc.net/problem/10986)
   - 백 | [구간 합 구하기 5](https://www.acmicpc.net/problem/11660)
@@ -202,7 +209,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](fundamentals/partialsum/rangewhichisclosetozero/) | [range which is close to zero](doc/partial_sum_range_which_is_close_to_zero.md)
   - [알](algospot.com/CHRISTMAS/) | [CHRISTMAS](https://algospot.com/judge/problem/read/CHRISTMAS)
 
-## [Partial Min](doc/partial_min.md)
+## Partial Min
+  - [overview](doc/partial_min.md)
   - 백 | [최소값과 최대값](https://www.acmicpc.net/problem/2357)
   - 백 | [최소값 찾기](https://www.acmicpc.net/problem/11003)
 
@@ -283,7 +291,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | Aho–Corasick algorithm
     - children, fail, terminal, output, insert, compute_fail_func, search
 
-## [Tree](doc/tree.md)
+## Tree
+  - [overview](doc/tree.md)
   - 알 | [terms and definitions](doc/tree_terms_and_definitions.md)
     - node, edge, parent, child, sibling
     - ancestor, descendant, root, leaf, depth, height
@@ -355,7 +364,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
     - children, fail, terminal, insert, fail, output, compute_fail, search
   - 알 | [NH](http://algospot.com/judge/problem/read/NH)
 
-## [Graph](doc/graph.md)
+## Graph
+  - [overview](doc/graph.md)
   - 백 | [DFS와 BFS]()
   - 백 | [연결 요소의 개수]()
   - 백 | [이분 그래프]()
@@ -520,7 +530,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
     - Kőnig's theorem
   - 알 | Hopcroft-Karp algorithm
   
-## [Network Flow](doc/network_flow.md)
+## Network Flow
+  - [overview](doc/network_flow.md)
   - 백 | [최대 유량]()
   - 백 | [열혈강호]()
   - 백 | [열혈강호 2]()
@@ -620,7 +631,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | [FOSSIL](https://algospot.com/judge/problem/read/FOSSIL)
   - 알 | simpson's method
 
-## [Number Theory](doc/number_theory.md)
+## Number Theory
+  - [overview](doc/number_theory.md)
   - 백 | [나머지]()
   - 백 | [최대공약수와 최소공배수]()
   - 백 | [최소공배수]()
@@ -744,7 +756,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [놀이 공원](https://www.acmicpc.net/problem/1561)
   - 백 | [사다리](https://www.acmicpc.net/problem/2022)
   
-## [Exhaustive Search](doc/exhaustive_search.md)
+## Exhaustive Search
+  - [overview](doc/exhaustive_search.md)
   - 백 | [집합]()
   - 백 | [다음 순열]()
   - 백 | [이전 순열]()
@@ -776,7 +789,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [피자판매]()
   - 백 | [두 배열의 합]()
 
-## [Dynamic Programming](doc/dynamic_programming.md)
+## Dynamic Programming
+  - [overview](doc/dynamic_programming.md)
   - C | [boolean evaluation](crackingthecodinginterview/8.14_BooleanEvaluation/a.cpp)
   - 백 | [1로 만들기]()
   - 백 | [2×n 타일링]()
@@ -920,7 +934,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | [huffman code](doc/greedy_huffman_code.md)
   - [알](algospot.com/MINASTIRITH/) | [MINASTIRITH](https://algospot.com/judge/problem/read/MINASTIRITH)★
 
-## [Combinatorial Search](doc/combinatorial_search.md)
+## Combinatorial Search
+  - [overview](doc/combinatorial_search.md)
   - 알 | [back tracking](doc/combinatorial_search_backtracking.md)
   - 알 | [heuristic](doc/combinatorial_search_heuristic.md)
   - 알 | [metaheuristic](doc/combinatorial_search_metaheuristic.md)
@@ -947,13 +962,15 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
       있다. Concorde는 1000개의 도시를 갖는 입력을 10분만에 풀어낸다.
   - [알](algospot.com/NQUEEN/) | [NQUEEN](https://algospot.com/judge/problem/read/NQUEEN)
 
-## [Optimization Problems To Decision Problems](doc/optimization_to_decision.md)
+## Optimization Problems To Decision Problems
+  - [overview](doc/optimization_to_decision.md)
   - [알](algospot.com/DARKPA/) | [DARPA](https://algospot.com/judge/problem/read/DARPA)
   - [알](algospot.com/ARCTIC/) | [ARCTIC](https://algospot.com/judge/problem/read/ARCTIC)
   - [알](algospot.com/CANADATRIP/) | [CANADATRIP](https://algospot.com/judge/problem/read/CANADATRIP)
   - [알](algospot.com/WITHDRAWAL/) | [WITHDRAWAL](https://algospot.com/judge/problem/read/WITHDRAWAL)
 
-## [Algorithm Game](doc/algorithm_game.md)
+## Algorithm Game
+  - [overview](doc/algorithm_game.md)
   - 백 | [돌 게임](https://www.acmicpc.net/problem/9655)
   - 백 | [돌 게임 2](https://www.acmicpc.net/problem/9656)
   - 백 | [돌 게임 3](https://www.acmicpc.net/problem/9657)
