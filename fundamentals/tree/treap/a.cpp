@@ -33,76 +33,76 @@ struct Node {
 
 typedef std::pair<Node*, Node*> NodePair;
 
-NodePair split(Node* root, KeyType key) {
+NodePair Split(Node* root, KeyType key) {
   // base condition
   if (root == NULL)
     return NodePair(NULL, NULL);
 
   // recursion
   if (root->key < key) {
-    NodePair rs = split(root->right, key);
+    NodePair rs = Split(root->right, key);
     root->set_right(rs.first);
     return NodePair(root, rs.second);
   }
 
-  NodePair ls = split(root->left, key);
+  NodePair ls = Split(root->left, key);
   root->set_left(ls.second);
   return NodePair(ls.first, root);
 }
 
-Node* insert(Node* root, Node* node) {
+Node* Insert(Node* root, Node* node) {
   // base condition
   if (root == NULL)
     return node;
 
   // recursion
   if (root->priority < node->priority) {
-    NodePair splitted = split(root, node->key);
+    NodePair splitted = Split(root, node->key);
     node->set_left(splitted.first);
     node->set_right(splitted.second);
     return node;
   } else if (node->key < root->key) {
-    root->set_left(insert(root->left, node));
+    root->set_left(Insert(root->left, node));
   } else {
-    root->set_right(insert(root->right, node));
+    root->set_right(Insert(root->right, node));
   }
   return root;
 }
 
-Node* merge(Node* a, Node* b) {
+Node* Merge(Node* a, Node* b) {
   if (a == NULL)
     return b;
   if (b == NULL)
     return a;
   if (a->priority < b->priority) {
-    b->set_left(merge(a, b->left));
+    b->set_left(Merge(a, b->left));
     return b;
   }
-  a->set_right(merge(a->right, b));
+  a->set_right(Merge(a->right, b));
   return a;
 }
 
-Node* erase(Node* root, KeyType key) {
+Node* Erase(Node* root, KeyType key) {
   if (root == NULL)
     return root;
 
   if (root->key == key) {
-    Node* r = merge(root->left, root->right);
+    Node* r = Merge(root->left, root->right);
     delete root;
     return r;
   }
 
   if (key < root->key) {
-    root->set_left(erase(root->left, key));
+    root->set_left(Erase(root->left, key));
   } else {
-    root->set_right(erase(root->right, key));
+    root->set_right(Erase(root->right, key));
   }
   return root;
 }
 
 int main() {
   Node * root = new Node(1);
-  root = insert(root, new Node(2));
+  root = Insert(root, new Node(2));
 
   return 0;
 }
