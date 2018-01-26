@@ -41,6 +41,17 @@ treap은 binary search tree의 특성과 heap의 특성을 가지고 있다. tre
 
 treap의 임의의 노드는 priority, key를 갖는다.
 
+# Algorithm Search
+
+## Idea
+
+binary search tree의 검색과 같다. 특정 key가 검색될때까지 재귀적으로
+탐색한다.
+
+## Time Complexity
+
+`O(lgN)`
+
 # Algorithm Split
 
 ## Idea
@@ -59,7 +70,10 @@ return : key보다 작은 값들을 갖는 노드들, key보다 큰 값들을 �
 다음과 같이 여러가지 경우를 고려해서 재귀적으로 해결한다.
 
 * `root`가 `NULL`이면 `NULL,NULL`을 리턴한다.
-* 
+* `root->key`가 `key`보다 작으면 `Split(root->right, key)` 결과를
+  `first,second`라고 하자. `root->right`을 `first`로 설정하고 `root,second`를 리턴한다.
+* `root->key`가 `key`보다 크면 `Split(root->left, key)` 결과를
+  `first,second`라고 하자. `root->left`을 `second`로 설정하고 `first, root`를 리턴한다.
 
 Split은 Insert에서 이용한다.
 
