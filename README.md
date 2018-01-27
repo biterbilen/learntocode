@@ -7,6 +7,7 @@
 - [References](#references)
     - [video](#video)
     - [Book](#book)
+    - [Visualizations](#visualizations)
 - [Online Interviews](#online-interviews)
 - [Datatype Range](#datatype-range)
 - [Algorithm Proof](#algorithm-proof)
@@ -56,7 +57,6 @@
 
 # Materials
 
-- [Data Structure Visualization](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
 - 백 | [백준온라인강좌](https://code.plus/courses/1)
 - I | [interactive coding challenges](https://github.com/donnemartin/interactive-coding-challenges)
@@ -110,11 +110,17 @@
   - [solution](http://sites.math.rutgers.edu/~ajl213/CLRS/CLRS.html)
 - [The Art of Computer Programming (TAOCP) by Donald Knuth](http://www-cs-faculty.stanford.edu/~knuth/taocp.html)
 
+## Visualizations
+
+- [Data Structure Visualization](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+- [visualgo](https://visualgo.net/en)
+
 # Online Interviews
 
 - [codeshare](https://codeshare.io/)
 - [coding.sh](http://coding.sh/)
 - [pramp](https://www.pramp.com/)
+
 
 # Datatype Range
 
