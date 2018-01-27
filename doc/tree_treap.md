@@ -58,7 +58,8 @@ binary search tree의 검색과 같다. 특정 key가 검색될때까지 재귀�
 
 트리를 특정 key을 기준으로 쪼갠다. 첫번째 서브 트리는 key보다 작은
 값을 갖는 노드들의 모임이다.  두번째 서브 트리는 key보다 큰 값을 갖는
-노드들의 모임이다. 부분 문제를 다음과 같이 정의한다.
+노드들의 모임이다. 재귀적으로 해결하기 위해 다음과 같이 부분 문제를
+정의한다.
 
 ```
 <Node*, Node*> Split(Node* root, int key)
@@ -86,6 +87,15 @@ key: 5
   
 Split(②, 5) : ②, NULL
 _Split(NULL, 5) : NULL, NULL
+```
+
+```
+key: 1
+
+  ②  =>    ②
+  
+Split(②, 1) : NULL, ②
+_Split(NULL, 1) : NULL, NULL
 ```
 
 ```
@@ -122,7 +132,7 @@ Split은 Insert에서 이용한다.
 
 ## Idea
 
-재귀적으로 삽입하기 위해 부분 문제를 다음과 같이 정의한다.
+재귀적으로 해결하기 위해 다음과 같이 부분 문제를 정의한다.
 
 ```
 Node* Insert(Node* root, Node* node)
