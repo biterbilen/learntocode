@@ -56,6 +56,7 @@
 
 # Materials
 
+- [Data Structure Visualization](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
 - 백 | [백준온라인강좌](https://code.plus/courses/1)
 - I | [interactive coding challenges](https://github.com/donnemartin/interactive-coding-challenges)
