@@ -314,8 +314,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | red black tree (balanced binary search tree)
   - 알 | AVL tree (balanced binary search tree)
   - [알](fundamentals/tree/treap/) | [treap](doc/tree_treap.md)
-  - 알 | get kth element
-  - 알 | get count of elements which are lesser than X
+  - [알](fundamentals/tree/getkthelement/) | get kth element
+  - [알](fundamentals/tree/getcountlessthan/) | get count of elements which are lesser than X
   - 알 | [NERD2](http://algospot.com/judge/problem/read/NERD2)
   - 알 | [INSERTION](http://algospot.com/judge/problem/read/INSERTION)
   - 알 | priority queue with heap

@@ -128,8 +128,7 @@ int main() {
     root = insert(root, new Node(i));
   }
 
-  Node * node = kth(root, 3);
-  printf("%d\n", node->key);
+  printf("%d\n", count_less_than(root, 7));
 
   return 0;
 }
