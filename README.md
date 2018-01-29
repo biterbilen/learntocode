@@ -603,7 +603,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [K번째 수]()
   - 백 | [버블 소트]()
   - Selection Sort
-  - Isnertion sort
+  - [Insertion sort](fundamentals/sort/insertion/README.md)
   - Bubble Sort
   - Shell Sort
   - Quicksort
