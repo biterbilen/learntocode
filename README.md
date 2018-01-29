@@ -316,8 +316,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](fundamentals/tree/treap/) | [treap](doc/tree_treap.md)
   - [알](fundamentals/tree/getkthelement/) | [get kth element](fundamentals/tree/getkthelement/README.md)
   - [알](fundamentals/tree/getcountlessthan/) | [get count of elements which are lesser than X](fundamentals/tree/getcountlessthan/README.md)
-  - 알 | [NERD2](http://algospot.com/judge/problem/read/NERD2)
-  - 알 | [INSERTION](http://algospot.com/judge/problem/read/INSERTION)
+  - [알](algospot.com/NERD2/) | [NERD2](http://algospot.com/judge/problem/read/NERD2)
+  - [알](algospot.com/INSERTION/) | [INSERTION](http://algospot.com/judge/problem/read/INSERTION)
   - 알 | priority queue with heap
     - push_heap, pop_heap
   - 알 | [RUNNINGMEDIAN](http://algospot.com/judge/problem/read/RUNNINGMEDIAN)
