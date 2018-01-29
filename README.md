@@ -318,8 +318,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](fundamentals/tree/getcountlessthan/) | [get count of elements which are lesser than X](fundamentals/tree/getcountlessthan/README.md)
   - [알](algospot.com/NERD2/) | [NERD2](http://algospot.com/judge/problem/read/NERD2)
   - [알](algospot.com/INSERTION/) | [INSERTION](http://algospot.com/judge/problem/read/INSERTION)
-  - 알 | priority queue with heap
-    - push_heap, pop_heap
+  - [알](fundamentals/tree/heap/) | [priority queue with heap](fundamentals/tree/heap/README.md)
   - 알 | [RUNNINGMEDIAN](http://algospot.com/judge/problem/read/RUNNINGMEDIAN)
   - [G](geeksforgeeks/LowestCommonAncestorInABinaryTree/README.md) | [LCA](https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1)
   - 백 | [LCA](https://www.acmicpc.net/problem/11437)
