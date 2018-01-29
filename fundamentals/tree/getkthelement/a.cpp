@@ -105,10 +105,12 @@ Node * kth(Node* root, int k) {
   if (root->left != NULL)
     leftsize = root->left->size;
 
-  if (k <= leftsize)
-    return kth(root->left, k);
+  // base condition
   if (k == leftsize + 1)
     return root;
+  // recursion
+  else if (k <= leftsize)
+    return kth(root->left, k);
   return kth(root->right, k - leftsize - 1);
 }
 
