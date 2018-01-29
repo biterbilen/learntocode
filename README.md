@@ -297,7 +297,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | [Kasai, T. et al., "Linear-Time Longest-Common-Prefix Computation in Suffix Arrays and Its Applications"](http://alumni.cs.ucr.edu/~rakthant/cs234/01_KLAAP_Linear%20time%20LCP.PDF)
     - O(|N| + lg|H|)
   - 알 | [Rabin-Karp algorithm](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm)
-  - 알 | suffix
+  - 알 | suffix tree
   - 알 | Aho–Corasick algorithm
     - children, fail, terminal, output, insert, compute_fail_func, search
 
