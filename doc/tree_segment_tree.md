@@ -2,12 +2,12 @@
 
 구간트리는 일정한 범위에 대한 연산을 빠르게 하기 위한 자료구조이다.
 예를 들어서 일정한 범위에 대해 최소값 혹은 최대값을 구하거나 일정한
-범위에 대해 가장 많은 빈도로 등장하는 값을 구하는 경우가 있다.
+범위에 대해 가장 많은 빈도로 등장하는 값을 구하는 경우에 사용한다.
 
-# Idea
+# Data Structure Segment Tree
 
 N개의 입력 데이터가 있다고 하자. 이것을 구간 트리로 만들어 두면
-일정한 범위에 대한 연산을 빠른 시간(`O(lgN)`)에 수행할 수 있다.
+일정한 범위에 대한 연산을 `O(lgN)` 의 시간으로 수행할 수 있다.
 구간트리는 complete binary tree이다. 
 
 complete binary tree는 마지막 level를 제외한 모든 level이
@@ -16,7 +16,7 @@ complete binary tree는 마지막 level를 제외한 모든 level이
 ![](../_img/BinaryTree.png)
 
 complete binary tree는 포인터를 이용하는 것보다 일차원 배열로 표현하는
-것이 메모리를 더욱 절약 할 수 있다. 
+것이 메모리를 더욱 절약 할 수 있다. [heap](tree_heap.md) 의 구현과 비슷하다.
 
 ![](../_img/segmenttree.png)
 
@@ -56,6 +56,65 @@ int init(const std::vector<int>& v, int vleft, int vright, int rmidx);
 int query(int vleft, int vright);
 int query(int qvleft, int qvright, int rmidx, int vleft, int vright);
 int update(int vidx, int newvalue, int rmidx, int vleft, int vright);
+```
+
+# Algorithm Init
+
+## Idea
+
+![](../_img/segmenttree.png)
+
+init은 입력데이터를 이용하여 구간트리 배열을 재귀적으로
+채운다. 채워지는 순서를 위그림의 파란색 숫자로 나타내면 
+`(8,9,4,10,11,5,2,12,13,6,14,15,7,3,1)`과 같다. 
+
+rmidx는 구간트리 배열의 인덱스이고 vleft, vright는 rmidx의 값에
+대응하는 입력데이터의 구간을 의미한다.  구간트리의 모든 노드의 개수는
+`4N`이기 때문에 init의 시간복잡도는 `O(N)`이다.
+
+## Time Complexity
+
+```
+O(N)
+```
+
+# Algorithm Query
+
+## Idea
+
+query는 입력데이터의 특정한 구간의 최소 값을 재귀적으로 얻어온다.
+qvleft, qvright는 입력데이터의 특정한 구간이고 rmidx는 구간트리
+배열의 인덱스이다. vleft, vright는 rmidx의 값에 대응하는
+입력데이터의 구간을 의미한다.
+
+[qvleft, qvright] 를 질의 구간이라고 하고 [vleft, vright] 담당
+구간이라고 하자.  질의 구간과 담당 구간의 관계는 총 3가지 경우가
+가능하다.  첫번째는 질의 구간과 담당 구간이 전혀 겹치지 않는 경우이고
+두번째는 질의 구간이 담당 구간을 포함하는 경우이고 세번째는 질의
+구간이 담당 구간과 일부 겹치는 경우이다.
+
+첫번째의 경우는 질의 구간과 담당 구간이 전혀 상관없기 때문에 상위
+함수의 min에서 걸러지기 위해 아주 큰값을 리턴한다.  두번째의 경우는
+담당 구간의 최소값만 리턴해도 상위 함수의 min에서 처리 가능하다.
+세번째의 경우는 다시 재귀적으로 해결한다.
+
+## Time Complexity
+
+```
+O(lgN)
+```
+
+# Algorithm Update
+
+## Idea
+
+update는 입력데이터의 특정한 값을 재귀적으로 변경한다. 이때 구간트리
+배열의 관련된 값들도 같이 변경되어야 한다.
+
+## Time Complexity
+
+```
+O(lgN)
 ```
 
 # Implementation
