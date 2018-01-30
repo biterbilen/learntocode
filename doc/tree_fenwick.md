@@ -90,6 +90,10 @@ pos = pos + (pos & -pos)
 O(lgN)
 ```
 
+# Implementation
+
+* [c++11](/fundamentals/tree/fenwick/a.cpp)
+
 # References
 
 * [Binary Indexed Tree or Fenwick Tree @ geeksforgeeks](https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/)
