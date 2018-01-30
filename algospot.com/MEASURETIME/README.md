@@ -30,7 +30,7 @@
 
 # Problem
 
-[삽입 정렬 시간 재기](https://algospot.com/judge/problem/read/MEASURETIME)
+[삽입 정렬 시간 재기 @ algospot](https://algospot.com/judge/problem/read/MEASURETIME)
 
 # Strategy Fenwick Tree
 
