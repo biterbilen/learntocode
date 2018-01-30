@@ -347,7 +347,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [중앙값 측정](https://www.acmicpc.net/problem/9426)
   - 백 | [순열](https://www.acmicpc.net/problem/1849)
   - 백 | [조세퍼스 문제 2](https://www.acmicpc.net/problem/1168)  
-  - 알 | fenwick tree (binary indexed tree)
+  - [알](fundamentals/tree/fenwick/) | [fenwick tree (binary indexed tree)](doc/tree_fenwick.md)
   - 알 | [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME)★
   - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjointset_unionfind.md)
   - 알 | check the connectivity of a graph
