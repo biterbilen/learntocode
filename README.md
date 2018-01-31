@@ -471,7 +471,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 알 | [15 puzzle - bfs ids (iteratively deep searching)](doc/graph_15_puzzle_bfs_ids.md)
     - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, best, dfs, ids
   - 알 | [HANOI4](http://algospot.com/judge/problem/read/HANOI4)
-  - 알 | [Dijkstra algorithm](doc/graph_dijkstra.md)
+  - [알](/fundamentals/graph/dijkstra/) | [Dijkstra algorithm](doc/graph_dijkstra.md)
     ```cpp
     vector<pair<int, int>> adj, dijkstra, dist, priority_queue<pair<int, int>> pq
     ```
