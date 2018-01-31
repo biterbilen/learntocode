@@ -476,7 +476,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
     vector<pair<int, int>> adj, dijkstra, dist, priority_queue<pair<int, int>> pq
     ```
     - O(|E|lg|V|)
-  - 알 | [Dijkstra algorithm without priority queue](doc/graph_dijkstra_without_pq.md)
+  - [알](/fundamentals/graph/dijkstrawithoutpq/) | [Dijkstra algorithm without priority queue](doc/graph_dijkstra_without_pq.md)
     ```cpp
     vector<pair<int, int>> adj, dijkstra, dist, visited
     ```
