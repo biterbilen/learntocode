@@ -24,7 +24,7 @@ union-find 를 사용할 수 있다.
 유지하여 검색 속도를 향상할 수 있는 좋은 방법이다. 이것을 path
 compression optimization 이라고 한다.
 
-![](/_img/uionfind_find.png)
+![](/_img/unionfind_find.png)
 
 위의 그림은 `find(0)` 을 수행하기 전과 후이다. 트리의 max level이
 낮아 졌음을 확인하자.
@@ -46,10 +46,10 @@ root를 `u-root`, `v`가 포함된 트리의 root를 `v-root`라고
 `rank[v-root]`를 하나만 늘리자.  `v-root`가 `u-root`의 부모가 되기
 때문이다. 이것을 union rank optimization 이라고 한다.
 
-![](/_img/uionfind_merge.png)
+![](/_img/unionfind_merge.png)
 
-위의 그림은 `merge(3, 5)`를 수행하기 전과 후이다. `rank`가 높은 녀석이 낮은 녀석의
-부모가 되었음을 확인하자.
+위의 그림은 `merge(3, 5)`를 수행하기 전과 후이다. `rank`가 같은 녀석 둘이
+결합 하여 `rank`가 하나 증가 했음을 확인하자.
 
 ## Time Complexity
 
