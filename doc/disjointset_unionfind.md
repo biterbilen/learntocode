@@ -26,13 +26,9 @@ compression optimization 이라고 한다.
 
 ![](/_img/unionfind_find.png)
 
-위의 그림은 `find(0)` 을 수행하기 전과 후이다. 트리의 max level이
-낮아 졌음을 확인하자.
-
-## Time Complexity
-
-```
-```
+위의 그림은 `find(0)` 을 수행하기 전과 후이다. `0` 의 부모 노드인 `1,
+3, 7` 의 부모가 루트 노드인 `15` 로 바뀌었다. 일부 노드의 path가
+압축되어 검색 속도를 향상 할 수 있게 되었다.
 
 # Algorithm Merge
 
@@ -48,10 +44,10 @@ root를 `u-root`, `v`가 포함된 트리의 root를 `v-root`라고
 
 ![](/_img/unionfind_merge.png)
 
-위의 그림은 `merge(3, 5)`를 수행하기 전과 후이다. `rank`가 같은 녀석 둘이
-결합 하여 `rank`가 하나 증가 했음을 확인하자.
-
-## Time Complexity
+위의 그림은 `merge(3, 6)`를 수행하기 전과 후이다. `rank`가 큰 트리의
+루트 노드가 `rank` 가 작은 트리의 루트 노트의 부모가 되었다. 전체
+트리의 level을 가능한 낮게 유지하여 검색 속도를 향상 할 수 있게
+되었다.
 
 # Implementation
 
