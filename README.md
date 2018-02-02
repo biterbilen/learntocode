@@ -350,7 +350,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](fundamentals/tree/fenwick/) | [fenwick tree (binary indexed tree)](doc/tree_fenwick.md)
   - [알](algospot.com/MEASURETIME/) | [MEASURETIME](http://algospot.com/judge/problem/read/MEASURETIME)★
   - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjointset_unionfind.md)
-  - 알 | check the connectivity of a graph
+  - [알](/fundamentals/disjointset/checkconnectivity/) | [check the connectivity of a graph](/fundamentals/disjointset/checkconnectivity/README.md)
   - 알 | track the largest set
   - 알 | [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
   - 알 | trie [video](https://www.youtube.com/watch?v=aiy-uY8OB8g) [pdf](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_pdf/trie.pdf) 
@@ -419,10 +419,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [사랑과 전쟁]()
   - 백 | [완벽한 선거!]()
   - 백 | [타워 디펜스]()
-  - 알 | [terms and definitions](doc/graph_terms_and_definitions.md)
-    - vertex, edge, directed graph, undirected graph, weighted graph, multi graph, simple graph
-    - unrooted tree, bipartite graph, DAG (directed asyclick graph), simple path
-    - cycle, circuit, adjacency list, adjacency matrix , sparse graph, dense graph, implicit graph
+  - [terms and definitions](doc/graph_terms_and_definitions.md)
   - 알 | dfs (depth first search)
     - adj, visited, dfs, dfs_all
   - 알 | finding out two vertices are connected
