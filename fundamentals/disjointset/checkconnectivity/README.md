@@ -4,7 +4,7 @@
 
 입력은 다음과 같다.  첫번째 줄에 정점의 개수 V와 간선의 개수 E가
 온다. 그리고 E줄 만큼 수행해야 할 작업의 종류 T와 연결 해야할 두
-정점의 X, Y가 온다.
+정점 X, Y가 온다.
 
 이때 T가 1이면 X와 Y가 연결되어 있는지 출력한다. 연결되어 있으면 Yes
 그렇지 않으면 No 를 출력한다. T가 2이면 X와 Y를 연결 한다.
@@ -23,3 +23,5 @@
 ```
 O(alpha(N))
 ```
+
+alpha is [inverse Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function#Inverse)
