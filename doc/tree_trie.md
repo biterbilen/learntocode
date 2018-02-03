@@ -1,0 +1,52 @@
+# Abstract
+
+Trie에 대해 정리한다.
+
+# Data Structure Trie
+
+![](/_img/trie.png)
+
+Trie는 문자열 검색을 쉽게 하기 위한 트리 형태의 자료구조이다.  트리의
+각 노드는 TrieNode라고 정의하고 다음과 같은 두가지 멤버 변수를 갖는다.
+하나의 TrieNode는 단어의 한 글자에 대응된다.
+
+```
+TrieNode* children[ALPHABETS];
+bool terminal;
+```
+
+영문자의 종류는 26가지 이므로 children은 크기가 26개인 배열이다.
+terminal은 TrieNode가 단어의 마지막 글자인지 여부이다.  하나의
+TrieNode가 26개의 TrieNode를 자식으로 갖는 형태이기 때문에 메모리가
+많이 필요하다.
+
+# Algorithm Insert
+
+## Idea
+
+단어를 입력 받아 재귀 적으로 TrieNode를 생성한다. 부분 문제를 다음과 
+같이 정의하자.
+
+```
+Insert(const char* key)
+```
+
+# Algroithm Find
+
+## Idea
+
+단어를 입력 받아 재귀 적으로 탐색 한다. 부분 문제를 다음과 같이 정의하자.
+
+```
+TrieNode* Find(const char* key)
+```
+
+# Implementation
+
+* [c++11](/fundamentals/tree/trie/a.cpp)
+
+# Keywords
+
+```
+TrieNode, children, terminal, insert, find
+```
