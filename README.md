@@ -352,7 +352,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjointset_unionfind.md)
   - [알](/fundamentals/disjointset/checkconnectivity/) | [check the connectivity of a graph](/fundamentals/disjointset/checkconnectivity/README.md)
   - [알](/fundamentals/disjointset/traclargestset/) | [track the largest set](/fundamentals/disjointset/traclargestset/README.md)
-  - 알 | [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
+  - [알](/algospot.com/EDITORWARS/) | [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
   - 알 | trie [video](https://www.youtube.com/watch?v=aiy-uY8OB8g) [pdf](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_pdf/trie.pdf) 
     - TrieNode, children, terminal, insert, find
     - a tree whose key is a character for searching strings
