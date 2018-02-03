@@ -357,10 +357,8 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
     -  [video](https://www.youtube.com/watch?v=aiy-uY8OB8g) [pdf](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_pdf/trie.pdf)
   - 알 | triple array trie
     - use less memory than trie
-  - 알 | [suffix trie](/doc/tree_suffix_trie.md)
-    - a trie which saves suffix array but uses too much memeory.
+  - [알](/fundamentals/tree/suffixtrie/) | [suffix trie](/doc/tree_suffix_trie.md)
   - 알 | [suffix tree](/doc/tree_suffix_tree.md)
-    - a tree which saves suffix array and uses less memory. but time complexity of simple algorithm is O(N^2). suffix array is better.
   - 알 | radix tree (patricia tree)
     - compress trie like suffix tree.
   - [알](/algospot.com/SOLONG/) | [SOLONG](http://algospot.com/judge/problem/read/SOLONG)
