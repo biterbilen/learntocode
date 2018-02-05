@@ -352,23 +352,19 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjointset_unionfind.md)
   - [알](/fundamentals/disjointset/checkconnectivity/) | [check the connectivity of a graph](/fundamentals/disjointset/checkconnectivity/README.md)
   - [알](/fundamentals/disjointset/traclargestset/) | [track the largest set](/fundamentals/disjointset/traclargestset/README.md)
-  - 알 | [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
-  - 알 | trie [video](https://www.youtube.com/watch?v=aiy-uY8OB8g) [pdf](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_pdf/trie.pdf) 
-    - TrieNode, children, terminal, insert, find
-    - a tree whose key is a character for searching strings
-    - use too much memory
+  - [알](/algospot.com/EDITORWARS/) | [EDITORWARS](http://algospot.com/judge/problem/read/EDITORWARS)
+  - [알](/fundamentals/tree/trie/) | [trie](/doc/tree_trie.md)
+    -  [video](https://www.youtube.com/watch?v=aiy-uY8OB8g) [pdf](https://raw.githubusercontent.com/iamslash/dsalgorithm/master/_pdf/trie.pdf)
   - 알 | triple array trie
     - use less memory than trie
-  - 알 | suffix trie
-    - a trie which saves suffix array but uses too much memeory.
-  - 알 | suffix tree
-    - a tree which saves suffix array and uses less memory. but time complexity of simple algorithm is O(N^2). suffix array is better.
+  - [알](/fundamentals/tree/suffixtrie/) | [suffix trie](/doc/tree_suffix_trie.md)
+  - 알 | [suffix tree](/doc/tree_suffix_tree.md)
   - 알 | radix tree (patricia tree)
     - compress trie like suffix tree.
-  - 알 | [SOLONG](http://algospot.com/judge/problem/read/SOLONG)
-  - 알 | Aho–Corasick algorithm★
+  - [알](/algospot.com/SOLONG/) | [SOLONG](http://algospot.com/judge/problem/read/SOLONG)
+  - [알](/fundamentals/tree/ahocorasick/) | [Aho–Corasick algorithm★](/doc/tree_ahocorasic.md)
     - children, fail, terminal, insert, fail, output, compute_fail, search
-  - 알 | [NH](http://algospot.com/judge/problem/read/NH)
+  - [알](/algospot.com/NH/) | [NH](http://algospot.com/judge/problem/read/NH)
 
 ## Graph
   - [overview](doc/graph.md)
