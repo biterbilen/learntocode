@@ -14,13 +14,16 @@
 
 // 2^60 = 10^18
 
-#include <bits/stdc++.h>
-
-using namespace std;
+// #include <bits/stdc++.h>
+#include <cstdio>
+#include <vector>
 
 std::vector<int> ANS;
 
 void BuildANS(int d, int s, int v) {
+  for (int i = 0; i < 20 - d; ++i)
+    printf("_");
+  printf("%2d %10d %10d\n", d, s, v);
   
   if (s < 0 || s > 9 * ((1 << (d+1))-1)) {
     // pruning
@@ -28,6 +31,9 @@ void BuildANS(int d, int s, int v) {
   } else if (s == 0 && d == -1) {
     // base condition
     ANS.push_back(v);
+    for (int i = 0; i < 20 - d; ++i)
+      printf(" ");
+    printf("%4d\n", v);
   } else {
     // recursion
     for (int i = 0; i <= 9; ++i)
@@ -43,11 +49,11 @@ int64_t decibinaryNumbers(int64_t x) {
 int main() {
     int q;
 
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 2; ++i)
       BuildANS(20, i, 0);
-    for (int i = 0; i < ANS.size(); ++i) {
-      printf("%10d\n", ANS[i]);
-    }
+    // for (int i = 0; i < ANS.size(); ++i) {
+    //   printf("%10d\n", ANS[i]);
+    // }
     
     // cin >> q;
     // for(int a0 = 0; a0 < q; a0++){
