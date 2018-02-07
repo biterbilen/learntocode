@@ -18,13 +18,19 @@
 #include <vector>
 #include <string>
 
+#include <iostream>
+#include <locale>
+
 // dp[i][j]
 // i: digit index
 // j: decimal value
-int64_t dp[25][300005];
+//
+// pow(2, 25) = 33,554,432
+// pow(2, 19) = 524,288
+int64_t dp[19][300005];
 // ps[i] : partial sum of count for i decimal value 
 // i: decimal value
-int64_t ps[300005];
+int64_t ps[300000];
 
 // d: digit index (0-24)
 // s: decimal value
@@ -101,15 +107,18 @@ std::string solve(int64_t x) {
 }
 
 int main() {
+  // printf("%f\n", 1e1);
   // init cache
-  for (int i = 0; i < 25; ++i) {
-    for (int j = 0; j < 300005; ++j) {
+  for (int i = 0; i < 19; ++i) {
+    for (int j = 0; j < 300000; ++j) {
       dp[i][j] = -1;
     }
   }
-  ps[0] = cnt(24, 0);
-  for (int i = 1; i < 300005; ++i) {
-    ps[i] = ps[i-1] + cnt(24, i);
+  ps[0] = cnt(18, 0);
+  for (int i = 1; i < 300000; ++i) {
+    ps[i] = ps[i-1] + cnt(18, i);
+    // if (ps[i] > 11111111111111111)
+    //   printf("%10lld : %lld\n", i, ps[i]);
   }
   
   // process
