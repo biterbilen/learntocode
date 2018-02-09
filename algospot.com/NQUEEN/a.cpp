@@ -13,17 +13,18 @@ long long BEST = 0;
 bool is_past_ok(int y, int x) {
   int i, j;
   // check row on this left side
-  if (Q[y] < 0)
-    return false;
+  for (i = 0; i < y; ++i)
+    if (Q[i] == x)
+      return false;
 
   // check upper diagonal on this left side
   for (i = y, j = x; i >= 0 && j >= 0; --i, --j)
-    if (Q[i] != j)
+    if (Q[i] == j)
       return false;
   
   // check lower diagonal on this left side
   for (i = y, j = x; i < N && j >= 0; ++i, --j)
-    if (Q[i] != j)
+    if (Q[i] == j)
       return false;
   
   return true;
@@ -62,6 +63,6 @@ int main() {
   for (int t = 0; t < T; ++t) {
     memset(Q, -1, sizeof(Q));
     scanf("%d", &N);
-    printf("%ld\n", solve());
+    printf("%lld\n", solve());
   }
 }
