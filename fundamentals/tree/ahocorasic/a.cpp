@@ -56,7 +56,7 @@ struct TrieNode {
 
 // 트라이가 주어질 때 각 노드에 대해 실패 연결과 출력 문자열 목록을
 // 계산한다.
-void ComputeFailFunc(TrieNode* root) {
+void BuildFailLink(TrieNode* root) {
   // 루트에서부터 시작해 한 단계씩 아래로 내려가며 각 노드의 실패
   // 연결을 계산한다.
   // queue for BFS
@@ -132,7 +132,7 @@ int main() {
   for (int i = 0; i < v.size(); ++i) {
     ptn->Insert(v[i].c_str(), i);    
   }
-  ComputeFailFunc(ptn);
+  BuildFailLink(ptn);
 
   // search
   std::vector<std::pair<int, int> > r = AhoCorasicSearch(
