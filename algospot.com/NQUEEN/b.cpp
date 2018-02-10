@@ -7,13 +7,13 @@
 #include <cstring>
 
 int N;
-int CNT = 0;
+int BEST = 0;
 int64_t END = 0;
 
 void nqueen(int64_t row, int64_t ld, int64_t rd) {
   // base condition
   if (row == END) {
-    CNT++;
+    BEST++;
     return;
   }
   // recursion
@@ -27,10 +27,10 @@ void nqueen(int64_t row, int64_t ld, int64_t rd) {
 }
 
 int64_t solve() {
-  CNT = 0;
+  BEST = 0;
   END = (1 << N) - 1;
   nqueen(0, 0, 0);
-  return CNT;
+  return BEST;
 }
 
 int main() {
