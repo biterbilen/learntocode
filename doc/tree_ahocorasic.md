@@ -33,27 +33,36 @@ ahocorasic algorithm에 대해 적는다.
 ```
 class TrieNode {
     TrieNode* children[26];
+    // 다음 알파벳을 가리키는 노드의 모음
     int terminal;
+    // 현재 노드에서 끝나는 바늘 문자열의 인덱스
     TrieNode* fail;
+    // 현재 노드에서 매칭이 실패 했을 때 찾아갈 다음 노드
     vector<int> output;
+    // 현재 노드가 방문 되었을 때 등장하는 바늘 문자열의 인덱스
 }
 ```
 
-`terminal`은 현재 노드에서 끝나는 바늘 문자열의 번호이다.  `fail`은
-현재 노드에서 매칭이 실패 했을때 찾아갈 다음 노드이다.  `output`은 이
-노드가 방문 되었을 때 등장하는 바늘 문자열들의 번호이다.
+## Keywords
+
+```
+TrieNode* children;
+int terminal;
+TrieNode* fail;
+vector<int> output;
+```
 
 # Algorithm Insert
 
 ## Idea
 
-다음과 같은 부문 문제를 정의하고 재귀 적으로 삽입한다.
+다음과 같은 부문 문제를 정의하고 재귀 적으로 수행한다.
 
 ```
 void Insert(const char* key, int order)
 ```
 
-다음과 같이 여러가지 경우를 고려하여 재귀 적으로 삽입한다.
+다음과 같이 여러가지 경우를 고려하여 재귀 적으로 해결한다.
 
 * `order`는 바늘 문자열의 인덱스이다. `*key`가 NULL이면 `order`를
   `terminal`에 저장하자. 
@@ -125,12 +134,9 @@ O(N + M + P)
 `N`은 짚더미 문자열 길이이다.  `M`은 바늘 문자열 길이의 합이다.  `P`은
 바늘 문자열 출현의 횟수이다.
 
-
-
 # Implementation
 
 * [c++11](/fundamentals/tree/ahocorasic/a.cpp)
-
 
 # References
 

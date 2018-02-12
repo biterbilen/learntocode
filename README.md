@@ -298,8 +298,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
     - O(|N| + lg|H|)
   - 알 | [Rabin-Karp algorithm](https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm)
   - 알 | suffix tree
-  - 알 | Aho–Corasick algorithm
-    - children, fail, terminal, output, insert, compute_fail_func, search
+  - [알](/fundamentals/tree/ahocorasick/) | [Aho–Corasick algorithm★](/doc/tree_ahocorasic.md)
 
 ## Tree
   - [overview](doc/tree.md)
@@ -363,7 +362,6 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
     - compress trie like suffix tree.
   - [알](/algospot.com/SOLONG/) | [SOLONG](http://algospot.com/judge/problem/read/SOLONG)
   - [알](/fundamentals/tree/ahocorasick/) | [Aho–Corasick algorithm★](/doc/tree_ahocorasic.md)
-    - children, fail, terminal, insert, fail, output, compute_fail, search
   - [알](/algospot.com/NH/) | [NH](http://algospot.com/judge/problem/read/NH)
 
 ## Graph
