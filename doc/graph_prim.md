@@ -6,24 +6,52 @@ spanning tree는 graph에서 모든 정점들을 연결할 수 있는 일부 간
 모임이다. spanning tree는 간선들을 선택하는 방법에 따라 여러 개일 수
 있고 트리이기 때문에 사이클이 없다.
 
-weighted graph의 경우 만들어 질 수 있는 spanning tree들 중에 간선들의
+weighted graph의 경우 만들어 질 수 있는 spanning tree들 중에 간선
 비용의 합이 최소인 것을 MST(minimum spanning tree) 라고 한다.
 
 # Idea
 
-greedy algorithm을 이용한다. 아래 Keywords에 해당하는 자료구조가
-필요하다. `mst`는 스패닝 트리를 구성할 간선이 저장되어 있다.  `mst`에
-아직 삽입되지 않는 노드중에 `minweight[u]`가 가장 작은 노드 `u`를
-찾아내서 `mst`에 삽입하자. 삽입된 노드 `u`는 `added[u]` 를 `true`로
-변경한다.  노드 `u`의 이웃들을 탐색한다. 이때 탐색하는 이웃 노드를
-`v`라고 하자. `minweight[v]`는 어디서 부터인지는 모르겠지만 `v`노드
-까지 오는데 최소의 비용이 저장되어 있다. 초기 값은 아주 큰값을
-저장한다.  `u`에서 `v`까지 비용이 `minweight[v]`보다 작으면 새로운
-최소 비용이므로 `minweight[v]`를 갱신한다. 갱신된 `v`노드에 대하여
-`parent[v]`를 `u`로 변경한다.
+먼저 다음과 같은 자료 구조가 필요하다.
 
-`mst`와 `added`는 서로 관련이 깊다. `minweight`와 `parent`는 역시 서로
-관련이 깊다.
+```
+vector<pair<int, int> > mst;
+// minimum spanning tree를 표현하는 간선의 모임
+vector<bool> added;
+// added[i] : i번 노드가 mst가 추가되었는지 여부
+vector<int> minweight;
+// minweight[i] : i번 노드의 인접 노드에서 
+// i번 노드까지 도달하는데 필요한 최소 비용
+vector<int> parent;
+// parent[i] : i번 노드까지 도달하는 최소 비용이 발견 되었을때 
+// i번 노드에 도착하는 간선의 시작 노드
+```
+
+`added`는 모두 `false`로 초기화 하자. 모든 노드가 `mst`에 포함되지
+않았기 때문이다. `minweight`는 아주 큰 값으로 초기화 하자. 아직 모든
+노드들에 도달할 최소 비용이 확인이 되지 않았기 때문이다.  `parent`는
+아직 최소 비용이 발견되지 않았기 때문에 `-1`로 초기화 하자. `added`와
+`mst`는 관련이 있고 `parent`는 `minweight`와 관련이 깊다.
+
+`0`번 노드를 시작으로 MST를 구성해보자.
+`mincost[0]`과 `parent[0]`은 `0`으로 초기화 한다. `0`번 노드에서
+`0`번 노드까지 비용은 0이기 때문이다.
+
+노드 `i`를 `0`부터 `N - 1` 까지 순회하면서 다음을 반복 한다.
+
+* 아직 방문 하지 않고 `minweight`가 가장 작은 노드를 `u`에 저장한다.
+  `u`가 시작노드 `0`일때 간선 `0-0`을 `mst`에 추가하지 않기 위해
+  `parent[u]`가 `u`와 같지 않을 때 `parent[u]`와 `u`를 `mst`에
+  삽입한다.
+* `u`는 `mst`에 추가 된 노드이기 때문에 `added[u]`에 `true`를 저장하고
+  `mincost[u]`는 지금까지 구한 MST의 최소 비용에 더한다.
+* `u`의 인접 노드들을 탐색하기 위해 `v`를 `0`부터 `N - 1`까지
+  순회하면서 다음을 반복한다.
+  * `v`가 아직 `mst`에 추가되지 않았고 `u-v`의 비용이 `minweight[v]`보다
+    작으면 인접 노드에서 `v`까지 도달하는 최소 비용이 발견되었으므로
+    `parent[v]`에 `u`를 저장하고 `minweight[v]`에 간선 `u-v`의 비용을 저장한다.
+
+다음은 `A, B, C, D` 노드가 주어질 때 `A` 노드 부터 시작하여 MST가
+만들어지는 과정을 표현한 그림이다.
 
 ![](/_img/prim.png)
 
