@@ -20,7 +20,7 @@
 
 # Abstract
 
-ahocorasic algorithm에 대해 적는다.
+ahocorasick algorithm에 대해 적는다.
 
 # Data Structure TrieNode
 
@@ -39,7 +39,7 @@ class TrieNode {
     TrieNode* fail;
     // 현재 노드에서 매칭이 실패 했을 때 찾아갈 다음 노드
     vector<int> output;
-    // 현재 노드가 방문 되었을 때 등장하는 바늘 문자열의 인덱스
+    // fail을 통해 이 노드까지 왔을 때 검색 가능한 바늘 문자열의 인덱스
 }
 ```
 
@@ -56,16 +56,19 @@ vector<int> output;
 
 ## Idea
 
+트라이 노드들을 삽입하면서 `children`과 `terminal`을 채운다.
+
 다음과 같은 부문 문제를 정의하고 재귀 적으로 수행한다.
 
 ```
 void Insert(const char* key, int order)
+key   : 바늘 문자열
+order : 바늘 문자열의 인덱스 
 ```
 
 다음과 같이 여러가지 경우를 고려하여 재귀 적으로 해결한다.
 
-* `order`는 바늘 문자열의 인덱스이다. `*key`가 NULL이면 `order`를
-  `terminal`에 저장하자. 
+* `*key`가 NULL이면 `order`를 `terminal`에 저장하자.
 * `*key`가 NULL이 아니면 `Insert(key + 1, order)` 하자.
 
 ## Time Complexity
@@ -80,18 +83,20 @@ O(M)
 
 ## Idea
 
-노드가 주어 질 때 각 노드에 대한 실패 연결 `fail`과 바늘 문자열 목록
-`output`를 BFS를 기반으로 채워나간다.
+트라이 노드들을 BFS 순회하면서 `fail`과 `output`을 채운다.
 
 ```
 void BuildFailLink(TrieNode* root)
 ```
 
-BFS queue에 저장된 노드 `u`의 자식들을 탐색 하면서 다음과 같은 반복을
-수행한다.  탐색된 자식을 `v`라 하자. `u`가 루트 노드라면 `v->fail`은
-`u`이다. `u`가 루트 노드가 아니라면 `u`의 `fail`에 해당하는 노드 `t`
-를 찾는다. `t`는 루트 노드도 아니고 `t->children[edge]`는 NULL이어야
-한다. `v->fail`에 `t`를 저장한다.
+queue에 저장된 노드 `u`의 자식들을 탐색 하면서 다음과 같은 반복을
+수행한다.  
+
+* 탐색된 자식을 `v`라 하자. `u`가 루트 노드라면 `v->fail`은
+  `u`이다. 
+* `u`가 루트 노드가 아니라면 `u`의 `fail`에 해당하는 노드 `f` 를
+  찾는다. `f`는 루트 노드도 아니고 `f->children[edge]`는 NULL이어야
+  한다. `v->fail`에 `f`를 저장한다.
 
 ![](/_img/ahocorasick2.png)
 
