@@ -105,15 +105,15 @@ queue에 저장된 노드 `u`의 자식들을 탐색 하면서 다음과 같은 
 ![](/_img/ahocorasick2.png)
 
 예를 들어 노드 4의 경우를 생각해 보자. `u`는 노드 4, `v`는 노드 5,
-`edge`는 `e`이다.  이제 `v->fail`을 채워보자. 초기 `t`는 노드 1
-이다. `t`가 루트도 아니고 `t->children[edge]`가 NULL인 동안 `t`를
-`t->fail`로 갱신한다. 결국 `t`는 노드 2이다.  그러므로 `v->fail`은
-노드 2를 저장하자.
+`edge`는 `e`이다.  이제 `v->fail`을 채워보자. 초기 `f`는 노드 1
+이다. `f`가 루트도 아니고 `t->children[edge]`가 NULL이 아니므로 `f`는
+노드 2이다. 그러므로 `v->fail`에 노드 2를 저장하자.  5 노드의
+`output`에 2 노드의 output을 저장하고 5 노드의 `terminal`이 `-1`이
+아니므로 5노드의 output에 `she`를 추가 한다.
 
 # Algorithm Search
 
 ## Idea
-
 
 예를 들어 다음 그림과 같이 바늘들 `he, she, his, hers` 의 Trie를
 구성해 보자.

@@ -38,28 +38,28 @@ decimal에 대한 여러 decibinary들은 오름차순으로 정렬 돼야
 
 예를 들어서 위의 표를 참고하여 decimal이 4인 경우를 살펴 보자.  1로
 시작하고 나머지는 0으로 채워진 최소의 decibinary는 1000이다. 이것의
-자릿수는 4이기 때문에 decimal 4에 대한 자릿수는 3이다.
+자릿수는 4이기 때문에 decimal 4에 대한 최대 자릿수는 3이다.
 
-최대의 자릿수를 갖는 decibinary의 자릿수를 구했다면 가장 왼쪽 자리
-부터 0부터 9까지 숫자를 교체 해가면서 decimal과 같은 수를 찾으면 된다.
-
+decibinary의 최대 자릿수를 구했다면 가장 왼쪽 자리 부터 0에서 9까지
+숫자를 교체 해가면서 decimal과 같은 수를 찾으면 된다.
 
 자릿수를 `digitidx`라 하고 decimal number를 `decimal`라고 할때 다음과
 같은 부분 문제를 정의하여 decibinary들의 숫자를 재귀적으로 계산 할 수
 있다.
 
 ```
-cnt(digitidx, decimal)
-digitidx : decimal을 표현하기 위해 필요한 decibinary의 가장 큰 자릿수의 인덱스
+int cnt(digitidx, decimal)
+digitidx : 십진수 decimal을 표현하기 위해 필요한 
+           decibinary의 가장 왼쪽 자리 숫자의 인덱스
 decimal  : 표현하고자 하는 십진수
 ```
 
-부분문제 cnt는 다음과 같은 여러가지 경우를 고려할 수 있다.
+부분문제 cnt는 다음과 같은 여러가지 경우를 고려하여 구현할 수 있다.
 
 * digitidx가 -1이면 성공이다.
 * digitidx의 숫자 i를 0부터 9까지 반복하면서 `cnt(digitidx-1,
-  decimal - (1<<digitidx)*i)` 를 계산한다. 이때 `decimal - (1<<digitidx)*i`가
-  0보다 작으면 이후 탐색은 실패이므로 건너뛴다.
+  decimal - (1<<digitidx)*i)` 를 계산한다. 이때 `decimal -
+  (1<<digitidx)*i`가 0보다 작으면 이후 탐색은 실패이므로 건너뛴다.
 
 decimal number `i`를 0부터 하나씩 증가하면서 해당하는 decibinary의
 개수를 누적 하여 1차원 배열 `ps`에 저장하자. x는 10^16보다 작거나 같기
@@ -70,9 +70,9 @@ ps[i] = ps[i-1] + cnt(60, i)
 ```
 
 직접 해본 결과 decimal은 300,000을 초과 하지 않는다. 300,000와 같은
-최대 자릿수이면서 최소 크기의 decibinary는
-99999999999999999999이다. `(100000000000000000000 - 1)`. 따라서 다음과
-같이 CACHE를 정의하여 `cnt`를 memoization할 수 있다.
+최대 자릿수이면서 최소 크기의 decibinary는 `100000000000000000000`이기
+때문에 decibinary의 자릿수는 `20`이다. 따라서 다음과 같이 CACHE를
+정의하여 `cnt`를 memoization할 수 있다.
 
 ```
 CACHE[20][300000]
