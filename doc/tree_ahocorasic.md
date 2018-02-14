@@ -27,19 +27,19 @@ ahocorasick algorithm에 대해 적는다.
 짚더미에서 여러개의 바늘을 찾을 때 유용한 알고리즘이다. 여러가지의
 바늘들로 [Trie](/doc/tree_trie.md)를 만들고 검색 도중 실패 하면
 처음부터 다시 하지 말고 중간 어딘가에서 부터 다시 한다. 여러개의
-바늘들을 동시에 검색하기 때문에 바늘1을 찾다가 실패하면 바늘2를 찾는
+바늘들을 동시에 검색하기 때문에 바늘 1을 찾다가 실패하면 바늘 2를 찾는
 식이다. 다음과 같이 TrieNode를 구성한다.
 
 ```
 class TrieNode {
     TrieNode* children[26];
-    // 다음 알파벳을 가리키는 노드의 모음
+    // 다음 알파벳을 표현하는 간선의 모음
     int terminal;
     // 현재 노드에서 끝나는 바늘 문자열의 인덱스
     TrieNode* fail;
     // 현재 노드에서 매칭이 실패 했을 때 찾아갈 다음 노드
     vector<int> output;
-    // fail을 통해 이 노드까지 왔을 때 검색 가능한 바늘 문자열의 인덱스
+    // fail을 통해 이 노드까지 왔을 때 검색 가능한 바늘 문자열의 인덱스 모음
 }
 ```
 
@@ -66,7 +66,7 @@ key   : 바늘 문자열
 order : 바늘 문자열의 인덱스 
 ```
 
-다음과 같이 여러가지 경우를 고려하여 재귀 적으로 해결한다.
+다음과 같이 여러 가지 경우를 고려하여 재귀적으로 해결한다.
 
 * `*key`가 NULL이면 `order`를 `terminal`에 저장하자.
 * `*key`가 NULL이 아니면 `Insert(key + 1, order)` 하자.
@@ -90,13 +90,17 @@ void BuildFailLink(TrieNode* root)
 ```
 
 queue에 저장된 노드 `u`의 자식들을 탐색 하면서 다음과 같은 반복을
-수행한다.  
+수행한다.
 
-* 탐색된 자식을 `v`라 하자. `u`가 루트 노드라면 `v->fail`은
-  `u`이다. 
-* `u`가 루트 노드가 아니라면 `u`의 `fail`에 해당하는 노드 `f` 를
-  찾는다. `f`는 루트 노드도 아니고 `f->children[edge]`는 NULL이어야
-  한다. `v->fail`에 `f`를 저장한다.
+* 탐색된 자식을 `v`라 하고 `u`와 `v`의 간선에 해당하는 알파벳을
+  `edge`라 하자. `u`가 루트 노드라면 `v->fail`은 루트 노드이다.
+* `u`가 루트 노드가 아니라면 `u`의 `fail`에 해당하는 노드 `f`를
+  찾는다. `f`는 루트 노드도 아니고 `f->children[edge]`는 `NULL`인 동안에
+  `f`에 `f->fail`을 저장한다. 만약 `f->children[edge]`가 `NULL`이 아니면
+  `f`에 `f->children[edge]`를 저장한다. 이후 `v->fail`에 `f`를 저장한다.
+* `v->output`에 `v->fail->output`을 저장한다. `v->terminal`이 `-1`이
+  아니면 `v->output`에 `v->terminal`을 추가한다.
+* 다음 BFS를 위해 `v`를 queue에 삽입한다.
 
 ![](/_img/ahocorasick2.png)
 
