@@ -2,6 +2,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <algorithm>
 
 // 1,2,3,4,5,6,7
 
@@ -10,15 +11,11 @@ public:
   void rotate(std::vector<int>& nums, int k) {
     if (nums.size() <= 1)
       return;
-    for (int j = 0; j < k; ++j) {
-      int t = nums[0];
-      nums[0] = nums.back();
-      for (int i = 1; i < nums.size(); ++i) {
-        int o = nums[i];
-        nums[i] = t;
-        t = o;
-      }      
-    }
+    int n = nums.size();
+    k = (n-k%n)%n;
+    std::reverse(nums.begin(), nums.begin()+k);
+    std::reverse(nums.begin()+k, nums.end());
+    std::reverse(nums.begin(), nums.end());      
   }
 };
 
