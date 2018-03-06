@@ -11,13 +11,14 @@ class Solution {
   bool isPalindrome(std::string s) {
     if (s.size() == 0)
       return true;
-    auto itend = std::remove(s.begin(), s.end(), ' ');
-    s.resize(std::distance(s.begin(), itend));
-    std::transform(s.begin(), s.end(), s.begin(), tolower);
-    int i = 0;
-    int j = s.size() - 1;
-    while (i < j) {
-      if (s[i] != s[j])
+    int i = 0, j = 0;
+    // remove non-alphanumeric characters
+    for (i = 0, j = 0; i < s.size(); ++i) {
+      if (isalnum(s[i]))
+        s[j++] = s[i];
+    }
+    for (i = 0; i < --j; ++i) {
+      if (tolower(s[i]) != tolower(s[j]))
         return false;
     }
     return true;
@@ -26,7 +27,9 @@ class Solution {
 
 int main() {
   Solution s;
-  printf("%s\n", s.isPalindrome("A man, a plan, a canal: Panama") ?
+  // printf("%s\n", s.isPalindrome("A man, a plan, a canal: Panama") ?
+  //        "true" : "false");
+  printf("%s\n", s.isPalindrome("a.") ?
          "true" : "false");
   return 0;
 }
