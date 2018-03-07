@@ -9,15 +9,15 @@ class Solution {
  private:
   std::string _countAndSay(std::string s) {
     std::string r;
-    int ccnt = 1;  // count of c
+    int cnt = 0;  // count of c
     char c = s[0];
-    for (int i = 0; i < s.size(); ++i) {
-      if (s[i] == c) {
-        ccnt++;
+    for (int i = 0; i <= s.size(); ++i) {
+      if (i != s.size() && s[i] == c) {
+        cnt++;
       } else {
-        r += '0' + ccnt;
+        r += '0' + cnt;
         r += c;
-        ccnt = 1;
+        cnt = 1;
         c = s[i];
       }
     }
@@ -27,7 +27,7 @@ class Solution {
  public:
   std::string countAndSay(int n) {
     std::string r = "1";
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n-1; ++i) {
       r = _countAndSay(r);
     }
     return r;
@@ -36,6 +36,10 @@ class Solution {
 
 int main() {
   Solution s;
+  printf("%s\n", s.countAndSay(1).c_str());
+  printf("%s\n", s.countAndSay(2).c_str());
+  printf("%s\n", s.countAndSay(3).c_str());
   printf("%s\n", s.countAndSay(4).c_str());
+  printf("%s\n", s.countAndSay(5).c_str());
   return 0;
 }
