@@ -15,18 +15,24 @@ class Solution {
  public:
   void merge(std::vector<int>& nums1, int m,
              std::vector<int>& nums2, int n) {
+    if (nums1.back() == 0) {
+      nums1.erase(nums1.end()-1);
+    }
+    
     for (int i = 0; i < m; ++i) {
       while (nums2.size() > 0 && nums1[i] > nums2.front()) {
         nums1.insert(nums1.begin() + i, nums2.front());
         nums2.erase(nums2.begin());
       }
     }
+    if (nums2.size() > 0)
+      nums1.insert(nums1.end(), nums2.begin(), nums2.end());
   }
 };
 
 int main() {
-  std::vector<int> v1 = {1, 5, 7, 8, 9};
-  std::vector<int> v2 = {2, 4, 5, 6};
+  std::vector<int> v1 = {2, 0};
+  std::vector<int> v2 = {1};
   Solution s;
   s.merge(v1, v1.size(), v2, v2.size());
   print_v(v1);
