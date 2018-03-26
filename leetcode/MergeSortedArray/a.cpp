@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <algorithm>
 
 void print_v(const std::vector<int>& v) {
   for (int i = 0; i < v.size(); ++ i) {
@@ -13,20 +14,19 @@ void print_v(const std::vector<int>& v) {
 
 class Solution {
  public:
-  void merge(std::vector<int>& nums1, int m,
-             std::vector<int>& nums2, int n) {
-    if (nums1.back() == 0) {
-      nums1.erase(nums1.end()-1);
-    }
-    
-    for (int i = 0; i < m; ++i) {
-      while (nums2.size() > 0 && nums1[i] > nums2.front()) {
-        nums1.insert(nums1.begin() + i, nums2.front());
-        nums2.erase(nums2.begin());
+  void merge(std::vector<int>& a, int m,
+             std::vector<int>& b, int n) {
+    std::vector<int> r(m+n);
+    for (int i = 0, j = 0; i < m || j < n; ) {
+      if (j == n || i < m && a[i] < b[j]) {
+        r[i+j] = a[i];
+        ++i;
+      } else {
+        r[i+j] = b[j];
+        ++j;
       }
     }
-    if (nums2.size() > 0)
-      nums1.insert(nums1.end(), nums2.begin(), nums2.end());
+    a.swap(r);
   }
 };
 
@@ -34,7 +34,7 @@ int main() {
   std::vector<int> v1 = {2, 0};
   std::vector<int> v2 = {1};
   Solution s;
-  s.merge(v1, v1.size(), v2, v2.size());
+  s.merge(v1, v1.size()-1, v2, v2.size());
   print_v(v1);
   return 0;
 }

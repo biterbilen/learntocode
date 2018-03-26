@@ -15,25 +15,17 @@ class Solution {
     // binary search
     int l = 1;
     int r = n;
-    int m = (l+r)/2;
-
-    //   l r 
-    // 1 2 3 4
-    //     b
-    // l   m   r
-    // 1 2 3 4 5
-    //       b
-    while (l != (m-1) || (m+1) != r) {
+    while (l < r) {
+      int m = l + (r - l) / 2;      
       printf("%d %d %d\n", l, m, r);
-      if (isBadVersion(m) && isBadVersion(r)) {
+      if (isBadVersion(m)) {
         r = m;
       } else {
-        l = m;
+        l = m + 1;
       }
-      m = (l + r) / 2;
     }
         
-    return ;
+    return l;
   }
 };
 
