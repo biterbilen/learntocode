@@ -57,6 +57,8 @@
 
 # Materials
 
+- [Competitive Programmer's Handbook](https://cses.fi/book.html)
+  - 알고리즘대회 참가자들을 위한 알고리즘 요약책
 - 알 | [알고리즘문제해결전략](http://book.algospot.com/)
 - 백 | [백준온라인강좌](https://code.plus/courses/1)
 - I | [interactive coding challenges](https://github.com/donnemartin/interactive-coding-challenges)
