@@ -39,19 +39,30 @@ class Solution {
   
   std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
     int n = nums.size();
-    std::vector<std::vector<int>> r;
+    std::set<std::vector<int>> s;
     std::sort(nums.begin(), nums.end());
     for (int i = 0; i < n; ++i) {
-      for (int j = i+1; j < n; ++j) {
-        for (int k = j+1; k < n; ++k) {
-          if (nums[i] + nums[j] + nums[k] == 0) {
-            std::vector<int> a = {nums[i], nums[j], nums[k]};
-            // r.push_back(a);
-            s.insert(a);
-          }
+      int j = i + 1;
+      int k = n - 1;
+      int o = -nums[i];
+      while (j < k) {
+        if ((nums[i] < 0 && nums[k] < 0) ||
+            (nums[i] > 0 && nums[k] > 0))
+          break;
+        if (nums[j] + nums[k] < o) {
+          j++;
+        } else if (nums[j] + nums[k] > o) {
+          k--;
+        } else {
+          std::vector<int> a = {nums[i], nums[j], nums[k]};
+          s.insert(a);
+          j++;
+          k--;
         }
+        // printf("%d %d %d\n", i, j, k);
       }
     }
+    std::vector<std::vector<int>> r(s.begin(), s.end());
     return r;
   }
 };
