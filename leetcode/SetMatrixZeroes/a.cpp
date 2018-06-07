@@ -3,7 +3,7 @@
 
 #include <cstdio>
 #include <vector>
-
+#include <algorithm>
 
 // 0, 1, 2, 0
 // 3, 4, 5, 2
@@ -21,24 +21,28 @@ class Solution {
     if (m == 0 || n == 0)
       return;
 
+    // loop top, left line
+    if (std::any_of(std::begin(M[0]), std::end(M[0]), [](int i){return i==0;}))
+      std::fill(std::begin(M[0]), std::end(M[0]), 0);
+
     // loop entire lines except top, left lines
     for (int y = 1; y < m; ++y) {
       for (int x = 1; x < n; ++x) {
-        if (M[y][0] == 0 || M[0][x] == 0) {
-          M[y][x] = 0;
-        } else if (M[y][x] == 0) {
+        if (M[y][x] == 0) {
           M[y][0] = 0;
           M[0][x] = 0;
         }
       }
     }
-    // check whether any element on top line is zero
-    for (int x = 0; x < n; ++x) {
-      
-    }
-    // check whether any element on left line is zero
 
-    
+    // loop entire lines except top, left lines
+    for (int y = 1; y < m; ++y) {
+      for (int x = 1; x < n; ++x) {
+        if (M[y][0] == 0 || M[0][x] == 0) {
+          M[y][x] = 0;
+        }
+      }
+    }
   }
 };
 
