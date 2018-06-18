@@ -20,10 +20,18 @@ class Solution {
     int n = m > 0 ? M[0].size() : 0;
     if (m == 0 || n == 0)
       return;
+    bool b_top_z = false;
+    bool b_left_z = false;
 
-    // loop top, left line
+    // save top most, left most line
     if (std::any_of(std::begin(M[0]), std::end(M[0]), [](int i){return i==0;}))
-      std::fill(std::begin(M[0]), std::end(M[0]), 0);
+      b_top_z = true;
+    for (int y = 0; y < m; ++y) {
+      if (M[y][0] == 0) {
+        b_left_z = true;
+        break;
+      }
+    }
 
     // loop entire lines except top, left lines
     for (int y = 1; y < m; ++y) {
@@ -38,9 +46,18 @@ class Solution {
     // loop entire lines except top, left lines
     for (int y = 1; y < m; ++y) {
       for (int x = 1; x < n; ++x) {
-        if (M[y][0] == 0 || M[0][x] == 0) {
+        if (M[0][x] == 0 || M[y][0] == 0) {
           M[y][x] = 0;
         }
+      }
+    }
+       
+    // load save top most, left most zero
+    if (b_top_z)
+      std::fill(std::begin(M[0]), std::end(M[0]), 0);
+    if (b_left_z) {
+      for (int y = 0; y < m; ++y) {
+        M[y][0] = 0;
       }
     }
   }
