@@ -38,7 +38,7 @@ int main() {
   // dump
   for (const auto& a : r) {
     for (const auto& b : a) {
-      printf("%s ", b);
+      printf("%s ", b.c_str());
     }
     printf("\n");
   }
