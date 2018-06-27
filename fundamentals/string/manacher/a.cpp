@@ -17,11 +17,12 @@ std::string solve(std::string h) {
   // j - i' = i - j
   // i' = 2 * j - i
   //
-  // i : 0 1 2 3 4 5
+  //     0 1 2 3 4 5
   // s : b a n a n a
   // z : 0 0 1 2 1 0
-  // j : 0 0 2
-  // r : 0 0 3
+  //             i
+  //           j
+  //               r
   for (int j, r = 0, i = 0; i < n; ++i) {
     if (i < r && z[2 * j - i] != r - i) {
       z[i] = std::min(z[2 * j - i], r - i);
