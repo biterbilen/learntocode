@@ -3,20 +3,33 @@
 #include <cstdio>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 std::string solve(std::string h) {
-  std::string s(2 * h.size() + 1, '.');
-  std::vector<int> z(s.size());
-  for (int i = 0; i < s.size(); ++i)
+  // length of odd string
+  int n = 2 * h.size() + 1;
+  std::string s(n, '.');
+  std::vector<int> z(n);
+  for (int i = 0; i < h.size(); ++i)
     s[2 * i + 1] = h[i];
-  for (int j, r = 0, i = 0; i < s.size(); ++i) {
+  // j: center index of last max palindrom substring
+  // r: right most index of last max plaindrom substring
+  // j - i' = i - j
+  // i' = 2 * j - i
+  //
+  // i : 0 1 2 3 4 5
+  // s : b a n a n a
+  // z : 0 0 1 2 1 0
+  // j : 0 0 2
+  // r : 0 0 3
+  for (int j, r = 0, i = 0; i < n; ++i) {
     if (i < r && z[2 * j - i] != r - i) {
       z[i] = std::min(z[2 * j - i], r - i);
     } else {
       j = i;
       r = std::max(r, i);
       while (r < s.size() && (2 * j - r) >= 0 &&
-             s[j] == s[2 * j - r])
+             s[r] == s[2 * j - r])
         r++;
       z[i] = r - j;
     }
