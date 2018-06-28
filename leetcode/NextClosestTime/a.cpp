@@ -37,11 +37,12 @@ public:
 
     // validate H1
     for (i = 0; i < 4; ++i) {
-      if ((arr[i] > time[1]) &&
-          (time[0] != '2' || arr[i] <= '3')) {
-        time[1] = arr[i];
-        time[3] = time[4] = arr[0];
-        return time;
+      if (arr[i] > time[1]) {
+        if (time[0] != '2' || arr[i] <= '3') {
+          time[1] = arr[i];
+          time[3] = time[4] = arr[0];
+          return time;
+        }
       }
     }
 
