@@ -1,27 +1,28 @@
 /* Copyright (C) 2018 by iamslash */
+// https://leetcode.com/explore/interview/card/google/59/array-and-strings/339/
 
 #include <cstdio>
 #include <vector>
 #include <algorithm>
 
+
+// 1 2 3
+// 1 2 4
 class Solution {
 public:
-  std::vector<int> plusOne(std::vector<int>& d) {
-    if (d.size() == 0)
-      return d;
-    int n = d.size();
-    std::reverse(d.begin(), d.end());
-    int c = (d[0] + 1) / 10;
-    d[0] = (d[0] + 1) % 10;
-    for (int i = 1; i < n; ++i) {
-      int t = (d[i] + c) / 10;
-      d[i] = (d[i] + c) % 10;
-      c = t;
+  std::vector<int> plusOne(std::vector<int>& a) {
+    std::reverse(a.begin(), a.end());
+    int c = 0; // carry 
+    for (int i = 0; i < a.size(); ++i) {
+      a[i] = a[i] + c + 1;
+      if (a[i] > 9)
+        c = 1;
+      a[i] %= 10;
     }
     if (c > 0)
-      d.push_back(1);
-    std::reverse(d.begin(), d.end());
-    return d;
+      a.push_back(1);
+    std::reverse(a.begin(), a.end());
+    return a;
   }
 }; 
 
