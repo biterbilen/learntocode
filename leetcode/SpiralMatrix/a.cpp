@@ -15,6 +15,7 @@ class Solution {
     int nx = m[0].size();
     if (nx == 0)
       return r;
+    int nyx = ny * nx;
 
     // for (const auto& row : m) {
     //   for (const auto& e : row) {
@@ -26,7 +27,7 @@ class Solution {
     int ys = 0, ye = ny, xs = 0, xe = nx;  // start y, end y, start x, end x
     int y = 0, x = 0, dy = 0, dx = 0;
     // while (y >= ys && y < ye && x >= xs && x < xe) {
-    while (ys < ye && xs < xe) {
+    while (ys <= ye && xs <= xe && r.size() < nyx) {
       r.push_back(m[y][x]);
       if (y == ys && x == xs)
         ys++, dy = 0, dx = 1;
@@ -38,8 +39,8 @@ class Solution {
         xs++, dy = -1, dx = 0;
       else if (y == ys && dy < 0 && dx == 0)
         ys++, dy = 0, dx = 1;
-      printf("m:%d y:%d x:%d ys:%d ye:%d xs:%d xe:%d dy:%d dx:%d\n",
-             m[y][x], y, x, ys, ye, xs, xe, dy, dx);
+      // printf("m:%d y:%d x:%d ys:%d ye:%d xs:%d xe:%d dy:%d dx:%d\n",
+      //        m[y][x], y, x, ys, ye, xs, xe, dy, dx);
       y += dy;
       x += dx;
     }
