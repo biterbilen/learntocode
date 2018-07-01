@@ -23,20 +23,23 @@ class Solution {
     //   printf("\n");
     // }
     // traverse
-    int sy = 0, ey = ny, sx = 0, ex = nx;  // start y, end y, start x, end x
-    int y = 0, x = 0, dy = 0, dx = 1;
-    while (sx < ex && sy < ey) {
-      printf("%d ", m[y][x]);
+    int ys = 0, ye = ny, xs = 0, xe = nx;  // start y, end y, start x, end x
+    int y = 0, x = 0, dy = 0, dx = 0;
+    // while (y >= ys && y < ye && x >= xs && x < xe) {
+    while (ys < ye && xs < xe) {
       r.push_back(m[y][x]);
-
-      if (y == sy && x == sx)
-        sy++, dy = 0, dx = 1;
-      else if (x == ex && dy == 0 && dx > 0)
-        ex--, dy = 1, dx = 0;
-      else if (y == ey && dy > 0 && dx == 0)
-        ey--, dy = 0, dx = -1;
-      else if (x == sx && dy == 0 && dx < 0)
-        sx++, dy = -1, dx = 0;
+      if (y == ys && x == xs)
+        ys++, dy = 0, dx = 1;
+      else if (x == xe - 1 && dy == 0 && dx > 0)
+        xe--, dy = 1, dx = 0;
+      else if (y == ye - 1 && dy > 0 && dx == 0)
+        ye--, dy = 0, dx = -1;
+      else if (x == xs && dy == 0 && dx < 0)
+        xs++, dy = -1, dx = 0;
+      else if (y == ys && dy < 0 && dx == 0)
+        ys++, dy = 0, dx = 1;
+      printf("m:%d y:%d x:%d ys:%d ye:%d xs:%d xe:%d dy:%d dx:%d\n",
+             m[y][x], y, x, ys, ye, xs, xe, dy, dx);
       y += dy;
       x += dx;
     }
