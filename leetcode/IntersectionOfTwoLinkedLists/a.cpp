@@ -1,7 +1,15 @@
 // Copyright (C) 2018 by iamslash
 // https://leetcode.com/explore/interview/card/top-interview-questions-medium/107/linked-list/785/
+                
+// A:          a1 → a2
+//                    ↘
+//                      c1 → c2 → c3
+//                    ↗            
+// B:     b1 → b2 → b3
+               
 
 #include <cstdio>
+               
 
 /**
  * Definition for singly-linked list.
@@ -20,8 +28,27 @@ struct ListNode {
 
 class Solution {
  public:
-  ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-    return NULL;
+  ListNode *getIntersectionNode(ListNode *a, ListNode *b) {
+    int n = 0;
+    
+    for (ListNode* p = a; p; p = p->next)
+      n++;
+    for (ListNode* p = b; p; p = p->next)
+      n--;
+    while (n > 0) {
+      a = a->next;
+      n--;
+    }
+    while (n < 0) {
+      b = b->next;
+      n++;
+    }
+    while (a != b) {
+      a = a->next;
+      b = b->next;
+    }
+    
+    return a;
   }
 };
 
