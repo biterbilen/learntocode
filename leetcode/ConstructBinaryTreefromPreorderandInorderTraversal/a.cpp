@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <algorithm>
 
 /**
  * Definition for a binary tree node.
@@ -18,41 +19,53 @@ struct TreeNode {
   TreeNode *left;
   TreeNode *right;
   explicit TreeNode(int v) : val(v), left(NULL), right(NULL) {}
-  explicit TreeNode(int v, TreeNode* l, TreeNode* r) :
-      val(v), left(l), right(r) {}
+  // explicit TreeNode(int v, TreeNode* l, TreeNode* r) :
+  //     val(v), left(l), right(r) {}
 };
 
-class Solution {
- public:
-  TreeNode* root = NULL;
-  TreeNode* _solve(TreeNode* parent, std::vector<int>& pre, std::vector<int>& ino) {
-    // base condition
-    if (pre.size() == 0)
-      return;
-
-    // job
-    int v = *pre.erase(pre.begin());
-    std::vector<int> pre_l;
-    std::vector<int> pre_r;
-    std::vector<int> ino_l;
-    std::vector<int> ino_r;
-    
-    // recursion
-    parent->left = 
-  }
-  TreeNode* buildTree(std::vector<int>& pre, std::vector<int>& ino) {
-    return _solve(root, pre, ino);
-  }
-};
-
+//             p
 // preorder = [3,9,20,15,7]
 // inorder = [9,3,15,20,7]
-
+//              i
   //   3
   //  / \
   // 9  20
   //   /  \
   //  15   7
+
+class Solution {
+ public:
+  TreeNode* buildTree(std::vector<int>& pre, std::vector<int>& ino) {
+    // base condition
+    if (pre.size() == 0)
+      return NULL;
+
+    // job
+    auto it_pre = pre.begin();
+    int val = *it_pre;
+    auto it_ino = std::find(ino.begin(), ino.end(), val);
+    TreeNode* node = new TreeNode(val);
+    int cntl = it_ino - ino.begin();
+    int cntr = std::max(0, (int)(ino.end() - it_ino - 1));
+    it_pre++;
+    // printf("%d %d %d\n", val, cntl, cntr);
+    
+    // recursion
+    if (cntl > 0) {
+      std::vector<int> p(it_pre, it_pre+cntl);
+      std::vector<int> i(ino.begin(), ino.begin()+cntl);
+      // printf(" %d %d\n", p.size(), i.size());
+      node->left = buildTree(p, i);
+    }
+    if (cntr > 0) {
+      std::vector<int> p(it_pre+cntl, pre.end());
+      std::vector<int> i(ino.begin()+cntl+1, ino.end());
+      // printf(" %d %d\n", p.size(), i.size());
+      node->right = buildTree(p, i);
+    }
+    return node;
+  }
+};
 
 // print preorder traversal
 void dump(TreeNode* r) {
@@ -65,7 +78,7 @@ void dump(TreeNode* r) {
 
   // recursion
   if (r->left) dump(r->left);
-  if (r->right) dump(r->right);
+  if (r->right) dump(r->right);  
 }
 
 int main() {
@@ -76,5 +89,6 @@ int main() {
   TreeNode* r = s.buildTree(a, b);
 
   dump(r);
+  printf("\n");
   return 0;
 }
