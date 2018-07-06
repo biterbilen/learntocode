@@ -11,29 +11,34 @@
 
 class Solution {
  public:
+  std::string a;
   std::vector<std::string> r;
-  void _solve(std::vector<std::vector<char>>& n, std::string& d, std::string& c) {
-    // printf("%s\n", c.c_str());
-    
+  std::vector<std::vector<char>> n;
+  void _solve(int i, const std::string& d) {
     // base condition
-    if (d.size() == 0) {
-      r.push_back(c);
+    if (i >= d.size()) {
+      r.push_back(a);
+      return;
     }
+
+    // check skip
+    int j = d[i]-'2';
+    if (j < 0 || j > 7) {
+      _solve(i+1, d);
+      return;
+    }
+
     // recursion
-    for (int i = 0, y = d[i]-'2'; i < d.size() && y >= 0 && y <= 7; ++i) {
-      for (int x = 0; x < n[y].size(); ++x) {
-        char fd = d[0];
-        char fc = n[y][x];
-        d.erase(0, 1);
-        c += fc;
-        _solve(n, d, c);
-        c.erase(c.size()-1, 1);
-        d = fd + d;
-      }      
+    for (int k = 0; k < n[j].size(); ++k) {
+      char c = n[j][k];
+      a[i] = c;
+      _solve(i+1, d);
     }
   }
   std::vector<std::string> letterCombinations(std::string d) {
-    std::vector<std::vector<char>> n = {{'a','b','c'},
+    if (d.empty())
+      return r;
+    n = std::vector<std::vector<char>> {{'a','b','c'},
                                         {'d','e','f'},
                                         {'g','h','i'},
                                         {'j','k','l'},
@@ -41,8 +46,8 @@ class Solution {
                                         {'p','q','r', 's'},
                                         {'t','u','v'},
                                         {'w','x','y', 'z'}};
-    std::string c;
-    _solve(n, d, c);
+    a = std::string(d.size(), ' ');
+    _solve(0, d);
     return r;
   }
 };
@@ -52,8 +57,8 @@ int main() {
 
   Solution s;
   std::vector<std::string> r = s.letterCombinations(a);
-  for (const auto& a : r) {
-    printf("%s\n", a.c_str());
+  for (const auto& e : r) {
+    printf("%s\n", e.c_str());
   }
   return 0;
 }
