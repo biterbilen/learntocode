@@ -2,6 +2,7 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-medium/108/trees-and-graphs/790/
 
 #include <cstdio>
+#include <vector>
 
 /**
  * Definition for a binary tree node.
@@ -29,16 +30,21 @@ struct TreeNode {
 // Input: root = [3,1,4,null,2], k = 1
 //    3
 //   / \
-//  1   4
-//   \
+//  1   4x
+//   \ 
 //    2
+//
+//       
 // Output: 1
+//
+// i: i 
+// s: 4 2
+//          
+// k: 4
+// j: 0
 
 class Solution {
  public:
-  int _kth(TreeNode* node, int k) {
-
-  }
   int kthSmallest(TreeNode* root, int k) {
     
   }
