@@ -22,7 +22,7 @@ if (set & (1 << p))
     std::cout << "it is in" << std::endl;
 ```
 
-# dell a element
+# del a element
 
 ```cpp
 set &= ~(1 << p);
@@ -62,13 +62,15 @@ int bit_cnt(int x) {
 int find_min_idx(int x) {
     return __builtin_ctz(x);
 }
-int first_one_bit = (set & -set);  // ex. 100 & 100
+int first_one_bit = (set & -set);  //     00001100
+                                   //   & 11110100
 ```
 
 # del a min element
 
 ```cpp
-set &= (set - 1); // ex. set = 110 &= 101
+set &= (set - 1); //    0110 
+                  //  & 0101
 ```
 
 # traversal of set

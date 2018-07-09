@@ -3,34 +3,45 @@
 
 #include <cstdio>
 #include <vector>
+#include <algorithm>
 
-// 1, 2, 3
-//
-// 1, 2, 3
+// 1 2 3
+// 1 3 2
+// 2 1 3
+// 2 3 1
+// 3 2 1
+// 3 1 2
 
 class Solution {
  public:
   std::vector<std::vector<int>> r;
-  std::vector<int> v;
   void _solve(std::vector<int>& nums, int idx) {
+    
     // base condition
     if (idx == nums.size()) {
-      r.push_back(v);
+      r.push_back(nums);
       return;
     }
 
+    // for (int i = 0; i < idx; ++i)
+    //   printf(" ");
+    // printf("%d : ", idx);
+    // for (int i = 0; i < nums.size(); ++i)
+    //   printf("%d ", nums[i]);
+    // printf("\n");
+
     // recursion
-    for (int i = 0; i < nums.size(); ++i) {
-      v[idx] = nums[i];
+    for (int i = idx; i < nums.size(); ++i) {
+      std::swap(nums[i], nums[idx]);
       _solve(nums, idx+1);
+      std::swap(nums[i], nums[idx]);      
     }
   }
   std::vector<std::vector<int>> permute(std::vector<int>& nums) {
-    v = std::vector<int>(nums.size(), 0);
     _solve(nums, 0);
     return r;
   }
-};
+}; 
 
 int main() {
   std::vector<int> v = {1, 2, 3};
