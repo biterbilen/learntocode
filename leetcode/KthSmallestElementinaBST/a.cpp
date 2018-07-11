@@ -37,7 +37,7 @@ struct TreeNode {
 //       
 // Output: 1
 //
-// i: i 
+//    i     
 // s: 4 2
 //          
 // k: 4
@@ -45,8 +45,19 @@ struct TreeNode {
 
 class Solution {
  public:
-  int kthSmallest(TreeNode* root, int k) {
-    
+  int kthSmallest(TreeNode* p, int k) {
+    std::vector<TreeNode*> v(k);
+    int i = 0, j = k;
+    for (;;) {
+      while (p) {
+        v[i++ % k] = p;
+        p = p->left;
+      }
+      p = v[--i % k];
+      if (!--j)
+        return p->val;
+      p = p->right;
+    }
   }
 };
 
@@ -55,7 +66,7 @@ int main() {
                                 new TreeNode(1, NULL,
                                              new TreeNode(2)),
                                 new TreeNode(4));
-  int k = 1;
+  int k = 3;
   
   Solution s;
   printf("%d\n", s.kthSmallest(root, k));
