@@ -8,54 +8,42 @@
 class Solution {
 public:
   std::vector<std::vector<char>> B;
-  std::vector<int> dx;
-  std::vector<int> dy;
-  bool _solve(int y, int x, std::string s) {
-    // printf(":%d %d %s\n", y, x, s.c_str());
+  bool _solve(int y, int x, std::string s, int d) {
     // base condition
-    if (s.empty())
-      return true;
-    if (B[y][x] != s[0])
+    if (B[y][x] != s[d])
       return false;
-    if (s.size() == 1)
+    if (d+1 >= s.size())
       return true;
-    printf("%d %d %s\n", y, x, s.c_str());    
-    // recursion
-    for (int i = 0; i < 4; ++i) {
-        int ny = y + dy[i];
-        int nx = x + dx[i];
-        if (ny < 0 || ny >= B.size() ||
-            nx < 0 || nx >= B[0].size() || B[ny][nx] < 0)
-          continue;
-        // printf(" %d %d %s %c %c\n", ny, nx, s.c_str(), B[ny][nx], s[0]);
-        int t = B[ny][nx]; B[ny][nx] = -1;
-        if (_solve(ny, nx, s.substr(1)))
-          return true;
-        B[ny][nx] = t;          
-    }
 
+    // recursion
+    int dy[4] = {-1, 0, 1, 0};
+    int dx[4] = {0, -1, 0, 1};
+    for (int i = 0; i < 4; ++i) {
+      int ny = y + dy[i];
+      int nx = x + dx[i];
+
+      B[y][x] = ~B[y][x];
+
+      if (ny >= 0 && ny < B.size() && nx >= 0 && nx < B[0].size()
+          && B[ny][nx] > 0 && _solve(ny, nx, s, d+1))
+        return true;
+
+      B[y][x] = ~B[y][x];
+    }   
     return false;
   }
   bool exist(std::vector<std::vector<char>>& b, std::string s) {
     if (b.size() == 0 || s.empty())
       return false;
-    
-    // init members
     B = b;
-    dy = std::vector<int>{-1, 0, 1, 0};
-    dx = std::vector<int>{0, -1, 0, 1};
-
-    //
+    // DFS
     for (int i = 0; i < b.size(); ++i) {
       for (int j = 0; j < b[0].size(); ++j) {
-        int t = B[i][j]; B[i][j] = -1;
-        if (t == s[0] && _solve(i, j, s))
+        if (_solve(i, j, s, 0))
           return true;
-        b[i][j] = t;
       }
     }
-    // std::reverse(s.begin(), s.end());
-    return false;
+    return false;    
   }
 };
 
@@ -66,20 +54,20 @@ int main() {
   //   {'S', 'F', 'C', 'S'},
   //   {'A', 'D', 'E', 'E'}
   // };
-  // std::string w = "a";
-  // std::vector<std::vector<char>> b = {
-  //   {'a'}
-  // };
+  std::string w = "a";
+  std::vector<std::vector<char>> b = {
+    {'a'}
+  };
   // std::string w = "aaa";
   // std::vector<std::vector<char>> b = {
   //   {'a', 'a'}
   // };
-  std::string w = "AAB";
-  std::vector<std::vector<char>> b = {
-    {'C', 'A', 'A'},
-    {'A', 'A', 'A'},
-    {'B', 'C', 'D'},
-  };
+  // std::string w = "AAB";
+  // std::vector<std::vector<char>> b = {
+  //   {'C', 'A', 'A'},
+  //   {'A', 'A', 'A'},
+  //   {'B', 'C', 'D'},
+  // };
   Solution s;
   printf("%s\n", s.exist(b, w) ? "true" : "false");  
   return 0;
