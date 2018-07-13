@@ -1,6 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
-
 - [Abstract](#abstract)
 - [Materials](#materials)
 - [Online Judges](#online-judges)
@@ -47,9 +44,7 @@
   - [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
   - [Algorithm Game](#algorithm-game)
 
-<!-- markdown-toc end -->
-
-******
+----
 
 # Abstract
 
@@ -606,7 +601,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
 ## Search
   - Sequential Search with array
   - Sequential Search with linked list
-  - Binary Search with array
+  - [Binary Search with array](fundamentals/sort/binarysearch/README.md)
   - Interpolation Search
   - Binary Tree Search 
   - Radix Tree Search
