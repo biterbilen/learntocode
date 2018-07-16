@@ -23,10 +23,15 @@ class Solution {
     // binary search
     int l = k, m, r = k + v.size() - 1;
     // printf("%d %d %d\n", l, m, r);
+    // l
+    //   m
+    //     r
+    // 1 2 3
     while (l <= r) {
       m = (l + r) / 2;
       if (vv[m] == t) {
         rr = m % v.size();
+        break;
       } else if (t < vv[m]) {
         r = m-1;
       } else {
@@ -39,9 +44,10 @@ class Solution {
 };
 
 int main() {
+  // std::vector<int> v = {4, 5, 6, 7, 0, 1, 2};
+  // int t = 0;
   std::vector<int> v = {4, 5, 6, 7, 0, 1, 2};
-  int t = 0;
-  
+  int t = 3;  
   Solution s;
   printf("%d\n", s.search(v, t));  
   return 0;
