@@ -13,32 +13,18 @@ class Solution {
   bool searchMatrix(std::vector<std::vector<int>>& v, int t) {
     if (v.empty() || v[0].empty())
       return false;
-    
-    // binary search y
-    int l = 0, m, r = v.size()-1;
-    while (l <= r) {
-      m = (l+r) / 2;
-      if (v[m][0] == t) {
+
+    // traverse from (0, n-1)
+    int m = v.size(), n = v[0].size();
+    int y = 0, x = n - 1;
+
+    while (y < m && x >= 0) {
+      if (v[y][x] == t)
         return true;
-      } else if (t < v[m][0]) {
-        r = m - 1;
-      } else {
-        r = m + 1;
-      }        
-    }
-    
-    // binary search x
-    int y = m;
-    l = 0, r = v[0].size()-1;
-    while (l <= r) {
-      m = (l+r)/2;
-      if (v[y][m] == t) {
-        return true;
-      } else if (t < v[y][m]) {
-        r = m - 1;
-      } else {
-        r = m + 1;
-      }                          
+      else if (t < v[y][x])
+        --x;
+      else
+        ++y;
     }
     
     return false;
@@ -53,7 +39,7 @@ int main() {
     {10, 13, 14, 17, 24},
     {18, 21, 23, 26, 30},
   };
-  int t = 5;
+  int t = 20;
   
   Solution s;
   printf("%s\n", s.searchMatrix(m, t) ? "true" : "false");
