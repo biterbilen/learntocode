@@ -47,9 +47,9 @@
 // };
 
 // i
-//   r
+// r
 // 6 1 5 3 4
-//   x
+// x
 //
 class Solution {
  public:
@@ -74,5 +74,15 @@ int main() {
   std::vector<int> v = {6, 1, 5, 3, 4};
   Solution s;
   printf("%d\n", s.lengthOfLIS(v));  
+
+  // std::vector<int> v = {10, 9, 2, 5, 3, 7, 101, 18};
+  // std::sort(v.begin(), v.end());
+  // for (int a : v)
+  //   printf("%d ", a);
+  // printf("\n");
+  // int x = 3;
+  // printf("%d\n", std::lower_bound(v.begin(), v.end(), x) - v.begin());
+  // printf("%d\n", std::upper_bound(v.begin(), v.end(), x) - v.begin());
+
   return 0;
 }

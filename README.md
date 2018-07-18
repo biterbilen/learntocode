@@ -142,6 +142,9 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
 
 2^23 = 8,388,608
 2^52 = 4,503,599,627,370,496
+
+float 의 경우 소수점 이하 유효자리수는 이진수로 23 자리이므로 십진수로 약 7자리이다.
+double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이므로 십진수로 약 16자리이다.
 ```
 
 # Algorithm Proof
@@ -577,6 +580,7 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [Catering](https://www.acmicpc.net/problem/10786)
 
 ## Sort
+  - [Insertion sort](fundamentals/sort/insertionsort/README.md)
   - 백 | [수 정렬하기 2](https://www.acmicpc.net/problem/2751)
   - 백 | [좌표 정렬하기](https://www.acmicpc.net/problem/11650)
   - 백 | [좌표 정렬하기 2](https://www.acmicpc.net/problem/11651)
@@ -587,7 +591,6 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
   - 백 | [K번째 수](https://www.acmicpc.net/problem/11004)
   - 백 | [버블 소트](https://www.acmicpc.net/problem/1377)
   - Selection Sort
-  - [Insertion sort](fundamentals/sort/insertionsort/README.md)
   - Bubble Sort
   - Shell Sort
   - Quicksort
@@ -782,7 +785,9 @@ double = 1 sign bit + 11 exponent bit + 52 fraction bit (-2^52 ~ 2^52)
 
 ## Dynamic Programming
   - [overview](doc/dynamic_programming.md)
-  - C | [boolean evaluation](crackingthecodinginterview/8.14_BooleanEvaluation/a.cpp)
+  - [LIS](/leetcode/LongestIncreasingSubsequence/README.md)
+  - [Coin Change](/leetcode/CoinChange/README.md)
+  - C | [boolean evaluation](/crackingthecodinginterview/8.14_BooleanEvaluation/a.cpp)
   - 백 | [1로 만들기](https://www.acmicpc.net/problem/1463)
   - 백 | [2×n 타일링](https://www.acmicpc.net/problem/11726)
   - 백 | [2×n 타일링 2](https://www.acmicpc.net/problem/11727)
