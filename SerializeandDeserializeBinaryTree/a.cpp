@@ -15,8 +15,13 @@ struct TreeNode {
 };
 
 
-// 1,2,3,null,null,4,5
-    
+// 1,2,3,*,*,4,5
+
+//   1
+//  / \
+// 2   3
+//    / \
+//   4   5
 class Codec {
  public:
 
@@ -25,18 +30,20 @@ class Codec {
         
   }
 
-  TreeNode* _deserialize(const sdt::string& s, int i) {
+  TreeNode* _deserialize(const sdt::string& s, int a, int b) {
     // base condition
-    if (i >= s.size())
+    if (a >= b)
       return NULL;
 
-    TreeNode* r = nullptr;;
+    TreeNode* r = NULL;
     // recursion
     std::size_t f = data.find_first_of(',');
     if (f != sdt::size_t::npos) {
-      r = new TreeNode(
+      r = new TreeNode(s.substr(0, f));
+      int ha = (b - f) >> 1;
+      int la = f + 1;
     }
-    
+
     return r;
   }
   // Decodes your encoded data to tree.
