@@ -55,20 +55,20 @@ class Codec {
     // p1 p2        
     // 1,32:NULL...,32:NULL...
     // recursion
-    std::size_t pos1 = d.find_first_of(',');
-    if (pos1 == std::string::npos && d == "NULL") {
+    std::size_t posc = d.find_first_of(',');
+    if (posc == std::string::npos && d == "NULL") {
       return NULL;
     }
 
-    std::string dd = d.substr(0, pos1);
+    std::string dd = d.substr(0, posc);
     TreeNode* r = new TreeNode(std::stoi(dd));
     int posl = d.find_first_of(':');
-    int lenl = std::stoi(d.substr(pos1 + 1, posl - pos1 - 1));
-    r->left = deserialize(d.substr(posl + 1, pos2 + lenl));
-    
-    int posr = d.find_first_of(':');
-    int lenl = std::stoi(d.substr(pos1 + 1, posl - pos1 - 1));  
-    r->right = deserialize(d.substr(pos2 + 1));    
+    int lenl = std::stoi(d.substr(posc + 1, posl - posc - 1));
+    r->left = deserialize(d.substr(posl + 1, lenl));
+
+    int posr = d.find_first_of(':', posl + lenl + 1);
+    int lenr = std::stoi(d.substr(posl + lenl + 1, posr - (posl + 1 + lenl)));
+    r->right = deserialize(d.substr(posr + 1));
     return r;
   }
 };
