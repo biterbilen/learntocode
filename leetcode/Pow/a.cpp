@@ -13,6 +13,8 @@ class Solution {
     double rr = 1.0;
     bool negative = n >= 0 ? false : true;
     if (negative) {
+      // int min can not be converted positive number
+      // so should be added by 1
       if (n == std::numeric_limits<int>::min()) {
         rr = x;
         n++;
