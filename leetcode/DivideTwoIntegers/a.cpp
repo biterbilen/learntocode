@@ -4,8 +4,7 @@
 #include <cstdio>
 #include <limits>
 
-// when p is INT_MIN
-// when q is INT_MIN
+// Rejected: Time Limit Exceeded
 class Solution {
 public:
   int divide(int p, int q) {
@@ -14,14 +13,20 @@ public:
     if ((p > 0 && q < 0) ||
         (p < 0 && q > 0))
       neg = true;
-    if (p < 0) {
-      p = -p;
-    }
     if (q < 0)
       q = -q;    
+    if (p < 0) {
+      if (p == std::numeric_limits<int>::min()) {
+        rr = 1;
+        p += q;
+      }
+      p = -p;
+    }
+    // printf("%d %d\n", p, q);
     while (p >= q) {
       p -= q;
-      rr++;
+      if (rr < std::numeric_limits<int>::max())
+        rr++;
     }
     return neg ? -rr : rr;
   }
