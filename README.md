@@ -43,6 +43,7 @@
   - [Combinatorial Search](#combinatorial-search)
   - [Optimization Problems To Decision Problems](#optimization-problems-to-decision-problems)
   - [Algorithm Game](#algorithm-game)
+  - [ETC](#etc)
 
 ----
 
@@ -980,3 +981,6 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - 백 | [님블](https://www.acmicpc.net/problem/11869)
   - 백 | [님 게임 홀짝](https://www.acmicpc.net/problem/11871)
   - 백 | [님 게임 나누기](https://www.acmicpc.net/problem/11872)
+
+## ETC
+  - [MJRTY - A FAST MAJORITY VOTE ALGORITHM](/leetcode/MajorityElement/README.md)
