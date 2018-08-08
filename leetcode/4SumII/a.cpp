@@ -8,7 +8,7 @@ class Solution {
  public:
   int fourSumCount(std::vector<int>& A, std::vector<int>& B,
                    std::vector<int>& C, std::vector<int>& D) {
-    int r;
+    int r = 0;
     std::unordered_map<int, int> m;
     for (int a : A) {
       for (int b : B) {
