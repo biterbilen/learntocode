@@ -11,45 +11,48 @@ struct ListNode {
 };
 
 
-// b      
-// r        
-//   h
-// 1 2 3 4 5
+// b       
+//     h
+// 1 2
 class Solution {
  public:
   ListNode* removeNthFromEnd(ListNode* ph, int n) {
     if (n <= 0)
       return ph;
-    ListNode* pb = ph;
     ListNode* pr = ph;
+    ListNode* pb = ph;
 
-    while (ph) {
-      if (n == 0) {
-        pb = pb->next;
-        pr = pb->next;
-        ph = ph->next;
-      } else if (n == 1) {
-        
-        --n;
+    int i = n;
+    while (ph->next) {
+      // printf("n:%d h:%d\n", n, ph->val);
+      ph = ph->next;
+      if (i > 0) {
+        --i;
       } else {
-        ph = ph->next;
-        --n;
+        pb = pb->next;
       }
     }
+    if (i == 0)
+      pb->next = pb->next->next;
+    else
+      pr = pb->next;
 
-    pb->next = pr->next;
-    return ph;
+    return pr;
   }
 };
 
 int main() {
   Solution s;
-  ListNode* p = new ListNode(1,
-                  new ListNode(2,
-                    new ListNode(3,
-                      new ListNode(4,
-                        new ListNode(5)))));
-  ListNode* pp = s.removeNthFromEnd(p, 2);
+  // ListNode* p = new ListNode(1,
+  //                 new ListNode(2,
+  //                   new ListNode(3,
+  //                     new ListNode(4,
+  //                       new ListNode(5)))));
+  ListNode* p = new ListNode(1);
+  int n = 1;
+  // ListNode* p = new ListNode(1, new ListNode(2));
+  // int n = 2;
+  ListNode* pp = s.removeNthFromEnd(p, n);
   ListNode* phead = pp;
   while (phead) {
     printf("%d ", phead->val);
