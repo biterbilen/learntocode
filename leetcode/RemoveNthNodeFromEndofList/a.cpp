@@ -25,7 +25,12 @@ class Solution {
 
     while (ph) {
       if (n == 0) {
+        pb = pb->next;
+        pr = pb->next;
+        ph = ph->next;
+      } else if (n == 1) {
         
+        --n;
       } else {
         ph = ph->next;
         --n;
