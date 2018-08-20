@@ -5,6 +5,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#include <unordered_set>
 #include <unordered_map>
 // b
 //     i
@@ -33,15 +34,33 @@
 //   }
 // };
 
-// O(N)
+// slower than unordered_map. why???
+// class Solution {
+//  public:
+//   int longestConsecutive(std::vector<int>& v) {
+//     int r = 0;
+//     std::unordered_set<int> s(v.begin(), v.end());
+//     for(int a : s) {
+//       if(s.find(a - 1) == s.end()) {
+//         int cnt = 0;
+//         for(int i = a; s.find(i) != s.end(); i++)
+//           cnt++;
+//         r = std::max(r, cnt);
+//       }
+//     }
+//     return r;
+//   }
+// };
+
+// The best solution
 class Solution {
  public:
   int longestConsecutive(std::vector<int>& v) {
     int r = 0;
-    std::unordered_map<int,int> m;
-    for(auto i : v)
-      m[i] = 1;
-    for(auto& p : m) {
+    std::unordered_map<int, int> m;
+    for (int a : v)
+      m[a] = 1;
+    for (const auto& p : m) {
       if(m.find(p.first - 1) == m.end()) {
         int cnt = 0;
         for(int i = p.first; m.find(i) != m.end(); i++)
@@ -52,7 +71,6 @@ class Solution {
     return r;
   }
 };
-
 
 int main() {
   // std::vector<int> v = {100, 4, 200, 1, 3, 2};
