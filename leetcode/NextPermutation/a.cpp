@@ -3,16 +3,19 @@
 
 #include <cstdio>
 #include <vector>
+#include <algorithm>
 
 class Solution {
  public:
-  void nextPermutation(std::vector<int>& nums) {
-    
+  void nextPermutation(std::vector<int>& v) {
+    std::next_permutation(v.begin(), v.end());
   }
 };
 
 int main() {
-  std::vector<int> v = {1, 2, 3};
+  // std::vector<int> v = {1, 2, 3};
+  // std::vector<int> v = {3, 2, 1};
+  std::vector<int> v = {1, 1, 5};
 
   Solution s;
   s.nextPermutation(v);
