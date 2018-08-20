@@ -1,43 +1,54 @@
-/* Copyright (C) 2018 by iamslash */
-// https://leetcode.com/explore/interview/card/top-interview-questions-medium/113/math/820/
+// Copyright (C) 2018 by iamslash
+// https://leetcode.com/problems/divide-two-integers/description/
 
 #include <cstdio>
+#include <vector>
 #include <limits>
 
-// Rejected: Time Limit Exceeded
+// Time Limit Exceeded
 class Solution {
-public:
-  int divide(int p, int q) {
+ public:
+  int divide(int a, int b) {
+    if (b == std::numeric_limits<int>::min())
+      return 0;
+    if (b == 1)
+      return a;
+    if (b == -1 && a == std::numeric_limits<int>::min()) {
+      return std::numeric_limits<int>::max();
+    }
     int rr = 0;
-    bool neg = false;
-    if ((p > 0 && q < 0) ||
-        (p < 0 && q > 0))
-      neg = true;
-    if (q < 0)
-      q = -q;    
-    if (p < 0) {
-      if (p == std::numeric_limits<int>::min()) {
+    bool bnegative = false;
+    if ((a < 0 && b > 0) ||
+        (a > 0 && b < 0))
+      bnegative = true;
+    if (b < 0) {
+      b = -b;
+    }
+    if (a < 0) {
+      if (a == std::numeric_limits<int>::min()) {
         rr = 1;
-        p += q;
+        a += b;
       }
-      p = -p;
+      a = -a;
     }
-    // printf("%d %d\n", p, q);
-    while (p >= q) {
-      p -= q;
-      if (rr < std::numeric_limits<int>::max())
-        rr++;
+
+    // 
+    while (a >= b) {
+      
     }
-    return neg ? -rr : rr;
+    
+    return bnegative ? -rr : rr;
   }
 };
 
 int main() {
-  // int a = 10, b = 3;
+  int a = 10, b = 3;
   // int a = 7, b = -3;
-  int a = -2147483648, b = -1;
+  // int a = 1, b = 1;
+  // int a = -2147483648, b = -1;
+  // int a = 1004958205, b = -2137325331;
+  
   Solution s;
   printf("%d\n", s.divide(a, b));
-  
   return 0;
 }
