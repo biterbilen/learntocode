@@ -5,29 +5,49 @@
 #include <vector>
 #include <set>
 #include <algorithm>
-#include <unordered_set>
+#include <unordered_map>
 // b
 //     i
 // -1, 0, 1, 1, 3,  4, 5, 6, 7,  8, 9
 //  9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6
 // O(NlgN)
+// class Solution {
+//  public:
+//   int longestConsecutive(std::vector<int>& v) {
+//     if (v.size() <= 1)
+//       return v.size();
+//     int r = 1, c = 1;
+//     std::set<int> s(v.begin(), v.end());
+//     int b = *s.begin();
+//     auto it = s.begin();
+//     ++it;
+//     for (; it != s.end(); ++it) {
+//       if (b+1 == *it)
+//         ++c;
+//       else
+//         c = 1;
+//       b = *it;
+//       r = std::max(r, c);
+//     }
+//     return r;
+//   }
+// };
+
+// O(N)
 class Solution {
  public:
   int longestConsecutive(std::vector<int>& v) {
-    if (v.size() <= 1)
-      return v.size();
-    int r = 1, c = 1;
-    std::set<int> s(v.begin(), v.end());
-    int b = *s.begin();
-    auto it = s.begin();
-    ++it;
-    for (; it != s.end(); ++it) {
-      if (b+1 == *it)
-        ++c;
-      else
-        c = 1;
-      b = *it;
-      r = std::max(r, c);
+    int r = 0;
+    std::unordered_map<int,int> m;
+    for(auto i : v)
+      m[i] = 1;
+    for(auto& p : m) {
+      if(m.find(p.first - 1) == m.end()) {
+        int cnt = 0;
+        for(int i = p.first; m.find(i) != m.end(); i++)
+          cnt++;
+        r = std::max(r, cnt);
+      }
     }
     return r;
   }
