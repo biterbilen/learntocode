@@ -5,22 +5,13 @@
 #include <vector>
 #include <limits>
 
-// Time Limit Exceeded
+//
+// O(lgN) O(1)
 class Solution {
  public:
   int divide(int a, int b) {
-    if (b == std::numeric_limits<int>::min())
-      return 0;
-    if (b == 1)
-      return a;
-    if (b == -1 && a == std::numeric_limits<int>::min()) {
-      return std::numeric_limits<int>::max();
-    }
     int rr = 0;
-    bool bnegative = false;
-    if ((a < 0 && b > 0) ||
-        (a > 0 && b < 0))
-      bnegative = true;
+    bool bneg = (a < 0) ^ (b < 0);
     if (b < 0) {
       b = -b;
     }
@@ -34,18 +25,26 @@ class Solution {
 
     // 
     while (a >= b) {
-      
+      int c = b;
+      int q = 1;
+      while (a >= c) {
+        a  -= c;
+        rr += q;
+        c <<= 1;
+        q <<= 1;
+        printf("a:%d c:%d rr:%d\n", a, c, rr);
+      }
     }
     
-    return bnegative ? -rr : rr;
+    return bneg ? -rr : rr;
   }
 };
 
 int main() {
-  int a = 10, b = 3;
+  // int a = 10, b = 3;
   // int a = 7, b = -3;
   // int a = 1, b = 1;
-  // int a = -2147483648, b = -1;
+  int a = -2147483648, b = -1;
   // int a = 1004958205, b = -2137325331;
   
   Solution s;
