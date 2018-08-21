@@ -7,7 +7,7 @@
 #include <cmath>
 #include <cstdint>
 
-//
+// 12ms 97.80%
 // O(lgN) O(1)
 class Solution {
  public:
