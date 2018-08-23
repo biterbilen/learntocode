@@ -582,6 +582,7 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
 
 ## Sort
   - [Insertion sort](fundamentals/sort/insertionsort/README.md)
+  - [Quick sort](fundamentals/sort/quicksort/README.md)
   - 백 | [수 정렬하기 2](https://www.acmicpc.net/problem/2751)
   - 백 | [좌표 정렬하기](https://www.acmicpc.net/problem/11650)
   - 백 | [좌표 정렬하기 2](https://www.acmicpc.net/problem/11651)
@@ -594,7 +595,6 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - Selection Sort
   - Bubble Sort
   - Shell Sort
-  - Quicksort
   - Radix Sort
   - Heapsort
   - Merge sort
