@@ -14,35 +14,43 @@ void print_vector(const std::vector<int>& v) {
   printf("\n");    
 }
 
-void merge(std::vector<int>& v, int l, int m, int r) {
+void merge(std::vector<int>& v, std::vector<int>& w,
+           int l, int m, int r) {
   int i = l, j = m+1, k = l;
-  std::vector<int> a(v.size());
   while (i <= m && j <= r) {
     if (v[i] <= v[j])
-      a[k++] = a[i++];
+      w[k++] = w[i++];
     else
-      a[k++] = a[j++];
+      w[k++] = w[j++];
   }
   if (i > m) {
     for (int n = j; n <= r; ++n)
-      a[k++] = v[n];
+      w[k++] = v[n];
   } else {
     for (int n = i; n <= m; ++n)
-      a[k++] = v[n];
+      w[k++] = v[n];
   }
-  v.swap(a);  
+  std::copy(w.begin()+l, w.begin()+r+1, v.begin()+l);
 }
 
-void msort(int step, std::vector<int>& v, int l, int r) {
+void msort(int step, std::vector<int>& v, std::vector<int>& w,
+           int l, int r) {
+  for (int i = 0; i < step; ++i)
+    printf("_");
+  printf("%d %d | ", l, r);
+  for (int i = l; i <= r; ++i)
+    printf("%d ", v[i]);
+  printf("\n");
+
   // base condition
   if (l >= r)
     return;
 
   // recursion
   int m = (l+r)/2;
-  msort(step+1, v, l, m);
-  msort(step+1, v, m+1, r);
-  merge(v, l, m, r);
+  msort(step+1, v, w, l, m);
+  msort(step+1, v, w, m+1, r);
+  merge(v, w, l, m, r);
 }
 
 
@@ -53,7 +61,8 @@ int main() {
   
   print_vector(v);
 
-  msort(0, v, 0, v.size()-1);
+  std::vector<int> w = v;
+  msort(0, v, w, 0, v.size()-1);
   print_vector(v);
 
   return 0;
