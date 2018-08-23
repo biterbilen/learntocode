@@ -4,6 +4,7 @@
 
 # Idea
 
+Divide and Conquer 전략을 이용한다.
 
 다음과 같은 정렬되지 않은 수열이 있다고 해보자.
 

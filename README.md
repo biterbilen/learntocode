@@ -583,6 +583,7 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
 ## Sort
   - [Insertion sort](fundamentals/sort/insertionsort/README.md)
   - [Quick sort](fundamentals/sort/quicksort/README.md)
+  - [Merge sort](fundamentals/sort/mergesort/README.md)
   - 백 | [수 정렬하기 2](https://www.acmicpc.net/problem/2751)
   - 백 | [좌표 정렬하기](https://www.acmicpc.net/problem/11650)
   - 백 | [좌표 정렬하기 2](https://www.acmicpc.net/problem/11651)
@@ -597,7 +598,6 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - Shell Sort
   - Radix Sort
   - Heapsort
-  - Merge sort
   - External Sort
   - Binary Tree Sort
   - counting sort
@@ -736,8 +736,8 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - 백 | [가장 가까운 두 점](https://www.acmicpc.net/problem/2261)
   - 알 | The fast sum of a sequence
   - 알 | the fast square of a matrix
-  - 알 | merge sort
-  - 알 | quick sort
+  - [Quick sort](fundamentals/sort/quicksort/README.md)
+  - [Merge sort](fundamentals/sort/mergesort/README.md)
   - 알 | Karatsuba
   - 알 | [QUADTREE](https://algospot.com/judge/problem/read/QUADTREE)
   - 알 | [FENCE](https://algospot.com/judge/problem/read/FENCE)★ 
