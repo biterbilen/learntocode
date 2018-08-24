@@ -14,14 +14,22 @@ void print_vector(const std::vector<int>& v) {
   printf("\n");    
 }
 
-void merge(std::vector<int>& v, std::vector<int>& w,
+//
+// l
+//       r
+//   m
+// 1 3 4 5
+//         i
+//     j
+//         k
+void merge(int step, std::vector<int>& v, std::vector<int>& w,
            int l, int m, int r) {
   int i = l, j = m+1, k = l;
   while (i <= m && j <= r) {
     if (v[i] <= v[j])
-      w[k++] = w[i++];
+      w[k++] = v[i++];
     else
-      w[k++] = w[j++];
+      w[k++] = v[j++];
   }
   if (i > m) {
     for (int n = j; n <= r; ++n)
@@ -31,16 +39,33 @@ void merge(std::vector<int>& v, std::vector<int>& w,
       w[k++] = v[n];
   }
   std::copy(w.begin()+l, w.begin()+r+1, v.begin()+l);
+
+  // for (int i = 0; i < step; ++i)
+  //   printf("=");
+  // printf("%d %d | ", l, r);
+  // for (int i = l; i <= r; ++i)
+  //   printf("%d ", w[i]);
+  // printf("\n");
+  
 }
 
+//         r
+//     m
+// l
+// 1 4 7 0 9
+//       i
+//         j
+
+//         k
+// 0 1 4 7 
 void msort(int step, std::vector<int>& v, std::vector<int>& w,
            int l, int r) {
-  for (int i = 0; i < step; ++i)
-    printf("_");
-  printf("%d %d | ", l, r);
-  for (int i = l; i <= r; ++i)
-    printf("%d ", v[i]);
-  printf("\n");
+  // for (int i = 0; i < step; ++i)
+  //   printf("_");
+  // printf("%d %d | ", l, r);
+  // for (int i = l; i <= r; ++i)
+  //   printf("%d ", v[i]);
+  // printf("\n");
 
   // base condition
   if (l >= r)
@@ -50,14 +75,14 @@ void msort(int step, std::vector<int>& v, std::vector<int>& w,
   int m = (l+r)/2;
   msort(step+1, v, w, l, m);
   msort(step+1, v, w, m+1, r);
-  merge(v, w, l, m, r);
+  merge(step, v, w, l, m, r);
 }
 
 
 int main() {
   std::vector<int> v(10);
   rand_vector(v);
-  // std::vector<int> v = {1, 3, 5, 4};
+  // std::vector<int> v = {1, 7, 4, 0, 9};
   
   print_vector(v);
 
