@@ -60,12 +60,12 @@ void merge(int step, std::vector<int>& v, std::vector<int>& w,
 // 0 1 4 7 
 void msort(int step, std::vector<int>& v, std::vector<int>& w,
            int l, int r) {
-  // for (int i = 0; i < step; ++i)
-  //   printf("_");
-  // printf("%d %d | ", l, r);
-  // for (int i = l; i <= r; ++i)
-  //   printf("%d ", v[i]);
-  // printf("\n");
+  for (int i = 0; i < step; ++i)
+    printf("_");
+  printf("%d %d | ", l, r);
+  for (int i = l; i <= r; ++i)
+    printf("%d ", v[i]);
+  printf("\n");
 
   // base condition
   if (l >= r)
