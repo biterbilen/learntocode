@@ -4,30 +4,29 @@
 #include <cstdio>
 #include <vector>
 #include <algorithm>
+#include <unordered_set>
+#include <set>
 
 // 1 2 2 2 5
 class Solution {
  public:
-  std::vector<std::vector<int>> m_r;
+  std::set<std::vector<int>> m_r;
   void _combi(std::vector<int>& candi, int t,
               std::vector<int>& combi, int sum, int idx) {
-    printf("idx:%d sum:%d comb: ", idx, sum);
-    for (int i = 0; i < combi.size(); ++i)
-      printf("%d ", combi[i]);
-    printf("\n");
+    // printf("idx:%d sum:%d comb: ", idx, sum);
+    // for (int i = 0; i < combi.size(); ++i)
+    //   printf("%d ", combi[i]);
+    // printf("\n");
     // base condition
-    if (idx >= candi.size())
-      return;
-    // if (sum + candi[idx] > t)
-    //   return;
-    if (sum + candi[idx] == t) {
-      m_r.push_back(combi);
-      // combi.clear();
+    if (sum == t) {
+      m_r.insert(combi);
       return;
     }
+    if (idx >= candi.size())
+      return;
 
     // recursion
-    for (int i = idx; i < candi.size(); ++i) {
+    for (int i = idx; i < candi.size() && sum+candi[i] <= t; ++i) {
       // if (i > 0 && candi[i] == candi[i-1])
       //   continue;
       combi.push_back(candi[i]);
@@ -39,7 +38,7 @@ class Solution {
     std::sort(candi.begin(), candi.end());
     std::vector<int> combi;
     _combi(candi, t, combi, 0, 0);
-    return m_r;
+    return std::vector<std::vector<int>>(m_r.begin(), m_r.end());
   }
 };
 
@@ -53,7 +52,7 @@ int main() {
 
   for (auto rr : r) {
     for (int b : rr) {
-      printf("%d\n", b);
+      printf("%d ", b);
     }
     printf("\n");
   }
