@@ -15,13 +15,13 @@
 class Solution {
  public:
   std::vector<std::vector<int>> m_r;
-  void _solve(int step, std::vector<int>& v, int start) {
-    for (int i = 0; i < step; ++i)
-      printf("_");
-    printf("%d | ", start);
-    for (int i = 0; i < v.size(); ++i)
-      printf("%d ", v[i]);
-    printf("\n");
+  void _solve(int step, std::vector<int> v, int start) {
+    // for (int i = 0; i < step; ++i)
+    //   printf("_");
+    // printf("%d | ", start);
+    // for (int i = 0; i < v.size(); ++i)
+    //   printf("%d ", v[i]);
+    // printf("\n");
     
     int n = v.size();
 
@@ -40,14 +40,7 @@ class Solution {
       _solve(step+1, v, start+1);
     }
   }
-  std::vector<std::vector<int>> permuteUnique(std::vector<int>& v) {
-    if (v.empty())
-      return m_r;
-    if (v.size() == 1) {
-      m_r.push_back(v);
-      return m_r;
-    }
-      
+  std::vector<std::vector<int>> permuteUnique(std::vector<int>& v) {      
     std::sort(v.begin(), v.end());
     _solve(0, v, 0);
     return m_r;
