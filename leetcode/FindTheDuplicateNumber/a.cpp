@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <vector>
 
-// f            
-//     s    
+//     f             
+//         s     
 // 1 3 4 2 2
 //
 class Solution {
@@ -30,6 +30,9 @@ class Solution {
   }
 };
 
+// s: 1 3 2 4 2 4 2 4 2 4 2 4 2 ...
+// f: 3 4 4 4 
+// f:         1 2 2
 int main() {
   // std::vector<int> v = {1, 3, 4, 2, 2};
   std::vector<int> v = {3, 1, 3, 4, 2};
