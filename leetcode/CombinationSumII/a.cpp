@@ -4,55 +4,54 @@
 #include <cstdio>
 #include <vector>
 #include <algorithm>
-#include <unordered_set>
-#include <set>
 
-// 1 2 2 2 5
+#include <iostream>
+static int x = []() {
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
+  return 0;
+}();
 class Solution {
  public:
-  std::set<std::vector<int>> m_r;
-  void _combi(std::vector<int>& candi, int t,
-              std::vector<int>& combi, int sum, int idx) {
-    // printf("idx:%d sum:%d comb: ", idx, sum);
-    // for (int i = 0; i < combi.size(); ++i)
-    //   printf("%d ", combi[i]);
-    // printf("\n");
+  std::vector<std::vector<int>> m_ans;
+  std::vector<int> m_cand;
+  std::vector<int> m_comb;
+  void _solve(int start, int tgt) {
     // base condition
-    if (sum == t) {
-      m_r.insert(combi);
+    if (tgt == 0) {
+      m_ans.push_back(m_comb);
+      return;
+    } else if (tgt < 0) {
       return;
     }
-    if (idx >= candi.size())
-      return;
 
     // recursion
-    for (int i = idx; i < candi.size() && sum+candi[i] <= t; ++i) {
-      // if (i > 0 && candi[i] == candi[i-1])
-      //   continue;
-      combi.push_back(candi[i]);
-      _combi(candi, t, combi, sum + candi[i], i+1);
-      combi.pop_back();
+    for (int i = start; i < m_cand.size() && m_cand[i] <= tgt; ++i) {
+      if (i > start && m_cand[i] == m_cand[i-1])
+        continue;
+      m_comb.push_back(m_cand[i]);
+      _solve(i + 1, tgt - m_cand[i]);
+      m_comb.pop_back();
     }
-  }
-  std::vector<std::vector<int>> combinationSum2(std::vector<int>& candi, int t) {
-    std::sort(candi.begin(), candi.end());
-    std::vector<int> combi;
-    _combi(candi, t, combi, 0, 0);
-    return std::vector<std::vector<int>>(m_r.begin(), m_r.end());
+  }  
+  std::vector<std::vector<int>> combinationSum2(std::vector<int>& cand, int t) {
+    std::sort(cand.begin(), cand.end());
+    m_cand = cand;
+    _solve(0, t);
+    return m_ans;
   }
 };
 
 int main() {
+  // std::vector<int> cand = {2, 5, 2, 1, 2}; int t = 5;
+  std::vector<int> cand = {10, 1, 2, 7, 6, 1, 5}; int t = 8;
 
-  std::vector<int> v = {2, 5, 2, 1, 2};
-  int t = 5;
-  
   Solution s;
-  auto r = s.combinationSum2(v, t);
+  auto r = s.combinationSum2(cand, t);
 
   for (auto rr : r) {
-    for (int b : rr) {
-      printf("%d ", b);
+    for (int rrr : rr) {
+      printf("%d ", rrr);
     }
     printf("\n");
   }
