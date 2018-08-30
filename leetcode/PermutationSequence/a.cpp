@@ -5,26 +5,29 @@
 #include <string>
 #include <vector>
 
-// 1 2 3
-// 1 3 2
-// 2 1 3
-// 2 3 1
-// 3 1 2
-// 3 2 1
-//
-// 3
 
 class Solution {
  public:
   std::string getPermutation(int n, int k) {
-    std::string nums = "123456789";
-    std::vector<int> fcts(9, 1);
     std::string r;
+    std::vector<int> fcts(10, 1);
     for (int i = 1; i < 10; ++i) {      
-      fcts[i] = fcts[i-1] * (i+1);
+      fcts[i] = fcts[i-1] * i;
     }
-    //
-    fcts[n-1] / n
+    std::string nums;
+    for (int i = 0; i < n; ++i)
+      nums += '1' + i;
+    while (!nums.empty()) {
+      int i;
+      int unit = fcts[nums.size()] / nums.size();
+      for (i = 0; i < nums.size(); ++i) {
+        if (unit * (i+1) >= k)
+          break;
+      }
+      r += nums[i];
+      nums.erase(i, 1);
+      k -= unit * i;
+    }
 
     return r;
   }
@@ -34,5 +37,6 @@ class Solution {
 int main() {
   Solution s;
   printf("%s\n", s.getPermutation(3, 3).c_str());
+  printf("%s\n", s.getPermutation(4, 9).c_str());
   return 0;
 }
