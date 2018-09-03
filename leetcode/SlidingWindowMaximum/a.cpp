@@ -3,13 +3,25 @@
 
 #include <cstdio>
 #include <vector>
+#include <limits>
 
 class Solution {
  public:
   std::vector<int> maxSlidingWindow(std::vector<int>& V, int k) {
-    std::vector<int> r;
-
-    return r;
+    std::vector<int> rs;
+    int l = 0;
+    int r = 0;
+    int m = std::numeric_limits<int>::min(); // left index, right index, max value
+    // check first slide
+    while (r < k) {
+      m = std::max(m, V[r++]);
+    }
+    rs.push_back(m);
+    // check others
+    while (r < V.size()) {
+      
+    }
+    return rs;
   }
 };
 
