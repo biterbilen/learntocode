@@ -4,30 +4,35 @@
 #include <cstdio>
 #include <vector>
 #include <limits>
+#include <deque>
 
+// 01 2 3 4 5 6 7 8 9 
 class Solution {
  public:
   std::vector<int> maxSlidingWindow(std::vector<int>& V, int k) {
     std::vector<int> rs;
-    int l = 0;
-    int r = 0;
-    int m = std::numeric_limits<int>::min(); // left index, right index, max value
-    // check first slide
-    while (r < k) {
-      m = std::max(m, V[r++]);
-    }
-    rs.push_back(m);
-    // check others
-    while (r < V.size()) {
-      
+    std::deque<int> dq; // sorted by descending
+    for (int i = 0; i < V.size(); ++i) {
+      // check maximum candidates
+      while (dq.size() > 0 && dq.back() < V[i])
+        dq.pop_back();
+      dq.push_back(i);
+      // get max value in slide
+      if (dq.size() > 0 && i >= k - 1)
+        rs.push_back(V[dq.front()]);
+      // removes one not in slide
+      if (dq.size() > 0 && dq.front() <= i - k + 1)
+        dq.pop_front();
     }
     return rs;
   }
 };
 
 int main() {
-  std::vector<int> V = {1, 3, -1, -3, 5, 3, 6, 7};
-  int k = 3;
+  // std::vector<int> V = {1, 3, -1, -3, 5, 3, 6, 7};
+  // int k = 3;
+  std::vector<int> V = {7, 2, 4};
+  int k = 2;
   
   Solution sln;
   auto r = sln.maxSlidingWindow(V, k);
