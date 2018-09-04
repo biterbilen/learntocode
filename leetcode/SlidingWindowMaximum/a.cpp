@@ -6,23 +6,39 @@
 #include <limits>
 #include <deque>
 
-// 01 2 3 4 5 6 7 8 9 
+// .  
+// 7 2 4
 class Solution {
  public:
   std::vector<int> maxSlidingWindow(std::vector<int>& V, int k) {
-    std::vector<int> rs;
-    std::deque<int> dq; // sorted by descending
+    std::vector<int> rs; 
+    std::deque<int> dq;  // sorted by descending
     for (int i = 0; i < V.size(); ++i) {
+
+      // printf("%2d | ", i);
+      // for (int j = 0; j < dq.size(); ++j)
+      //   printf("%d ", V[dq[j]]);
+      // printf("\n");     
+      
       // check maximum candidates
-      while (dq.size() > 0 && dq.back() < V[i])
+      while (dq.size() > 0 && V[dq.back()] < V[i])
         dq.pop_back();
       dq.push_back(i);
+
+      // printf("  %2d | ", i);
+      // for (int j = 0; j < dq.size(); ++j)
+      //   printf("%d ", V[dq[j]]);
+      // printf("\n");     
+      
+      
       // get max value in slide
       if (dq.size() > 0 && i >= k - 1)
         rs.push_back(V[dq.front()]);
+
       // removes one not in slide
       if (dq.size() > 0 && dq.front() <= i - k + 1)
         dq.pop_front();
+      // printf("%2d dq.front: %d\n", i, V[dq.front()]);      
     }
     return rs;
   }
