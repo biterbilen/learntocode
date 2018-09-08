@@ -18,7 +18,7 @@ class Solution {
     }
 
     // recursion
-    for (int i = start; i < m_n; ++i) {
+    for (int i = start; i <= m_n; ++i) {
       m_c.push_back(i);
       _solve(i+1);
       m_c.pop_back();
@@ -34,7 +34,7 @@ class Solution {
 
 int main() {
   Solution s;
-  
+
   auto r = s.combine(4, 2);
   for (auto rr : r) {
     for (int a : rr) {
