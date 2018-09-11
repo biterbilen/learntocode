@@ -13,21 +13,22 @@ struct ListNode {
 class Solution {
  public:
   ListNode* partition(ListNode* h, int x) {
-    ListNode* p0 = new ListNode(0);
-    ListNode* p1 = new ListNode(0);
+    ListNode  n0(0);
+    ListNode  n1(0);
+    ListNode* p0 = &n0;
+    ListNode* p1 = &n1;
+
     while (h) {
       if (h->val < x) {
-        p0->next = h;
-        p0 = p0->next;
+        p0 = p0->next = h;
       } else {
-        p1->next = h;
-        p1 = p1->next;
+        p1 = p1->next = h;
       }
+      h = h->next;
     }
-    p0->next = p1->next;
-    h = p0->next;
-    delete p0;
-    delete p1;
+    p1->next = NULL;
+    p0->next = n1.next;
+    h = n0.next;
     
     return h;
   }
