@@ -2,6 +2,10 @@
 
 [SubsetsII @ leetcode](https://leetcode.com/problems/subsets-ii/description/)
 
+입력데이터의 개수를 `N` 이라고 할 때 부분집합의 개수는 `2^N` 이다.
+[멱집합 @
+wikipedia](https://ko.wikipedia.org/wiki/%EB%A9%B1%EC%A7%91%ED%95%A9)
+
 # Recursive Solution
 
 ## Idea
@@ -57,7 +61,7 @@ void solve(int start) {
 ## Time Complexity
 
 ```
-O(N!)
+O(2^N)
 ```
 
 ## Space Comlexity

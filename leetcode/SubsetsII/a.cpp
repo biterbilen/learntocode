@@ -53,18 +53,12 @@
 // O(N^2) O(1) 
 // 12ms 14.86% Why it is worse than recursive solution???
 //
-// start: 2
-//  size: 4
-//     j: 1
-//     i
+// start: 0
+//  size: 0
+//     j: 0
+// i
 // 1 2 2
 // r:
-//
-// 1
-// 2
-// 1 2
-// 2 2
-// 1 2 2
 class Solution {
  public:
   std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& v) {
