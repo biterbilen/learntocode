@@ -8,9 +8,12 @@
 // 1 2 2
 //
 // 1
-// 1 2
+// _ 1 2
+// _ _ 1 2 2  
+// _ 1 2     *
 // 2
-// 
+// _ 2 2
+// 2         *
 class Solution {
  public:
   std::vector<std::vector<int>> m_r;  // result
@@ -27,7 +30,7 @@ class Solution {
 
     // recursion
     for (int i = start; i < m_v.size(); ++i) {
-      if (i > 0 && m_v[i] == m_v[i-1])
+      if (i > start && m_v[i] == m_v[i-1])
         continue;
       m_c.push_back(m_v[i]);
       solve(i + 1);
