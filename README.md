@@ -722,6 +722,9 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - 알 | [BOARDCOVER](https://algospot.com/judge/problem/read/BOARDCOVER)
   - 알 | [CLOCKSYNC](https://algospot.com/judge/problem/read/CLOCKSYNC)
 
+## Backtracking
+  - [Subsets With Duplicates](/leetcode/SubsetsII/README.md)
+
 ## Divide And Conquor
   - 백 | [숫자 카드](https://www.acmicpc.net/problem/10815)
   - 백 | [숫자 카드 2](https://www.acmicpc.net/problem/10816)
