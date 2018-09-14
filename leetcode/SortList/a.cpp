@@ -2,6 +2,7 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-hard/117/linked-list/840
 
 #include <cstdio>
+#include <algorithm>
 
 struct ListNode {
   int val;
@@ -10,44 +11,78 @@ struct ListNode {
   ListNode(int x, ListNode* p) : val(x), next(p) {}
 };
 
+//
+// 4 2 1 3
 class Solution {
  public:
-  ListNode* merge(ListNode* l, ListNode* r) {
-    // base condition
-    if (l == NULL)
-      return r;
-    if (r == NULL)
-      return l;
-
-    // recursion
-    if (l->val < r->val) {
-      l->next = merge(l->next, r);
-      return l;
-    } else {
-      r->next = merge(l, r->next);
-      return r;
+  int getcnt(ListNode* h) {
+    int r = 0;
+    while (h) {
+      ++r;
+      h = h->next;
     }
-  } 
+    return r;
+  }
   ListNode* sortList(ListNode* h) {
-    // base condition
-    if (h == NULL || h->next == NULL)
-      return h;
-    ListNode* p1 = h;
-    ListNode* p2 = h;
-    ListNode* pre = h;
+    int       k  = 1;                   // block size
+    int       i  = 0;                   // index of list
+    int       n  = getcnt(h);           // count of h
+    int       j  = 0;
+    int       na = 0, nb = 0;           // count of block a, b
+    ListNode* pa = NULL, *pb = NULL, *tmp = NULL, *p = NULL;
+    ListNode* pl = NULL;                // last pointer
+    ListNode r(0, h);
 
-    while (p2 != NULL && p2->next != NULL) {
-      pre = p1;
-      p1 = p1->next;
-      p2 = p2->next->next;
-    }
-    pre->next = NULL;
+    while (k < n) {
+      i  = 0;
+      pl = &r;
+      p  = r.next;
 
-    // recursion
-    ListNode* l = sortList(h);
-    ListNode* r = sortList(p1);
-    
-    return merge(l, r);
+      
+      while (i < n) {
+        // for last members lesser than block size
+        na = std::min(n - i, k);
+        nb = std::min(n - i - na, k);
+
+        // split
+        pa = p;
+        if (nb != 0) {          
+          // forward to set pb
+          for (j = 0; j < na-1; ++j) {
+            p = p->next;
+          }
+          pb = p->next;
+          p->next = NULL;
+          p = pb;
+
+          for (j = 0; j < nb-1; ++j) {
+            p = p->next;
+          }
+          tmp = p->next;
+          p->next = NULL;
+          p = tmp;
+        }
+
+        // merge
+        while (pa || pb) {          
+          if (pb == NULL || (pa != NULL && pa->val <= pb->val)) {
+            pl->next = pa;
+            pl = pl->next;
+            pa = pa->next;
+          } else {
+            pl->next = pb;
+            pl = pl->next;
+            pb = pb->next;
+          }
+        }
+        
+        pl->next = NULL;
+        i += na + nb;
+        
+      }
+      k <<= 1;
+    }    
+    return r.next;
   }
 };
 
