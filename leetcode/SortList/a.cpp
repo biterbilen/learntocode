@@ -31,7 +31,8 @@ class Solution {
     int       na = 0, nb = 0;           // count of block a, b
     ListNode* pa = NULL, *pb = NULL, *tmp = NULL, *p = NULL;
     ListNode* pl = NULL;                // last pointer
-    ListNode r(0, h);
+    ListNode r(0);
+    r.next = h;
 
     while (k < n) {
       i  = 0;
