@@ -12,40 +12,37 @@ struct ListNode {
 class Solution {
  public:
   ListNode* reverseBetween(ListNode* h, int m, int n) {
-    //     f
-    //   l
-    // b
-    //   p
+    //   f
+    // l
+    //           b
+    //             p
     // v 1 2 3 4 5
-    // m:0 n: 2
+    // m:1 n: 5
     ListNode v(0);  // virtual node
     v.next = h;
     ListNode* b = &v;
     ListNode* p = &v;  // iterator pointer
-    ListNode* l = &v;  // left block end pointer 
+    ListNode* l = &v;  // left block end pointer
     ListNode* f = v.next;  // mid block start pointer
+    ListNode* t = NULL;
 
-    while (n > 0) {
-      --m; --n; 
-      if (m == 0) {
-        l = p;
-        f = l->next;
-      }
-      if (m <= 0) {
-        ListNode* t = p->next;
-        p->next = b;
-        b = p;
-        p = t;
-      } else {
-        p = p->next;
-        if (b->next != p)
-          b = b->next;
-      }
+    n -= m - 1;
+    while (--m) {
+      p = p->next;
     }
-
+    l = p;
+    f = l->next;
+    b = p;
+    p = p->next;
+    while (n--) {
+      t = p->next;
+      p->next = b;
+      b = p;
+      p = t;
+    }
     l->next = b;
     f->next = p;
-    return h;
+    return v.next;
   }
 };
 
@@ -56,7 +53,7 @@ int main() {
                                           new ListNode(3,
                                                        new ListNode(4,
                                                                     new ListNode(5)))));
-  int m = 1, n = 5;
+  int m = 2, n = 4;
   
   Solution s;
   ListNode* p = s.reverseBetween(h, m, n);
