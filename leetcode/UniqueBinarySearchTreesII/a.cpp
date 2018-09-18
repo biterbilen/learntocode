@@ -13,9 +13,30 @@ struct TreeNode {
 
 class Solution {
  public:
-  std::vector<TreeNode*> m_r;
+  std::vector<TreeNode*> gen(int fr, int to) {
+    std::vector<TreeNode*> rtrn;
+    if (to == fr)
+      rtrn.push_back(new TreeNode(fr));
+    if (to < fr)
+      rtrn.push_back(NULL);
+    if (to > fr) {
+      for (int i = fr; i <= to; ++i) {
+        std::vector<TreeNode*> l = gen(fr, i - 1);
+        std::vector<TreeNode*> r = gen(i + 1, to);
+        for (int j = 0; j < l.size(); ++j) {
+          for (int k = 0; k < r.size(); ++k) {
+            TreeNode * t = new TreeNode(i);
+            t->left = l[j];
+            t->right = r[k];
+            rtrn.push_back(t);
+          }
+        }
+      }
+    }
+    return rtrn;
+  }
   std::vector<TreeNode*> generateTrees(int n) {
-    return m_r;
+    return n > 0 ? gen(1, n) : std::vector<TreeNode*>();
   }
 };
 
