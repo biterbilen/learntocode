@@ -8,6 +8,12 @@
 #include <map>
 #include <unordered_map>
 
+#include <iostream>
+static int _x = []() {
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
+  return 0;
+}();
 // BFS
 class Solution {
  public:
@@ -24,10 +30,7 @@ class Solution {
       std::string s = a.first;
       int         n = a.second;
 
-      if (s != sb)
-        um[s]--;
-
-      printf("%d %s\n", n, s.c_str());
+      // printf("%d %s\n", n, s.c_str());
       
       if (s == se)
         return n;
@@ -50,7 +53,8 @@ class Solution {
 int main() {
   std::string sb = "hit";
   std::string se = "cog";
-  std::vector<std::string> wd = {"hot", "dot", "dog", "lot", "log"};  
+  // std::vector<std::string> wd = {"hot", "dot", "dog", "lot", "log"};  
+  std::vector<std::string> wd = {"hot", "dot", "dog", "lot", "log", "cog"};  
 
   Solution s;
   printf("%d\n", s.ladderLength(sb, se, wd));
