@@ -51,7 +51,7 @@ T[n] = T[0]   * T[n-1] +
 ## Time Complexity
 
 ```
-O(N)
+O(N2^N)
 ```
 
 ## Space Complexity
