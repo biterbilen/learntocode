@@ -306,6 +306,7 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
 ## Tree
   - [overview](doc/tree.md)
   - [Unique Binary Search Trees](/leetcode/UniqueBinarySearchTrees/README.md)
+  - [Validate Binary Search Tree](/leetcode/ValidateBinarySearchTree/README.md)
   - 알 | [terms and definitions](doc/tree_terms_and_definitions.md)
   - 백 | [트리 순회](https://www.acmicpc.net/problem/1991)
   - 백 | [트리의 부모 찾기](https://www.acmicpc.net/problem/11725)

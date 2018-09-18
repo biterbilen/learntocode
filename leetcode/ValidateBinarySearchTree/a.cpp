@@ -35,10 +35,11 @@ class Solution {
     // recursion left
     if (!solve(u->left, p))
       return false;
-    // recursion right
+    // visit root
     if (p != NULL && p->val >= u->val)
       return false;
     p = u;
+    // recursion right    
     return solve(u->right, p);
   }
   bool isValidBST(TreeNode* root) {
