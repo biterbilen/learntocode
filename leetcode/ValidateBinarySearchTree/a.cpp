@@ -11,24 +11,40 @@ struct TreeNode {
       val(x), left(l), right(r) {}
 };
 
+//        10
+//       /  
+//      5    
+//     / \    
+//    7   8
+
+// O(N) O(1)
+// 4ms 100.00%
+#include <iostream>
+static int _x = [](){
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
+  return 0;
+}();
 class Solution {
  public:
-  bool isValidBST(TreeNode* root) {
+  bool solve(TreeNode* u, TreeNode* &p) {
     // base condition
-    if (root == NULL)
+    if (u == NULL)
       return true;
-    TreeNode* cl = root->left;
-    TreeNode* cr = root->right;
-    if (cl != NULL && cr == NULL && root->val <= cl->val)
+
+    // recursion left
+    if (!solve(u->left, p))
       return false;
-    else if (cl == NULL && cr != NULL && root->val >= cr->val)
+    // recursion right
+    if (p != NULL && p->val >= u->val)
       return false;
-    else if (cl != NULL && cr != NULL &&
-             (root->val <= cl->val || root->val >= cr->val))
-      return false;
-    // recursion
-    return isValidBST(root->left) && isValidBST(root->right);
+    p = u;
+    return solve(u->right, p);
   }
+  bool isValidBST(TreeNode* root) {
+    TreeNode* prev = NULL;
+    return solve(root, prev);
+  } 
 };
 
 int main() {
@@ -41,9 +57,11 @@ int main() {
   //                            new TreeNode(4,
   //                                         new TreeNode(3),
   //                                         new TreeNode(6)));
-  TreeNode* p = new TreeNode(1,
-                             new TreeNode(1),
-                             NULL);
+  TreeNode* p = new TreeNode(10,
+                             new TreeNode(5),
+                             new TreeNode(15,
+                                          new TreeNode(6),
+                                          new TreeNode(20)));
   printf("%s\n", s.isValidBST(p) ? "true" : "false");
   return 0;
 }
