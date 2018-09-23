@@ -12,21 +12,36 @@ struct TreeNode {
       val(x), left(l), right(r) {}
 };
 
+//     1
+//    / \
+//   2   5
+//  / \   \
+// 3   4   6
 class Solution {
  public:
-  TreeNode* solve(TreeNode* t) {
-    
-  }
   void flatten(TreeNode* root) {
-    
+    while (root) {
+      if (root->left) {
+        TreeNode* l = root->left;
+        while (l->right)
+          l = l->right;
+        l->right = root->right;
+        root->right = root->left;
+        root->left = NULL;
+      }
+      root = root->right;
+    }
   }
 };
 
 void printt(TreeNode* t) {
   if (t == NULL) {
     printf("N ");
+    return;
   }
+  printt(t->left);
   printf("%d ", t->val);
+  printt(t->right);
 }
 
 int main() {
