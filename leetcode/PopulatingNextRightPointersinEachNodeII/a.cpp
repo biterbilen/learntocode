@@ -11,10 +11,38 @@ struct TreeLinkNode {
       val(x), left(l), right(r), next(NULL) {}
 };
 
+//      1
+//    /  \
+//   2    3
+//  / \    \
+// 4   5    7
 class Solution {
  public:
   void connect(TreeLinkNode *root) {
-    
+    TreeLinkNode *p, *head, *tail;
+    p = root;
+    head = tail = NULL;
+    while (p) {
+      if (p->left) {
+        if (tail) {
+          tail = tail->next = p->left;
+        } else {
+          head = tail = p->left;
+        }
+      }
+      if (p->right) {
+        if (tail) {
+          tail = tail->next = p->right;
+        } else {
+          head = tail = p->right;
+        }
+      }
+      p = p->next;
+      if (p == NULL) {
+        p = head;
+        head = tail = NULL;
+      }
+    }
   }
 };
 
