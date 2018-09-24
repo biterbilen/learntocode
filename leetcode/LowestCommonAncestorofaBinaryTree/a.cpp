@@ -24,9 +24,10 @@ class Solution {
     // recursion
     TreeNode* l = lowestCommonAncestor(t->left, p, q);
     TreeNode* r = lowestCommonAncestor(t->right, p, q);
-
+    if (l != NULL && r != NULL)
+      return t;
     
-    return t;
+    return l != NULL ? l : r;
   }
 };
 
