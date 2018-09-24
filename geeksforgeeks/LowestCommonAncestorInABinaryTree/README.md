@@ -1,6 +1,7 @@
 # Problem
 
 * [Lowest Common Ancestor in a Binary Tree @ geeksforgeeks](https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1)
+* [Lowest Common Ancestor of a Binary Tree @ leetcode](https://leetcode.com/explore/interview/card/top-interview-questions-hard/118/trees-and-graphs/844/)
 
 # Strategy with single traversal
 
@@ -19,20 +20,22 @@ return - p노드를 root로 하는 서브트리의 lca
 
 `lca`는 `p`를 root로 하는 서브트리의 LCA를 리턴한다.
 
-`p`가 NULL이면 서브트리가 존재하지 않기 때문에 LCA도 없다.
-따라서 NULL을 리턴한다.
+다음과 같은 여러가지 경우를 생각해 보자.
 
-`p`가 `lv`혹은 `rv`의 값을 갖고 있다면 `p`를 포함하여 부모들중에
+* `p`가 NULL이면 서브트리가 존재하지 않기 때문에 LCA도 없다.  따라서
+NULL을 리턴한다.
+
+* `p`가 `lv`혹은 `rv`의 값을 갖고 있다면 `p`를 포함하여 부모들중에
 LCA가 존재한다는 의미이기 때문에 `p`를 리턴한다.
 
-`p`의 왼쪽, 오른쪽 자식을 루트로 하는 서브트리의 LCA를 모아서 둘다
+* `p`의 왼쪽, 오른쪽 자식을 루트로 하는 서브트리의 LCA를 모아서 둘다
 NULL이 아니면 `p`를 포함하여 부모들중에 LCA가 존재한다는 의미이기
 때문에 `p`를 리턴한다. 
 
-`p`의 왼쪽, 오른쪽 자식을 루트로 하는 서브트리들의 LCA가 하나만
+* `p`의 왼쪽, 오른쪽 자식을 루트로 하는 서브트리들의 LCA가 하나만
 존재한다면 NULL이 아닌 LCA를 리턴한다.
 
-`p`의 왼쪽, 오른쪽 자식을 루트로 하는 서브트리의 LCA가 모두 NULL
+* `p`의 왼쪽, 오른쪽 자식을 루트로 하는 서브트리의 LCA가 모두 NULL
 이면 LCA가 존재하지 않기 때문에 NULL을 리턴한다.
 
 ![](lca.png)
