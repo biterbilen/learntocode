@@ -230,6 +230,8 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - [알](fundamentals/disjointset/unionfind/) | [union-find (merge-find)](doc/disjointset_unionfind.md)
 
 ## List
+  - [Find The Duplicate Number](/leetcode/FindTheDuplicateNumber)
+    - tortoise and the hare algorithm
   - [알](fundamentals/list/dynamicarray/) | [dynamic array](doc/list_dynamic_array.md)
   - 알 | [singly linked list](doc/list_singly_linked.md)
   - [알](fundamentals/list/doublylinkedlist/) | [doubly linked list](doc/list_doubly_linked.md)
