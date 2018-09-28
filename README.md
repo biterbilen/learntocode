@@ -372,7 +372,117 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - [알](/algospot.com/NH/) | [NH](http://algospot.com/judge/problem/read/NH)
 
 ## Graph
+
   - [overview](doc/graph.md)
+  - [terms and definitions](doc/graph_terms_and_definitions.md)
+  - [dfs (depth first search)](fundamentals/graph/dfs/README.md)
+    - adj, visited, dfs, dfs_all
+  - 알 | finding out two vertices are connected
+    - dfs(u) and find out whether v is visited.
+  - 알 | counting the number of components 
+    - count the number of dfs in dfs_all.
+  - 알 | [topological sort](doc/graph_topological_sort.md)
+    - adj, visited, dfs, dfs_topological_sort, order
+  - [eulerian circuit](fundamentals/graph/euleriancircuit/README.md)
+    - adj, circuit, dfs_get_eulerian_circuit
+  - [eulerian trail](fundamentals/graph/euleriantrail/README.md)
+    - adj, trail, dfs_get_eulerian_circuit, dfs_get_eulerian_trail
+  - [dfs spanning tree](fundamentals/graph/dfsspanningtree/README.md)
+    - tree edge, forward edge, back edge, cross edge
+    - adj, discovered, finished, counter, dfs_spanning_tree
+  - 알 | [proof of topological sort](doc/graph_proof_of_topological_sort.md)★  
+  - 알 | [check the cycle](doc/graph_check_the_cycle.md)
+  - 알 | [cut vertex (articulation point)](doc/graph_cut_vertex.md)
+    - biconnected components
+    - adj, discovered, is_cut_vertex, counter, dfs_find_cut_vertex
+  - 알 | [bridge](doc/graph_bridge.md)
+    - adj, discovered, bridge, counter, dfs_find_bridge
+  - 알 | [tarjan's algorithm](doc/graph_tarjan_algorithm.md)
+    - scc (strongly connected components)
+    - condensation
+    - adj, scc_id, discovered, finished, stck, scc_counter, vertex_counter, dfs_scc, tarjan_scc
+  - 알 | [topological sort of scc](doc/graph_topological_sort_of_scc)★
+  - [알](fundamentals/graph/bfs/) | [bfs (breadth first search)](doc/graph_bfs.md)
+  - [알](fundamentals/graph/bfsshortestpath/) | [bfs shortest path](doc/graph_bfs_shortest_path.md)
+  - 알 | [15 puzzle - bfs](doc/graph_15_puzzle_bfs.md)
+    - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, bfs
+  - 알 | [15 puzzle - bfs bidrectional search](doc/graph_15_puzzle_bfs_bs.md)
+    - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, get_sign, incr, bfs_bs
+  - 알 | [15 puzzle - bfs ids (iteratively deep searching)](doc/graph_15_puzzle_bfs_ids.md)
+    - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, best, dfs, ids
+  - [알](/fundamentals/graph/dijkstra/) | [Dijkstra algorithm](doc/graph_dijkstra.md)
+    ```cpp
+    vector<pair<int, int>> adj, dijkstra, dist, priority_queue<pair<int, int>> pq
+    ```
+    - O(|E|lg|V|)
+  - [알](/fundamentals/graph/dijkstrawithoutpq/) | [Dijkstra algorithm without priority queue](doc/graph_dijkstra_without_pq.md)
+    ```cpp
+    vector<pair<int, int>> adj, dijkstra, dist, visited
+    ```
+    - O(|V|^2 + |E|)
+  - 알 | [Bellman-Ford algorithm](doc/graph_bellman_ford.md)
+    ```cpp
+    vector<pair<int, int>> adj[], bellmanford, vector<int> upper, bool updated
+    ```
+    - O(|E||V|)
+  - [알](fundamentals/graph/kruskal/) | [Kruskal's minimum spanning tree](doc/graph_kruskal.md)
+  - [알](fundamentals/graph/prim/) | [Prim's minimum spanning tree](doc/graph_prim.md)
+  - 알 | [Floyd algorithm](doc/graph_floyd.md)
+    ```cpp
+    adj[][], via[][], floyd, reconstruct
+    ```
+  - 알 | [Ford-Fulkerson algorithm with adjacency matrix](doc/graph_ford_fulkerson.md)
+    ```cpp
+    capacity[][], flow[][],
+    ford_fulkerson, parent, q
+    ```
+    - small one between O(|E|f) and O(|V||E|^2)
+  - 알 | [Ford-Fulkerson algorithm with adjacency list](doc/graph_ford_fulkerson_adj_list.md)
+    ```cpp
+    capacity[][], Edge, add_edge, get_edge 
+    ford_fulkerson, parent, q
+    ```
+    - small one between O(|E|f) and O(|V||E|^2)
+  - 알 | [bipartite matching](doc/graph_bipartite_matching.md)
+    - adj[][], amatch, bmatch, visited, dfs, bipartite_match
+    - O(|V||E|)  
+  - 알 | [dinic algorithm](doc/graph_dinic.md)
+    - O(|V|^2|E|)
+  - 알 | [successive shortest path](doc/graph_successive_shortest_path.md)
+  - 알 | [Kuhn–Munkres algorithm (hungarian algorithm)](doc/graph_hungarian.md)
+  - 알 | vertex cover problem
+    - Kőnig's theorem
+  - 알 | Hopcroft-Karp algorithm 
+  - 알 | [DICTIONARY](http://algospot.com/judge/problem/read/DICTIONARY)
+  - 알 | [WORDCHAIN](http://algospot.com/judge/problem/read/WORDCHAIN)
+  - 알 | [GALLERY](http://algospot.com/judge/problem/read/GALLERY)
+    - dominating set
+    - unrooted tree
+  - 알 | [MEETINGROOM](doc/algospot_MEETINGROOM.md)★
+    - sat (SATisfiability, boolean satisfiability problem)
+    - conjunctive normal form
+    - 2-sat
+    - implication graph
+  - 알 | [SORTGAME](http://algospot.com/judge/problem/read/SORTGAME)
+  - 알 | [CHILDRENDAY](doc/algospot_CHILDRENDAY.md)★
+  - 알 | [HANOI4](http://algospot.com/judge/problem/read/HANOI4)
+  - 알 | [ROUTING](http://algospot.com/judge/problem/read/ROUTING)
+  - 알 | [FIRETRUCKS](http://algospot.com/judge/problem/read/FIRETRUCKS)
+  - 알 | [NTHLON](http://algospot.com/judge/problem/read/NTHLON)★
+  - 알 | [TIMETRIP](http://algospot.com/judge/problem/read/TIMETRIP)
+  - 알 | [DRUNKEN](http://algospot.com/judge/problem/read/DRUNKEN)
+  - 알 | [PROMISES](http://algospot.com/judge/problem/read/PROMISES)
+  - [알](/algospot.com/LAN/) | [LAN](http://algospot.com/judge/problem/read/LAN)
+  - [알](/algospot.com/TPATH/) | [TPATH](http://algospot.com/judge/problem/read/TPATH)
+  - 알 | [MILEAGE](http://algospot.com/judge/problem/read/MILEAGE)
+  - 알 | [SAINTTAIL](http://algospot.com/judge/problem/read/SAINTTAIL)
+  - 알 | [MATCHFIX](http://algospot.com/judge/problem/read/MATCHFIX)
+  - 알 | [PROJECTS](http://algospot.com/judge/problem/read/PROJECTS)★
+  - 알 | [TRAVELPICTURES](http://algospot.com/judge/problem/read/TRAVELPICTURES)
+  - 알 | [DOMINOS](http://algospot.com/judge/problem/read/DOMINOS)
+  - 알 | [BISHOPS](http://algospot.com/judge/problem/read/BISHOPS)
+  - 알 | [TRAPCARD](http://algospot.com/judge/problem/read/TRAPCARD)★
+  - 알 | [maxium independent set problem](doc/graph_max_independent_set.md)
   - 백 | [DFS와 BFS](https://www.acmicpc.net/problem/1260)
   - 백 | [연결 요소의 개수](https://www.acmicpc.net/problem/11724)
   - 백 | [이분 그래프](https://www.acmicpc.net/problem/1707)
@@ -419,118 +529,10 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - 백 | [가위바위보](https://www.acmicpc.net/problem/2207)
   - 백 | [사랑과 전쟁](https://www.acmicpc.net/problem/4230)
   - 백 | [완벽한 선거!](https://www.acmicpc.net/problem/3747)
-  - 백 | [타워 디펜스](https://www.acmicpc.net/problem/3153)
-  - [terms and definitions](doc/graph_terms_and_definitions.md)
-  - 알 | dfs (depth first search)
-    - adj, visited, dfs, dfs_all
-  - 알 | finding out two vertices are connected
-    - dfs(u) and find out whether v is visited.
-  - 알 | counting the number of components 
-    - count the number of dfs in dfs_all.
-  - 알 | [topological sort](doc/graph_topological_sort.md)
-    - adj, visited, dfs, dfs_topological_sort, order
-  - 알 | [DICTIONARY](http://algospot.com/judge/problem/read/DICTIONARY)
-  - 알 | [eulerian circuit](doc/graph_eulerian_circuit.md)
-    - adj, circuit, dfs_get_eulerian_circuit
-  - 알 | [eulerian trail](doc/graph_eulerian_trail.md)
-    - adj, trail, dfs_get_eulerian_circuit, dfs_get_eulerian_trail
-  - 알 | [WORDCHAIN](http://algospot.com/judge/problem/read/WORDCHAIN)
-  - 알 | [dfs spanning tree](doc/graph_dfs_spanning_tree.md)
-    - tree edge, forward edge, back edge, cross edge
-    - adj, discovered, finished, counter, dfs_spanning_tree
-  - 알 | [proof of topological sort](doc/graph_proof_of_topological_srt.md)★
-  - 알 | [check the cycle](doc/graph_check_the_cycle.md)
-  - 알 | [cut vertex (articulation point)](doc/graph_cut_vertex.md)
-    - biconnected components
-    - adj, discovered, is_cut_vertex, counter, dfs_find_cut_vertex
-  - 알 | [bridge](doc/graph_bridge.md)
-    - adj, discovered, bridge, counter, dfs_find_bridge
-  - 알 | [tarjan's algorithm](doc/graph_tarjan_algorithm.md)
-    - scc (strongly connected components)
-    - condensation
-    - adj, scc_id, discovered, finished, stck, scc_counter, vertex_counter, dfs_scc, tarjan_scc
-  - 알 | [topological sort of scc](doc/graph_topological_sort_of_scc)★
-  - 알 | [GALLERY](http://algospot.com/judge/problem/read/GALLERY)
-    - dominating set
-    - unrooted tree
-  - 알 | [MEETINGROOM](doc/algospot_MEETINGROOM.md)★
-    - sat (SATisfiability, boolean satisfiability problem)
-    - conjunctive normal form
-    - 2-sat
-    - implication graph
-  - [알](fundamentals/graph/bfs/) | [bfs (breadth first search)](doc/graph_bfs.md)
-  - [알](fundamentals/graph/bfsshortestpath/) | [bfs shortest path](doc/graph_bfs_shortest_path.md)
-  - 알 | [SORTGAME](http://algospot.com/judge/problem/read/SORTGAME)
-  - 알 | [CHILDRENDAY](doc/algospot_CHILDRENDAY.md)★
-  - 알 | [15 puzzle - bfs](doc/graph_15_puzzle_bfs.md)
-    - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, bfs
-  - 알 | [15 puzzle - bfs bidrectional search](doc/graph_15_puzzle_bfs_bs.md)
-    - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, get_sign, incr, bfs_bs
-  - 알 | [15 puzzle - bfs ids (iteratively deep searching)](doc/graph_15_puzzle_bfs_ids.md)
-    - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, best, dfs, ids
-  - 알 | [HANOI4](http://algospot.com/judge/problem/read/HANOI4)
-  - [알](/fundamentals/graph/dijkstra/) | [Dijkstra algorithm](doc/graph_dijkstra.md)
-    ```cpp
-    vector<pair<int, int>> adj, dijkstra, dist, priority_queue<pair<int, int>> pq
-    ```
-    - O(|E|lg|V|)
-  - [알](/fundamentals/graph/dijkstrawithoutpq/) | [Dijkstra algorithm without priority queue](doc/graph_dijkstra_without_pq.md)
-    ```cpp
-    vector<pair<int, int>> adj, dijkstra, dist, visited
-    ```
-    - O(|V|^2 + |E|)
-  - 알 | [ROUTING](http://algospot.com/judge/problem/read/ROUTING)
-  - 알 | [FIRETRUCKS](http://algospot.com/judge/problem/read/FIRETRUCKS)
-  - 알 | [NTHLON](http://algospot.com/judge/problem/read/NTHLON)★
-  - 알 | [Bellman-Ford algorithm](doc/graph_bellman_ford.md)
-    ```cpp
-    vector<pair<int, int>> adj[], bellmanford, vector<int> upper, bool updated
-    ```
-    - O(|E||V|)
-  - 알 | [TIMETRIP](http://algospot.com/judge/problem/read/TIMETRIP)
-  - 알 | [Floyd algorithm](doc/graph_floyd.md)
-    ```cpp
-    adj[][], via[][], floyd, reconstruct
-    ```
-  - 알 | [DRUNKEN](http://algospot.com/judge/problem/read/DRUNKEN)
-  - 알 | [PROMISES](http://algospot.com/judge/problem/read/PROMISES)
-  - [알](fundamentals/graph/kruskal/) | [Kruskal's minimum spanning tree](doc/graph_kruskal.md)
-  - [알](fundamentals/graph/prim/) | [Prim's minimum spanning tree](doc/graph_prim.md)
-  - [알](/algospot.com/LAN/) | [LAN](http://algospot.com/judge/problem/read/LAN)
-  - [알](/algospot.com/TPATH/) | [TPATH](http://algospot.com/judge/problem/read/TPATH)
-  - 알 | [Ford-Fulkerson algorithm with adjacency matrix](doc/graph_ford_fulkerson.md)
-    ```cpp
-    capacity[][], flow[][],
-    ford_fulkerson, parent, q
-    ```
-    - small one between O(|E|f) and O(|V||E|^2)
-  - 알 | [Ford-Fulkerson algorithm with adjacency list](doc/graph_ford_fulkerson_adj_list.md)
-    ```cpp
-    capacity[][], Edge, add_edge, get_edge 
-    ford_fulkerson, parent, q
-    ```
-    - small one between O(|E|f) and O(|V||E|^2)
-  - 알 | [MILEAGE](http://algospot.com/judge/problem/read/MILEAGE)
-  - 알 | [SAINTTAIL](http://algospot.com/judge/problem/read/SAINTTAIL)
-  - 알 | [MATCHFIX](http://algospot.com/judge/problem/read/MATCHFIX)
-  - 알 | [PROJECTS](http://algospot.com/judge/problem/read/PROJECTS)★
-  - 알 | [bipartite matching](doc/graph_bipartite_matching.md)
-    - adj[][], amatch, bmatch, visited, dfs, bipartite_match
-    - O(|V||E|)
-  - 알 | [TRAVELPICTURES](http://algospot.com/judge/problem/read/TRAVELPICTURES)
-  - 알 | [DOMINOS](http://algospot.com/judge/problem/read/DOMINOS)
-  - 알 | [BISHOPS](http://algospot.com/judge/problem/read/BISHOPS)
-  - 알 | [TRAPCARD](http://algospot.com/judge/problem/read/TRAPCARD)★
-  - 알 | [maxium independent set problem](doc/graph_max_independent_set.md)
-  - 알 | [dinic algorithm](doc/graph_dinic.md)
-    - O(|V|^2|E|)
-  - 알 | [successive shortest path](doc/graph_successive_shortest_path.md)
-  - 알 | [Kuhn–Munkres algorithm (hungarian algorithm)](doc/graph_hungarian.md)
-  - 알 | vertex cover problem
-    - Kőnig's theorem
-  - 알 | Hopcroft-Karp algorithm
+  - 백 | [타워 디펜스](https://www.acmicpc.net/problem/3153)  
   
 ## Network Flow
+
   - [overview](doc/network_flow.md)
   - 백 | [최대 유량](https://www.acmicpc.net/problem/6086)
   - 백 | [열혈강호](https://www.acmicpc.net/problem/11375)
