@@ -3,7 +3,8 @@
 
 #include <cstdio>
 #include <vector>
-#include <unordered_set>
+#include <unordered_map>
+#include <stack>
 
 struct UndirectedGraphNode {
   int label;
@@ -11,25 +12,50 @@ struct UndirectedGraphNode {
   UndirectedGraphNode(int x) : label(x) {};
 };
 
+    //    1
+    //   / \
+    //  /   \
+    // 0 --- 2
+    //      / \
+    //      \_/
+
+    //    1
+    //   / \
+    //  /   \
+    // 0 ---2 
+    //     / \
+    //     \ /
+//
+// stck: 0
+//
+// O(U+V) O(U)
 class Solution {
  public:
-  std::unordered_set<std::pair<int, int>> m_set;
-  UndirectedGraphNode *cloneGraph(UndirectedGraphNode* u) {
-    UndirectedGraphNode* rslt;
-    if (u == NULL)
-      return rslt;
-    m_set.push(u);
-    rslt = new UndirectedGraphNode(u->label);
-    for (auto v : u->neighbors) {
-      if (
+  UndirectedGraphNode *cloneGraph(UndirectedGraphNode* node) {
+    if (node == NULL)
+      return NULL;
+    std::unordered_map<UndirectedGraphNode*, UndirectedGraphNode*> mp;
+    mp[node] = new UndirectedGraphNode(node->label);
+    std::stack<UndirectedGraphNode*> stck;
+    stck.push(node);
+    // dfs
+    while (!stck.empty()) {
+      auto u = stck.top(); stck.pop();
+      for (auto v : u->neighbors) {
+        if (!mp.count(v)) {
+          mp[v] = new UndirectedGraphNode(v->label);
+          stck.push(v);
+        }
+        mp[u]->neighbors.push_back(mp[v]);
+      }
     }    
-    return rslt;
+    return mp[node];
   }
 };
 
 
 int main() {
-  UndirectedGraphNode* u new UndirectedGraphNode(0);
+  UndirectedGraphNode* u = new UndirectedGraphNode(0);
   u->neighbors.push_back(new UndirectedGraphNode(1));
   
   Solution s;
