@@ -29,6 +29,7 @@ struct UndirectedGraphNode {
 // stck: 0
 //
 // O(U+V) O(U)
+// 28ms 34.22%
 class Solution {
  public:
   UndirectedGraphNode *cloneGraph(UndirectedGraphNode* node) {
