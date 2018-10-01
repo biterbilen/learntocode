@@ -11,11 +11,11 @@ struct ListNode {
 };
 
 //   h
-//   5 6 1 3
-// p
-//   b
-//     q
-//       r
+// v 2 4 1 3
+// a
+//   p
+//     b
+//       q
 class Solution {
  public:
   ListNode* insertionSortList(ListNode* h) {
@@ -24,24 +24,45 @@ class Solution {
     ListNode v(std::numeric_limits<int>::min());
     v.next = h;
 
-    ListNode* p = &v, *b = h, *q = h->next, *r = q->next;
+    ListNode* a = &v, *p = h, *b = h, *q = h->next;
     while (q) {
-      r = q->next;
-      for (p = &v; p->next != q; p = p->next) {
-        // swap
-        if (p->next->val > q->val) {
-          b->next = r;
-          
-        }
+      a = &v;
+      p = a->next;
+      //printf("p:%d b:%d q:%d\n", p->val, b->val, q->val);
+      
+      // forward b, p until need to swap
+      while (p != q && p->val < q->val) {
+        a = a->next;
+        p = p->next;
       }
-      b = b->next;
-      q = r;
+      //printf(" a:%d p:%d\n", a->val, p->val);
+
+      // foward q or swap
+      if (p != q) {
+        b->next = q->next;
+        a->next = q;
+        q->next = p;
+
+        q = b->next;
+      } else {
+        b = q;
+        q = q->next;
+      }
     }
-    return h;
+    return v.next;
   }
 };
 
 int main() {
+  ListNode* h = new ListNode(4, new ListNode(2, new ListNode(1, new ListNode(3))));
+
+  Solution s;
+  h = s.insertionSortList(h);
+  while (h) {
+    printf("%d ", h->val);
+    h = h->next;
+  }
+  printf("\n");
   return 0;
 }
 

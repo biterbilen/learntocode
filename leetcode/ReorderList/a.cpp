@@ -8,10 +8,11 @@ struct ListNode {
   explicit ListNode(int x, ListNode* p) : val(x), next(p) {}
 };
 
-// 1 2 4 3
+//   h
+// a 1 2 4 3
+//   b
 //     p
-//   q
-//       r
+//       q
 class Solution {
  public:
   void reorderList(ListNode* h) {
@@ -26,9 +27,7 @@ class Solution {
     }
     ListNode* h2 = p->next;
     q = p->next;
-    r = q->next;
     p->next = NULL;
-    p = NULL;
     // reverse 2nd list
     while (q) {
       r = q->next;
