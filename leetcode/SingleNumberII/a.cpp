@@ -6,7 +6,21 @@
 
 class Solution {
  public:
-  int singleNumber(std::vector<int>& nums) {
+  int singleNumber(std::vector<int>& v) {
+    int rslt = 0;
+
+    for (int i = 0; i < 32; ++i) {
+      int sum = 0;
+      int a = 1 << i;
+      for (int j = 0; j < v.size(); ++j) {
+        if (v[j] & a)
+          sum++;
+      }
+      if (sum % 3)
+        rslt |= a;
+    }
+
+    return rslt;
     
   }
 };
