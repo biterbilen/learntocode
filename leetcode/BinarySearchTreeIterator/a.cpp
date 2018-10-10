@@ -3,42 +3,53 @@
 
 #include <cstdio>
 #include <iostream>
+#include <stack>
 
 struct TreeNode {
   int val;
   TreeNode *left;
   TreeNode *right;
   explicit TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-  explicit TreeNode(int x, TreeNode* l, TreeNode* r) : val(x), left(l), right(r) {}
+  explicit TreeNode(int x, TreeNode* l, TreeNode* r) :
+      val(x), left(l), right(r) {}
 };
 
 class BSTIterator {
  public:
-  TreeNode* m_next;
-  BSTIterator(TreeNode *t) {
-    m_next = t;
+  std::stack<TreeNode*> m_stck;
+  explicit BSTIterator(TreeNode *t) {
+    findsmallestone(t);
   }
 
   /** @return whether we have a next smallest number */
   bool hasNext() {
-    return m_next ? true : false;
+    return m_stck.empty() ? false : true;
   }
 
   /** @return the next smallest number */
-  int _next(TreeNode* t) {
-
-  }
   int next() {
-    int rslt = m_next->val;
-    if (m_next->left)
-      m_next = m_next->left;
-    else if (m_next->right)
-      m_next = m_next->right;
-    else
-      m_next = NULL;
-    return rslt;
+    TreeNode* t = m_stck.top(); m_stck.pop();
+    if (t->right != NULL)
+      findsmallestone(t->right);
+    return t->val;
+  }
+
+  void findsmallestone(TreeNode* t) {
+    while (t) {
+      m_stck.push(t);
+      t = t->left;
+    }
   }
 };
+
+//          5
+//       /     \
+//      2       7
+//    /   \    / \
+//   1     4  6   8
+//        / \
+//       3
+// 5 4 3
 
 int main() {
 

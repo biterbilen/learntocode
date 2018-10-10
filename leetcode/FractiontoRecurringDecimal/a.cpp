@@ -3,75 +3,56 @@
 
 #include <cstdio>
 #include <string>
-#include <unordered_set>
+#include <unordered_map>
 
-// Rejected:
-// Wrong Answer
-// Input: 1 333
-// Output: 0.(0)
-// Expected: 0.(003)
 class Solution {
  public:
-  std::string fractionToDecimal(int n, int d) {
+  std::string fractionToDecimal(int64_t n, int64_t d) {
+    std::string rslt;
+
+    // check zero n
     if (n == 0)
       return "0";
-    // 
-    bool neg = false;
-    int rep_n = -1; // repeat n
-    if ((n < 0 && d > 0) ||
-        (n > 0 && d < 0))
-      neg = true;
 
-    //
-    double d_n = (double)n;
-    double d_d = (double)d;
-    double d_q = d_n / d_d;
-    int64_t ll_q = (int64_t)d_q;
-    d_q = d_q - ll_q;
-        
-    std::string s_s = neg ? "-" : "";
-    std::string s_i = std::to_string(ll_q);
-    std::string s_f = "";
+    // check sign
+    if (n < 0 ^ d < 0)
+      rslt += "-";
 
-    d_q *= 10.0;
-    std::unordered_set<int> s;
-   
-    while (d_q > 0) {
-      int i = (int)d_q;
-      if (s.emplace(i).second == false) {
-        rep_n = i;
+    // remove sign of operands
+    n = std::abs(n);
+    d = std::abs(d);
+
+    // get integer part
+    rslt += std::to_string(n / d);
+
+    // check 0 fractional part
+    if (n % d == 0)
+      return rslt;
+
+    // int a = 2, b = 3;
+    rslt += '.';
+    std::unordered_map<int, int> um;
+
+    // loop remain
+    for (int64_t r = n % d; r; r %= d) {
+      if (um.count(r) > 0) {
+        rslt.insert(um[r], 1, '(');
+        rslt += ')';
         break;
       }
-      d_q -= i;
-      s_f += std::to_string(i);
-      d_q *= 10.0;
-      // printf("%d\n", i);
+      um[r] = rslt.size();
+      r *= 10;
+      rslt += std::to_string(r / d);
     }
-    std::string rr = s_s + s_i;
-    if (!s_f.empty()) {
-      if (rep_n < 0) {
-        rr += "." + s_f;
-      } else {
-        // insert (
-        int pos = s_f.find_first_of(std::to_string(rep_n));
-        s_f.insert(s_f.begin() + pos, '(');
-        rr += "." + s_f + ")";
-      }
-    }
-    return rr;
+
+    return rslt;
   }
 };
 
 int main() {
-  // int a = 1, b = 2;
-  // int a = 2, b = 1;
-  // int a = 2, b = 3;
-  int a = 1, b = 3;
-  
   Solution s;
-  printf("%s\n", s.fractionToDecimal(a, b).c_str());
+  printf("%s\n", s.fractionToDecimal(1, 3).c_str());
+  printf("%s\n", s.fractionToDecimal(1, 2).c_str());
 
-  // printf("%lf\n", 1.0 / 3.0);
-  
   return 0;
 }
