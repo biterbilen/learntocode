@@ -124,7 +124,7 @@
 # Datatype Range
 
 | Type               | Typical Bit Width | Typical Range                   |
-| :----------------- | :-----------------| :-----------------------------: |
+| :----------------- | :-----------------|  -----------------------------: |
 | char               | 1byte             | -128 to 127                     |
 | unsigned char      | 1byte             | 0 to 255                        |
 | short int          | 2byte             | -32,768 to 32,767               |
@@ -377,10 +377,12 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - [terms and definitions](doc/graph_terms_and_definitions.md)
   - [dfs (depth first search)](fundamentals/graph/dfs/README.md)
     - adj, visited, dfs, dfs_all
-  - 알 | finding out two vertices are connected
+  - finding out two vertices are connected
     - dfs(u) and find out whether v is visited.
-  - 알 | counting the number of components 
+  - counting the number of components 
     - count the number of dfs in dfs_all.
+  - [bfs (breadth first search)](fundamentals/graph/bfs/README.md)
+  - [bfs shortest path](fundamentals/graph/bfsshortestpath/README.md)
   - 알 | [topological sort](doc/graph_topological_sort.md)
     - adj, visited, dfs, dfs_topological_sort, order
   - [eulerian circuit](fundamentals/graph/euleriancircuit/README.md)
@@ -402,8 +404,6 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
     - condensation
     - adj, scc_id, discovered, finished, stck, scc_counter, vertex_counter, dfs_scc, tarjan_scc
   - 알 | [topological sort of scc](doc/graph_topological_sort_of_scc)★
-  - [bfs (breadth first search)](fundamentals/graph/bfs/README.md)
-  - [bfs shortest path](fundamentals/graph/bfsshortestpath/README.md)
   - 알 | [15 puzzle - bfs](doc/graph_15_puzzle_bfs.md)
     - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, bfs
   - 알 | [15 puzzle - bfs bidrectional search](doc/graph_15_puzzle_bfs_bs.md)
