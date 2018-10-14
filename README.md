@@ -402,8 +402,8 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
     - condensation
     - adj, scc_id, discovered, finished, stck, scc_counter, vertex_counter, dfs_scc, tarjan_scc
   - 알 | [topological sort of scc](doc/graph_topological_sort_of_scc)★
-  - [알](fundamentals/graph/bfs/) | [bfs (breadth first search)](doc/graph_bfs.md)
-  - [알](fundamentals/graph/bfsshortestpath/) | [bfs shortest path](doc/graph_bfs_shortest_path.md)
+  - [bfs (breadth first search)](fundamentals/graph/bfs/README.md)
+  - [bfs shortest path](fundamentals/graph/bfsshortestpath/README.md)
   - 알 | [15 puzzle - bfs](doc/graph_15_puzzle_bfs.md)
     - State, get_adj, operator<, operator==, bitmask, move, get, set, swap, get_zero_idx, state_map, bfs
   - 알 | [15 puzzle - bfs bidrectional search](doc/graph_15_puzzle_bfs_bs.md)
