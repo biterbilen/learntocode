@@ -3,14 +3,19 @@
 
 #include <cstdio>
 
+// 00110
+// 11111
 class Solution {
 public:
   int rangeBitwiseAnd(int m, int n) {
-    int rslt = m;
-    for (int i = m+1; i < n; ++i) {
-      rslt &= i;
+    int rslt = 0;
+    while (m != n) {
+      m >>= 1;
+      n >>= 1;
+      ++rslt;
+      // printf("  %d\n", rslt);
     }
-    return rslt;
+    return n << rslt;
   }
 };
 
