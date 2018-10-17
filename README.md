@@ -610,6 +610,7 @@ double 의 경우 소수점 이하 유효자리수는 이진수로 52 자리이�
   - counting sort
 
 ## Search
+  - [upper_bound, lower_bound](fundamentals/search/upperlowerbound/README.md)
   - Sequential Search with array
   - Sequential Search with linked list
   - [Binary Search with array](fundamentals/search/binarysearch/README.md)
