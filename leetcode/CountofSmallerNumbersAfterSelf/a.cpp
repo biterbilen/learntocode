@@ -3,26 +3,44 @@
 #include <vector>
 #include <algorithm>
 #include <map>
+#include <numeric>
 
-//    i
-// V: 5 2 6 1
-// M: 1 2 6
-// R:   1 1 0
+// //    i
+// // V: 5 2 6 1
+// // M: 1 2 6
+// // R:   1 1 0
+// class Solution {
+//  public:
+//   std::vector<int> countSmaller(std::vector<int>& V) {
+//     if (V.empty())
+//       return {};
+//     std::vector<int> M;
+//     std::vector<int> rslt(V.size(), 0);
+//     for (int i = V.size() - 1; i >= 0; --i) {
+//       int n = V[i];
+//       auto it = std::lower_bound(M.begin(), M.end(), n);
+//       rslt[i] = it - M.begin();
+//       M.insert(it, n);
+//       printf("i: %d, n: %d, R: %d, M.size: %d\n", i, n, rslt[i], M.size());
+//     }
+//     return rslt;
+//   }
+// };
+
 class Solution {
  public:
+  void solve(std::vector<int>& counts, int l, int r,
+             std::vector<int>& result, const std::vector<int>& V) {
+  }
   std::vector<int> countSmaller(std::vector<int>& V) {
     if (V.empty())
       return {};
-    std::vector<int> M;
-    std::vector<int> rslt(V.size(), 0);
-    for (int i = V.size() - 1; i >= 0; --i) {
-      int n = V[i];
-      auto it = std::lower_bound(M.begin(), M.end(), n);
-      rslt[i] = it - M.begin();
-      M.insert(it, n);
-      printf("i: %d, n: %d, R: %d, M.size: %d\n", i, n, rslt[i], M.size());
-    }
-    return rslt;
+    int n = V.size();
+    std::vector<int> counts(n, 0);
+    std::vector<int> result(n, 0);
+    std::iota(counts.begin(), counts.end(), 0);
+    solve(counts, 0, n, result, V);
+    return counts;
   }
 };
 
@@ -46,28 +64,3 @@ int main() {
   
   return 0;
 }
-
-// //     f
-// //     i
-// // 1 2 6
-// //
-// template <class ForwardIterator, class T>
-// ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T& val)
-// {
-//   ForwardIterator it;
-//   iterator_traits<ForwardIterator>::difference_type count, step;
-//   count = distance(first, last);
-//   while (count > 0)
-//   {
-//     it = first;
-//     step = count / 2;
-//     advance (it, step);
-//     if (*it < val) {                 // or: if (comp(*it,val)), for version (2)
-//       first = ++it;
-//       count -= step + 1;
-//     } else {
-//       count = step;
-//     }
-//   }
-//   return first;
-// }
