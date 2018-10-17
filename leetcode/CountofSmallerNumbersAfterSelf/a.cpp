@@ -4,26 +4,27 @@
 #include <algorithm>
 #include <map>
 
-// 5 2 6 1
-// 
+//    i
+// V: 5 2 6 1
+// M: 1 2 6
+// R: 2 1 1 0 
 class Solution {
  public:
   std::vector<int> countSmaller(std::vector<int>& V) {
-    std::map<int, int> M;  // M[num] = right count
+    if (V.empty())
+      return {};
+    std::vector<int> M;
     std::vector<int> rslt(V.size(), 0);
     for (int i = V.size() - 1; i >= 0; --i) {
-      int num = V[i];
-      auto it = M.lower_bound(num);
-      M[num] = (it == M.end()) ? 0 : it->second + 1;
-      printf("i: %d k: %d s: %d size: %lu\n", i, num, M[num], M.size());
-    }
-    for (int i = 0; i < V.size(); ++i) {
-      rslt[i] = M[V[i]];
+      int n = V[i];
+      auto it = std::lower_bound(M.begin(), M.end(), n);
+      rslt[i] = it - M.begin();
+      M.insert(it, n);
+      printf("i: %d, n: %d, R: %d, M.size: %d\n", i, n, rslt[i], M.size());
     }
     return rslt;
   }
 };
-
 
 int main() {
   // std::vector<int> V = {5, 2, 6, 1};
@@ -34,9 +35,37 @@ int main() {
   //   printf("%d ", a);
   // }
   // printf("\n");
-  // std::map<int, int> M;
-  std::vector<int> M = {1, 2, 3};
-  auto it = std::lower_bound(M.begin(), M.end(), 5);
-  printf("%d\n", it == M.end() ? -1 : *it);
+
+  std::vector<int> M = {1, 2, 6};
+  auto lit = std::lower_bound(M.begin(), M.end(), 5);
+  auto uit = std::upper_bound(M.begin(), M.end(), 5);
+  printf("lit: %d, diff: %d\n", *lit, lit-M.begin());
+  printf("uit: %d, diff: %d\n", *uit, uit-M.begin());
+  
   return 0;
+}
+
+//     f
+//     i
+// 1 2 6
+//
+template <class ForwardIterator, class T>
+ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T& val)
+{
+  ForwardIterator it;
+  iterator_traits<ForwardIterator>::difference_type count, step;
+  count = distance(first, last);
+  while (count > 0)
+  {
+    it = first;
+    step = count / 2;
+    advance (it, step);
+    if (*it < val) {                 // or: if (comp(*it,val)), for version (2)
+      first = ++it;
+      count -= step + 1;
+    } else {
+      count = step;
+    }
+  }
+  return first;
 }
