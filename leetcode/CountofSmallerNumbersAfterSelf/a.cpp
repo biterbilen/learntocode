@@ -35,7 +35,7 @@ class Solution {
     if (cnt > 1) {
       // devide
       int step = cnt / 2;
-      int mid = beg + step;      
+      int mid = beg + step;
       solve(indices, beg, mid, counts, V);
       solve(indices, mid, end, counts, V);
 
@@ -44,10 +44,10 @@ class Solution {
       mrgd.reserve(cnt);
       int idx1 = beg;
       int idx2 = mid;
-      int n1 = indices[idx1];
-      int n2 = indices[idx2];
       int smallcnt = 0;
       while ((idx1 < mid) || (idx2 < end)) {
+        int n1 = indices[idx1];
+        int n2 = indices[idx2];
         if ((idx2 == end) ||
             ((idx1 < mid) && (V[n1] <= V[n2]))) {
           mrgd.push_back(n1);
@@ -73,6 +73,74 @@ class Solution {
     return counts;
   }
 };
+
+
+// struct BSTNode{
+//     int val;
+//     int count;
+//     BSTNode * left;
+//     BSTNode * right;
+//     BSTNode(int x):val(x),count(0),left(NULL),right(NULL){}
+// };
+// class Solution {
+// public:
+//     vector<int> countSmaller(vector<int>& nums) {
+//         vector<int> result;
+//         vector<int> count ;
+        
+//         vector<BSTNode *> node_vec;
+//         for(int i= nums.size()-1; i >= 0;i--){
+//             node_vec.push_back(new BSTNode(nums[i]));
+//         }
+
+//         count.push_back(0);
+//         for(int i = 1 ; i < node_vec.size();i++){
+
+//             int small_count = 0;
+//             BST_insert(node_vec[0],node_vec[i],small_count);
+//             count.push_back(small_count);
+            
+//         }
+        
+//         for(int i =node_vec.size()-1;i>= 0;i--){
+
+//              delete node_vec[i];
+//             result.push_back(count[i]);
+           
+//         }
+        
+//         return result;
+//     }
+// private:
+//    void BST_insert(BSTNode *node,BSTNode * insert_node,int & small_count){
+//         if(insert_node->val <= node->val){
+            
+//             node->count++;
+//             if(node->left){
+//                 BST_insert(node->left,insert_node,small_count);
+//             }else{
+//                 node->left = insert_node;
+//             }
+            
+            
+            
+//         }else{
+            
+//             small_count += node->count+1;
+//             if(node->right){
+//                 BST_insert(node->right,insert_node,small_count);
+                
+//             }else{
+//                 node->right = insert_node;
+//             }
+            
+//         }
+            
+            
+            
+        
+//     }
+// };
 
 int main() {
   std::vector<int> V = {5, 2, 6, 1};
