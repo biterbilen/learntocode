@@ -29,17 +29,47 @@
 
 class Solution {
  public:
-  void solve(std::vector<int>& counts, int l, int r,
-             std::vector<int>& result, const std::vector<int>& V) {
+  void solve(std::vector<int>& indices, int beg, int end,
+             std::vector<int>& counts, const std::vector<int>& V) {
+    int cnt = end - beg;
+    if (cnt > 1) {
+      // devide
+      int step = cnt / 2;
+      int mid = beg + step;      
+      solve(indices, beg, mid, counts, V);
+      solve(indices, mid, end, counts, V);
+
+      // conquer
+      std::vector<int> mrgd;
+      mrgd.reserve(cnt);
+      int idx1 = beg;
+      int idx2 = mid;
+      int n1 = indices[idx1];
+      int n2 = indices[idx2];
+      int smallcnt = 0;
+      while ((idx1 < mid) || (idx2 < end)) {
+        if ((idx2 == end) ||
+            ((idx1 < mid) && (V[n1] <= V[n2]))) {
+          mrgd.push_back(n1);
+          counts[n1] += smallcnt;
+          ++idx1;
+        } else {
+          mrgd.push_back(n2);
+          ++smallcnt;
+          ++idx2;
+        }
+      }             
+      std::move(mrgd.begin(), mrgd.end(), indices.begin() + beg);
+    }
   }
   std::vector<int> countSmaller(std::vector<int>& V) {
     if (V.empty())
       return {};
     int n = V.size();
+    std::vector<int> indices(n, 0);
     std::vector<int> counts(n, 0);
-    std::vector<int> result(n, 0);
-    std::iota(counts.begin(), counts.end(), 0);
-    solve(counts, 0, n, result, V);
+    std::iota(indices.begin(), indices.end(), 0);
+    solve(indices, 0, n, counts, V);
     return counts;
   }
 };
